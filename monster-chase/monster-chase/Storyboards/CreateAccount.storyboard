@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Wallet View Controller-->
+        <scene sceneID="bg4-WL-ygr">
+            <objects>
+                <viewController storyboardIdentifier="AccountCreationViewController" id="qcG-NT-RUQ" customClass="NewWalletViewController" customModule="banano_quest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DdQ-X7-Jpd" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Input your passphrase" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="93I-Fe-9hX" userLabel="Passphrase text">
+                                <rect key="frame" x="46" y="326.5" width="309" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="oyw-q9-s8y"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Las-Uv-jhT" userLabel="Create button">
+                                <rect key="frame" x="127.5" y="470.5" width="120" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="7sk-hQ-YEk"/>
+                                    <constraint firstAttribute="height" constant="80" id="kx9-wc-5Gf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="Create">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createWallet:" destination="qcG-NT-RUQ" eventType="touchUpInside" id="19t-9J-5Uq"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vB-oB-01u" userLabel="Copy address button">
+                                <rect key="frame" x="305" y="313.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aWm-I8-I7k"/>
+                                    <constraint firstAttribute="width" constant="40" id="eKa-7i-d4T"/>
+                                </constraints>
+                                <state key="normal" image="Coppy-x1"/>
+                                <connections>
+                                    <action selector="copyAddressBtnPressed:" destination="qcG-NT-RUQ" eventType="touchUpInside" id="NYh-2f-KQW"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6k-9p-XN8" userLabel="Address label">
+                                <rect key="frame" x="46" y="347.5" width="249" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzD-cs-gra" userLabel="Address label underline">
+                                <rect key="frame" x="46" y="351.5" width="249" height="2"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.72549019609999998" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="JUR-1M-oGa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgO-7x-gw5" userLabel="Biometrics Setup" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
+                                <rect key="frame" x="80.5" y="390.5" width="214" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="145" id="4hj-Fi-KhI"/>
+                                    <constraint firstAttribute="height" constant="40" id="hk0-YQ-0Rl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="SETUP TOUCH/FACE ID">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="biometricsSetupPressed:" destination="qcG-NT-RUQ" eventType="touchUpInside" id="2gh-wK-Myw"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzc-VP-5mh" userLabel="Continue button">
+                                <rect key="frame" x="115" y="476" width="145" height="69"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="0JE-lD-jJ8"/>
+                                    <constraint firstAttribute="width" constant="145" id="8u6-rY-Lor"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" image="PLAY-NOW-BUTTON-X1">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="continuePressed:" destination="qcG-NT-RUQ" eventType="touchUpInside" id="QTd-Ea-Ydc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will need to create a password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOb-IJ-Kt6">
+                                <rect key="frame" x="67.5" y="90" width="240" height="41.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="WX5-xf-47s"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
+                                <color key="textColor" red="0.30196078431372547" green="0.29411764705882354" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember you can not change your password!, store it in a safe place or setup touch ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG3-z6-nHo">
+                                <rect key="frame" x="52.5" y="201.5" width="270" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="gjy-UT-h6C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Yw-5f-rXf" firstAttribute="trailing" secondItem="8vB-oB-01u" secondAttribute="trailing" constant="30" id="2VH-pV-G9U"/>
+                            <constraint firstItem="8vB-oB-01u" firstAttribute="centerY" secondItem="DdQ-X7-Jpd" secondAttribute="centerY" id="87s-38-GOs"/>
+                            <constraint firstItem="Las-Uv-jhT" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="8nh-cI-GVg"/>
+                            <constraint firstItem="vzD-cs-gra" firstAttribute="leading" secondItem="DdQ-X7-Jpd" secondAttribute="leadingMargin" constant="30" id="BeP-2P-nyV"/>
+                            <constraint firstItem="Las-Uv-jhT" firstAttribute="top" secondItem="kgO-7x-gw5" secondAttribute="bottom" constant="40" id="Bnd-0s-JtN"/>
+                            <constraint firstItem="kgO-7x-gw5" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="JN5-Ze-0zc"/>
+                            <constraint firstItem="8vB-oB-01u" firstAttribute="leading" secondItem="e6k-9p-XN8" secondAttribute="trailing" constant="10" id="Jvq-81-EkZ"/>
+                            <constraint firstItem="93I-Fe-9hX" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="leading" id="KB9-dl-3Re"/>
+                            <constraint firstItem="hzc-VP-5mh" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="NMw-B1-p5l"/>
+                            <constraint firstItem="8vB-oB-01u" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="trailing" constant="10" id="OOu-Mj-2jp"/>
+                            <constraint firstItem="JOb-IJ-Kt6" firstAttribute="top" secondItem="5Yw-5f-rXf" secondAttribute="top" constant="70" id="YNf-mh-6EB"/>
+                            <constraint firstItem="JOb-IJ-Kt6" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="cZ0-WM-fwx"/>
+                            <constraint firstItem="kgO-7x-gw5" firstAttribute="top" secondItem="93I-Fe-9hX" secondAttribute="bottom" constant="30" id="fMu-7W-k3H"/>
+                            <constraint firstItem="e6k-9p-XN8" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="leading" id="jWD-hw-lHU"/>
+                            <constraint firstItem="vzD-cs-gra" firstAttribute="top" secondItem="e6k-9p-XN8" secondAttribute="bottom" constant="4" id="me6-OQ-bk8"/>
+                            <constraint firstItem="5Yw-5f-rXf" firstAttribute="trailing" secondItem="93I-Fe-9hX" secondAttribute="trailing" constant="20" id="oTf-Ow-pOa"/>
+                            <constraint firstItem="93I-Fe-9hX" firstAttribute="centerY" secondItem="5Yw-5f-rXf" secondAttribute="centerY" id="rUN-97-2GV"/>
+                            <constraint firstItem="yG3-z6-nHo" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="rZi-M1-pGi"/>
+                            <constraint firstItem="Las-Uv-jhT" firstAttribute="centerY" secondItem="hzc-VP-5mh" secondAttribute="centerY" id="sQa-kI-0sA"/>
+                            <constraint firstItem="vzD-cs-gra" firstAttribute="bottom" secondItem="8vB-oB-01u" secondAttribute="bottom" id="u07-TC-gEC"/>
+                            <constraint firstItem="yG3-z6-nHo" firstAttribute="top" secondItem="JOb-IJ-Kt6" secondAttribute="bottom" constant="70" id="ymU-Jz-ss0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Yw-5f-rXf"/>
+                    </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="e6k-9p-XN8" id="9vs-Gz-Lgm"/>
+                        <outlet property="addressLabelUnderline" destination="vzD-cs-gra" id="weR-wq-cQq"/>
+                        <outlet property="continueButton" destination="hzc-VP-5mh" id="9u6-H3-bIv"/>
+                        <outlet property="copyAddressButton" destination="8vB-oB-01u" id="gby-ZY-gEH"/>
+                        <outlet property="createButton" destination="Las-Uv-jhT" id="U5y-v6-UMC"/>
+                        <outlet property="passphraseTextField" destination="93I-Fe-9hX" id="thR-yj-AOo"/>
+                        <outlet property="setupBiometricsButton" destination="kgO-7x-gw5" id="AxF-6N-fPU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wkm-or-jE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4941.6000000000004" y="134.48275862068968"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Coppy-x1" width="156" height="156"/>
+        <image name="PLAY-NOW-BUTTON-X1" width="16" height="16"/>
+    </resources>
+</document>

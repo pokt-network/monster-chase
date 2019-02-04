@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ejE-em-LQ5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="pYi-Uh-xl1">
+            <objects>
+                <navigationController id="ejE-em-LQ5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vrC-LQ-ldg">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zHL-AS-xXT" kind="relationship" relationship="rootViewController" id="U6h-On-yEq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNA-rb-bgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="596" y="134"/>
+        </scene>
+        <!--LandingPageViewController-->
+        <scene sceneID="ho4-tT-b8S">
+            <objects>
+                <viewController storyboardIdentifier="LandingViewController" title="LandingPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zHL-AS-xXT" customClass="LandingViewController" customModule="monster_chase" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="s6F-r1-ArI" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monster-chase-logo" translatesAutoresizingMaskIntoConstraints="NO" id="zyU-oE-xj0" userLabel="Monster Chase Logo">
+                                <rect key="frame" x="37.5" y="258.5" width="300" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="1dR-Dz-L0C"/>
+                                    <constraint firstAttribute="height" constant="150" id="P9n-Cd-Anl"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Made-with-love" translatesAutoresizingMaskIntoConstraints="NO" id="OVm-It-CgW" userLabel="Footer image">
+                                <rect key="frame" x="67.5" y="587" width="240" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Cnc-Ix-xpw"/>
+                                    <constraint firstAttribute="height" constant="80" id="Q23-QO-SPc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdC-MV-IoP" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="468.5" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="QGq-5B-CwJ"/>
+                                </constraints>
+                                <state key="normal" title="Play Now"/>
+                                <connections>
+                                    <action selector="playNowPressed:" destination="zHL-AS-xXT" eventType="touchUpInside" id="cLv-x6-XTh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="OVm-It-CgW" secondAttribute="bottom" id="Xvq-vU-jmM"/>
+                            <constraint firstItem="ZdC-MV-IoP" firstAttribute="top" secondItem="zyU-oE-xj0" secondAttribute="bottom" constant="60" id="Ydz-v9-TDl"/>
+                            <constraint firstItem="OVm-It-CgW" firstAttribute="centerX" secondItem="s6F-r1-ArI" secondAttribute="centerX" id="bC4-yP-lF0"/>
+                            <constraint firstItem="ZdC-MV-IoP" firstAttribute="centerX" secondItem="zyU-oE-xj0" secondAttribute="centerX" id="hDJ-no-bZu"/>
+                            <constraint firstItem="zyU-oE-xj0" firstAttribute="centerX" secondItem="s6F-r1-ArI" secondAttribute="centerX" id="j6F-jA-ObM"/>
+                            <constraint firstItem="zyU-oE-xj0" firstAttribute="centerY" secondItem="s6F-r1-ArI" secondAttribute="centerY" id="mcI-aU-nYh"/>
+                            <constraint firstItem="ZdC-MV-IoP" firstAttribute="width" secondItem="zyU-oE-xj0" secondAttribute="width" id="vD5-Wn-0ba"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6zo-DF-pXc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="C8O-co-acJ"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxk-mT-8N9" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1365.5999999999999" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Made-with-love" width="1080" height="222"/>
+        <image name="Monster-chase-logo" width="1300" height="650"/>
+    </resources>
+</document>
