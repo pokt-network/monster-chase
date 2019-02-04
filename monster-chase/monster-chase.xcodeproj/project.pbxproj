@@ -1,0 +1,1073 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */; };
+		C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */; };
+		C526E13922068DE70009357B /* DownloadChaseIsClaimerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13822068DE70009357B /* DownloadChaseIsClaimerOperation.swift */; };
+		C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */; };
+		C526E13D220862960009357B /* DownloadOwnersTokenCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */; };
+		C526E13F220864EB0009357B /* LeaderboardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13E220864EB0009357B /* LeaderboardRecord.swift */; };
+		C526E14222086BA50009357B /* UploadChaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E14122086BA50009357B /* UploadChaseOperation.swift */; };
+		C526E14422087E130009357B /* UploadChaseProofOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E14322087E130009357B /* UploadChaseProofOperation.swift */; };
+		C526E146220881C90009357B /* UploadChaseEstimateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */; };
+		C526E148220885E60009357B /* UploadChaseProofEstimateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */; };
+		C526E14A220886BE0009357B /* ChaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E149220886BE0009357B /* ChaseAnnotation.swift */; };
+		C53F21F821FA1C50003457F3 /* DefaultMonsterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */; };
+		C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */; };
+		C53F21FF21FA40BD003457F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21FE21FA40BD003457F3 /* Theme.swift */; };
+		C53F220121FB3EBE003457F3 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220021FB3EBE003457F3 /* BackgroundView.swift */; };
+		C53F220321FB8076003457F3 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220221FB8076003457F3 /* UIViewController+extension.swift */; };
+		C53F220521FB814A003457F3 /* UIApplication+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220421FB814A003457F3 /* UIApplication+extension.swift */; };
+		C53F220E21FB87CD003457F3 /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220621FB87CC003457F3 /* Player+CoreDataClass.swift */; };
+		C53F220F21FB87CD003457F3 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220721FB87CC003457F3 /* Transaction+CoreDataClass.swift */; };
+		C53F221021FB87CD003457F3 /* Chase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220821FB87CC003457F3 /* Chase+CoreDataProperties.swift */; };
+		C53F221121FB87CD003457F3 /* Chase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220921FB87CC003457F3 /* Chase+CoreDataClass.swift */; };
+		C53F221221FB87CD003457F3 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220A21FB87CD003457F3 /* Transaction+CoreDataProperties.swift */; };
+		C53F221321FB87CD003457F3 /* Monster+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220B21FB87CD003457F3 /* Monster+CoreDataClass.swift */; };
+		C53F221421FB87CD003457F3 /* Monster+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220C21FB87CD003457F3 /* Monster+CoreDataProperties.swift */; };
+		C53F221521FB87CD003457F3 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F220D21FB87CD003457F3 /* Player+CoreDataProperties.swift */; };
+		C53F221721FB8A88003457F3 /* CGFloat+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F221621FB8A88003457F3 /* CGFloat+extension.swift */; };
+		C53F221921FB8A9B003457F3 /* UIColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F221821FB8A9B003457F3 /* UIColor+extension.swift */; };
+		C53F221B21FB8AC9003457F3 /* UIDevice+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F221A21FB8AC9003457F3 /* UIDevice+extension.swift */; };
+		C53F221D21FB9001003457F3 /* ChaseMerkleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F221C21FB9001003457F3 /* ChaseMerkleTree.swift */; };
+		C53F221F21FB9290003457F3 /* MerkleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F221E21FB9290003457F3 /* MerkleTree.swift */; };
+		C53F222121FB9360003457F3 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F222021FB9360003457F3 /* LocationUtils.swift */; };
+		C58A0F542204BF9500643BC7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58A0F532204BF9500643BC7 /* Profile.storyboard */; };
+		C58A0F56220527C300643BC7 /* AddBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58A0F55220527C300643BC7 /* AddBalanceViewController.swift */; };
+		C58A0F582205297100643BC7 /* MonsterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58A0F572205297100643BC7 /* MonsterCollectionViewCell.swift */; };
+		C593D3502201F4A8006AD84C /* ChaseCreationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593D34F2201F4A8006AD84C /* ChaseCreationTimer.swift */; };
+		C593D3522201F4D3006AD84C /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593D3512201F4D3006AD84C /* RepeatingTimer.swift */; };
+		C593D3542201F65F006AD84C /* DownloadTransactionReceiptOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593D3532201F65F006AD84C /* DownloadTransactionReceiptOperation.swift */; };
+		C593D3562201F98A006AD84C /* TransactionReceipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593D3552201F98A006AD84C /* TransactionReceipt.swift */; };
+		C593D35822020225006AD84C /* CreateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C593D35722020225006AD84C /* CreateAccount.storyboard */; };
+		C59BBFC621FBAFF000CD684C /* CoreDataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFC521FBAFF000CD684C /* CoreDataUtils.swift */; };
+		C59BBFC821FBB1A700CD684C /* BiometricsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFC721FBB1A700CD684C /* BiometricsUtils.swift */; };
+		C59BBFCA21FBB20400CD684C /* PushNotificationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFC921FBB20400CD684C /* PushNotificationUtils.swift */; };
+		C59BBFCC21FF429B00CD684C /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFCB21FF429B00CD684C /* AppConfiguration.swift */; };
+		C59BBFCE21FF4B8300CD684C /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFCD21FF4B8300CD684C /* ContainerViewController.swift */; };
+		C59BBFD121FF4BE400CD684C /* Chasing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59BBFD021FF4BE400CD684C /* Chasing.storyboard */; };
+		C59BBFD421FF4D5B00CD684C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFD321FF4D5B00CD684C /* MenuViewController.swift */; };
+		C59BBFD721FF56ED00CD684C /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFD621FF56ED00CD684C /* LeaderboardViewController.swift */; };
+		C59BBFD921FF58D800CD684C /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFD821FF58D800CD684C /* HowToPlayViewController.swift */; };
+		C59BBFDB21FF590200CD684C /* ChasingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFDA21FF590200CD684C /* ChasingViewController.swift */; };
+		C59BBFDF21FF594500CD684C /* CreateChaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFDE21FF594500CD684C /* CreateChaseViewController.swift */; };
+		C59BBFE221FF596A00CD684C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFE121FF596A00CD684C /* ProfileViewController.swift */; };
+		C59BBFE521FF59A100CD684C /* NewWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFE421FF59A100CD684C /* NewWalletViewController.swift */; };
+		C59BBFE821FF59CA00CD684C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFE721FF59CA00CD684C /* OnboardingViewController.swift */; };
+		C59BBFEB21FF917500CD684C /* AppInitQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFEA21FF917500CD684C /* AppInitQueueDispatcher.swift */; };
+		C59BBFED21FF91C100CD684C /* QueueDispatcherProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFEC21FF91C100CD684C /* QueueDispatcherProtocol.swift */; };
+		C59BBFF221FF930800CD684C /* DownloadBalanceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFF121FF930800CD684C /* DownloadBalanceOperation.swift */; };
+		C59BBFF421FF939600CD684C /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFF321FF939600CD684C /* AsynchronousOperation.swift */; };
+		C59BBFF621FF98E100CD684C /* DownloadTransactionCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFF521FF98E100CD684C /* DownloadTransactionCountOperation.swift */; };
+		C59BBFF821FF994000CD684C /* DownloadChaseAmountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFF721FF994000CD684C /* DownloadChaseAmountOperation.swift */; };
+		C59BBFFA21FFC21A00CD684C /* DownloadAionUsdPriceOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFF921FFC21A00CD684C /* DownloadAionUsdPriceOperation.swift */; };
+		C59BBFFD21FFCA5400CD684C /* UpdatePlayerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFFC21FFCA5400CD684C /* UpdatePlayerOperation.swift */; };
+		C59BBFFF21FFCC5E00CD684C /* SynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BBFFE21FFCC5E00CD684C /* SynchronousOperation.swift */; };
+		C59BC00121FFD17800CD684C /* AllChasesQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BC00021FFD17800CD684C /* AllChasesQueueDispatcher.swift */; };
+		C59BC00321FFD20800CD684C /* DownloadAndUpdateChaseIsWinnerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BC00221FFD20800CD684C /* DownloadAndUpdateChaseIsWinnerOperation.swift */; };
+		C59BC00521FFDB1800CD684C /* DownloadChaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BC00421FFDB1700CD684C /* DownloadChaseOperation.swift */; };
+		C59BC00721FFE9E100CD684C /* UpdateChaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BC00621FFE9E100CD684C /* UpdateChaseOperation.swift */; };
+		C59BC00A2200808300CD684C /* ChaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BC0092200808300CD684C /* ChaseCollectionViewCell.swift */; };
+		C59BC00C220085FE00CD684C /* AionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59BC00B220085FE00CD684C /* AionUtils.swift */; };
+		C59BC00E2200A35100CD684C /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59BC00D2200A35100CD684C /* Onboarding.storyboard */; };
+		C5E6565F21F8AB94009C1651 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6565E21F8AB94009C1651 /* AppDelegate.swift */; };
+		C5E6566121F8AB94009C1651 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6566021F8AB94009C1651 /* LandingViewController.swift */; };
+		C5E6566421F8AB94009C1651 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5E6566221F8AB94009C1651 /* Main.storyboard */; };
+		C5E6566721F8AB94009C1651 /* monster_chase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5E6566521F8AB94009C1651 /* monster_chase.xcdatamodeld */; };
+		C5E6566921F8AB94009C1651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5E6566821F8AB94009C1651 /* Assets.xcassets */; };
+		C5E6566C21F8AB94009C1651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5E6566A21F8AB94009C1651 /* LaunchScreen.storyboard */; };
+		C5E6567721F8AB94009C1651 /* monster_chaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6567621F8AB94009C1651 /* monster_chaseTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C5E6567321F8AB94009C1651 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5E6565321F8AB94009C1651 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C5E6565A21F8AB94009C1651;
+			remoteInfo = "monster-chase";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chaseTests/Pods-monster-chaseTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B090CA75033BFDCB7FE9831 /* Pods-monster-chase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.debug.xcconfig"; sourceTree = "<group>"; };
+		42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monster_chaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E29B42157888FECFEAB3B58 /* Pods-monster-chase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.release.xcconfig"; sourceTree = "<group>"; };
+		904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monster_chase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C526E13822068DE70009357B /* DownloadChaseIsClaimerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadChaseIsClaimerOperation.swift; sourceTree = "<group>"; };
+		C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOwnersCountOperation.swift; sourceTree = "<group>"; };
+		C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOwnersTokenCountOperation.swift; sourceTree = "<group>"; };
+		C526E13E220864EB0009357B /* LeaderboardRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRecord.swift; sourceTree = "<group>"; };
+		C526E14122086BA50009357B /* UploadChaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadChaseOperation.swift; sourceTree = "<group>"; };
+		C526E14322087E130009357B /* UploadChaseProofOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadChaseProofOperation.swift; sourceTree = "<group>"; };
+		C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadChaseEstimateOperation.swift; sourceTree = "<group>"; };
+		C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadChaseProofEstimateOperation.swift; sourceTree = "<group>"; };
+		C526E149220886BE0009357B /* ChaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseAnnotation.swift; sourceTree = "<group>"; };
+		C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMonsterButton.swift; sourceTree = "<group>"; };
+		C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultMonsterButton.xib; sourceTree = "<group>"; };
+		C53F21FE21FA40BD003457F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		C53F220021FB3EBE003457F3 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		C53F220221FB8076003457F3 /* UIViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
+		C53F220421FB814A003457F3 /* UIApplication+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+extension.swift"; sourceTree = "<group>"; };
+		C53F220621FB87CC003457F3 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C53F220721FB87CC003457F3 /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C53F220821FB87CC003457F3 /* Chase+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C53F220921FB87CC003457F3 /* Chase+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Chase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C53F220A21FB87CD003457F3 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C53F220B21FB87CD003457F3 /* Monster+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Monster+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C53F220C21FB87CD003457F3 /* Monster+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Monster+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C53F220D21FB87CD003457F3 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C53F221621FB8A88003457F3 /* CGFloat+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+extension.swift"; sourceTree = "<group>"; };
+		C53F221821FB8A9B003457F3 /* UIColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+extension.swift"; sourceTree = "<group>"; };
+		C53F221A21FB8AC9003457F3 /* UIDevice+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+extension.swift"; sourceTree = "<group>"; };
+		C53F221C21FB9001003457F3 /* ChaseMerkleTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseMerkleTree.swift; sourceTree = "<group>"; };
+		C53F221E21FB9290003457F3 /* MerkleTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerkleTree.swift; sourceTree = "<group>"; };
+		C53F222021FB9360003457F3 /* LocationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
+		C58A0F532204BF9500643BC7 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		C58A0F55220527C300643BC7 /* AddBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBalanceViewController.swift; sourceTree = "<group>"; };
+		C58A0F572205297100643BC7 /* MonsterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterCollectionViewCell.swift; sourceTree = "<group>"; };
+		C593D34F2201F4A8006AD84C /* ChaseCreationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseCreationTimer.swift; sourceTree = "<group>"; };
+		C593D3512201F4D3006AD84C /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
+		C593D3532201F65F006AD84C /* DownloadTransactionReceiptOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTransactionReceiptOperation.swift; sourceTree = "<group>"; };
+		C593D3552201F98A006AD84C /* TransactionReceipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionReceipt.swift; sourceTree = "<group>"; };
+		C593D35722020225006AD84C /* CreateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAccount.storyboard; sourceTree = "<group>"; };
+		C59BBFC521FBAFF000CD684C /* CoreDataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUtils.swift; sourceTree = "<group>"; };
+		C59BBFC721FBB1A700CD684C /* BiometricsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsUtils.swift; sourceTree = "<group>"; };
+		C59BBFC921FBB20400CD684C /* PushNotificationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationUtils.swift; sourceTree = "<group>"; };
+		C59BBFCB21FF429B00CD684C /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		C59BBFCD21FF4B8300CD684C /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		C59BBFD021FF4BE400CD684C /* Chasing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chasing.storyboard; sourceTree = "<group>"; };
+		C59BBFD321FF4D5B00CD684C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		C59BBFD621FF56ED00CD684C /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
+		C59BBFD821FF58D800CD684C /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
+		C59BBFDA21FF590200CD684C /* ChasingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChasingViewController.swift; sourceTree = "<group>"; };
+		C59BBFDE21FF594500CD684C /* CreateChaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChaseViewController.swift; sourceTree = "<group>"; };
+		C59BBFE121FF596A00CD684C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C59BBFE421FF59A100CD684C /* NewWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWalletViewController.swift; sourceTree = "<group>"; };
+		C59BBFE721FF59CA00CD684C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C59BBFEA21FF917500CD684C /* AppInitQueueDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInitQueueDispatcher.swift; sourceTree = "<group>"; };
+		C59BBFEC21FF91C100CD684C /* QueueDispatcherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueDispatcherProtocol.swift; sourceTree = "<group>"; };
+		C59BBFF121FF930800CD684C /* DownloadBalanceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadBalanceOperation.swift; sourceTree = "<group>"; };
+		C59BBFF321FF939600CD684C /* AsynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
+		C59BBFF521FF98E100CD684C /* DownloadTransactionCountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTransactionCountOperation.swift; sourceTree = "<group>"; };
+		C59BBFF721FF994000CD684C /* DownloadChaseAmountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadChaseAmountOperation.swift; sourceTree = "<group>"; };
+		C59BBFF921FFC21A00CD684C /* DownloadAionUsdPriceOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAionUsdPriceOperation.swift; sourceTree = "<group>"; };
+		C59BBFFC21FFCA5400CD684C /* UpdatePlayerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePlayerOperation.swift; sourceTree = "<group>"; };
+		C59BBFFE21FFCC5E00CD684C /* SynchronousOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronousOperation.swift; sourceTree = "<group>"; };
+		C59BC00021FFD17800CD684C /* AllChasesQueueDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChasesQueueDispatcher.swift; sourceTree = "<group>"; };
+		C59BC00221FFD20800CD684C /* DownloadAndUpdateChaseIsWinnerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadAndUpdateChaseIsWinnerOperation.swift; sourceTree = "<group>"; };
+		C59BC00421FFDB1700CD684C /* DownloadChaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadChaseOperation.swift; sourceTree = "<group>"; };
+		C59BC00621FFE9E100CD684C /* UpdateChaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChaseOperation.swift; sourceTree = "<group>"; };
+		C59BC0092200808300CD684C /* ChaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		C59BC00B220085FE00CD684C /* AionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AionUtils.swift; sourceTree = "<group>"; };
+		C59BC00D2200A35100CD684C /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		C5E6565B21F8AB94009C1651 /* monster-chase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "monster-chase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E6565E21F8AB94009C1651 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C5E6566021F8AB94009C1651 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		C5E6566321F8AB94009C1651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C5E6566621F8AB94009C1651 /* monster_chase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = monster_chase.xcdatamodel; sourceTree = "<group>"; };
+		C5E6566821F8AB94009C1651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C5E6566B21F8AB94009C1651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C5E6566D21F8AB94009C1651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5E6567221F8AB94009C1651 /* monster-chaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "monster-chaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5E6567621F8AB94009C1651 /* monster_chaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = monster_chaseTests.swift; sourceTree = "<group>"; };
+		C5E6567821F8AB94009C1651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E99866B5034742CC985B7EC2 /* Pods-monster-chaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chaseTests/Pods-monster-chaseTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C5E6565821F8AB94009C1651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5E6566F21F8AB94009C1651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1560B023C2A29BBC88266759 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B090CA75033BFDCB7FE9831 /* Pods-monster-chase.debug.xcconfig */,
+				7E29B42157888FECFEAB3B58 /* Pods-monster-chase.release.xcconfig */,
+				E99866B5034742CC985B7EC2 /* Pods-monster-chaseTests.debug.xcconfig */,
+				27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B073939CEB28426886D052AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */,
+				42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C51461C121F9025E00E3B77E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFE621FF59BD00CD684C /* Onboarding */,
+				C59BBFE321FF598B00CD684C /* Create Account */,
+				C59BBFE021FF595D00CD684C /* Profile */,
+				C59BBFDD21FF593500CD684C /* Create Chase */,
+				C59BBFDC21FF592900CD684C /* Help */,
+				C59BBFD521FF56DF00CD684C /* Leaderboard */,
+				C59BBFD221FF4D4000CD684C /* Chasing */,
+				C53F21F421F9FBB3003457F3 /* Main */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C51461C221F9026600E3B77E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C5E6566221F8AB94009C1651 /* Main.storyboard */,
+				C5E6566A21F8AB94009C1651 /* LaunchScreen.storyboard */,
+				C59BBFD021FF4BE400CD684C /* Chasing.storyboard */,
+				C59BC00D2200A35100CD684C /* Onboarding.storyboard */,
+				C593D35722020225006AD84C /* CreateAccount.storyboard */,
+				C58A0F532204BF9500643BC7 /* Profile.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C51461C321F9028300E3B77E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C5E6566821F8AB94009C1651 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C51461C421F9029300E3B77E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C53F220921FB87CC003457F3 /* Chase+CoreDataClass.swift */,
+				C53F220821FB87CC003457F3 /* Chase+CoreDataProperties.swift */,
+				C53F220B21FB87CD003457F3 /* Monster+CoreDataClass.swift */,
+				C53F220C21FB87CD003457F3 /* Monster+CoreDataProperties.swift */,
+				C53F220621FB87CC003457F3 /* Player+CoreDataClass.swift */,
+				C53F220D21FB87CD003457F3 /* Player+CoreDataProperties.swift */,
+				C53F220721FB87CC003457F3 /* Transaction+CoreDataClass.swift */,
+				C53F220A21FB87CD003457F3 /* Transaction+CoreDataProperties.swift */,
+				C593D3552201F98A006AD84C /* TransactionReceipt.swift */,
+				C526E13E220864EB0009357B /* LeaderboardRecord.swift */,
+				C526E149220886BE0009357B /* ChaseAnnotation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C51461C521F9029F00E3B77E /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				C5E6566521F8AB94009C1651 /* monster_chase.xcdatamodeld */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		C51461C621F902A900E3B77E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C53F220221FB8076003457F3 /* UIViewController+extension.swift */,
+				C53F220421FB814A003457F3 /* UIApplication+extension.swift */,
+				C53F221621FB8A88003457F3 /* CGFloat+extension.swift */,
+				C53F221821FB8A9B003457F3 /* UIColor+extension.swift */,
+				C53F221A21FB8AC9003457F3 /* UIDevice+extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C51461C721F902B300E3B77E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C59BC0082200806600CD684C /* CollectionViewCells */,
+				C53F21F521FA0F37003457F3 /* Buttons */,
+				C53F220021FB3EBE003457F3 /* BackgroundView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C526E14022086B130009357B /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				C526E14122086BA50009357B /* UploadChaseOperation.swift */,
+				C526E14322087E130009357B /* UploadChaseProofOperation.swift */,
+				C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */,
+				C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */,
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		C53F21F421F9FBB3003457F3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C5E6566021F8AB94009C1651 /* LandingViewController.swift */,
+				C59BBFCD21FF4B8300CD684C /* ContainerViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C53F21F521FA0F37003457F3 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */,
+				C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		C53F21FD21FA40AB003457F3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C53F21FE21FA40BD003457F3 /* Theme.swift */,
+				C53F221C21FB9001003457F3 /* ChaseMerkleTree.swift */,
+				C53F221E21FB9290003457F3 /* MerkleTree.swift */,
+				C53F222021FB9360003457F3 /* LocationUtils.swift */,
+				C59BBFC521FBAFF000CD684C /* CoreDataUtils.swift */,
+				C59BBFC721FBB1A700CD684C /* BiometricsUtils.swift */,
+				C59BBFC921FBB20400CD684C /* PushNotificationUtils.swift */,
+				C59BBFCB21FF429B00CD684C /* AppConfiguration.swift */,
+				C59BC00B220085FE00CD684C /* AionUtils.swift */,
+				C593D3512201F4D3006AD84C /* RepeatingTimer.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C593D34E2201F48B006AD84C /* Repeating Background Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				C593D34F2201F4A8006AD84C /* ChaseCreationTimer.swift */,
+			);
+			path = "Repeating Background Tasks";
+			sourceTree = "<group>";
+		};
+		C59BBFD221FF4D4000CD684C /* Chasing */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFD321FF4D5B00CD684C /* MenuViewController.swift */,
+				C59BBFDA21FF590200CD684C /* ChasingViewController.swift */,
+			);
+			path = Chasing;
+			sourceTree = "<group>";
+		};
+		C59BBFD521FF56DF00CD684C /* Leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFD621FF56ED00CD684C /* LeaderboardViewController.swift */,
+			);
+			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		C59BBFDC21FF592900CD684C /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFD821FF58D800CD684C /* HowToPlayViewController.swift */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
+		C59BBFDD21FF593500CD684C /* Create Chase */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFDE21FF594500CD684C /* CreateChaseViewController.swift */,
+			);
+			path = "Create Chase";
+			sourceTree = "<group>";
+		};
+		C59BBFE021FF595D00CD684C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFE121FF596A00CD684C /* ProfileViewController.swift */,
+				C58A0F55220527C300643BC7 /* AddBalanceViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C59BBFE321FF598B00CD684C /* Create Account */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFE421FF59A100CD684C /* NewWalletViewController.swift */,
+			);
+			path = "Create Account";
+			sourceTree = "<group>";
+		};
+		C59BBFE621FF59BD00CD684C /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFE721FF59CA00CD684C /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C59BBFE921FF914D00CD684C /* Queue Dispatchers */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFEA21FF917500CD684C /* AppInitQueueDispatcher.swift */,
+				C59BBFEC21FF91C100CD684C /* QueueDispatcherProtocol.swift */,
+				C59BC00021FFD17800CD684C /* AllChasesQueueDispatcher.swift */,
+			);
+			path = "Queue Dispatchers";
+			sourceTree = "<group>";
+		};
+		C59BBFEE21FF92D100CD684C /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFFB21FFCA4600CD684C /* Synchronous */,
+				C59BBFEF21FF92E000CD684C /* Asynchronous */,
+				C59BBFF321FF939600CD684C /* AsynchronousOperation.swift */,
+				C59BBFFE21FFCC5E00CD684C /* SynchronousOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		C59BBFEF21FF92E000CD684C /* Asynchronous */ = {
+			isa = PBXGroup;
+			children = (
+				C526E14022086B130009357B /* Upload */,
+				C59BBFF021FF92ED00CD684C /* Download */,
+			);
+			path = Asynchronous;
+			sourceTree = "<group>";
+		};
+		C59BBFF021FF92ED00CD684C /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFF121FF930800CD684C /* DownloadBalanceOperation.swift */,
+				C59BBFF521FF98E100CD684C /* DownloadTransactionCountOperation.swift */,
+				C59BBFF721FF994000CD684C /* DownloadChaseAmountOperation.swift */,
+				C59BBFF921FFC21A00CD684C /* DownloadAionUsdPriceOperation.swift */,
+				C59BC00221FFD20800CD684C /* DownloadAndUpdateChaseIsWinnerOperation.swift */,
+				C59BC00421FFDB1700CD684C /* DownloadChaseOperation.swift */,
+				C593D3532201F65F006AD84C /* DownloadTransactionReceiptOperation.swift */,
+				C526E13822068DE70009357B /* DownloadChaseIsClaimerOperation.swift */,
+				C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */,
+				C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		C59BBFFB21FFCA4600CD684C /* Synchronous */ = {
+			isa = PBXGroup;
+			children = (
+				C59BBFFC21FFCA5400CD684C /* UpdatePlayerOperation.swift */,
+				C59BC00621FFE9E100CD684C /* UpdateChaseOperation.swift */,
+			);
+			path = Synchronous;
+			sourceTree = "<group>";
+		};
+		C59BC0082200806600CD684C /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				C59BC0092200808300CD684C /* ChaseCollectionViewCell.swift */,
+				C58A0F572205297100643BC7 /* MonsterCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		C5E6565221F8AB94009C1651 = {
+			isa = PBXGroup;
+			children = (
+				C5E6565D21F8AB94009C1651 /* monster-chase */,
+				C5E6567521F8AB94009C1651 /* monster-chaseTests */,
+				C5E6565C21F8AB94009C1651 /* Products */,
+				1560B023C2A29BBC88266759 /* Pods */,
+				B073939CEB28426886D052AA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C5E6565C21F8AB94009C1651 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C5E6565B21F8AB94009C1651 /* monster-chase.app */,
+				C5E6567221F8AB94009C1651 /* monster-chaseTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C5E6565D21F8AB94009C1651 /* monster-chase */ = {
+			isa = PBXGroup;
+			children = (
+				C593D34E2201F48B006AD84C /* Repeating Background Tasks */,
+				C59BBFEE21FF92D100CD684C /* Operations */,
+				C59BBFE921FF914D00CD684C /* Queue Dispatchers */,
+				C53F21FD21FA40AB003457F3 /* Utils */,
+				C51461C621F902A900E3B77E /* Extensions */,
+				C51461C521F9029F00E3B77E /* DataModels */,
+				C51461C421F9029300E3B77E /* Models */,
+				C51461C321F9028300E3B77E /* Resources */,
+				C51461C221F9026600E3B77E /* Storyboards */,
+				C51461C721F902B300E3B77E /* Views */,
+				C51461C121F9025E00E3B77E /* ViewControllers */,
+				C5E6565E21F8AB94009C1651 /* AppDelegate.swift */,
+				C5E6566D21F8AB94009C1651 /* Info.plist */,
+			);
+			path = "monster-chase";
+			sourceTree = "<group>";
+		};
+		C5E6567521F8AB94009C1651 /* monster-chaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				C5E6567621F8AB94009C1651 /* monster_chaseTests.swift */,
+				C5E6567821F8AB94009C1651 /* Info.plist */,
+			);
+			path = "monster-chaseTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C5E6565A21F8AB94009C1651 /* monster-chase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5E6567B21F8AB94009C1651 /* Build configuration list for PBXNativeTarget "monster-chase" */;
+			buildPhases = (
+				50299496BEECAAA1760996AD /* [CP] Check Pods Manifest.lock */,
+				C5E6565721F8AB94009C1651 /* Sources */,
+				C5E6565821F8AB94009C1651 /* Frameworks */,
+				C5E6565921F8AB94009C1651 /* Resources */,
+				0A9BE24581F3344E9B42238E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "monster-chase";
+			productName = "monster-chase";
+			productReference = C5E6565B21F8AB94009C1651 /* monster-chase.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C5E6567121F8AB94009C1651 /* monster-chaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C5E6567E21F8AB94009C1651 /* Build configuration list for PBXNativeTarget "monster-chaseTests" */;
+			buildPhases = (
+				1EAFF4491DDD0A7A71A97B08 /* [CP] Check Pods Manifest.lock */,
+				C5E6566E21F8AB94009C1651 /* Sources */,
+				C5E6566F21F8AB94009C1651 /* Frameworks */,
+				C5E6567021F8AB94009C1651 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C5E6567421F8AB94009C1651 /* PBXTargetDependency */,
+			);
+			name = "monster-chaseTests";
+			productName = "monster-chaseTests";
+			productReference = C5E6567221F8AB94009C1651 /* monster-chaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C5E6565321F8AB94009C1651 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Pocket Network";
+				TargetAttributes = {
+					C5E6565A21F8AB94009C1651 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					C5E6567121F8AB94009C1651 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = C5E6565A21F8AB94009C1651;
+					};
+				};
+			};
+			buildConfigurationList = C5E6565621F8AB94009C1651 /* Build configuration list for PBXProject "monster-chase" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C5E6565221F8AB94009C1651;
+			productRefGroup = C5E6565C21F8AB94009C1651 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C5E6565A21F8AB94009C1651 /* monster-chase */,
+				C5E6567121F8AB94009C1651 /* monster-chaseTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C5E6565921F8AB94009C1651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5E6566C21F8AB94009C1651 /* LaunchScreen.storyboard in Resources */,
+				C5E6566921F8AB94009C1651 /* Assets.xcassets in Resources */,
+				C58A0F542204BF9500643BC7 /* Profile.storyboard in Resources */,
+				C59BBFD121FF4BE400CD684C /* Chasing.storyboard in Resources */,
+				C59BC00E2200A35100CD684C /* Onboarding.storyboard in Resources */,
+				C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */,
+				C593D35822020225006AD84C /* CreateAccount.storyboard in Resources */,
+				C5E6566421F8AB94009C1651 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5E6567021F8AB94009C1651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A9BE24581F3344E9B42238E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/BiometricAuthentication/BiometricAuthentication.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/HDAugmentedReality/HDAugmentedReality.framework",
+				"${BUILT_PRODUCTS_DIR}/Pocket/Pocket.framework",
+				"${BUILT_PRODUCTS_DIR}/PocketAion/PocketAion.framework",
+				"${BUILT_PRODUCTS_DIR}/PocketSwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
+				"${BUILT_PRODUCTS_DIR}/SidebarOverlay/SidebarOverlay.framework",
+				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BiometricAuthentication.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDAugmentedReality.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketAion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SidebarOverlay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1EAFF4491DDD0A7A71A97B08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-monster-chaseTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50299496BEECAAA1760996AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-monster-chase-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C5E6565721F8AB94009C1651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C59BBFEB21FF917500CD684C /* AppInitQueueDispatcher.swift in Sources */,
+				C59BBFFA21FFC21A00CD684C /* DownloadAionUsdPriceOperation.swift in Sources */,
+				C526E13F220864EB0009357B /* LeaderboardRecord.swift in Sources */,
+				C53F221121FB87CD003457F3 /* Chase+CoreDataClass.swift in Sources */,
+				C53F220121FB3EBE003457F3 /* BackgroundView.swift in Sources */,
+				C59BBFED21FF91C100CD684C /* QueueDispatcherProtocol.swift in Sources */,
+				C526E14A220886BE0009357B /* ChaseAnnotation.swift in Sources */,
+				C53F221521FB87CD003457F3 /* Player+CoreDataProperties.swift in Sources */,
+				C59BBFD421FF4D5B00CD684C /* MenuViewController.swift in Sources */,
+				C53F221921FB8A9B003457F3 /* UIColor+extension.swift in Sources */,
+				C53F221F21FB9290003457F3 /* MerkleTree.swift in Sources */,
+				C59BBFFF21FFCC5E00CD684C /* SynchronousOperation.swift in Sources */,
+				C59BBFF221FF930800CD684C /* DownloadBalanceOperation.swift in Sources */,
+				C59BBFE521FF59A100CD684C /* NewWalletViewController.swift in Sources */,
+				C59BBFF621FF98E100CD684C /* DownloadTransactionCountOperation.swift in Sources */,
+				C59BBFE221FF596A00CD684C /* ProfileViewController.swift in Sources */,
+				C53F221321FB87CD003457F3 /* Monster+CoreDataClass.swift in Sources */,
+				C593D3542201F65F006AD84C /* DownloadTransactionReceiptOperation.swift in Sources */,
+				C593D3522201F4D3006AD84C /* RepeatingTimer.swift in Sources */,
+				C59BC00A2200808300CD684C /* ChaseCollectionViewCell.swift in Sources */,
+				C59BBFFD21FFCA5400CD684C /* UpdatePlayerOperation.swift in Sources */,
+				C5E6566121F8AB94009C1651 /* LandingViewController.swift in Sources */,
+				C59BBFF821FF994000CD684C /* DownloadChaseAmountOperation.swift in Sources */,
+				C59BC00321FFD20800CD684C /* DownloadAndUpdateChaseIsWinnerOperation.swift in Sources */,
+				C526E14222086BA50009357B /* UploadChaseOperation.swift in Sources */,
+				C59BBFCE21FF4B8300CD684C /* ContainerViewController.swift in Sources */,
+				C53F220521FB814A003457F3 /* UIApplication+extension.swift in Sources */,
+				C526E146220881C90009357B /* UploadChaseEstimateOperation.swift in Sources */,
+				C53F222121FB9360003457F3 /* LocationUtils.swift in Sources */,
+				C59BBFDB21FF590200CD684C /* ChasingViewController.swift in Sources */,
+				C53F220321FB8076003457F3 /* UIViewController+extension.swift in Sources */,
+				C59BBFC821FBB1A700CD684C /* BiometricsUtils.swift in Sources */,
+				C53F221D21FB9001003457F3 /* ChaseMerkleTree.swift in Sources */,
+				C59BBFD921FF58D800CD684C /* HowToPlayViewController.swift in Sources */,
+				C58A0F56220527C300643BC7 /* AddBalanceViewController.swift in Sources */,
+				C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */,
+				C53F221B21FB8AC9003457F3 /* UIDevice+extension.swift in Sources */,
+				C593D3562201F98A006AD84C /* TransactionReceipt.swift in Sources */,
+				C58A0F582205297100643BC7 /* MonsterCollectionViewCell.swift in Sources */,
+				C59BBFDF21FF594500CD684C /* CreateChaseViewController.swift in Sources */,
+				C53F221221FB87CD003457F3 /* Transaction+CoreDataProperties.swift in Sources */,
+				C526E13922068DE70009357B /* DownloadChaseIsClaimerOperation.swift in Sources */,
+				C526E14422087E130009357B /* UploadChaseProofOperation.swift in Sources */,
+				C5E6566721F8AB94009C1651 /* monster_chase.xcdatamodeld in Sources */,
+				C59BC00121FFD17800CD684C /* AllChasesQueueDispatcher.swift in Sources */,
+				C53F221721FB8A88003457F3 /* CGFloat+extension.swift in Sources */,
+				C59BBFF421FF939600CD684C /* AsynchronousOperation.swift in Sources */,
+				C59BBFCC21FF429B00CD684C /* AppConfiguration.swift in Sources */,
+				C53F221021FB87CD003457F3 /* Chase+CoreDataProperties.swift in Sources */,
+				C53F21FF21FA40BD003457F3 /* Theme.swift in Sources */,
+				C53F220F21FB87CD003457F3 /* Transaction+CoreDataClass.swift in Sources */,
+				C59BBFCA21FBB20400CD684C /* PushNotificationUtils.swift in Sources */,
+				C53F21F821FA1C50003457F3 /* DefaultMonsterButton.swift in Sources */,
+				C59BC00521FFDB1800CD684C /* DownloadChaseOperation.swift in Sources */,
+				C59BBFD721FF56ED00CD684C /* LeaderboardViewController.swift in Sources */,
+				C59BBFC621FBAFF000CD684C /* CoreDataUtils.swift in Sources */,
+				C53F220E21FB87CD003457F3 /* Player+CoreDataClass.swift in Sources */,
+				C59BBFE821FF59CA00CD684C /* OnboardingViewController.swift in Sources */,
+				C593D3502201F4A8006AD84C /* ChaseCreationTimer.swift in Sources */,
+				C59BC00C220085FE00CD684C /* AionUtils.swift in Sources */,
+				C59BC00721FFE9E100CD684C /* UpdateChaseOperation.swift in Sources */,
+				C53F221421FB87CD003457F3 /* Monster+CoreDataProperties.swift in Sources */,
+				C526E13D220862960009357B /* DownloadOwnersTokenCountOperation.swift in Sources */,
+				C526E148220885E60009357B /* UploadChaseProofEstimateOperation.swift in Sources */,
+				C5E6565F21F8AB94009C1651 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C5E6566E21F8AB94009C1651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5E6567721F8AB94009C1651 /* monster_chaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C5E6567421F8AB94009C1651 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C5E6565A21F8AB94009C1651 /* monster-chase */;
+			targetProxy = C5E6567321F8AB94009C1651 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C5E6566221F8AB94009C1651 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5E6566321F8AB94009C1651 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C5E6566A21F8AB94009C1651 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5E6566B21F8AB94009C1651 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C5E6567921F8AB94009C1651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C5E6567A21F8AB94009C1651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C5E6567C21F8AB94009C1651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B090CA75033BFDCB7FE9831 /* Pods-monster-chase.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89229Z2MHH;
+				INFOPLIST_FILE = "monster-chase/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chase";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C5E6567D21F8AB94009C1651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E29B42157888FECFEAB3B58 /* Pods-monster-chase.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89229Z2MHH;
+				INFOPLIST_FILE = "monster-chase/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chase";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C5E6567F21F8AB94009C1651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E99866B5034742CC985B7EC2 /* Pods-monster-chaseTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89229Z2MHH;
+				INFOPLIST_FILE = "monster-chaseTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chaseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/monster-chase.app/monster-chase";
+			};
+			name = Debug;
+		};
+		C5E6568021F8AB94009C1651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 89229Z2MHH;
+				INFOPLIST_FILE = "monster-chaseTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chaseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/monster-chase.app/monster-chase";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C5E6565621F8AB94009C1651 /* Build configuration list for PBXProject "monster-chase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E6567921F8AB94009C1651 /* Debug */,
+				C5E6567A21F8AB94009C1651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5E6567B21F8AB94009C1651 /* Build configuration list for PBXNativeTarget "monster-chase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E6567C21F8AB94009C1651 /* Debug */,
+				C5E6567D21F8AB94009C1651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5E6567E21F8AB94009C1651 /* Build configuration list for PBXNativeTarget "monster-chaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C5E6567F21F8AB94009C1651 /* Debug */,
+				C5E6568021F8AB94009C1651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C5E6566521F8AB94009C1651 /* monster_chase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C5E6566621F8AB94009C1651 /* monster_chase.xcdatamodel */,
+			);
+			currentVersion = C5E6566621F8AB94009C1651 /* monster_chase.xcdatamodel */;
+			path = monster_chase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C5E6565321F8AB94009C1651 /* Project object */;
+}
