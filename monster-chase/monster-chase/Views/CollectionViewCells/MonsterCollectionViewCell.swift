@@ -20,7 +20,6 @@ class MonsterCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var chaseBackgroundView: UIImageView?
     @IBOutlet weak var chaseStampImage: UIImageView?
     
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -37,31 +36,31 @@ class MonsterCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        if let questNameLabel = self.chaseNameLabel {
-            questNameLabel.text = monster.name.uppercased()
+        if let chaseNameLabel = self.chaseNameLabel {
+            chaseNameLabel.text = monster.name.uppercased()
         }
         
         if let bananoBackgroundView = self.chaseBackgroundView {
-            let bananoColor = UIColor(hexString: monster.hexColor )
-            bananoBackgroundView.backgroundColor = bananoColor
+            let monsterColor = UIColor(hexString: monster.hexColor )
+            bananoBackgroundView.backgroundColor = monsterColor
         }
     }
     
     func configureEmptyCellFor(index: Int) {
-        if let bananoQuestImage = self.chaseStampImage {
-            bananoQuestImage.image = #imageLiteral(resourceName: "NO-BANANO")
-        }
+//        if let monsterChaseImage = self.chaseStampImage {
+//            monsterChaseImage.image =
+//        }
         
         if index > 0 {
-            if let questNameLabel = self.chaseNameLabel {
-                questNameLabel.text = ""
+            if let chaseNameLabel = self.chaseNameLabel {
+                chaseNameLabel.text = ""
             }
             
             return
         }
         
-        if let questNameLabel = self.chaseNameLabel {
-            questNameLabel.text = "NO BANANOS YET"
+        if let chaseNameLabel = self.chaseNameLabel {
+            chaseNameLabel.text = "NO MONSTERS YET"
         }
         
     }

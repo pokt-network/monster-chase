@@ -14,6 +14,7 @@ class DefaultMonsterButton: UIButton {
     private let DEFAULT_BORDER_WIDTH = CGFloat.init(4)
     private let DEFAULT_CORNER_RADIUS = CGFloat.init(20)
     private let DEFAULT_BUTTON_HEIGHT: CGFloat = 50
+    private let DEFAULT_BUTTON_WIDTH: CGFloat = 180
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,7 +51,7 @@ class DefaultMonsterButton: UIButton {
         
         // Button Style
         self.setTitleColor(AppColors.base.uiColor(), for: .normal)
-        self.titleLabel?.font = UIFont(name: "Verdana", size: 12)
+        self.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 12)
         self.titleEdgeInsets = UIEdgeInsets.init(top: (DEFAULT_BUTTON_HEIGHT / 2) - 30, left: 0, bottom: 0, right: 0)
         
         // Remove user interaction from added views

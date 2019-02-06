@@ -43,7 +43,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
         
         // Setup repeating tasks
         self.setupRepeatingTasks()
-        
+
+        // Test data
+        do {
+            let chaseCount = try Chase.getLocalChaseCount(context: CoreDataUtils.mainPersistentContext)
+            
+            if chaseCount == 0 {
+                let chase1 = try Chase.init(obj: [AnyHashable : Any](), context: CoreDataUtils.mainPersistentContext)
+                chase1.index = "1"
+                chase1.creator = "0x000000000000000000000"
+                chase1.name = "Tu Cuquito"
+                chase1.maxWinners = String.init(BigInt.init("10"))
+                chase1.hint = "The monster is somewhere"
+                chase1.merkleBody = "80ee139f275e9293e53fe583070aaa2400abaf706abd4cf059525542a652d294,5662a6b8fdd3d39bf9bcb33dc4f0b3708e4a1cff976ffdee37f6a28a8dc773b9-1949d17173bf812d88b610c5d9ad80aceec8094c34b82b92e97f806c62c2c7e2,0465c94440a1f9029a049f9b04ff951587badc8c3342c552be4c39faa73177fc,19b47e7d2ff53e6f8f6cd87be19dcf7882996f7a9670ac7ad938801fa5bf8a4b,14c12491d98676499de078d5bd2c4a2c9711bdd6b1118c78d003a15b78408120-9ddded6330d850645f33e2cdbf476fe87188ffca1324072b8357f0d2a0ff9369,30bdf536cce4ff6bf3f3d2c8a8c22ed979c7541f95021a520929cf0ec4977e90,203fd956f245fb5cdab4898404ca7f38c515496b071053763cfb85606e8c287a,37248ad3b756fe68aa1cc8bc5ea1f901c52f3429d1d840ccb40b72024a808b65,ca60fa22b233f4b73398706d36aa493090986d684f18448a26553c317f039f34,70d4058ce8d828f12023501799fccb439be316c496252ba4a5196a51a11ab070,7881d2d7f1aa034e52dfb6c8816af792d402fe9f9b61c3885753f7bac20178f9,1db1446de87f0066c0cf4030cf94a21b0b3231e8abb07594305f9654baca4903"
+                chase1.merkleRoot = "0xb0a9f0bc95874c04384544c951e780bcb755f22f29a92efe1be8b3cc8c2b60e9"
+                chase1.hexColor = "FF0016"
+                chase1.lat1 = 18.47435601
+                chase1.lon1 = -69.97488952
+                chase1.lat2 = 18.47435601
+                chase1.lon2 = -69.97129224
+                chase1.lat3 = 18.47795329
+                chase1.lon3 = -69.97488952
+                chase1.lat3 = 18.47795329
+                chase1.lon4 = -69.97129224
+                
+                try chase1.save()
+                
+                ///
+                let chase2 = try Chase.init(obj: [AnyHashable : Any](), context: CoreDataUtils.mainPersistentContext)
+                chase2.index = "2"
+                chase2.creator = "0x000000000000000000000"
+                chase2.name = "Tu Cuquito #2"
+                chase2.maxWinners = String.init(BigInt.init("10"))
+                chase2.hint = "The monster is somewhere 2"
+                chase2.merkleBody = "80ee139f275e9293e53fe583070aaa2400abaf706abd4cf059525542a652d294,5662a6b8fdd3d39bf9bcb33dc4f0b3708e4a1cff976ffdee37f6a28a8dc773b9-1949d17173bf812d88b610c5d9ad80aceec8094c34b82b92e97f806c62c2c7e2,0465c94440a1f9029a049f9b04ff951587badc8c3342c552be4c39faa73177fc,19b47e7d2ff53e6f8f6cd87be19dcf7882996f7a9670ac7ad938801fa5bf8a4b,14c12491d98676499de078d5bd2c4a2c9711bdd6b1118c78d003a15b78408120-9ddded6330d850645f33e2cdbf476fe87188ffca1324072b8357f0d2a0ff9369,30bdf536cce4ff6bf3f3d2c8a8c22ed979c7541f95021a520929cf0ec4977e90,203fd956f245fb5cdab4898404ca7f38c515496b071053763cfb85606e8c287a,37248ad3b756fe68aa1cc8bc5ea1f901c52f3429d1d840ccb40b72024a808b65,ca60fa22b233f4b73398706d36aa493090986d684f18448a26553c317f039f34,70d4058ce8d828f12023501799fccb439be316c496252ba4a5196a51a11ab070,7881d2d7f1aa034e52dfb6c8816af792d402fe9f9b61c3885753f7bac20178f9,1db1446de87f0066c0cf4030cf94a21b0b3231e8abb07594305f9654baca4903"
+                chase2.merkleRoot = "0xb0a9f0bc95874c04384544c951e780bcb755f22f29a92efe1be8b3cc8c2b60e9"
+                chase2.hexColor = "FF0016"
+                chase2.lat1 = 18.47435601
+                chase2.lon1 = -69.97488952
+                chase2.lat2 = 18.47435601
+                chase2.lon2 = -69.97129224
+                chase2.lat3 = 18.47795329
+                chase2.lon3 = -69.97488952
+                chase2.lat3 = 18.47795329
+                chase2.lon4 = -69.97129224
+                
+                try chase2.save()
+            }
+        } catch  {
+            print(error)
+        }
         
         return true
     }

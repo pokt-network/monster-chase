@@ -18,6 +18,11 @@
 		C526E146220881C90009357B /* UploadChaseEstimateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */; };
 		C526E148220885E60009357B /* UploadChaseProofEstimateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */; };
 		C526E14A220886BE0009357B /* ChaseAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E149220886BE0009357B /* ChaseAnnotation.swift */; };
+		C526E14D22089D170009357B /* MonsterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E14C22089D170009357B /* MonsterTextField.swift */; };
+		C526E14F2208E6E10009357B /* CreateChase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C526E14E2208E6E10009357B /* CreateChase.storyboard */; };
+		C526E1512209D4150009357B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E1502209D4150009357B /* ColorPickerViewController.swift */; };
+		C5345B07220B25460058A979 /* CreateChaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B06220B25460058A979 /* CreateChaseMapViewController.swift */; };
+		C5345B0A220B26840058A979 /* MapSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B09220B26840058A979 /* MapSearchTableViewCell.swift */; };
 		C53F21F821FA1C50003457F3 /* DefaultMonsterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */; };
 		C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */; };
 		C53F21FF21FA40BD003457F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21FE21FA40BD003457F3 /* Theme.swift */; };
@@ -110,6 +115,11 @@
 		C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadChaseEstimateOperation.swift; sourceTree = "<group>"; };
 		C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadChaseProofEstimateOperation.swift; sourceTree = "<group>"; };
 		C526E149220886BE0009357B /* ChaseAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseAnnotation.swift; sourceTree = "<group>"; };
+		C526E14C22089D170009357B /* MonsterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterTextField.swift; sourceTree = "<group>"; };
+		C526E14E2208E6E10009357B /* CreateChase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChase.storyboard; sourceTree = "<group>"; };
+		C526E1502209D4150009357B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		C5345B06220B25460058A979 /* CreateChaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChaseMapViewController.swift; sourceTree = "<group>"; };
+		C5345B09220B26840058A979 /* MapSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchTableViewCell.swift; sourceTree = "<group>"; };
 		C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMonsterButton.swift; sourceTree = "<group>"; };
 		C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultMonsterButton.xib; sourceTree = "<group>"; };
 		C53F21FE21FA40BD003457F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -246,6 +256,7 @@
 				C59BC00D2200A35100CD684C /* Onboarding.storyboard */,
 				C593D35722020225006AD84C /* CreateAccount.storyboard */,
 				C58A0F532204BF9500643BC7 /* Profile.storyboard */,
+				C526E14E2208E6E10009357B /* CreateChase.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -299,6 +310,8 @@
 		C51461C721F902B300E3B77E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C5345B08220B26730058A979 /* TableViewCells */,
+				C526E14B22089C8B0009357B /* TextFields */,
 				C59BC0082200806600CD684C /* CollectionViewCells */,
 				C53F21F521FA0F37003457F3 /* Buttons */,
 				C53F220021FB3EBE003457F3 /* BackgroundView.swift */,
@@ -315,6 +328,22 @@
 				C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */,
 			);
 			path = Upload;
+			sourceTree = "<group>";
+		};
+		C526E14B22089C8B0009357B /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				C526E14C22089D170009357B /* MonsterTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		C5345B08220B26730058A979 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				C5345B09220B26840058A979 /* MapSearchTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		C53F21F421F9FBB3003457F3 /* Main */ = {
@@ -389,6 +418,8 @@
 			isa = PBXGroup;
 			children = (
 				C59BBFDE21FF594500CD684C /* CreateChaseViewController.swift */,
+				C526E1502209D4150009357B /* ColorPickerViewController.swift */,
+				C5345B06220B25460058A979 /* CreateChaseMapViewController.swift */,
 			);
 			path = "Create Chase";
 			sourceTree = "<group>";
@@ -620,6 +651,7 @@
 				C5E6566921F8AB94009C1651 /* Assets.xcassets in Resources */,
 				C58A0F542204BF9500643BC7 /* Profile.storyboard in Resources */,
 				C59BBFD121FF4BE400CD684C /* Chasing.storyboard in Resources */,
+				C526E14F2208E6E10009357B /* CreateChase.storyboard in Resources */,
 				C59BC00E2200A35100CD684C /* Onboarding.storyboard in Resources */,
 				C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */,
 				C593D35822020225006AD84C /* CreateAccount.storyboard in Resources */,
@@ -647,6 +679,7 @@
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/BiometricAuthentication/BiometricAuthentication.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FlexColorPicker/FlexColorPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/HDAugmentedReality/HDAugmentedReality.framework",
 				"${BUILT_PRODUCTS_DIR}/Pocket/Pocket.framework",
 				"${BUILT_PRODUCTS_DIR}/PocketAion/PocketAion.framework",
@@ -662,6 +695,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BiometricAuthentication.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexColorPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDAugmentedReality.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketAion.framework",
@@ -730,6 +764,7 @@
 				C53F221521FB87CD003457F3 /* Player+CoreDataProperties.swift in Sources */,
 				C59BBFD421FF4D5B00CD684C /* MenuViewController.swift in Sources */,
 				C53F221921FB8A9B003457F3 /* UIColor+extension.swift in Sources */,
+				C526E1512209D4150009357B /* ColorPickerViewController.swift in Sources */,
 				C53F221F21FB9290003457F3 /* MerkleTree.swift in Sources */,
 				C59BBFFF21FFCC5E00CD684C /* SynchronousOperation.swift in Sources */,
 				C59BBFF221FF930800CD684C /* DownloadBalanceOperation.swift in Sources */,
@@ -745,6 +780,7 @@
 				C59BBFF821FF994000CD684C /* DownloadChaseAmountOperation.swift in Sources */,
 				C59BC00321FFD20800CD684C /* DownloadAndUpdateChaseIsWinnerOperation.swift in Sources */,
 				C526E14222086BA50009357B /* UploadChaseOperation.swift in Sources */,
+				C5345B07220B25460058A979 /* CreateChaseMapViewController.swift in Sources */,
 				C59BBFCE21FF4B8300CD684C /* ContainerViewController.swift in Sources */,
 				C53F220521FB814A003457F3 /* UIApplication+extension.swift in Sources */,
 				C526E146220881C90009357B /* UploadChaseEstimateOperation.swift in Sources */,
@@ -770,6 +806,8 @@
 				C59BBFCC21FF429B00CD684C /* AppConfiguration.swift in Sources */,
 				C53F221021FB87CD003457F3 /* Chase+CoreDataProperties.swift in Sources */,
 				C53F21FF21FA40BD003457F3 /* Theme.swift in Sources */,
+				C526E14D22089D170009357B /* MonsterTextField.swift in Sources */,
+				C5345B0A220B26840058A979 /* MapSearchTableViewCell.swift in Sources */,
 				C53F220F21FB87CD003457F3 /* Transaction+CoreDataClass.swift in Sources */,
 				C59BBFCA21FBB20400CD684C /* PushNotificationUtils.swift in Sources */,
 				C53F21F821FA1C50003457F3 /* DefaultMonsterButton.swift in Sources */,

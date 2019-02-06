@@ -18,7 +18,7 @@ public struct AionUtils {
         return usdAmount / unitaryAionPriceUSD()
     }
     
-    public static func convertEthAmountToUSD(aionAmount: Double) -> Double {
+    public static func convertAionAmountToUSD(aionAmount: Double) -> Double {
         return aionAmount * unitaryAionPriceUSD()
     }
     
