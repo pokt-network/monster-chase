@@ -13,12 +13,15 @@ import BigInt
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var walletAddressLabel: UILabel!
+    @IBOutlet weak var qrCodeCircle: UIView!
+    @IBOutlet weak var walletAddressTextField: UITextField!
     @IBOutlet weak var usdValueLabel: UILabel!
-    @IBOutlet weak var ethValueLabel: UILabel!
+    @IBOutlet weak var aionValueLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var qrCodeImage: UIImageView!
+    @IBOutlet weak var monstersCountLabel: UILabel!
+    @IBOutlet weak var leaderboardPositionLabel: UILabel!
     
     var currentPlayer: Player?
     var monsters: [Monster] = [Monster]()
@@ -36,6 +39,11 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Styling
+        qrCodeCircle.layer.cornerRadius = qrCodeCircle.frame.height / 2
+        qrCodeCircle.layer.borderWidth = 4
+        qrCodeCircle.layer.borderColor = AppColors.base.cgColor()
         
         do {
             try refreshView()
@@ -56,14 +64,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         // Labels setup
-        walletAddressLabel.text = currentPlayer?.address
+        walletAddressTextField.text = currentPlayer?.address
         qrCodeImage.image = ProfileViewController.generateQRCode(from: currentPlayer?.address ?? "")
         if let weiBalanceStr = currentPlayer?.balanceWei {
             let weiBalance = BigInt.init(weiBalanceStr) ?? BigInt.init(0)
             let aion = String(format: "%.3f", arguments: [AionUtils.convertWeiToAion(wei: weiBalance)])
             let usd = String(format: "%.3f", arguments: [AionUtils.convertWeiToUSD(wei: weiBalance)])
             
-            ethValueLabel.text = "\(aion) AION"
+            aionValueLabel.text = "\(aion) AION"
             usdValueLabel.text = "\(usd) USD"
         }
         
@@ -97,7 +105,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             let alertView = self.monsterAlertView(title: "Error:", message: "Address field is empty, please try again later")
             self.present(alertView, animated: false, completion: nil)
         }
-        guard let isAddressEmpty = walletAddressLabel.text?.isEmpty else {
+        guard let isAddressEmpty = walletAddressTextField.text?.isEmpty else {
             showError()
             return
         }
@@ -106,7 +114,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             return
         } else {
             let alertView = monsterAlertView(title: "Success:", message: "Your Address has been copied to the clipboard.")
-            UIPasteboard.general.string = walletAddressLabel.text
+            UIPasteboard.general.string = walletAddressTextField.text
             present(alertView, animated: false, completion: nil)
         }
     }
@@ -169,7 +177,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if monsters.count != 0  && indexPath.item < monsters.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerQuestCell", for: indexPath) as! MonsterCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monsterCellIdentifier", for: indexPath) as! MonsterCollectionViewCell
             
             let monster = monsters[indexPath.item]
             cell.monster = monster
@@ -177,7 +185,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerQuestCell", for: indexPath) as! MonsterCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monsterCellIdentifier", for: indexPath) as! MonsterCollectionViewCell
             
             cell.configureEmptyCellFor(index: indexPath.item)
             

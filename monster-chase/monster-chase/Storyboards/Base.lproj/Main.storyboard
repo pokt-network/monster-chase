@@ -49,8 +49,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdC-MV-IoP" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="468.5" width="300" height="40"/>
+                                <rect key="frame" x="62.5" y="468.5" width="250" height="40"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Jev-lz-uhV"/>
                                     <constraint firstAttribute="height" constant="40" id="QGq-5B-CwJ"/>
                                 </constraints>
                                 <state key="normal" title="Play Now"/>
@@ -67,7 +68,6 @@
                             <constraint firstItem="ZdC-MV-IoP" firstAttribute="centerX" secondItem="zyU-oE-xj0" secondAttribute="centerX" id="hDJ-no-bZu"/>
                             <constraint firstItem="zyU-oE-xj0" firstAttribute="centerX" secondItem="s6F-r1-ArI" secondAttribute="centerX" id="j6F-jA-ObM"/>
                             <constraint firstItem="zyU-oE-xj0" firstAttribute="centerY" secondItem="s6F-r1-ArI" secondAttribute="centerY" id="mcI-aU-nYh"/>
-                            <constraint firstItem="ZdC-MV-IoP" firstAttribute="width" secondItem="zyU-oE-xj0" secondAttribute="width" id="vD5-Wn-0ba"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6zo-DF-pXc"/>
                     </view>

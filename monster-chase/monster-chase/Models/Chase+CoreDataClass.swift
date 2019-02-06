@@ -148,7 +148,7 @@ public class Chase: NSManagedObject {
         return result
     }
     
-    func getLocalChaseCount(context: NSManagedObjectContext) throws -> Int64{
+    public static func getLocalChaseCount(context: NSManagedObjectContext) throws -> Int64{
         var chases = [Chase]()
         
         let fetchRequest = NSFetchRequest<Chase>(entityName: "Chase")

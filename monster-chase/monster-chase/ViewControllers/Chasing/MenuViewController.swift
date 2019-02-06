@@ -102,7 +102,7 @@ class MenuViewController: UIViewController, UIGestureRecognizerDelegate {
             let vc = try self.instantiateViewController(identifier: "createChaseViewControllerID", storyboardName: "CreateChase") as? CreateChaseViewController
             self.so_containerViewController?.topViewController = vc
         } catch let error as NSError {
-            print("Failed to instantiate QuestingViewController with error: \(error)")
+            print("Failed to instantiate ChasingViewController with error: \(error)")
         }
         
     }
@@ -124,7 +124,7 @@ class MenuViewController: UIViewController, UIGestureRecognizerDelegate {
             container.isSideViewControllerPresented = false
         }
         do {
-            let vc = try self.instantiateViewController(identifier: "ProfileVC", storyboardName: "Profile") as? ProfileViewController
+            let vc = try self.instantiateViewController(identifier: "profileViewControllerID", storyboardName: "Profile") as? ProfileViewController
             self.so_containerViewController?.topViewController = vc
         } catch let error as NSError {
             print("Failed to instantiate ProfileViewController with error: \(error)")

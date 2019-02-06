@@ -9,6 +9,7 @@ target 'monster-chase' do
   pod 'PocketAion', '~> 0.0.5'
   pod 'SidebarOverlay', :git => 'git@github.com:pokt-network/SidebarOverlay.git', :branch => 'develop'
   #pod 'FlexColorPicker', :git => 'https://github.com/RastislavMirek/FlexColorPicker', :branch => 'master'
+  pod 'FlexColorPicker'
   pod 'SwiftHEXColors'
   pod 'BiometricAuthentication'
   pod 'HDAugmentedReality', '~> 2.4'
