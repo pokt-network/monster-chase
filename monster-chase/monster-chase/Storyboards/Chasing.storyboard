@@ -67,9 +67,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="createQuestButtonTapped:" destination="WOK-qg-djE" eventType="touchUpInside" id="fqh-E4-MzW"/>
                                             <action selector="leaderBoardButtonTapped:" destination="WOK-qg-djE" eventType="touchUpInside" id="Nu3-WE-z6L"/>
-                                            <action selector="leaderboardButtonTapped:" destination="WOK-qg-djE" eventType="touchUpInside" id="ab9-hT-xaW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1yn-4f-KGs" userLabel="Explore Button">
@@ -367,33 +365,33 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circlex1" translatesAutoresizingMaskIntoConstraints="NO" id="bIe-Ax-3qa">
-                                                                            <rect key="frame" x="75" y="40" width="50" height="50"/>
+                                                                            <rect key="frame" x="70" y="35" width="60" height="60"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="50" id="2sC-Mc-o3N"/>
-                                                                                <constraint firstAttribute="width" constant="50" id="A7S-rL-5cp"/>
+                                                                                <constraint firstAttribute="height" constant="60" id="2sC-Mc-o3N"/>
+                                                                                <constraint firstAttribute="width" constant="60" id="A7S-rL-5cp"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circlex1" translatesAutoresizingMaskIntoConstraints="NO" id="sIj-kg-wU8">
-                                                                            <rect key="frame" x="195" y="40" width="50" height="50"/>
+                                                                            <rect key="frame" x="190" y="35" width="60" height="60"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="50" id="1um-ad-6fq"/>
-                                                                                <constraint firstAttribute="width" constant="50" id="CET-h6-IFg"/>
+                                                                                <constraint firstAttribute="height" constant="60" id="1um-ad-6fq"/>
+                                                                                <constraint firstAttribute="width" constant="60" id="CET-h6-IFg"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9J-t4-EkG" userLabel="Monsters count label">
-                                                                            <rect key="frame" x="75" y="56" width="50" height="17.5"/>
-                                                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
-                                                                            <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EqR-2g-1dR" userLabel="Distance label">
                                                                             <rect key="frame" x="188.5" y="15" width="63.5" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="13"/>
                                                                             <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U9J-t4-EkG" userLabel="Monsters count label">
+                                                                            <rect key="frame" x="76" y="56" width="48" height="17.5"/>
+                                                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
+                                                                            <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upy-5Z-MzF" userLabel="Distance number label">
-                                                                            <rect key="frame" x="195" y="56" width="50" height="17.5"/>
+                                                                            <rect key="frame" x="196" y="56" width="48" height="17.5"/>
                                                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                                                             <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -413,9 +411,9 @@
                                                                         <constraint firstItem="upy-5Z-MzF" firstAttribute="centerY" secondItem="U9J-t4-EkG" secondAttribute="centerY" id="fK2-TG-fEq"/>
                                                                         <constraint firstItem="EqR-2g-1dR" firstAttribute="centerY" secondItem="qEp-DU-gZc" secondAttribute="centerY" id="ghf-K5-47v"/>
                                                                         <constraint firstItem="bIe-Ax-3qa" firstAttribute="centerY" secondItem="U9J-t4-EkG" secondAttribute="centerY" id="hq5-AZ-wXl"/>
-                                                                        <constraint firstItem="U9J-t4-EkG" firstAttribute="width" secondItem="bIe-Ax-3qa" secondAttribute="width" id="kh3-DV-Kp1"/>
+                                                                        <constraint firstItem="U9J-t4-EkG" firstAttribute="width" secondItem="bIe-Ax-3qa" secondAttribute="width" multiplier="0.8" id="kh3-DV-Kp1"/>
                                                                         <constraint firstItem="upy-5Z-MzF" firstAttribute="centerX" secondItem="EqR-2g-1dR" secondAttribute="centerX" id="vs2-V1-vig"/>
-                                                                        <constraint firstItem="upy-5Z-MzF" firstAttribute="width" secondItem="sIj-kg-wU8" secondAttribute="width" id="yF2-8J-OgJ"/>
+                                                                        <constraint firstItem="upy-5Z-MzF" firstAttribute="width" secondItem="sIj-kg-wU8" secondAttribute="width" multiplier="0.8" id="yF2-8J-OgJ"/>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>

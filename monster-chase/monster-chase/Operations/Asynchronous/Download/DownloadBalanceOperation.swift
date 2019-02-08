@@ -26,39 +26,23 @@ public class DownloadBalanceOperation: AsynchronousOperation {
     }
     
     open override func main() {
-        let params = [
-            "rpcMethod": "eth_getBalance",
-            "rpcParams": [address, "latest"]
-            ] as [AnyHashable: Any]
         
-        guard let query = try? PocketAion.createQuery(subnetwork: AppConfiguration.subnetwork, params: params, decoder: nil) else {
-            self.error = PocketPluginError.queryCreationError("Error creating query")
-            self.finish()
-            return
-        }
-        
-        Pocket.shared.executeQuery(query: query) { (queryResponse, error) in
-            if error != nil {
-                self.error = error
+        do {
+            try PocketAion.eth.getBalance(address: address, subnetwork: AppConfiguration.subnetwork, blockTag: BlockTag.init(block: .LATEST), handler: { (result, error) in
+                if error != nil {
+                    self.error = error
+                    self.finish()
+                    return
+                }
+                
+                self.balance = result
                 self.finish()
-                return
-            }
-            
-            guard let balanceHex: String = (queryResponse?.result?.value() as? String)?.replacingOccurrences(of: "0x", with: "") else {
-                self.error = DownloadBalanceOperationError.responseParsing
-                self.finish()
-                return
-            }
-            
-            guard let balance = BigInt(balanceHex, radix: 16) else {
-                self.error = DownloadBalanceOperationError.responseParsing
-                self.finish()
-                return
-            }
-            
-            self.balance = balance
+            })
+        } catch {
+            self.error = error
             self.finish()
         }
+        
     }
 }
 

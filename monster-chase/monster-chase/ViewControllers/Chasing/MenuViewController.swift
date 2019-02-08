@@ -112,7 +112,7 @@ class MenuViewController: UIViewController, UIGestureRecognizerDelegate {
             container.isSideViewControllerPresented = false
         }
         do {
-            let vc = try self.instantiateViewController(identifier: "LeaderboardVC", storyboardName: "Leaderboard") as? LeaderboardViewController
+            let vc = try self.instantiateViewController(identifier: "leaderboardViewControllerID", storyboardName: "Leaderboard") as? LeaderboardViewController
             self.so_containerViewController?.topViewController = vc
         } catch let error as NSError {
             print("Failed to instantiate LeaderboardViewController with error: \(error)")

@@ -144,6 +144,19 @@ class NewWalletViewController: UIViewController {
         // Disable create button
         self.createButton.isEnabled = false
         
+
+        let txParams = ["nonce": "1", "to": "0xa0f6030115840ae06220c329698fda4da20274fa243ccf2c191283d547d0a452", "data": "", "value": "0x989680", "nrgPrice": "0x989680", "nrg": "0x989680"]
+        
+        do {
+            let receiverAccount = try PocketAion.createWallet(subnetwork: "32", data: nil)
+
+            let signTX = try PocketAion.createTransaction(wallet: receiverAccount, params: txParams)
+            print(signTX.serializedTransaction)
+        }
+        catch{
+            print(error)
+        }
+        
         // Create the player
         do {
             currentPlayer = try Player.createPlayer(walletPassphrase: passphrase)
