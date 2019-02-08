@@ -26,39 +26,23 @@ public class DownloadTransactionCountOperation: AsynchronousOperation {
     }
     
     open override func main() {
-        let params = [
-            "rpcMethod": "eth_getTransactionCount",
-            "rpcParams": [address, "latest"]
-            ] as [AnyHashable: Any]
         
-        guard let query = try? PocketAion.createQuery(subnetwork: AppConfiguration.subnetwork, params: params, decoder: nil) else {
-            self.error = PocketPluginError.queryCreationError("Error creating query")
-            self.finish()
-            return
-        }
-        
-        Pocket.shared.executeQuery(query: query) { (queryResponse, error) in
-            if error != nil {
-                self.error = error
+        do {
+            try PocketAion.eth.getTransactionCount(address: address, subnetwork: AppConfiguration.subnetwork, blockTag: BlockTag.init(block: .LATEST), handler: { (result, error) in
+                if error != nil {
+                    self.error = error
+                    self.finish()
+                    return
+                }
+                
+                self.transactionCount = result
                 self.finish()
-                return
-            }
-            
-            guard let transactionCountHex = (queryResponse?.result?.value() as? String)?.replacingOccurrences(of: "0x", with: "") else {
-                self.error = DownloadTransactionCountOperationError.responseParsing
-                self.finish()
-                return
-            }
-            
-            guard let transactionCount = BigInt.init(transactionCountHex, radix: 16) else {
-                self.error = DownloadTransactionCountOperationError.responseParsing
-                self.finish()
-                return
-            }
-            
-            self.transactionCount = transactionCount
+            })
+        } catch {
+            self.error = error
             self.finish()
         }
+        
     }
 }
 

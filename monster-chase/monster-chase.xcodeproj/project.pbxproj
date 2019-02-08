@@ -23,6 +23,13 @@
 		C526E1512209D4150009357B /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E1502209D4150009357B /* ColorPickerViewController.swift */; };
 		C5345B07220B25460058A979 /* CreateChaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B06220B25460058A979 /* CreateChaseMapViewController.swift */; };
 		C5345B0A220B26840058A979 /* MapSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B09220B26840058A979 /* MapSearchTableViewCell.swift */; };
+		C5345B0C220BA5620058A979 /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5345B0B220BA5620058A979 /* Leaderboard.storyboard */; };
+		C5345B0E220C71D60058A979 /* LeaderBoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B0D220C71D60058A979 /* LeaderBoardTableViewCell.swift */; };
+		C5345B10220CA0F40058A979 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B0F220CA0F40058A979 /* UILabel+extension.swift */; };
+		C5345B12220CC6FA0058A979 /* CompleteChase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5345B11220CC6FA0058A979 /* CompleteChase.storyboard */; };
+		C5345B15220CC9090058A979 /* CompleteChaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B14220CC9090058A979 /* CompleteChaseViewController.swift */; };
+		C5345B17220CD5E80058A979 /* FindMonsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B16220CD5E80058A979 /* FindMonsterViewController.swift */; };
+		C5345B1A220CD7490058A979 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B19220CD7490058A979 /* AnnotationView.swift */; };
 		C53F21F821FA1C50003457F3 /* DefaultMonsterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */; };
 		C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */; };
 		C53F21FF21FA40BD003457F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21FE21FA40BD003457F3 /* Theme.swift */; };
@@ -120,6 +127,13 @@
 		C526E1502209D4150009357B /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		C5345B06220B25460058A979 /* CreateChaseMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChaseMapViewController.swift; sourceTree = "<group>"; };
 		C5345B09220B26840058A979 /* MapSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchTableViewCell.swift; sourceTree = "<group>"; };
+		C5345B0B220BA5620058A979 /* Leaderboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
+		C5345B0D220C71D60058A979 /* LeaderBoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardTableViewCell.swift; sourceTree = "<group>"; };
+		C5345B0F220CA0F40058A979 /* UILabel+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+extension.swift"; sourceTree = "<group>"; };
+		C5345B11220CC6FA0058A979 /* CompleteChase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompleteChase.storyboard; sourceTree = "<group>"; };
+		C5345B14220CC9090058A979 /* CompleteChaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteChaseViewController.swift; sourceTree = "<group>"; };
+		C5345B16220CD5E80058A979 /* FindMonsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMonsterViewController.swift; sourceTree = "<group>"; };
+		C5345B19220CD7490058A979 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMonsterButton.swift; sourceTree = "<group>"; };
 		C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultMonsterButton.xib; sourceTree = "<group>"; };
 		C53F21FE21FA40BD003457F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -235,6 +249,7 @@
 		C51461C121F9025E00E3B77E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C5345B13220CC8EF0058A979 /* Complete Chase */,
 				C59BBFE621FF59BD00CD684C /* Onboarding */,
 				C59BBFE321FF598B00CD684C /* Create Account */,
 				C59BBFE021FF595D00CD684C /* Profile */,
@@ -257,6 +272,8 @@
 				C593D35722020225006AD84C /* CreateAccount.storyboard */,
 				C58A0F532204BF9500643BC7 /* Profile.storyboard */,
 				C526E14E2208E6E10009357B /* CreateChase.storyboard */,
+				C5345B0B220BA5620058A979 /* Leaderboard.storyboard */,
+				C5345B11220CC6FA0058A979 /* CompleteChase.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -303,6 +320,7 @@
 				C53F221621FB8A88003457F3 /* CGFloat+extension.swift */,
 				C53F221821FB8A9B003457F3 /* UIColor+extension.swift */,
 				C53F221A21FB8AC9003457F3 /* UIDevice+extension.swift */,
+				C5345B0F220CA0F40058A979 /* UILabel+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -310,6 +328,7 @@
 		C51461C721F902B300E3B77E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C5345B18220CD6E40058A979 /* AR Annotation Views */,
 				C5345B08220B26730058A979 /* TableViewCells */,
 				C526E14B22089C8B0009357B /* TextFields */,
 				C59BC0082200806600CD684C /* CollectionViewCells */,
@@ -342,8 +361,26 @@
 			isa = PBXGroup;
 			children = (
 				C5345B09220B26840058A979 /* MapSearchTableViewCell.swift */,
+				C5345B0D220C71D60058A979 /* LeaderBoardTableViewCell.swift */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		C5345B13220CC8EF0058A979 /* Complete Chase */ = {
+			isa = PBXGroup;
+			children = (
+				C5345B14220CC9090058A979 /* CompleteChaseViewController.swift */,
+				C5345B16220CD5E80058A979 /* FindMonsterViewController.swift */,
+			);
+			path = "Complete Chase";
+			sourceTree = "<group>";
+		};
+		C5345B18220CD6E40058A979 /* AR Annotation Views */ = {
+			isa = PBXGroup;
+			children = (
+				C5345B19220CD7490058A979 /* AnnotationView.swift */,
+			);
+			path = "AR Annotation Views";
 			sourceTree = "<group>";
 		};
 		C53F21F421F9FBB3003457F3 /* Main */ = {
@@ -647,6 +684,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5345B0C220BA5620058A979 /* Leaderboard.storyboard in Resources */,
 				C5E6566C21F8AB94009C1651 /* LaunchScreen.storyboard in Resources */,
 				C5E6566921F8AB94009C1651 /* Assets.xcassets in Resources */,
 				C58A0F542204BF9500643BC7 /* Profile.storyboard in Resources */,
@@ -656,6 +694,7 @@
 				C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */,
 				C593D35822020225006AD84C /* CreateAccount.storyboard in Resources */,
 				C5E6566421F8AB94009C1651 /* Main.storyboard in Resources */,
+				C5345B12220CC6FA0058A979 /* CompleteChase.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +823,7 @@
 				C59BBFCE21FF4B8300CD684C /* ContainerViewController.swift in Sources */,
 				C53F220521FB814A003457F3 /* UIApplication+extension.swift in Sources */,
 				C526E146220881C90009357B /* UploadChaseEstimateOperation.swift in Sources */,
+				C5345B17220CD5E80058A979 /* FindMonsterViewController.swift in Sources */,
 				C53F222121FB9360003457F3 /* LocationUtils.swift in Sources */,
 				C59BBFDB21FF590200CD684C /* ChasingViewController.swift in Sources */,
 				C53F220321FB8076003457F3 /* UIViewController+extension.swift in Sources */,
@@ -794,6 +834,7 @@
 				C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */,
 				C53F221B21FB8AC9003457F3 /* UIDevice+extension.swift in Sources */,
 				C593D3562201F98A006AD84C /* TransactionReceipt.swift in Sources */,
+				C5345B1A220CD7490058A979 /* AnnotationView.swift in Sources */,
 				C58A0F582205297100643BC7 /* MonsterCollectionViewCell.swift in Sources */,
 				C59BBFDF21FF594500CD684C /* CreateChaseViewController.swift in Sources */,
 				C53F221221FB87CD003457F3 /* Transaction+CoreDataProperties.swift in Sources */,
@@ -807,6 +848,7 @@
 				C53F221021FB87CD003457F3 /* Chase+CoreDataProperties.swift in Sources */,
 				C53F21FF21FA40BD003457F3 /* Theme.swift in Sources */,
 				C526E14D22089D170009357B /* MonsterTextField.swift in Sources */,
+				C5345B0E220C71D60058A979 /* LeaderBoardTableViewCell.swift in Sources */,
 				C5345B0A220B26840058A979 /* MapSearchTableViewCell.swift in Sources */,
 				C53F220F21FB87CD003457F3 /* Transaction+CoreDataClass.swift in Sources */,
 				C59BBFCA21FBB20400CD684C /* PushNotificationUtils.swift in Sources */,
@@ -817,11 +859,13 @@
 				C53F220E21FB87CD003457F3 /* Player+CoreDataClass.swift in Sources */,
 				C59BBFE821FF59CA00CD684C /* OnboardingViewController.swift in Sources */,
 				C593D3502201F4A8006AD84C /* ChaseCreationTimer.swift in Sources */,
+				C5345B15220CC9090058A979 /* CompleteChaseViewController.swift in Sources */,
 				C59BC00C220085FE00CD684C /* AionUtils.swift in Sources */,
 				C59BC00721FFE9E100CD684C /* UpdateChaseOperation.swift in Sources */,
 				C53F221421FB87CD003457F3 /* Monster+CoreDataProperties.swift in Sources */,
 				C526E13D220862960009357B /* DownloadOwnersTokenCountOperation.swift in Sources */,
 				C526E148220885E60009357B /* UploadChaseProofEstimateOperation.swift in Sources */,
+				C5345B10220CA0F40058A979 /* UILabel+extension.swift in Sources */,
 				C5E6565F21F8AB94009C1651 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -915,7 +959,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -970,7 +1014,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

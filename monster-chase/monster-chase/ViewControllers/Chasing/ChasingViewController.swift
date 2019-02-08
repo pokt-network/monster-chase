@@ -365,19 +365,19 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                 present(alert, animated: false, completion: nil)
                 return
             }
-            // TODO: ADD COMPLETE CHASE VC
-//            do {
-//                let vc = try self.instantiateViewController(identifier: "completeChaseViewControllerID", storyboardName: "Chasing") as? CompleteQuestViewController
-//                vc?.quest = chase
-//                vc?.currentUserLocation = currentPlayerLocation
-//
-//                self.present(vc!, animated: false, completion: nil)
-//            }catch let error as NSError {
-//                let alert = self.monsterAlertView(title: "Error", message: "Ups, something happened, please try again later.")
-//                self.present(alert, animated: false, completion: nil)
-//
-//                print("Failed to instantiate CompleteChaseViewController with error: \(error)")
-//            }
+            
+            do {
+                let vc = try self.instantiateViewController(identifier: "completeChaseViewControllerID", storyboardName: "CompleteChase") as? CompleteChaseViewController
+                vc?.chase = chase
+                vc?.currentUserLocation = currentPlayerLocation
+
+                self.present(vc!, animated: false, completion: nil)
+            }catch let error as NSError {
+                let alert = self.monsterAlertView(title: "Error", message: "Ups, something happened, please try again later.")
+                self.present(alert, animated: false, completion: nil)
+
+                print("Failed to instantiate CompleteChaseViewController with error: \(error)")
+            }
         } else {
             let alert = self.monsterAlertView(title: "Error", message: "Failed to retrieve current chase, please try again later.")
             self.present(alert, animated: false, completion: nil)

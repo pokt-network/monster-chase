@@ -7,49 +7,18 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 public enum DownloadAionUsdPriceOperationError: Error {
     case invalidEndpoint
     case invalidResponse
 }
 
-struct CMCEthereumTickerQuote: Decodable {
-    let price: Double?
-    
-    private enum CodingKeys: String, CodingKey {
-        case price
-    }
-}
-
-struct CMCEthereumTickerQuotes: Decodable {
-    let usd: CMCEthereumTickerQuote?
-    
-    private enum CodingKeys: String, CodingKey {
-        case usd = "USD"
-    }
-}
-
-struct CMCEthereumTickerData: Decodable {
-    let quotes: CMCEthereumTickerQuotes?
-    
-    private enum CodingKeys: String, CodingKey {
-        case quotes
-    }
-}
-
-struct CMCEthereumTicker: Decodable {
-    let data: CMCEthereumTickerData?
-    
-    private enum CodingKeys: String, CodingKey {
-        case data
-    }
-}
-
 public class DownloadAionUsdPriceOperation: AsynchronousOperation {
     
     public var usdPrice: Double?
     public var lastUpdated: Date?
-    private let priceApiURL = URL(string: "https://api.coinmarketcap.com/v2/ticker/1027")
+    private let priceApiURL = URL(string: "https://min-api.cryptocompare.com/data/price?fsym=AION&tsyms=USD")
     
     open override func main() {
         
@@ -72,10 +41,17 @@ public class DownloadAionUsdPriceOperation: AsynchronousOperation {
             }
             
             do {
-                let ethereumTicker = try JSONDecoder().decode(CMCEthereumTicker.self, from: data)
-                self.usdPrice = ethereumTicker.data?.quotes?.usd?.price
+                let aionTicker = try JSON.init(data: data, options: JSONSerialization.ReadingOptions.allowFragments)
+                
+                guard let price = aionTicker.first?.1.double else {
+                    self.error = DownloadAionUsdPriceOperationError.invalidResponse
+                    self.finish()
+                    return
+                }
+                    
+                self.usdPrice = price
                 self.finish()
-                //self.lastUpdated = ethereumTicker.lastUpdated
+                
             } catch {
                 self.error = error
                 self.finish()
