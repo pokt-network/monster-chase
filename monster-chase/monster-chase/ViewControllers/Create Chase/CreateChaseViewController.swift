@@ -27,10 +27,8 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     @IBOutlet weak var hintTextView: UITextView!
     @IBOutlet weak var infiniteMonstersSwitch: UISwitch!
     @IBOutlet weak var hintTextCountLabel: UILabel!
-    @IBOutlet weak var currentUSDBalanceLabel: UILabel!
-    @IBOutlet weak var currentAIONBalanceLabel: UILabel!
-    @IBOutlet weak var gasCostUSDLabel: UILabel!
-    @IBOutlet weak var gasCostAIONLabel: UILabel!
+    @IBOutlet weak var balanceValueLabel: UILabel!
+
     
     // Variables
     var newChase: Chase?
@@ -155,25 +153,23 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
                 return
             }
             
-            setCurrentUSDBalanceLabel(amount: AionUtils.convertWeiToUSD(wei: playerBalanceBigInt))
+            let usdValue = AionUtils.convertWeiToUSD(wei: playerBalanceBigInt)
+            let aionValue = AionUtils.convertWeiToAion(wei: playerBalanceBigInt)
             
-            setCurrentETHBalanceLabel(amount: AionUtils.convertWeiToAion(wei: playerBalanceBigInt))
+            setCurrentBalanceLabel(usd: usdValue, aion: aionValue)
         } catch {
             blankBalanceLabels()
         }
     }
     
     func blankBalanceLabels() {
-        self.currentUSDBalanceLabel.text = "0.0 USD"
-        self.currentAIONBalanceLabel.text = "0.0 AION"
+        balanceValueLabel.text = "0.0 USD - 0.0 AION"
     }
     
-    func setCurrentUSDBalanceLabel(amount: Double) {
-        self.currentUSDBalanceLabel.text = String.init(format: "%.2f USD", amount)
-    }
-    
-    func setCurrentETHBalanceLabel(amount: Double) {
-        self.currentAIONBalanceLabel.text = String.init(format: "%.2f AION", amount)
+    func setCurrentBalanceLabel(usd: Double, aion: Double) {
+        let usdValue = String.init(format: "%.2f USD", usd)
+        let aionValue = String.init(format: "%.2f AION", aion)
+        balanceValueLabel.text = "\(usdValue) - \(aionValue)"
     }
     
     @objc func onNotification(notification:Notification)
