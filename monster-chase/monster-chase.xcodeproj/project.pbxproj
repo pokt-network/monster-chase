@@ -50,6 +50,10 @@
 		C53F221D21FB9001003457F3 /* ChaseMerkleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F221C21FB9001003457F3 /* ChaseMerkleTree.swift */; };
 		C53F221F21FB9290003457F3 /* MerkleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F221E21FB9290003457F3 /* MerkleTree.swift */; };
 		C53F222121FB9360003457F3 /* LocationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F222021FB9360003457F3 /* LocationUtils.swift */; };
+		C545B662220E906600084ED8 /* monster.scn in Resources */ = {isa = PBXBuildFile; fileRef = C5006C5E220E88CA0024FA07 /* monster.scn */; };
+		C545B665220E917100084ED8 /* monster-color.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C545B663220E917000084ED8 /* monster-color.jpeg */; };
+		C545B666220E917100084ED8 /* monster-texture.png in Resources */ = {isa = PBXBuildFile; fileRef = C545B664220E917100084ED8 /* monster-texture.png */; };
+		C545B66A220E9BCD00084ED8 /* body.mtl in Resources */ = {isa = PBXBuildFile; fileRef = C545B669220E9BCD00084ED8 /* body.mtl */; };
 		C58A0F542204BF9500643BC7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58A0F532204BF9500643BC7 /* Profile.storyboard */; };
 		C58A0F56220527C300643BC7 /* AddBalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58A0F55220527C300643BC7 /* AddBalanceViewController.swift */; };
 		C58A0F582205297100643BC7 /* MonsterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58A0F572205297100643BC7 /* MonsterCollectionViewCell.swift */; };
@@ -113,6 +117,7 @@
 		42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monster_chaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E29B42157888FECFEAB3B58 /* Pods-monster-chase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.release.xcconfig"; sourceTree = "<group>"; };
 		904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monster_chase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5006C5E220E88CA0024FA07 /* monster.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = monster.scn; sourceTree = "<group>"; };
 		C526E13822068DE70009357B /* DownloadChaseIsClaimerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadChaseIsClaimerOperation.swift; sourceTree = "<group>"; };
 		C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOwnersCountOperation.swift; sourceTree = "<group>"; };
 		C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOwnersTokenCountOperation.swift; sourceTree = "<group>"; };
@@ -154,6 +159,9 @@
 		C53F221C21FB9001003457F3 /* ChaseMerkleTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChaseMerkleTree.swift; sourceTree = "<group>"; };
 		C53F221E21FB9290003457F3 /* MerkleTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerkleTree.swift; sourceTree = "<group>"; };
 		C53F222021FB9360003457F3 /* LocationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtils.swift; sourceTree = "<group>"; };
+		C545B663220E917000084ED8 /* monster-color.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "monster-color.jpeg"; sourceTree = "<group>"; };
+		C545B664220E917100084ED8 /* monster-texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "monster-texture.png"; sourceTree = "<group>"; };
+		C545B669220E9BCD00084ED8 /* body.mtl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = body.mtl; sourceTree = "<group>"; };
 		C58A0F532204BF9500643BC7 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		C58A0F55220527C300643BC7 /* AddBalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBalanceViewController.swift; sourceTree = "<group>"; };
 		C58A0F572205297100643BC7 /* MonsterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -282,6 +290,10 @@
 			isa = PBXGroup;
 			children = (
 				C5E6566821F8AB94009C1651 /* Assets.xcassets */,
+				C545B663220E917000084ED8 /* monster-color.jpeg */,
+				C545B669220E9BCD00084ED8 /* body.mtl */,
+				C545B664220E917100084ED8 /* monster-texture.png */,
+				C5006C5E220E88CA0024FA07 /* monster.scn */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -688,9 +700,13 @@
 				C5E6566C21F8AB94009C1651 /* LaunchScreen.storyboard in Resources */,
 				C5E6566921F8AB94009C1651 /* Assets.xcassets in Resources */,
 				C58A0F542204BF9500643BC7 /* Profile.storyboard in Resources */,
+				C545B666220E917100084ED8 /* monster-texture.png in Resources */,
 				C59BBFD121FF4BE400CD684C /* Chasing.storyboard in Resources */,
+				C545B665220E917100084ED8 /* monster-color.jpeg in Resources */,
+				C545B66A220E9BCD00084ED8 /* body.mtl in Resources */,
 				C526E14F2208E6E10009357B /* CreateChase.storyboard in Resources */,
 				C59BC00E2200A35100CD684C /* Onboarding.storyboard in Resources */,
+				C545B662220E906600084ED8 /* monster.scn in Resources */,
 				C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */,
 				C593D35822020225006AD84C /* CreateAccount.storyboard in Resources */,
 				C5E6566421F8AB94009C1651 /* Main.storyboard in Resources */,

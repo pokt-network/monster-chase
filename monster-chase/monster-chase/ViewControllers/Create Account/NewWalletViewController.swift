@@ -30,6 +30,9 @@ class NewWalletViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Styling
+
+        
         do {
             try refreshView()
         } catch let error as NSError {
@@ -144,19 +147,6 @@ class NewWalletViewController: UIViewController {
         // Disable create button
         self.createButton.isEnabled = false
         
-
-        let txParams = ["nonce": "1", "to": "0xa0f6030115840ae06220c329698fda4da20274fa243ccf2c191283d547d0a452", "data": "", "value": "0x989680", "nrgPrice": "0x989680", "nrg": "0x989680"]
-        
-        do {
-            let receiverAccount = try PocketAion.createWallet(subnetwork: "32", data: nil)
-
-            let signTX = try PocketAion.createTransaction(wallet: receiverAccount, params: txParams)
-            print(signTX.serializedTransaction)
-        }
-        catch{
-            print(error)
-        }
-        
         // Create the player
         do {
             currentPlayer = try Player.createPlayer(walletPassphrase: passphrase)
@@ -194,10 +184,10 @@ class NewWalletViewController: UIViewController {
             return
         }
         do {
-            let vc = try self.instantiateViewController(identifier: "ContainerVC", storyboardName: "Questing") as? ContainerViewController
+            let vc = try self.instantiateViewController(identifier: "containerViewControllerID", storyboardName: "Chasing") as? ContainerViewController
             self.navigationController?.pushViewController(vc!, animated: false)
         }catch let error as NSError {
-            print("Failed to instantiate QuestingViewController with error: \(error)")
+            print("Failed to instantiate ChasingViewController with error: \(error)")
         }
     }
     

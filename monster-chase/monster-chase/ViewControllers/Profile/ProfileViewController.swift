@@ -15,10 +15,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var qrCodeCircle: UIView!
     @IBOutlet weak var walletAddressTextField: UITextField!
-    @IBOutlet weak var usdValueLabel: UILabel!
-    @IBOutlet weak var aionValueLabel: UILabel!
+
+    @IBOutlet weak var balanceValueLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var qrCodeImage: UIImageView!
     @IBOutlet weak var monstersCountLabel: UILabel!
     @IBOutlet weak var leaderboardPositionLabel: UILabel!
@@ -68,11 +67,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         qrCodeImage.image = ProfileViewController.generateQRCode(from: currentPlayer?.address ?? "")
         if let weiBalanceStr = currentPlayer?.balanceWei {
             let weiBalance = BigInt.init(weiBalanceStr) ?? BigInt.init(0)
-            let aion = String(format: "%.3f", arguments: [AionUtils.convertWeiToAion(wei: weiBalance)])
-            let usd = String(format: "%.3f", arguments: [AionUtils.convertWeiToUSD(wei: weiBalance)])
+            let aion = String(format: "%.2f", arguments: [AionUtils.convertWeiToAion(wei: weiBalance)])
+            let usd = String(format: "%.2f", arguments: [AionUtils.convertWeiToUSD(wei: weiBalance)])
             
-            aionValueLabel.text = "\(aion) AION"
-            usdValueLabel.text = "\(usd) USD"
+            balanceValueLabel.text = "\(aion) AION - \(usd) USD"
         }
         
         DispatchQueue.main.async {

@@ -82,7 +82,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
         
         let distance = monsterLocationC.distance(from: currentUserLocation!)
         
-        if distance <= 50 {
+        if distance <= 50000 {
             let annotation = ARAnnotation.init(identifier: "monster", title: currentChase?.name ?? "NONE", location: monsterLocationC)
             
             // AR options

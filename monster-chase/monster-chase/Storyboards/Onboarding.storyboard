@@ -24,38 +24,47 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Claim" id="C3Q-gB-pGu" userLabel="Claim">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Claim" id="C3Q-gB-pGu" userLabel="Lead">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NUXONBOARDING-3x1" translatesAutoresizingMaskIntoConstraints="NO" id="DYl-2x-VEi">
-                                            <rect key="frame" x="0.0" y="-15" width="375" height="682"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding-Back-3" translatesAutoresizingMaskIntoConstraints="NO" id="Q9R-7e-UKl">
+                                            <rect key="frame" x="-765.5" y="138.5" width="1906" height="250"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="puG-nG-8Wj"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAGE-SLIDER-3" translatesAutoresizingMaskIntoConstraints="NO" id="tGA-NU-jkl" userLabel="PAGE-SLIDER-3">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXf-6a-Jj3" userLabel="Lead Label">
+                                            <rect key="frame" x="155.5" y="413.5" width="64.5" height="29.5"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
+                                            <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding-3" translatesAutoresizingMaskIntoConstraints="NO" id="tGA-NU-jkl" userLabel="PAGE-SLIDER-3">
                                             <rect key="frame" x="132.5" y="622" width="110" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="N2h-WL-kEZ"/>
                                                 <constraint firstAttribute="width" constant="110" id="WcE-Ey-ttS"/>
                                             </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Collect them all in your account!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsn-7H-pHE">
-                                            <rect key="frame" x="20" y="502" width="335" height="60"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Collect as many monsters as you can to be #1 on the leaderboard." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsn-7H-pHE">
+                                            <rect key="frame" x="20" y="482" width="335" height="60"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="ixO-ZW-LhT"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3t-d9-Ph4" userLabel="Play now">
-                                            <rect key="frame" x="112.5" y="562" width="150" height="40"/>
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c3t-d9-Ph4" userLabel="Play now" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
+                                            <rect key="frame" x="62.5" y="562" width="250" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="htC-FM-PfA"/>
-                                                <constraint firstAttribute="width" constant="150" id="ske-k4-J3C"/>
+                                                <constraint firstAttribute="width" constant="250" id="ske-k4-J3C"/>
                                             </constraints>
-                                            <state key="normal" image="CONTINUE-BUTTON">
+                                            <state key="normal" title="Play Now">
                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </state>
                                             <connections>
@@ -64,101 +73,125 @@
                                         </button>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="0.26657537999999997" green="0.29055825590000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="DYl-2x-VEi" firstAttribute="top" secondItem="C3Q-gB-pGu" secondAttribute="top" constant="-15" id="54I-gw-ILw"/>
+                                    <constraint firstItem="uXf-6a-Jj3" firstAttribute="top" secondItem="Q9R-7e-UKl" secondAttribute="bottom" constant="25" id="5QB-Ke-xg8"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="Hsn-7H-pHE" secondAttribute="trailing" constant="12" id="9Li-Ud-yDe"/>
                                     <constraint firstItem="c3t-d9-Ph4" firstAttribute="centerX" secondItem="C3Q-gB-pGu" secondAttribute="centerX" id="DrW-b3-Yu7"/>
                                     <constraint firstItem="tGA-NU-jkl" firstAttribute="centerX" secondItem="C3Q-gB-pGu" secondAttribute="centerX" id="L3Q-zF-w7j"/>
-                                    <constraint firstAttribute="trailing" secondItem="DYl-2x-VEi" secondAttribute="trailing" id="VB0-Rp-wfG"/>
                                     <constraint firstItem="Hsn-7H-pHE" firstAttribute="leading" secondItem="C3Q-gB-pGu" secondAttribute="leadingMargin" constant="12" id="WeF-c0-s35"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="tGA-NU-jkl" secondAttribute="bottom" constant="15" id="ar6-2T-uDO"/>
-                                    <constraint firstAttribute="bottom" secondItem="DYl-2x-VEi" secondAttribute="bottom" id="g7z-JV-aIz"/>
                                     <constraint firstItem="tGA-NU-jkl" firstAttribute="top" secondItem="c3t-d9-Ph4" secondAttribute="bottom" constant="20" id="gXf-Cb-L2D"/>
-                                    <constraint firstItem="DYl-2x-VEi" firstAttribute="leading" secondItem="C3Q-gB-pGu" secondAttribute="leading" id="wbB-4K-7P4"/>
-                                    <constraint firstItem="c3t-d9-Ph4" firstAttribute="top" secondItem="Hsn-7H-pHE" secondAttribute="bottom" id="zc1-OV-b77"/>
+                                    <constraint firstItem="Q9R-7e-UKl" firstAttribute="centerX" secondItem="C3Q-gB-pGu" secondAttribute="centerX" id="l72-1U-7Uc"/>
+                                    <constraint firstItem="Q9R-7e-UKl" firstAttribute="centerY" secondItem="C3Q-gB-pGu" secondAttribute="centerY" constant="-70" id="rDh-zL-sp2"/>
+                                    <constraint firstItem="uXf-6a-Jj3" firstAttribute="centerX" secondItem="C3Q-gB-pGu" secondAttribute="centerX" id="sH8-cD-niG"/>
+                                    <constraint firstItem="c3t-d9-Ph4" firstAttribute="top" secondItem="Hsn-7H-pHE" secondAttribute="bottom" constant="20" id="zc1-OV-b77"/>
                                 </constraints>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Search" id="yXq-Uo-kp8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Search" id="yXq-Uo-kp8" userLabel="Explore">
+                                <rect key="frame" x="375" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NUXONBOARDING 1-x1" translatesAutoresizingMaskIntoConstraints="NO" id="B90-Al-v2h">
-                                            <rect key="frame" x="0.0" y="-50" width="375" height="727"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding-Back-1" translatesAutoresizingMaskIntoConstraints="NO" id="xUr-eK-Mpl">
+                                            <rect key="frame" x="56" y="138.5" width="263" height="250"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="iPg-7d-UlL"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAGE-SLIDER-1" translatesAutoresizingMaskIntoConstraints="NO" id="swC-f0-27A">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding-1" translatesAutoresizingMaskIntoConstraints="NO" id="swC-f0-27A">
                                             <rect key="frame" x="132.5" y="630" width="110" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="DzT-JC-tjA"/>
                                                 <constraint firstAttribute="width" constant="110" id="NQq-Sz-x5h"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for Quests around your area, pay attention to: Quest Distance, # Bananos Available and ETH Prizes" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0r0-gz-ePt" userLabel="Search label">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOX-eG-C5O" userLabel="Explore Label">
+                                            <rect key="frame" x="136.5" y="413.5" width="102" height="29.5"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
+                                            <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0r0-gz-ePt" userLabel="Search label">
                                             <rect key="frame" x="10" y="480" width="355" height="142"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="142" id="ll1-aa-1FA"/>
                                             </constraints>
+                                            <string key="text">Find a hidden monster around your area and get ready to chase it!. You must guess the clue and use your camera to find the AR monster.</string>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="0.52440603870000002" green="1" blue="0.28656560479999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="B90-Al-v2h" firstAttribute="leading" secondItem="yXq-Uo-kp8" secondAttribute="leading" id="64i-AC-R2C"/>
+                                    <constraint firstItem="gOX-eG-C5O" firstAttribute="top" secondItem="xUr-eK-Mpl" secondAttribute="bottom" constant="25" id="3xy-rj-1tP"/>
+                                    <constraint firstItem="xUr-eK-Mpl" firstAttribute="centerX" secondItem="yXq-Uo-kp8" secondAttribute="centerX" id="7DI-pu-EVv"/>
+                                    <constraint firstItem="xUr-eK-Mpl" firstAttribute="leading" secondItem="yXq-Uo-kp8" secondAttribute="leadingMargin" constant="40" id="83E-gh-bEo"/>
                                     <constraint firstAttribute="trailing" secondItem="0r0-gz-ePt" secondAttribute="trailing" constant="10" id="8kq-eS-7SU"/>
-                                    <constraint firstAttribute="bottom" secondItem="0r0-gz-ePt" secondAttribute="bottom" constant="45" id="F1E-QL-Km6"/>
-                                    <constraint firstItem="B90-Al-v2h" firstAttribute="top" secondItem="yXq-Uo-kp8" secondAttribute="top" constant="-50" id="Jzv-Gn-965"/>
-                                    <constraint firstAttribute="bottom" secondItem="B90-Al-v2h" secondAttribute="bottom" constant="-10" id="KB9-T3-k0d"/>
+                                    <constraint firstItem="swC-f0-27A" firstAttribute="bottom" secondItem="0r0-gz-ePt" secondAttribute="bottom" constant="30" id="F1E-QL-Km6"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="xUr-eK-Mpl" secondAttribute="trailing" constant="40" id="TwC-JN-Puq"/>
                                     <constraint firstItem="0r0-gz-ePt" firstAttribute="leading" secondItem="yXq-Uo-kp8" secondAttribute="leading" constant="10" id="UOa-1N-vSv"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="swC-f0-27A" secondAttribute="bottom" constant="15" id="Vf5-bF-jwI"/>
-                                    <constraint firstAttribute="trailing" secondItem="B90-Al-v2h" secondAttribute="trailing" id="eqH-Oe-W50"/>
+                                    <constraint firstItem="gOX-eG-C5O" firstAttribute="centerX" secondItem="yXq-Uo-kp8" secondAttribute="centerX" id="hbm-yB-NnB"/>
                                     <constraint firstItem="swC-f0-27A" firstAttribute="centerX" secondItem="yXq-Uo-kp8" secondAttribute="centerX" id="hbt-Pl-Rgv"/>
+                                    <constraint firstItem="xUr-eK-Mpl" firstAttribute="centerY" secondItem="yXq-Uo-kp8" secondAttribute="centerY" constant="-70" id="xrS-Jz-zDO"/>
                                 </constraints>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Find" id="17B-ka-quJ" userLabel="Find">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Find" id="17B-ka-quJ" userLabel="Hide">
+                                <rect key="frame" x="750" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NUXONBOARDING-2x1" translatesAutoresizingMaskIntoConstraints="NO" id="PIc-PD-zzM">
-                                            <rect key="frame" x="0.0" y="-10" width="375" height="677"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding-Back-2" translatesAutoresizingMaskIntoConstraints="NO" id="QkN-Bh-Gvb">
+                                            <rect key="frame" x="40" y="138.5" width="295" height="250"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="250" id="PtE-MG-lKz"/>
+                                            </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAGE-SLIDER-2" translatesAutoresizingMaskIntoConstraints="NO" id="8gb-z3-ddF">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHK-3M-zh3" userLabel="Hide Label">
+                                            <rect key="frame" x="136.5" y="413.5" width="102" height="29.5"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="24"/>
+                                            <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding-2" translatesAutoresizingMaskIntoConstraints="NO" id="8gb-z3-ddF">
                                             <rect key="frame" x="132.5" y="630" width="110" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="GXv-Yt-1od"/>
                                                 <constraint firstAttribute="width" constant="110" id="zK6-Ef-SM3"/>
                                             </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Find where the BANANO is hiding by using the hint provided by the Quest!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-yd-3bn">
-                                            <rect key="frame" x="26" y="507" width="323" height="152"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="You can also hide a monster. Just select a name, color and location, write a clue for other monster chasers to find it soon." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-yd-3bn">
+                                            <rect key="frame" x="26" y="470" width="323" height="152"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="152" id="6Id-MM-CC3"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="1" green="0.26544584310000002" blue="0.2971632991" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="PIc-PD-zzM" firstAttribute="leading" secondItem="17B-ka-quJ" secondAttribute="leading" id="2uR-NT-8aG"/>
+                                    <constraint firstItem="AHK-3M-zh3" firstAttribute="centerX" secondItem="17B-ka-quJ" secondAttribute="centerX" id="0eO-VL-rlg"/>
                                     <constraint firstItem="AfM-yd-3bn" firstAttribute="leading" secondItem="17B-ka-quJ" secondAttribute="leadingMargin" constant="10" id="7R9-ta-g6V"/>
-                                    <constraint firstAttribute="trailing" secondItem="PIc-PD-zzM" secondAttribute="trailing" id="9yy-Mo-3eF"/>
-                                    <constraint firstAttribute="bottom" secondItem="PIc-PD-zzM" secondAttribute="bottom" id="Taj-OA-1zh"/>
+                                    <constraint firstItem="AHK-3M-zh3" firstAttribute="top" secondItem="QkN-Bh-Gvb" secondAttribute="bottom" constant="25" id="Gsa-Aa-18R"/>
+                                    <constraint firstAttribute="trailing" secondItem="QkN-Bh-Gvb" secondAttribute="trailing" constant="40" id="KDZ-tA-QA1"/>
+                                    <constraint firstItem="QkN-Bh-Gvb" firstAttribute="centerY" secondItem="17B-ka-quJ" secondAttribute="centerY" constant="-70" id="SGr-qs-YbL"/>
                                     <constraint firstItem="8gb-z3-ddF" firstAttribute="centerX" secondItem="17B-ka-quJ" secondAttribute="centerX" id="a9V-QE-L8d"/>
                                     <constraint firstItem="AfM-yd-3bn" firstAttribute="centerX" secondItem="17B-ka-quJ" secondAttribute="centerX" id="cTL-Lx-pq7"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="AfM-yd-3bn" secondAttribute="bottom" constant="8" id="dNH-6q-shp"/>
+                                    <constraint firstItem="8gb-z3-ddF" firstAttribute="bottomMargin" secondItem="AfM-yd-3bn" secondAttribute="bottom" constant="22" id="dNH-6q-shp"/>
+                                    <constraint firstItem="QkN-Bh-Gvb" firstAttribute="centerX" secondItem="17B-ka-quJ" secondAttribute="centerX" id="f0H-eP-YuF"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="8gb-z3-ddF" secondAttribute="bottom" constant="15" id="juH-mc-Ye7"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="AfM-yd-3bn" secondAttribute="trailing" constant="10" id="mgP-nG-DbC"/>
-                                    <constraint firstItem="PIc-PD-zzM" firstAttribute="top" secondItem="17B-ka-quJ" secondAttribute="top" constant="-10" id="p77-M0-p1l"/>
+                                    <constraint firstItem="QkN-Bh-Gvb" firstAttribute="leading" secondItem="17B-ka-quJ" secondAttribute="leading" constant="40" id="vEM-se-HZk"/>
                                 </constraints>
                             </collectionViewCell>
                         </cells>
@@ -177,12 +210,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="CONTINUE-BUTTON" width="16" height="16"/>
-        <image name="NUXONBOARDING 1-x1" width="16" height="16"/>
-        <image name="NUXONBOARDING-2x1" width="16" height="16"/>
-        <image name="NUXONBOARDING-3x1" width="16" height="16"/>
-        <image name="PAGE-SLIDER-1" width="16" height="16"/>
-        <image name="PAGE-SLIDER-2" width="16" height="16"/>
-        <image name="PAGE-SLIDER-3" width="16" height="16"/>
+        <image name="Onboarding-1" width="516" height="108"/>
+        <image name="Onboarding-2" width="516" height="108"/>
+        <image name="Onboarding-3" width="516" height="108"/>
+        <image name="Onboarding-Back-1" width="1906" height="1328"/>
+        <image name="Onboarding-Back-2" width="1906" height="1328"/>
+        <image name="Onboarding-Back-3" width="1906" height="1328"/>
     </resources>
 </document>

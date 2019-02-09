@@ -66,12 +66,12 @@ class AnnotationView: ARAnnotationView {
             let myView = SCNView(frame: CGRect(x: 10, y: 45, width: 240, height: 240), options: nil)
             
             let materialA = SCNMaterial()
-            materialA.diffuse.contents = UIImage(named: "cascara.png")
+            materialA.diffuse.contents = UIImage(named: "monster-texture.png")
             
             let materialB = SCNMaterial()
-            materialB.normal.contents = UIImage(named: "cascaranormal.png")
+            materialB.normal.contents = UIImage(named: "monster-color.png")
             
-            myView.scene = SCNScene.init(named: "banano.scn")
+            myView.scene = SCNScene.init(named: "monster.scn")
             myView.scene?.rootNode.geometry?.materials = [materialA, materialB]
             
             myView.allowsCameraControl = true
