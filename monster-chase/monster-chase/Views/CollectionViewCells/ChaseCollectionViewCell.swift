@@ -22,6 +22,7 @@ class ChaseCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var monsterBackgroundView: UIImageView?
     @IBOutlet weak var monsterStampImage: UIImageView?
     @IBOutlet weak var hintTextView: UITextView?
+    @IBOutlet weak var monsterContainerViewHeightConstraint: NSLayoutConstraint!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -85,6 +86,10 @@ class ChaseCollectionViewCell: UICollectionViewCell {
         if let monsterBackgroundView = self.monsterBackgroundView {
             let monsterColor = UIColor(hexString: chase.hexColor)
             monsterBackgroundView.backgroundColor = monsterColor
+        }
+        
+        if UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone SE" {
+            monsterContainerViewHeightConstraint.constant = 140
         }
     }
     
