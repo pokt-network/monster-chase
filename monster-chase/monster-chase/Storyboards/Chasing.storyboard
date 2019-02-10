@@ -493,6 +493,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explorer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-Y0-Ddi">
+                                <rect key="frame" x="156" y="32.5" width="63.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGp-Ed-d4h" userLabel="Menu button">
                                 <rect key="frame" x="15" y="25" width="36" height="36"/>
                                 <constraints>
@@ -509,10 +515,12 @@
                         <constraints>
                             <constraint firstItem="Crs-sK-80A" firstAttribute="leading" secondItem="3pD-kK-jcf" secondAttribute="leading" constant="15" id="026-hS-3Nt"/>
                             <constraint firstItem="SJI-LI-IV8" firstAttribute="centerX" secondItem="Crs-sK-80A" secondAttribute="centerX" id="Hpl-Mt-aob"/>
+                            <constraint firstItem="RNe-Y0-Ddi" firstAttribute="centerY" secondItem="kGp-Ed-d4h" secondAttribute="centerY" id="RVt-ya-EXb"/>
                             <constraint firstItem="kGp-Ed-d4h" firstAttribute="top" secondItem="UBl-1t-pCi" secondAttribute="top" constant="5" id="T8L-jW-8Ug"/>
                             <constraint firstItem="Crs-sK-80A" firstAttribute="top" secondItem="UBl-1t-pCi" secondAttribute="top" constant="40" id="Wmw-l5-bXt"/>
                             <constraint firstAttribute="trailing" secondItem="Crs-sK-80A" secondAttribute="trailing" constant="15" id="XsT-qc-88r"/>
                             <constraint firstItem="UBl-1t-pCi" firstAttribute="bottom" secondItem="SJI-LI-IV8" secondAttribute="bottom" constant="30" id="aIZ-jM-ofg"/>
+                            <constraint firstItem="RNe-Y0-Ddi" firstAttribute="centerX" secondItem="UBl-1t-pCi" secondAttribute="centerX" id="mcl-hB-uj6"/>
                             <constraint firstItem="SJI-LI-IV8" firstAttribute="top" secondItem="Crs-sK-80A" secondAttribute="bottom" constant="10" id="ntn-3x-kNC"/>
                             <constraint firstItem="kGp-Ed-d4h" firstAttribute="leading" secondItem="UBl-1t-pCi" secondAttribute="leading" constant="15" id="yel-PA-Glf"/>
                         </constraints>
