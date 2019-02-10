@@ -485,6 +485,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
             }
         }
         self.monsterImageBackground.backgroundColor = selectedColor
+        
     }
     
     func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {

@@ -216,8 +216,8 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
     // MARK: MKMapView
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let circleRenderer = MKCircleRenderer(overlay: overlay)
-        circleRenderer.fillColor = UIColor.yellow.withAlphaComponent(0.70)
-        circleRenderer.strokeColor = UIColor.yellow
+        circleRenderer.fillColor = AppColors.base.uiColor().withAlphaComponent(0.70)
+        circleRenderer.strokeColor = AppColors.base.uiColor()
         circleRenderer.lineWidth = 1
         return circleRenderer
     }

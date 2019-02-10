@@ -202,14 +202,20 @@
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="E6S-zU-1CT" userLabel="Current Balance title label">
-                                                <rect key="frame" x="35" y="136" width="117.5" height="16"/>
-                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="13"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="E6S-zU-1CT" userLabel="Current Balance title label">
+                                                <rect key="frame" x="35" y="137" width="120" height="15"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="Neb-hu-KuV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 USD - 0 AION" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-zm-wzW" userLabel="Balance value label">
-                                                <rect key="frame" x="157.5" y="135.5" width="121" height="17.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 USD - 0 AION" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-zm-wzW" userLabel="Balance value label">
+                                                <rect key="frame" x="160" y="131" width="140" height="17.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="140" id="aw0-l2-Tga"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -223,7 +229,7 @@
                                             <constraint firstAttribute="height" constant="192" id="Nlo-eR-Ccd"/>
                                             <constraint firstItem="E6S-zU-1CT" firstAttribute="leading" secondItem="CEi-oQ-PkB" secondAttribute="leading" id="PlW-ej-n0B"/>
                                             <constraint firstAttribute="trailing" secondItem="rId-GN-v7r" secondAttribute="trailing" constant="30" id="PxF-Uc-zhs"/>
-                                            <constraint firstItem="tsJ-zm-wzW" firstAttribute="centerY" secondItem="E6S-zU-1CT" secondAttribute="centerY" id="ZC9-17-dA9"/>
+                                            <constraint firstItem="tsJ-zm-wzW" firstAttribute="centerY" secondItem="E6S-zU-1CT" secondAttribute="centerY" constant="-5" id="ZC9-17-dA9"/>
                                             <constraint firstItem="pMF-pR-DPD" firstAttribute="centerY" secondItem="CEi-oQ-PkB" secondAttribute="centerY" id="bHT-Aa-VVK"/>
                                             <constraint firstAttribute="bottom" secondItem="E6S-zU-1CT" secondAttribute="bottom" constant="40" id="edH-qS-y3s"/>
                                             <constraint firstItem="CEi-oQ-PkB" firstAttribute="top" secondItem="VkI-sy-eb7" secondAttribute="top" constant="5" id="enp-YA-176"/>
