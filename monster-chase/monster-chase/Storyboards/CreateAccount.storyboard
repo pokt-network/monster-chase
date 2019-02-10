@@ -113,9 +113,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember you can not change your password!, store it in a safe place or setup touch ID" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yG3-z6-nHo">
-                                <rect key="frame" x="54.5" y="201.5" width="266.5" height="54"/>
+                                <rect key="frame" x="30" y="201.5" width="315" height="54"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="270" id="gjy-UT-h6C"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="270" id="gjy-UT-h6C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -126,6 +126,7 @@
                         <constraints>
                             <constraint firstItem="5Yw-5f-rXf" firstAttribute="trailing" secondItem="8vB-oB-01u" secondAttribute="trailing" constant="30" id="2VH-pV-G9U"/>
                             <constraint firstItem="5Yw-5f-rXf" firstAttribute="trailing" secondItem="y6e-Kq-Y7B" secondAttribute="trailing" constant="10" id="2ab-05-gOZ"/>
+                            <constraint firstItem="5Yw-5f-rXf" firstAttribute="trailing" secondItem="yG3-z6-nHo" secondAttribute="trailing" constant="30" id="5xp-vT-jO9"/>
                             <constraint firstItem="8vB-oB-01u" firstAttribute="centerY" secondItem="DdQ-X7-Jpd" secondAttribute="centerY" id="87s-38-GOs"/>
                             <constraint firstItem="Las-Uv-jhT" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="8nh-cI-GVg"/>
                             <constraint firstItem="vzD-cs-gra" firstAttribute="leading" secondItem="DdQ-X7-Jpd" secondAttribute="leadingMargin" constant="30" id="BeP-2P-nyV"/>
@@ -135,6 +136,7 @@
                             <constraint firstItem="93I-Fe-9hX" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="leading" id="KB9-dl-3Re"/>
                             <constraint firstItem="hzc-VP-5mh" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="NMw-B1-p5l"/>
                             <constraint firstItem="8vB-oB-01u" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="trailing" constant="10" id="OOu-Mj-2jp"/>
+                            <constraint firstItem="yG3-z6-nHo" firstAttribute="leading" secondItem="5Yw-5f-rXf" secondAttribute="leading" constant="30" id="WV8-Zs-J2d"/>
                             <constraint firstItem="JOb-IJ-Kt6" firstAttribute="top" secondItem="5Yw-5f-rXf" secondAttribute="top" constant="70" id="YNf-mh-6EB"/>
                             <constraint firstItem="y6e-Kq-Y7B" firstAttribute="top" secondItem="5Yw-5f-rXf" secondAttribute="top" id="abT-HD-5Dd"/>
                             <constraint firstItem="JOb-IJ-Kt6" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="cZ0-WM-fwx"/>

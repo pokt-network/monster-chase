@@ -260,11 +260,11 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                 return
             }
             self.currentPlayerLocation = location
-            do {
-                try self.refreshView()
-            }catch let error as NSError {
-                print("Failed to refreshView with error: \(error)")
-            }
+//            do {
+//                try self.refreshView()
+//            }catch let error as NSError {
+//                print("Failed to refreshView with error: \(error)")
+//            }
         } else {
             let alertView = self.monsterAlertView(title: "Error", message: "Failed to get current location.")
             self.present(alertView, animated: false, completion: nil)

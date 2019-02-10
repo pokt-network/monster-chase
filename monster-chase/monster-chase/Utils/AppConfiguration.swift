@@ -11,8 +11,8 @@ import Foundation
 public struct AppConfiguration {
     
     // TODO: Update tavern and token address
-    public static let tavernAddress = "0xa05B88aC239F20ba0A4d2f0eDAc8C44293e9b36Fa937fB55BF7A1cD61a60f036"
-    public static let monsterTokenAddress = "0xa0E6dda34358cD8e987069893bBeA87F14E569a12C424986Fe77f327b31c7682"
+    public static let tavernAddress = "0xa0b638D34b31AF19521b5a9A8235d888E492C827970eaD71DE0712520b32dA03"
+    public static let monsterTokenAddress = "0xA012D37f406Fa8E87F4e2fDf4610dA2473f4f7d14FD4b95952355759F075F027"
     public static let chainID = 4
     public static let subnetwork = "32"
     private static let displayedOnboardingKey = "displayedOnboarding"

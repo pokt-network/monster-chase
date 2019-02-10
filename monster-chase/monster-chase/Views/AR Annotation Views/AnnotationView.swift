@@ -72,15 +72,15 @@ class AnnotationView: ARAnnotationView {
             materialB.normal.contents = UIImage(named: "monster-color.png")
             
             myView.scene = SCNScene.init(named: "monster.scn")
-            myView.scene?.rootNode.geometry?.materials = [materialA, materialB]
+            myView.scene?.rootNode.geometry?.materials = [materialA]
             
             myView.allowsCameraControl = true
             myView.autoenablesDefaultLighting = true
             myView.backgroundColor = UIColor.clear
-            
+            myView.isUserInteractionEnabled = true
+
             self.addSubview(myView)
             sceneView = myView
-            
         }
     }
     

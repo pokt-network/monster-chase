@@ -14,15 +14,14 @@ class AddBalanceViewController: UIViewController, WKUIDelegate {
     // Outlets
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var qrCodeImage: UIImageView!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var qrCodeBackgroundView: UIView!
+    @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var faucetButton: UIButton!
     
     // Variables
     var player: Player?
     var qrImage: UIImage?
-    let exchange1URL = URL(string: "https://www.coinbase.com/")
-    let exchange2URL = URL(string: "https://changelly.com")
     let faucetURL = URL(string: "https://gitter.im/aionnetwork/mastery_faucet")
     
     // MARK: View
@@ -42,6 +41,13 @@ class AddBalanceViewController: UIViewController, WKUIDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Styling
+        qrCodeBackgroundView.layer.borderWidth = 2
+        qrCodeBackgroundView.layer.borderColor = AppColors.base.cgColor()
+        qrCodeBackgroundView.layer.cornerRadius = qrCodeBackgroundView.frame.height / 2
+        
+        faucetButton.layer.cornerRadius = faucetButton.frame.height / 2
+        
         do {
             try refreshView()
         } catch let error as NSError {
@@ -52,7 +58,7 @@ class AddBalanceViewController: UIViewController, WKUIDelegate {
     override func refreshView() throws {
         faucetButton.layer.cornerRadius = 5
         
-        addressLabel.text = player?.address ?? "0x0000000000000000"
+        addressTextField.text = player?.address ?? "0x0000000000000000"
         qrCodeImage.image = qrImage ?? #imageLiteral(resourceName: "CIRCLE STAMP x1")
     }
     
@@ -72,7 +78,7 @@ class AddBalanceViewController: UIViewController, WKUIDelegate {
             let alertView = self.monsterAlertView(title: "Error:", message: "Address field is empty, please try again later")
             self.present(alertView, animated: false, completion: nil)
         }
-        guard let isAddressEmpty = addressLabel.text?.isEmpty else {
+        guard let isAddressEmpty = addressTextField.text?.isEmpty else {
             showError()
             return
         }
@@ -82,7 +88,7 @@ class AddBalanceViewController: UIViewController, WKUIDelegate {
         } else {
             let alertView = monsterAlertView(title: "Success:", message: "Your Address has been copied to the clipboard.")
             present(alertView, animated: false, completion: nil)
-            UIPasteboard.general.string = addressLabel.text
+            UIPasteboard.general.string = addressTextField.text
         }
     }
     
@@ -95,14 +101,7 @@ class AddBalanceViewController: UIViewController, WKUIDelegate {
         webView.load(request)
     }
     
-    @IBAction func exchange1ButtonPressed(_ sender: Any) {
-        showWebFor(exchange: exchange1URL!)
-    }
-    
-    @IBAction func exchange2ButtonPressed(_ sender: Any) {
-        showWebFor(exchange: exchange2URL!)
-    }
-    @IBAction func rinkebyButtonPressed(_ sender: Any) {
+    @IBAction func faucetbyButtonPressed(_ sender: Any) {
         showWebFor(exchange: faucetURL!)
     }
     

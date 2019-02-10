@@ -33,17 +33,25 @@ class MenuViewController: UIViewController, UIGestureRecognizerDelegate {
         let howToPlayGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.howToPlayButtonTapped(_:)))
         let leaderboardGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.leaderboardButtonTapped(_:)))
         
+        // Set gesture delegates
         exploreGestureRecognizer.delegate = self
         createChasingGestureRecognizer.delegate = self
         profileGestureRecognizer.delegate = self
         howToPlayGestureRecognizer.delegate = self
         leaderboardGestureRecognizer.delegate = self
         
+        // Add gestures to elements
         exploreLabel.addGestureRecognizer(exploreGestureRecognizer)
         createChasingLabel.addGestureRecognizer(createChasingGestureRecognizer)
         profileLabel.addGestureRecognizer(profileGestureRecognizer)
         howToPlayLabel.addGestureRecognizer(howToPlayGestureRecognizer)
         leaderboardLabel.addGestureRecognizer(leaderboardGestureRecognizer)
+        
+        // Gesture for tapping outside view
+        let outsideGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.outsideTapped(_:)))
+        
+        outsideGestureRecognizer.delegate = self
+        self.view.addGestureRecognizer(outsideGestureRecognizer)
         
         do {
             try refreshView()
@@ -55,6 +63,12 @@ class MenuViewController: UIViewController, UIGestureRecognizerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func outsideTapped(_ sender: Any) {
+        if let container = self.so_containerViewController {
+            container.isSideViewControllerPresented = false
+        }
     }
     
     @IBAction func leaderboardButtonTapped(_ sender: Any) {
