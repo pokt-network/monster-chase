@@ -256,14 +256,14 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="chaseCollectionViewIdentifier" id="Fc0-zz-VYo" customClass="ChaseCollectionViewCell" customModule="monster_chase" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" reuseIdentifier="chaseCollectionViewIdentifier" id="Fc0-zz-VYo" customClass="ChaseCollectionViewCell" customModule="monster_chase" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="10" width="336" height="487"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="336" height="487"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3al-rU-T71" userLabel="Monster Container View">
+                                                        <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3al-rU-T71" userLabel="Monster Container View">
                                                             <rect key="frame" x="0.0" y="0.0" width="336" height="180"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xFB-K2-LSb" userLabel="Monster color image">
@@ -299,19 +299,22 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Monster Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpf-iL-MVS" userLabel="Monster name label">
-                                                                            <rect key="frame" x="0.0" y="10" width="320" height="3.5"/>
+                                                                            <rect key="frame" x="0.0" y="10" width="320" height="23"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="23" id="Je2-Wn-HsH"/>
+                                                                            </constraints>
                                                                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                                                             <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Monster Clue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yq-kF-SMx" userLabel="Monster clue title label">
-                                                                            <rect key="frame" x="0.0" y="54.5" width="320" height="17.5"/>
+                                                                            <rect key="frame" x="0.0" y="59" width="320" height="17"/>
                                                                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="14"/>
                                                                             <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAQ-z9-L5V" userLabel="Blue line separator">
-                                                                            <rect key="frame" x="40" y="43.5" width="240" height="1"/>
+                                                                            <rect key="frame" x="40" y="48" width="240" height="1"/>
                                                                             <color key="backgroundColor" red="0.054901960780000002" green="0.6588235294" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="1" id="vCk-Lu-Q63"/>
@@ -321,10 +324,10 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2zr-w2-QMe" userLabel="Clue textView">
-                                                                            <rect key="frame" x="0.0" y="82" width="320" height="80"/>
+                                                                            <rect key="frame" x="0.0" y="86" width="320" height="76"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="6cj-fH-vJt"/>
+                                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="6cj-fH-vJt"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -354,7 +357,7 @@
                                                                         <constraint firstItem="N2F-PB-r6a" firstAttribute="top" secondItem="2zr-w2-QMe" secondAttribute="bottom" id="je8-jH-IMB"/>
                                                                         <constraint firstItem="N2F-PB-r6a" firstAttribute="leading" secondItem="qAQ-z9-L5V" secondAttribute="leading" id="lby-Md-bLb"/>
                                                                         <constraint firstAttribute="trailing" secondItem="qAQ-z9-L5V" secondAttribute="trailing" constant="40" id="m8E-fK-Nk3"/>
-                                                                        <constraint firstItem="qAQ-z9-L5V" firstAttribute="top" secondItem="Dpf-iL-MVS" secondAttribute="bottom" constant="30" id="vMd-jD-okt"/>
+                                                                        <constraint firstItem="qAQ-z9-L5V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dpf-iL-MVS" secondAttribute="bottom" constant="15" id="vMd-jD-okt"/>
                                                                         <constraint firstAttribute="trailing" secondItem="9yq-kF-SMx" secondAttribute="trailing" id="vq7-E5-ONa"/>
                                                                         <constraint firstAttribute="trailing" secondItem="2zr-w2-QMe" secondAttribute="trailing" id="wVR-vH-dxX"/>
                                                                         <constraint firstItem="2zr-w2-QMe" firstAttribute="top" secondItem="9yq-kF-SMx" secondAttribute="bottom" constant="10" id="wY2-BD-aPT"/>
@@ -449,6 +452,7 @@
                                                     <outlet property="chaseDistanceLabel" destination="upy-5Z-MzF" id="xcT-O6-UiJ"/>
                                                     <outlet property="hintTextView" destination="2zr-w2-QMe" id="YLE-cL-T1b"/>
                                                     <outlet property="monsterBackgroundView" destination="xFB-K2-LSb" id="P9b-aT-0ae"/>
+                                                    <outlet property="monsterContainerViewHeightConstraint" destination="O6z-pK-Vl5" id="WxC-NH-6hJ"/>
                                                     <outlet property="monsterCountLabel" destination="U9J-t4-EkG" id="hSW-bU-yBU"/>
                                                     <outlet property="monsterNameLabel" destination="Dpf-iL-MVS" id="Dia-S2-iaA"/>
                                                     <outlet property="monsterStampImage" destination="8Fy-bE-BfQ" id="VGm-Q6-Yrx"/>
@@ -515,17 +519,18 @@
                         <viewLayoutGuide key="safeArea" id="UBl-1t-pCi"/>
                     </view>
                     <connections>
-                        <outlet property="backgroundView" destination="Crs-sK-80A" id="vNf-UU-Lfd"/>
+                        <outlet property="backgroundView" destination="Crs-sK-80A" id="A23-WY-jY9"/>
                         <outlet property="collectionView" destination="TgT-jH-xCi" id="gI1-RW-Fcn"/>
                         <outlet property="completeButton" destination="SJI-LI-IV8" id="zOb-EM-wNZ"/>
                         <outlet property="errorMessageLabel" destination="oEa-UU-G4w" id="vVH-Ad-48f"/>
                         <outlet property="nextButton" destination="OTE-sA-RKy" id="btf-gw-NHO"/>
                         <outlet property="previousButton" destination="oI3-dl-9lh" id="bvH-QJ-dhC"/>
+                        <outlet property="topOrangeViewHeightConstraint" destination="Vgu-Gh-7gt" id="RhV-7g-tvg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z82-mq-ZH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-18" y="188"/>
+            <point key="canvasLocation" x="-18.399999999999999" y="187.55622188905548"/>
         </scene>
     </scenes>
     <resources>

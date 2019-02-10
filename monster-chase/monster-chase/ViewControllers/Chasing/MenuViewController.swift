@@ -101,6 +101,7 @@ class MenuViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         do {
             let vc = try self.instantiateViewController(identifier: "chasingViewControllerID", storyboardName: "Chasing") as? ChasingViewController
+            
             self.so_containerViewController?.topViewController = vc
         } catch let error as NSError {
             print("Failed to instantiate ChasingViewController with error: \(error)")

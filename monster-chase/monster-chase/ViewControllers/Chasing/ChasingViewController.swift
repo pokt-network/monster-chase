@@ -21,6 +21,7 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     @IBOutlet weak var nearestButton: UIButton!
     @IBOutlet weak var newestButton: UIButton!
     @IBOutlet weak var backgroundView: BackgroundView!
+    @IBOutlet weak var topOrangeViewHeightConstraint: NSLayoutConstraint!
     
     // Variables
     var chases: [Chase] = [Chase]()
@@ -54,6 +55,7 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
         
         // Location Manager
         setupLocationManager()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +83,6 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -90,6 +91,7 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     override func refreshView() throws {
         // Every UI refresh should be done here
+        
         if self.chases.isEmpty {
             loadQuestList()
         }
@@ -105,6 +107,13 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
             if self.chases.count > 0 {
                 let indexPath = IndexPath.init(item: 0, section: 0)
                 self.collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: true)
+            }
+            
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            
+            //
+            if UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone SE" {
+                self.topOrangeViewHeightConstraint.constant = 180
             }
         }
     }
