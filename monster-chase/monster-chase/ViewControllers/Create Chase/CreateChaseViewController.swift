@@ -82,6 +82,8 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         monsterNameTextField.layer.borderColor = UIColor.gray.cgColor
         monsterNameTextField.layer.cornerRadius = 10
         
+        //
+        hintTextView.textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12)
         // Refresh player info
         refreshPlayerInfo()
         

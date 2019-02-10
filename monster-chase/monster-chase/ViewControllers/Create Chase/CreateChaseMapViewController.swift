@@ -82,13 +82,20 @@ class CreateChaseMapViewController: UIViewController, CLLocationManagerDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Styling
+        
+        // TableView
         tableView.backgroundColor = UIColor.clear
+        // SearchBar
         searchBar.backgroundColor = UIColor.white
         searchBar.searchBarStyle = UISearchBar.Style.minimal
         searchBar.isTranslucent = true
         searchBar.showsCancelButton = true
         searchBar.barTintColor = UIColor.clear
         searchBar.tintColor = UIColor.clear
+        searchBar.layer.borderWidth = 2
+        searchBar.layer.borderColor = AppColors.base.cgColor()
+        searchBar.layer.cornerRadius = 10
         
         // TextField Color Customization
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
@@ -241,9 +248,9 @@ class CreateChaseMapViewController: UIViewController, CLLocationManagerDelegate,
         }
         
         let annotationView = MKAnnotationView.init(frame: CGRect(x: 0, y: 0, width: 40, height: 55))
-        let imageView = UIImageView(frame: CGRect(x: 1, y: -14, width: 40, height: 40))
+        let imageView = UIImageView(frame: CGRect(x: 5, y: -16, width: 30, height: 45))
         
-        imageView.image = UIImage(named: "Locatex1")
+        imageView.image = UIImage(named: "Monster-Pin-x1")
         annotationView.addSubview(imageView)
         annotationView.annotation = annotation
         annotationView.canShowCallout = false
