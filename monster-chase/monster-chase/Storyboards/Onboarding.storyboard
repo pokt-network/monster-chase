@@ -32,7 +32,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Onboarding-Back-3" translatesAutoresizingMaskIntoConstraints="NO" id="Q9R-7e-UKl">
-                                            <rect key="frame" x="-765.5" y="138.5" width="1906" height="250"/>
+                                            <rect key="frame" x="48" y="138.5" width="279" height="250"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="250" id="puG-nG-8Wj"/>
                                             </constraints>
@@ -79,8 +79,10 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="Hsn-7H-pHE" secondAttribute="trailing" constant="12" id="9Li-Ud-yDe"/>
                                     <constraint firstItem="c3t-d9-Ph4" firstAttribute="centerX" secondItem="C3Q-gB-pGu" secondAttribute="centerX" id="DrW-b3-Yu7"/>
                                     <constraint firstItem="tGA-NU-jkl" firstAttribute="centerX" secondItem="C3Q-gB-pGu" secondAttribute="centerX" id="L3Q-zF-w7j"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Q9R-7e-UKl" secondAttribute="trailing" constant="40" id="W90-rO-xqc"/>
                                     <constraint firstItem="Hsn-7H-pHE" firstAttribute="leading" secondItem="C3Q-gB-pGu" secondAttribute="leadingMargin" constant="12" id="WeF-c0-s35"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="tGA-NU-jkl" secondAttribute="bottom" constant="15" id="ar6-2T-uDO"/>
+                                    <constraint firstItem="Q9R-7e-UKl" firstAttribute="leading" secondItem="C3Q-gB-pGu" secondAttribute="leadingMargin" constant="40" id="dct-yk-dfP"/>
                                     <constraint firstItem="tGA-NU-jkl" firstAttribute="top" secondItem="c3t-d9-Ph4" secondAttribute="bottom" constant="20" id="gXf-Cb-L2D"/>
                                     <constraint firstItem="Q9R-7e-UKl" firstAttribute="centerX" secondItem="C3Q-gB-pGu" secondAttribute="centerX" id="l72-1U-7Uc"/>
                                     <constraint firstItem="Q9R-7e-UKl" firstAttribute="centerY" secondItem="C3Q-gB-pGu" secondAttribute="centerY" constant="-70" id="rDh-zL-sp2"/>

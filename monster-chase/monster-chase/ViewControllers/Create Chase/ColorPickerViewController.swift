@@ -24,6 +24,12 @@ class ColorPickerViewController: CustomColorPickerViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        monsterBackgroundColor.backgroundColor = colorPicker.selectedColor
+    }
+    
     // MARK: View
     override func viewDidLoad() {
         super.viewDidLoad()
