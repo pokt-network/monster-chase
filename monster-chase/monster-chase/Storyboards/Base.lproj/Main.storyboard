@@ -34,10 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90Q-mG-AqV" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monster-chase-logo" translatesAutoresizingMaskIntoConstraints="NO" id="zyU-oE-xj0" userLabel="Monster Chase Logo">
                                 <rect key="frame" x="37.5" y="258.5" width="300" height="150"/>
                                 <constraints>
@@ -45,6 +41,10 @@
                                     <constraint firstAttribute="height" constant="150" id="P9n-Cd-Anl"/>
                                 </constraints>
                             </imageView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90Q-mG-AqV" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Made-with-love" translatesAutoresizingMaskIntoConstraints="NO" id="OVm-It-CgW" userLabel="Footer image">
                                 <rect key="frame" x="67.5" y="587" width="240" height="80"/>
                                 <constraints>

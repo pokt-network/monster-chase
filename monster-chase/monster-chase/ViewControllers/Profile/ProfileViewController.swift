@@ -15,7 +15,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var qrCodeCircle: UIView!
     @IBOutlet weak var walletAddressTextField: UITextField!
-
     @IBOutlet weak var balanceValueLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var qrCodeImage: UIImageView!
@@ -82,15 +81,18 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBAction func addBalanceButtonPressed(_ sender: Any) {
         do {
-            let vc = try instantiateViewController(identifier: "addBalanceViewControllerID", storyboardName: "Profile") as? AddBalanceViewController
-            if currentPlayer != nil {
-                vc?.player = currentPlayer
-            }
-            if qrCodeImage.image != nil {
-                vc?.qrImage = qrCodeImage.image
+            guard let vc = try instantiateViewController(identifier: "addBalanceViewControllerID", storyboardName: "Profile") as? AddBalanceViewController else {
+                return
             }
             
-            present(vc!, animated: false, completion: nil)
+            if currentPlayer != nil {
+                vc.player = currentPlayer
+            }
+            if qrCodeImage.image != nil {
+                vc.qrImage = qrCodeImage.image
+            }
+            
+            self.present(vc, animated: false, completion: nil)
             
         } catch let error as NSError {
             print("Failed to instantiate Add Balance VC with error :\(error)")
