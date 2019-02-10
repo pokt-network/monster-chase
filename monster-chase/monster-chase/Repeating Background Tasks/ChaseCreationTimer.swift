@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class QuestNotificationTimer: RepeatingTimer {
+public class ChaseNotificationTimer: RepeatingTimer {
     
     private var title: String
     private var successMsg: String
