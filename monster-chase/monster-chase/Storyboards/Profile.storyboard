@@ -333,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCB-AK-xwQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="132.68365817091455"/>
+            <point key="canvasLocation" x="-274" y="315"/>
         </scene>
         <!--Add Balance View Controller-->
         <scene sceneID="axI-es-06R">
@@ -518,7 +518,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehp-H0-63l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="132.68365817091455"/>
+            <point key="canvasLocation" x="838" y="-180"/>
         </scene>
     </scenes>
     <resources>
