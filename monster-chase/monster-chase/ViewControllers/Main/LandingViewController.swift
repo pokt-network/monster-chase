@@ -8,8 +8,21 @@
 
 import UIKit
 
-class LandingViewController: UIViewController {
-    @IBOutlet weak var playNowBtn: DefaultMonsterButton!
+class LandingViewController: UIViewController, UIGestureRecognizerDelegate {
+    @IBOutlet weak var footerImage: UIImageView!
+    let websiteUrl = URL.init(string: "https://www.pokt.network/")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(self.openPocketWebsite(_:)))
+        
+        gestureRecognizer.delegate = self
+        
+        // Add gesture to element
+        footerImage.addGestureRecognizer(gestureRecognizer)
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -22,6 +35,16 @@ class LandingViewController: UIViewController {
     
     override func refreshView() throws {
         print("LandingViewController - refreshView()")
+    }
+    
+    @objc func openPocketWebsite(_ sender: Any) {
+        UIApplication.shared.open(websiteUrl!, options: [:]) { (bool) in
+            if bool {
+                print("Website launched.")
+            }else{
+                print("Failed to launch website.")
+            }
+        }
     }
     
     func launchChasing() {
