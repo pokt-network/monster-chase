@@ -108,6 +108,7 @@
                                         </state>
                                         <connections>
                                             <action selector="leaderBoardButtonTapped:" destination="WOK-qg-djE" eventType="touchUpInside" id="Nu3-WE-z6L"/>
+                                            <action selector="leaderboardButtonTapped:" destination="WOK-qg-djE" eventType="touchUpInside" id="Vfn-q5-Q20"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ki0-mC-bq6" userLabel="LEADERBOARD LABEL">
