@@ -17,11 +17,11 @@ public class AppInitQueueDispatcher: QueueDispatcherProtocol {
     private let aionUsdPriceOperation: DownloadAionUsdPriceOperation
     private var completionHandler: QueueDispatcherCompletionHandler?
     
-    public init(playerAddress: String, tavernAddress: String, monsterTokenAddress: String) {
+    public init(playerAddress: String, monsterTokenAddress: String) {
         // Init operations
         self.downloadBalanceOperation = DownloadBalanceOperation.init(address: playerAddress)
         self.transactionCountOperation = DownloadTransactionCountOperation.init(address: playerAddress)
-        self.chaseAmountOperation = DownloadChaseAmountOperation.init(tavernAddress: tavernAddress, tokenAddress: monsterTokenAddress)
+        self.chaseAmountOperation = DownloadChaseAmountOperation.init()
         self.aionUsdPriceOperation = DownloadAionUsdPriceOperation.init()
         self.setOperationsCompletionBlocks()
     }
@@ -52,7 +52,7 @@ public class AppInitQueueDispatcher: QueueDispatcherProtocol {
             }
             
             // Update the player record
-            self.operationQueue.addOperations([UpdatePlayerOperation.init(balanceWei: self.downloadBalanceOperation.balance, transactionCount: self.transactionCountOperation.transactionCount, questAmount: self.chaseAmountOperation.chaseAmount, ethUsdPrice: self.aionUsdPriceOperation.usdPrice)], waitUntilFinished: false)
+            self.operationQueue.addOperations([UpdatePlayerOperation.init(balanceAmp: self.downloadBalanceOperation.balance, transactionCount: self.transactionCountOperation.transactionCount, questAmount: self.chaseAmountOperation.chaseAmount, aionUsdPrice: self.aionUsdPriceOperation.usdPrice)], waitUntilFinished: false)
         }
     }
     

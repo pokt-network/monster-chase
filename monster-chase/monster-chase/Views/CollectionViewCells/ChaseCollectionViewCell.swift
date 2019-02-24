@@ -95,7 +95,7 @@ class ChaseCollectionViewCell: UICollectionViewCell {
     
     func configureEmptyCellFor(index: Int) {
         if let monsterChaseImage = self.monsterStampImage {
-            monsterChaseImage.image = #imageLiteral(resourceName: "NO-BANANO")
+            //monsterChaseImage.image = #imageLiteral(resourceName: "NO-BANANO")
         }
         
         if index > 0 {

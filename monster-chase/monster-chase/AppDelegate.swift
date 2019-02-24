@@ -16,7 +16,9 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNotificationCenterDelegate {
     var nodeURL: URL {
         get {
-            return URL.init(string: "https://aion.pokt.network")!
+            //return URL.init(string: "https://aion.pokt.network")!
+            //return URL.init(string: "http://localhost:3000")!
+            return URL.init(string: "http://192.168.0.155:3000")!
         }
     }
 
@@ -128,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
             let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
             if let playerAddress = player.address {
                 print("Player Address: \(playerAddress)")
-                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
                 appInitQueueDispatcher.initDispatchSequence {
                     completionHandler(playerAddress)
                 }
@@ -139,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
     }
     
     func updateChaseList(playerAddress: String, completionHandler: @escaping () -> Void) {
-        let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
+        let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
         chaseListQueueDispatcher.initDispatchSequence(completionHandler: completionHandler)
     }
     
@@ -167,9 +169,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
     func setupRepeatingTasks() {
         let notificationTitle = "MONSTER CHASE"
         
-        let questCreationTimer = ChaseNotificationTimer.init(timeInterval: 60, title: notificationTitle, successMsg: "Your Quest has been created successfully", errorMsg: "An error ocurred creating your Quest, please try again", successIdentifier: "QuestCreationSuccess", errorIdentifier: "QuestCreationError", txType: TransactionType.creation)
+        let questCreationTimer = ChaseNotificationTimer.init(timeInterval: 10, title: notificationTitle, successMsg: "Your Chase has been created successfully", errorMsg: "An error ocurred creating your Chase, please try again", successIdentifier: "ChaseCreationSuccess", errorIdentifier: "ChaseCreationError", txType: TransactionType.creation)
         questCreationTimer.resume()
-        let questClaimTimer = ChaseNotificationTimer.init(timeInterval: 60, title: notificationTitle, successMsg: "Your BANANO has been claimed succesfully", errorMsg: "An error ocurred claiming your BANANO, please try again", successIdentifier: "QuestClaimSuccess", errorIdentifier: "QuestClaimError", txType: TransactionType.claim)
+        let questClaimTimer = ChaseNotificationTimer.init(timeInterval: 10, title: notificationTitle, successMsg: "Your Monster has been claimed succesfully", errorMsg: "An error ocurred claiming your Monster, please try again", successIdentifier: "ChaseClaimSuccess", errorIdentifier: "ChaseClaimError", txType: TransactionType.claim)
         questClaimTimer.resume()
     }
 

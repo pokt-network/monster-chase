@@ -12,16 +12,16 @@ import BigInt
 
 public class UpdatePlayerOperation: SynchronousOperation {
     
-    private var balanceWei: BigInt?
+    private var balanceAmp: BigInt?
     private var transactionCount: BigInt?
     private var questAmount: BigInt?
-    private var ethUsdPrice: Double?
+    private var aionUsdPrice: Double?
     
-    public init(balanceWei: BigInt?, transactionCount: BigInt?, questAmount: BigInt?, ethUsdPrice: Double?) {
-        self.balanceWei = balanceWei
+    public init(balanceAmp: BigInt?, transactionCount: BigInt?, questAmount: BigInt?, aionUsdPrice: Double?) {
+        self.balanceAmp = balanceAmp
         self.transactionCount = transactionCount
         self.questAmount = questAmount
-        self.ethUsdPrice = ethUsdPrice
+        self.aionUsdPrice = aionUsdPrice
         super.init()
     }
     
@@ -30,8 +30,8 @@ public class UpdatePlayerOperation: SynchronousOperation {
         context.performAndWait {
             do {
                 let player = try Player.getPlayer(context: context)
-                if let balanceWei = self.balanceWei {
-                    player.balanceWei = String.init(balanceWei)
+                if let balanceWei = self.balanceAmp {
+                    player.balanceAmp = String.init(balanceWei)
                 }
                 
                 if let transactionCount = self.transactionCount {
@@ -42,8 +42,8 @@ public class UpdatePlayerOperation: SynchronousOperation {
                     player.tavernMonsterAmount = String.init(questAmount)
                 }
                 
-                if let ethUsdPrice = self.ethUsdPrice {
-                    player.aionUsdPrice = ethUsdPrice
+                if let aionUsdPrice = self.aionUsdPrice {
+                    player.aionUsdPrice = aionUsdPrice
                 }
                 
                 // Save updated player

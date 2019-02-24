@@ -52,7 +52,7 @@ public struct AionUtils {
             guard let playerAddress = playerInstance.address else {
                 return result
             }
-            AppInitQueueDispatcher.init(playerAddress: playerAddress, tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.tavernAddress).initDispatchSequence(completionHandler: nil)
+            AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress).initDispatchSequence(completionHandler: nil)
         }
         
         return result

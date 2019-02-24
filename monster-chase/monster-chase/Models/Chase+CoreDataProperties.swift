@@ -18,8 +18,6 @@ extension Chase {
         return NSFetchRequest<Chase>(entityName: "Chase")
     }
 
-    @NSManaged public var claimer: Bool
-    @NSManaged public var claimersAmount: String?
     @NSManaged public var creator: String?
     @NSManaged public var distance: Double
     @NSManaged public var hexColor: String
@@ -38,7 +36,6 @@ extension Chase {
     @NSManaged public var merkleRoot: String?
     @NSManaged public var metadata: String?
     @NSManaged public var name: String
-    @NSManaged public var prize: String?
     @NSManaged public var valid: Bool
     @NSManaged public var winner: Bool
     @NSManaged public var winnersAmount: String?
