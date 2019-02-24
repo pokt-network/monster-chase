@@ -15,13 +15,14 @@ import SwiftyJSON
 
 public enum UploadChaseOperationError: Error {
     case invalidTxHash
+    case monsterTokenInitError
+    case invalidHeaderReceipt
 }
 
 public class UploadChaseOperation: AsynchronousOperation {
     
     public var txHash: String?
-    public var tavernAddress: String
-    public var tokenAddress: String
+    public var playerAddress: String
     public var chaseName: String
     public var hint: String
     public var maxWinners: BigInt
@@ -30,11 +31,10 @@ public class UploadChaseOperation: AsynchronousOperation {
     public var metadata: String
     public var wallet: Wallet
     public var transactionCount: BigInt
-    public var aionPrizeWei: BigInt
+    public var nrg: BigInt
     
-    public init(wallet: Wallet, tavernAddress: String, tokenAddress: String, chaseName: String, hint: String, maxWinners: BigInt, merkleRoot: String, merkleBody: String, metadata: String, transactionCount: BigInt, ethPrizeWei: BigInt) {
-        self.tavernAddress = tavernAddress
-        self.tokenAddress = tokenAddress
+    public init(wallet: Wallet, playerAddress: String, chaseName: String, hint: String, maxWinners: BigInt, merkleRoot: String, merkleBody: String, metadata: String, transactionCount: BigInt, nrg: BigInt) {
+        self.playerAddress = playerAddress
         self.chaseName = chaseName
         self.hint = hint
         self.maxWinners = maxWinners
@@ -43,47 +43,33 @@ public class UploadChaseOperation: AsynchronousOperation {
         self.metadata = metadata
         self.wallet = wallet
         self.transactionCount = transactionCount
-        self.aionPrizeWei = ethPrizeWei
+        self.nrg = nrg
         super.init()
     }
     
     open override func main() {
         
-        let functionABI = "{\"constant\":false,\"inputs\":[{\"name\":\"_tokenAddress\",\"type\":\"address\"},{\"name\":\"_name\",\"type\":\"string\"},{\"name\":\"_hint\",\"type\":\"string\"},{\"name\":\"_maxWinners\",\"type\":\"uint256\"},{\"name\":\"_merkleRoot\",\"type\":\"bytes32\"},{\"name\":\"_merkleBody\",\"type\":\"string\"},{\"name\":\"_metadata\",\"type\":\"string\"}],\"name\":\"createQuest\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}"
+        guard let monsterToken = try? MonsterToken.init() else {
+            self.error = UploadChaseOperationError.monsterTokenInitError
+            self.finish()
+            return
+        }
         
-        var functionParameters = [AnyObject]()
-        functionParameters.append(tokenAddress as AnyObject)
-        functionParameters.append(chaseName.description as AnyObject)
-        functionParameters.append(hint.description as AnyObject)
-        functionParameters.append(maxWinners as AnyObject)
-        functionParameters.append(merkleRoot as AnyObject)
-        functionParameters.append(merkleBody as AnyObject)
-        functionParameters.append(metadata as AnyObject)
-        
-        let data = "['data': [abi:\(functionABI), params: \(functionParameters)]]"
-        
-        do {
-            try PocketAion.eth.sendTransaction(wallet: wallet, nonce: transactionCount, to: tavernAddress, data: data, value: aionPrizeWei, nrgPrice: BigInt.init(1000000000), nrg: BigInt.init(2000000)) { (result, error) in
-                
-                if error != nil {
-                    self.error = error
-                    self.finish()
-                    return
-                }
-                
-                guard let txHash = result?.first else {
-                    self.error = UploadChaseOperationError.invalidTxHash
-                    self.finish()
-                    return
-                }
-                
-                self.txHash = txHash
+        monsterToken.submitChase(wallet: self.wallet, transactionCount: self.transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, name: self.chaseName, hint: self.hint, maxWinners: self.maxWinners, metadata: self.metadata, merkleRoot: self.merkleRoot, merkleBody: self.merkleBody) { (txHashArray, error) in
+            if let error = error {
+                self.error = error
                 self.finish()
+                return
             }
-        } catch {
-            self.error = PocketPluginError.Aion.executionError("Failed to send transaction with the provided values.")
+            
+            guard let txHash = txHashArray?.first else {
+                self.error = UploadChaseOperationError.invalidTxHash
+                self.finish()
+                return
+            }
+            
+            self.txHash = txHash
             self.finish()
         }
-
     }
 }

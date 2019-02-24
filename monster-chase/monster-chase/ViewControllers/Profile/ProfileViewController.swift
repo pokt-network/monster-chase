@@ -64,7 +64,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Labels setup
         walletAddressTextField.text = currentPlayer?.address
         qrCodeImage.image = ProfileViewController.generateQRCode(from: currentPlayer?.address ?? "")
-        if let weiBalanceStr = currentPlayer?.balanceWei {
+        if let weiBalanceStr = currentPlayer?.balanceAmp {
             let weiBalance = BigInt.init(weiBalanceStr) ?? BigInt.init(0)
             let aion = String(format: "%.2f", arguments: [AionUtils.convertWeiToAion(wei: weiBalance)])
             let usd = String(format: "%.2f", arguments: [AionUtils.convertWeiToUSD(wei: weiBalance)])

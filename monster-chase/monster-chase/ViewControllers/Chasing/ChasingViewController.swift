@@ -75,6 +75,7 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
         self.collectionView.addSubview(refreshControl)
         
         do {
+            self.loadQuestList()
             try refreshView()
         } catch let error as NSError {
             print("Failed to refresh view with error: \(error)")
@@ -92,9 +93,10 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     override func refreshView() throws {
         // Every UI refresh should be done here
         
-        if self.chases.isEmpty {
-            loadQuestList()
-        }
+//        if self.chases.isEmpty {
+//            loadQuestList()
+//        }
+        //loadQuestList()
         
         DispatchQueue.main.async {
             self.indicator.stopAnimating()
@@ -127,12 +129,13 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
             let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
             if let playerAddress = player.address {
                 
-                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
                 appInitQueueDispatcher.initDispatchSequence {
-                    let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
+                    let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
                     chaseListQueueDispatcher.initDispatchSequence(completionHandler: {
                         
                         do {
+                            self.loadQuestList()
                             try self.refreshView()
                         } catch let error as NSError {
                             print("Failed to refreshView() with error: \(error)")

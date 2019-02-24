@@ -14,6 +14,7 @@ import BigInt
 
 public enum DownloadOwnersCountOperationError: Error {
     case totalOwnerParsing
+    case monsterTokenInitError
 }
 
 public class DownloadOwnersCountOperation: AsynchronousOperation {
@@ -28,59 +29,39 @@ public class DownloadOwnersCountOperation: AsynchronousOperation {
     }
     
     open override func main() {
-        // Init PocketAion instance
-        let pocketAion = PocketAion.init()
-        
-        let functionABI = "{\"constant\":true,\"inputs\":[],\"name\":\"getOwnersCount\",\"outputs\":[{\"name\": \"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}"
-        
-        guard let jsonArray = JSON.init(parseJSON: functionABI).array else {
-            self.error = DownloadChaseOperationError.chaseParsing
+        guard let monsterToken = try? MonsterToken.init() else {
+            self.error = DownloadOwnersCountOperationError.monsterTokenInitError
             self.finish()
             return
         }
-    
-        do {
-            let aionContract = try AionContract.init(pocketAion: pocketAion, abiDefinition: jsonArray, contractAddress: monsterTokenAddress, subnetwork: AppConfiguration.subnetwork)
-            
-            let functionParams = [] as [AnyObject]
-            
-            try aionContract.executeConstantFunction(functionName: "getOwnersCount", fromAdress: nil, functionParams: functionParams, nrg: BigInt.init(50000), nrgPrice: BigInt.init(20000000000), value: nil, handler: { (result, error) in
-                
-                if error != nil {
-                    self.error = error
-                    self.finish()
-                    return
-                }
-                
-                guard let totalHexString = result?.first as? String else {
-                    self.error = DownloadOwnersCountOperationError.totalOwnerParsing
-                    self.finish()
-                    return
-                }
-                
-                guard let totalHexStringParsed = HexStringUtil.removeLeadingZeroX(hex: totalHexString) else{
-                    self.error = DownloadOwnersCountOperationError.totalOwnerParsing
-                    self.finish()
-                    return
-                }
-                
-                guard let totalAmount = BigInt.init(totalHexStringParsed, radix: 16) else {
-                    self.error = DownloadOwnersCountOperationError.totalOwnerParsing
-                    self.finish()
-                    return
-                }
-                
-                self.total = totalAmount
+        
+        monsterToken.getOwnersCount { (results, error) in
+            if let error = error {
+                self.error = error
                 self.finish()
-                
-                self.finish()
-            })
+                return
+            }
             
-        } catch {
-            self.error = PocketPluginError.Aion.executionError("Failed to initialize AionContract instance with the provided values.")
+            guard let totalHexString = results?.first as? String else {
+                self.error = DownloadOwnersCountOperationError.totalOwnerParsing
+                self.finish()
+                return
+            }
+
+            guard let totalHexStringParsed = HexStringUtil.removeLeadingZeroX(hex: totalHexString) else{
+                self.error = DownloadOwnersCountOperationError.totalOwnerParsing
+                self.finish()
+                return
+            }
+
+            guard let totalAmount = BigInt.init(totalHexStringParsed, radix: 16) else {
+                self.error = DownloadOwnersCountOperationError.totalOwnerParsing
+                self.finish()
+                return
+            }
+
+            self.total = totalAmount
             self.finish()
         }
-
     }
-    
 }

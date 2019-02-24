@@ -203,7 +203,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
     }
     // MARK: Tools
     func refreshPlayerInfo() {
-        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", monsterTokenAddress: AppConfiguration.monsterTokenAddress)
         appInitQueueDispatcher.initDispatchSequence {
             DispatchQueue.main.async {
                 self.view.isUserInteractionEnabled = true
@@ -259,7 +259,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
             let nonceOperation = DownloadTransactionCountOperation.init(address: playerAddress)
             nonceOperation.completionBlock = {
                 if let transactionCount = nonceOperation.transactionCount {
-                    let claimOperation = UploadChaseProofOperation.init(wallet: wallet, transactionCount: transactionCount, tavernAddress: AppConfiguration.tavernAddress, tokenAddress: AppConfiguration.monsterTokenAddress, chaseIndex: chaseIndex, proof: proof, answer: answer)
+                    let claimOperation = UploadChaseProofOperation.init(wallet: wallet, transactionCount: transactionCount, playerAddress: playerAddress, chaseIndex: chaseIndex, proof: proof, answer: answer, leftOrRight: [])
                     
                     claimOperation.completionBlock = {
                         if let txHash = claimOperation.txHash {
@@ -308,7 +308,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
                 let gasEstimateAion = AionUtils.convertWeiToAion(wei: gasEstimate)
                 let gasEstimateUSD = AionUtils.convertAionAmountToUSD(aionAmount: gasEstimateAion)
                 // Player balance
-                let playerAionBalance = AionUtils.convertWeiToAion(wei: BigInt(self.currentPlayer?.balanceWei ?? "0")!)
+                let playerAionBalance = AionUtils.convertWeiToAion(wei: BigInt(self.currentPlayer?.balanceAmp ?? "0")!)
                 let playerUSDBalance = AionUtils.convertAionAmountToUSD(aionAmount: playerAionBalance)
                 
                 if gasEstimateUSD > playerUSDBalance {
@@ -376,9 +376,9 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
                 return
             }
             let operationQueue = OperationQueue.init()
-            let gasEstimateOperation = UploadChaseProofEstimateOperation.init(playerAddress: player.address!, tavernAddress: AppConfiguration.tavernAddress, tokenAddress: AppConfiguration.monsterTokenAddress, chaseIndex: BigInt.init(questIndexStr)!, proof: proof, answer: answer)
+            let gasEstimateOperation = UploadChaseProofEstimateOperation.init(playerAddress: player.address!, tokenAddress: AppConfiguration.monsterTokenAddress, chaseIndex: BigInt.init(questIndexStr)!, proof: proof, answer: answer, leftOrRight: [])
             gasEstimateOperation.completionBlock = {
-                handler(gasEstimateOperation.estimatedGasWei)
+                handler(gasEstimateOperation.estimatedGas)
             }
             operationQueue.addOperations([gasEstimateOperation], waitUntilFinished: false)
         } catch {

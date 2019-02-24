@@ -61,9 +61,9 @@ class NewWalletViewController: UIViewController {
     }
     
     func startDataDownload(playerAddress: String) {
-        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
         appInitQueueDispatcher.initDispatchSequence {
-            let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
+            let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
             chaseListQueueDispatcher.initDispatchSequence(completionHandler: {
                 
                 UIApplication.getPresentedViewController(handler: { (topVC) in

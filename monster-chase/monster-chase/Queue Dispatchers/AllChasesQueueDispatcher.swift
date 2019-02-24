@@ -14,14 +14,12 @@ public class AllChasesQueueDispatcher: QueueDispatcherProtocol {
     private var completionHandler: QueueDispatcherCompletionHandler?
     private var currentChaseIndex: BigInt?
     private var tavernChaseAmount: BigInt?
-    private let tavernAddress: String
     private let monsterTokenAddress: String
     private let operationQueue = OperationQueue.init()
     private let playerAddress: String
     private var isWinnerOperations: [DownloadAndUpdateChaseIsWinnerOperation] = [DownloadAndUpdateChaseIsWinnerOperation]()
     
-    public init(tavernAddress: String, monsterTokenAddress: String, playerAddress: String) {
-        self.tavernAddress = tavernAddress
+    public init(monsterTokenAddress: String, playerAddress: String) {
         self.monsterTokenAddress = monsterTokenAddress
         self.operationQueue.maxConcurrentOperationCount = 1
         self.playerAddress = playerAddress
@@ -29,7 +27,7 @@ public class AllChasesQueueDispatcher: QueueDispatcherProtocol {
     
     public func initDispatchSequence(completionHandler: QueueDispatcherCompletionHandler?) {
         self.completionHandler = completionHandler
-        let chaseAmountOperation = DownloadChaseAmountOperation.init(tavernAddress: self.tavernAddress, tokenAddress: self.monsterTokenAddress)
+        let chaseAmountOperation = DownloadChaseAmountOperation.init()
         chaseAmountOperation.completionBlock = {
             self.tavernChaseAmount = chaseAmountOperation.chaseAmount
             if let tavernChaseAmount = self.tavernChaseAmount {
@@ -77,7 +75,7 @@ public class AllChasesQueueDispatcher: QueueDispatcherProtocol {
             return
         }
         
-        let downloadChaseOperation = DownloadChaseOperation.init(tavernAddress: self.tavernAddress, tokenAddress: self.monsterTokenAddress, chaseIndex: currentChaseIndex, playerAddress: self.playerAddress)
+        let downloadChaseOperation = DownloadChaseOperation.init(chaseIndex: currentChaseIndex)
         
         downloadChaseOperation.completionBlock = {
             self.currentChaseIndex = currentChaseIndex - 1
@@ -90,7 +88,7 @@ public class AllChasesQueueDispatcher: QueueDispatcherProtocol {
                         
                         if let chaseIndexStr = chaseDict["index"] as? String {
                             if let chaseIndexBigInt = BigInt.init(chaseIndexStr) {
-                                let isWinnerOperation = DownloadAndUpdateChaseIsWinnerOperation.init(tavernAddress: AppConfiguration.tavernAddress, tokenAddress: AppConfiguration.monsterTokenAddress, chaseIndex: chaseIndexBigInt, alledgedWinner: self.playerAddress)
+                                let isWinnerOperation = DownloadAndUpdateChaseIsWinnerOperation.init(chaseIndex: chaseIndexBigInt, alledgedWinner: self.playerAddress)
                                 self.isWinnerOperations.append(isWinnerOperation)
                             }
                         }

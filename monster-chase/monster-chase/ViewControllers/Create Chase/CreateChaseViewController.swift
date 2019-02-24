@@ -118,7 +118,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     
     // MARK: - Tools
     func refreshPlayerInfo() {
-        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", tavernAddress: AppConfiguration.tavernAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", monsterTokenAddress: AppConfiguration.monsterTokenAddress)
         appInitQueueDispatcher.initDispatchSequence {
             DispatchQueue.main.async {
                 self.view.isUserInteractionEnabled = true
@@ -131,13 +131,11 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     }
     
     func retrieveGasEstimate(handler: @escaping (BigInt?) -> Void) {
-        let prizeStr = newChase?.prize ?? "0.0"
-        let chasePrize = BigInt.init(prizeStr) ?? BigInt.init(0)
         let operationQueue = OperationQueue.init()
-        let gasEstimateOperation = UploadChaseEstimateOperation.init(playerAddress: (currentPlayer?.address)!, tavernAddress: AppConfiguration.tavernAddress, tokenAddress: AppConfiguration.monsterTokenAddress, chaseName: (newChase?.name)!, hint: (newChase?.hint)!, maxWinners: BigInt.init((newChase?.maxWinners)!)!, merkleRoot: (newChase?.merkleRoot)!, merkleBody: (newChase?.merkleBody)!, metadata: setupMetadata()!, ethPrizeWei: chasePrize)
+        let gasEstimateOperation = UploadChaseEstimateOperation.init(playerAddress: (currentPlayer?.address)!, chaseName: (newChase?.name)!, hint: (newChase?.hint)!, maxWinners: BigInt.init((newChase?.maxWinners)!)!, merkleRoot: (newChase?.merkleRoot)!, merkleBody: (newChase?.merkleBody)!, metadata: setupMetadata()!)
         
         gasEstimateOperation.completionBlock = {
-            handler(gasEstimateOperation.estimatedGasWei)
+            handler(gasEstimateOperation.estimatedGas)
         }
         operationQueue.addOperations([gasEstimateOperation], waitUntilFinished: false)
     }
@@ -145,7 +143,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     func refreshPlayerBalance() {
         do {
             let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
-            guard let playerBalanceStr = player.balanceWei else {
+            guard let playerBalanceStr = player.balanceAmp else {
                 blankBalanceLabels()
                 return
             }
@@ -323,13 +321,10 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         }
     }
     
-    func createNewQuest() {
+    func createNewQuest(gasEstimateWei: BigInt) {
         // New Quest submission
         // Pepare fields
         let transactionCount = BigInt.init(currentPlayer?.transactionCount ?? "0") ?? BigInt.init(0)
-        guard let prizeWei = BigInt.init(newChase?.prize ?? "0") else {
-            return
-        }
         guard let maxWinners = BigInt.init(newChase?.maxWinners ?? "0") else {
             return
         }
@@ -351,9 +346,12 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         guard let metadata = setupMetadata() else {
             return
         }
+        guard let playerAddress = currentPlayer?.address else {
+            return
+        }
         
         // Upload quest operation
-        let operation = UploadChaseOperation.init(wallet: wallet, tavernAddress: AppConfiguration.tavernAddress, tokenAddress: AppConfiguration.monsterTokenAddress, chaseName: chaseName, hint: chaseHint, maxWinners: maxWinners, merkleRoot: merkleRoot, merkleBody: merkleBody, metadata:  metadata, transactionCount: transactionCount, ethPrizeWei: prizeWei)
+        let operation = UploadChaseOperation.init(wallet: wallet, playerAddress: playerAddress, chaseName: chaseName, hint: chaseHint, maxWinners: maxWinners, merkleRoot: merkleRoot, merkleBody: merkleBody, metadata:  metadata, transactionCount: transactionCount, nrg: gasEstimateWei)
         operation.completionBlock = {
             AppDelegate.shared.refreshCurrentViewController()
             if let txHash = operation.txHash {
@@ -544,12 +542,11 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         if isNewQuestValid(){
             self.retrieveGasEstimate { (gasEstimateWei) in
                 if let gasEstimate = gasEstimateWei {
-                    let questPrizeWei = BigInt.init(self.newChase?.prize ?? "0.0") ?? BigInt.init(0)
-                    let gasEstimateAion = AionUtils.convertWeiToAion(wei: gasEstimate + questPrizeWei)
+                    let gasEstimateAion = AionUtils.convertWeiToAion(wei: gasEstimate)
                     let gasEstimateUSD = AionUtils.convertAionAmountToUSD(aionAmount: gasEstimateAion)
                     
                     // Player balance
-                    let playerAionBalance = AionUtils.convertWeiToAion(wei: BigInt(self.currentPlayer?.balanceWei ?? "0")!)
+                    let playerAionBalance = AionUtils.convertWeiToAion(wei: BigInt(self.currentPlayer?.balanceAmp ?? "0")!)
                     let playerUSDBalance = AionUtils.convertAionAmountToUSD(aionAmount: playerAionBalance)
                     
                     if gasEstimateUSD > playerUSDBalance {
@@ -567,9 +564,14 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
                             return
                         }
                         
+                        guard let gasEstimateWei = gasEstimateWei else {
+                            self.present(self.monsterAlertView(title: "Error", message: "Invalid nrg estimate"), animated: true, completion: nil)
+                            return
+                        }
+                        
                         self.resolvePlayerWalletAuth(player: player, successHandler: { (wallet) in
                             self.currentWallet = wallet
-                            self.createNewQuest()
+                            self.createNewQuest(gasEstimateWei: gasEstimateWei)
                         }, errorHandler: { (error) in
                             self.present(self.monsterAlertView(title: "Error", message: "An error ocurred accessing your account, please try again"), animated: true, completion: nil)
                         })

@@ -44,20 +44,14 @@ public class Chase: NSManagedObject {
                 self.hint = value as? String ?? ""
             case "maxWinners":
                 self.maxWinners = String.init(BigInt.anyToBigInt(anyValue: value) ?? BigInt.init(0))
-            case "prize":
-                self.prize = String.init(BigInt.anyToBigInt(anyValue: value) ?? BigInt.init(0))
             case "merkleRoot":
                 self.merkleRoot = value as? String ?? ""
             case "merkleBody":
                 self.merkleBody = value as? String ?? ""
             case "winnersAmount":
                 self.winnersAmount = String.init(BigInt.anyToBigInt(anyValue: value) ?? BigInt.init(0))
-            case "claimersAmount":
-                self.claimersAmount = String.init(BigInt.anyToBigInt(anyValue: value) ?? BigInt.init(0))
             case "isWinner":
                 self.winner = value as? Bool ?? false
-            case "isClaimer":
-                self.claimer = value as? Bool ?? false
             case "valid":
                 self.valid = value as? Bool ?? false
             case "metadata":
@@ -179,16 +173,13 @@ public class Chase: NSManagedObject {
         dict["index"] = index
         dict["creator"] = creator
         dict["name"] = name
-        dict["prize"] = prize
         dict["hint"] = hint
         dict["maxWinners"] = maxWinners
         dict["merkleRoot"] = merkleRoot
         dict["merkleBody"] = merkleBody
         dict["metadata"] = metadata
         dict["winnersAmount"] = winnersAmount
-        dict["claimersAmount"] = claimersAmount
         dict["winner"] = winner
-        dict["claimer"] = claimer
         dict["distance"] = distance
         
         return dict
