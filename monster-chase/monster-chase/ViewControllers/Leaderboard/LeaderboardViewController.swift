@@ -132,7 +132,7 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func fetchOwnerLeaderboardRecordCount(index:Int,completionBlock:@escaping (Int,LeaderboardRecord?) -> Void) {
-        let downloadOwnerTokenOperation = DownloadOwnersTokenCountOperation(monsterTokenAddress: AppConfiguration.monsterTokenAddress, ownerIndex: index)
+        let downloadOwnerTokenOperation = DownloadOwnersTokenCountOperation(monsterTokenAddress: AppConfiguration.monsterTokenAddress, ownerIndex: BigInt.init(index))
         downloadOwnerTokenOperation.completionBlock = {
             guard let score = downloadOwnerTokenOperation.leaderboardRecord else {
                 completionBlock(index,nil)

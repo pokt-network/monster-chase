@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10332D972210E63B006572ED /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10332D962210E63B006572ED /* JSONUtils.swift */; };
+		10332D9C22110B59006572ED /* MonsterToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10332D9B22110B59006572ED /* MonsterToken.swift */; };
+		10332D9E221111E1006572ED /* MonsterToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 10332D9D221111E1006572ED /* MonsterToken.json */; };
 		71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */; };
 		C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */; };
-		C526E13922068DE70009357B /* DownloadChaseIsClaimerOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13822068DE70009357B /* DownloadChaseIsClaimerOperation.swift */; };
 		C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */; };
 		C526E13D220862960009357B /* DownloadOwnersTokenCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */; };
 		C526E13F220864EB0009357B /* LeaderboardRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13E220864EB0009357B /* LeaderboardRecord.swift */; };
@@ -112,12 +114,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10332D962210E63B006572ED /* JSONUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
+		10332D9B22110B59006572ED /* MonsterToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterToken.swift; sourceTree = "<group>"; };
+		10332D9D221111E1006572ED /* MonsterToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MonsterToken.json; sourceTree = "<group>"; };
 		27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chaseTests/Pods-monster-chaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B090CA75033BFDCB7FE9831 /* Pods-monster-chase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.debug.xcconfig"; sourceTree = "<group>"; };
 		42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monster_chaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E29B42157888FECFEAB3B58 /* Pods-monster-chase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.release.xcconfig"; sourceTree = "<group>"; };
 		904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monster_chase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C526E13822068DE70009357B /* DownloadChaseIsClaimerOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadChaseIsClaimerOperation.swift; sourceTree = "<group>"; };
 		C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOwnersCountOperation.swift; sourceTree = "<group>"; };
 		C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadOwnersTokenCountOperation.swift; sourceTree = "<group>"; };
 		C526E13E220864EB0009357B /* LeaderboardRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRecord.swift; sourceTree = "<group>"; };
@@ -234,6 +238,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10332D932210E496006572ED /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				10332D9B22110B59006572ED /* MonsterToken.swift */,
+			);
+			path = Contracts;
+			sourceTree = "<group>";
+		};
 		1560B023C2A29BBC88266759 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +306,7 @@
 				C5E6566821F8AB94009C1651 /* Assets.xcassets */,
 				C545B663220E917000084ED8 /* monster-color.png */,
 				C545B664220E917100084ED8 /* monster-texture.png */,
+				10332D9D221111E1006572ED /* MonsterToken.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -426,6 +439,7 @@
 				C59BBFCB21FF429B00CD684C /* AppConfiguration.swift */,
 				C59BC00B220085FE00CD684C /* AionUtils.swift */,
 				C593D3512201F4D3006AD84C /* RepeatingTimer.swift */,
+				10332D962210E63B006572ED /* JSONUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -538,7 +552,6 @@
 				C59BC00221FFD20800CD684C /* DownloadAndUpdateChaseIsWinnerOperation.swift */,
 				C59BC00421FFDB1700CD684C /* DownloadChaseOperation.swift */,
 				C593D3532201F65F006AD84C /* DownloadTransactionReceiptOperation.swift */,
-				C526E13822068DE70009357B /* DownloadChaseIsClaimerOperation.swift */,
 				C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */,
 				C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */,
 			);
@@ -586,6 +599,7 @@
 		C5E6565D21F8AB94009C1651 /* monster-chase */ = {
 			isa = PBXGroup;
 			children = (
+				10332D932210E496006572ED /* Contracts */,
 				C593D34E2201F48B006AD84C /* Repeating Background Tasks */,
 				C59BBFEE21FF92D100CD684C /* Operations */,
 				C59BBFE921FF914D00CD684C /* Queue Dispatchers */,
@@ -665,6 +679,11 @@
 				TargetAttributes = {
 					C5E6565A21F8AB94009C1651 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					C5E6567121F8AB94009C1651 = {
 						CreatedOnToolsVersion = 10.1;
@@ -700,6 +719,7 @@
 				C5E6566C21F8AB94009C1651 /* LaunchScreen.storyboard in Resources */,
 				C5E6566921F8AB94009C1651 /* Assets.xcassets in Resources */,
 				C58A0F542204BF9500643BC7 /* Profile.storyboard in Resources */,
+				10332D9E221111E1006572ED /* MonsterToken.json in Resources */,
 				C545B666220E917100084ED8 /* monster-texture.png in Resources */,
 				C59BBFD121FF4BE400CD684C /* Chasing.storyboard in Resources */,
 				C545B665220E917100084ED8 /* monster-color.png in Resources */,
@@ -846,6 +866,7 @@
 				C59BBFC821FBB1A700CD684C /* BiometricsUtils.swift in Sources */,
 				C53F221D21FB9001003457F3 /* ChaseMerkleTree.swift in Sources */,
 				C59BBFD921FF58D800CD684C /* HowToPlayViewController.swift in Sources */,
+				10332D972210E63B006572ED /* JSONUtils.swift in Sources */,
 				C58A0F56220527C300643BC7 /* AddBalanceViewController.swift in Sources */,
 				C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */,
 				C53F221B21FB8AC9003457F3 /* UIDevice+extension.swift in Sources */,
@@ -854,7 +875,7 @@
 				C58A0F582205297100643BC7 /* MonsterCollectionViewCell.swift in Sources */,
 				C59BBFDF21FF594500CD684C /* CreateChaseViewController.swift in Sources */,
 				C53F221221FB87CD003457F3 /* Transaction+CoreDataProperties.swift in Sources */,
-				C526E13922068DE70009357B /* DownloadChaseIsClaimerOperation.swift in Sources */,
+				10332D9C22110B59006572ED /* MonsterToken.swift in Sources */,
 				C526E14422087E130009357B /* UploadChaseProofOperation.swift in Sources */,
 				C5E6566721F8AB94009C1651 /* monster_chase.xcdatamodeld in Sources */,
 				C59BC00121FFD17800CD684C /* AllChasesQueueDispatcher.swift in Sources */,

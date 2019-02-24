@@ -26,31 +26,20 @@ public class DownloadTransactionReceiptOperation: AsynchronousOperation {
     }
     
     open override func main() {
-        let params = [
-            "rpcMethod": "eth_getTransactionReceipt",
-            "rpcParams": [txHash]
-            ] as [AnyHashable: Any]
-        
-        guard let query = try? PocketAion.createQuery(subnetwork: AppConfiguration.subnetwork, params: params, decoder: nil) else {
-            self.error = PocketPluginError.queryCreationError("Error creating query")
-            self.finish()
-            return
-        }
-        
-        Pocket.shared.executeQuery(query: query) { (queryResponse, error) in
+        try? PocketAion.eth.getTransactionReceipt(txHash: txHash, subnetwork: AppConfiguration.subnetwork) { (receipt, error) in
             if error != nil {
                 self.error = error
                 self.finish()
                 return
             }
             
-            guard let rawReceipt = queryResponse?.result?.value() as? [String: JSON] else {
+            guard let receipt = receipt else {
                 self.error = DownloadTransactionReceiptOperationError.responseParsing
                 self.finish()
                 return
             }
             
-            self.txReceipt = TransactionReceipt.init(rawReceipt: rawReceipt)
+            self.txReceipt = TransactionReceipt.init(rawReceipt: receipt)
             self.finish()
         }
     }
