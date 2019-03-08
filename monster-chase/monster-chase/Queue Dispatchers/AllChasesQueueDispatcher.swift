@@ -84,14 +84,16 @@ public class AllChasesQueueDispatcher: QueueDispatcherProtocol {
                 if let chaseDict = downloadChaseOperation.chaseDict {
                     let updateQuestOperation = UpdateChaseOperation.init(chaseDict: chaseDict, chaseIndex: String.init(currentChaseIndex))
                     updateQuestOperation.completionBlock = {
-                        self.attempToExecuteCompletionHandler()
-                        
+                        // Add DownloadAndUpdateChaseIsWinnerOperation operation for this chase
                         if let chaseIndexStr = chaseDict["index"] as? String {
                             if let chaseIndexBigInt = BigInt.init(chaseIndexStr) {
                                 let isWinnerOperation = DownloadAndUpdateChaseIsWinnerOperation.init(chaseIndex: chaseIndexBigInt, alledgedWinner: self.playerAddress)
                                 self.isWinnerOperations.append(isWinnerOperation)
                             }
                         }
+                        
+                        // Attempt to complete the operation handler
+                        self.attempToExecuteCompletionHandler()
                     }
                     self.operationQueue.addOperation(updateQuestOperation)
                 }

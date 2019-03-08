@@ -367,8 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				C526E14122086BA50009357B /* UploadChaseOperation.swift */,
-				C526E14322087E130009357B /* UploadChaseProofOperation.swift */,
 				C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */,
+				C526E14322087E130009357B /* UploadChaseProofOperation.swift */,
 				C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */,
 			);
 			path = Upload;

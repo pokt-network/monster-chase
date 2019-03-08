@@ -254,12 +254,16 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
                 claimFailedAlertView()
                 return
             }
+            guard let leftOrRight = chaseProof?.order else {
+                claimFailedAlertView()
+                return
+            }
             
             let operationQueue = OperationQueue()
             let nonceOperation = DownloadTransactionCountOperation.init(address: playerAddress)
             nonceOperation.completionBlock = {
                 if let transactionCount = nonceOperation.transactionCount {
-                    let claimOperation = UploadChaseProofOperation.init(wallet: wallet, transactionCount: transactionCount, playerAddress: playerAddress, chaseIndex: chaseIndex, proof: proof, answer: answer, leftOrRight: [])
+                    let claimOperation = UploadChaseProofOperation.init(wallet: wallet, transactionCount: transactionCount, playerAddress: playerAddress, chaseIndex: chaseIndex, proof: proof, answer: answer, leftOrRight: leftOrRight)
                     
                     claimOperation.completionBlock = {
                         if let txHash = claimOperation.txHash {
@@ -318,7 +322,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
                     return
                 }
                 
-                let message = String.init(format: "Total transaction cost: %@ USD - %@ ETH. Press OK to claim your Banano", String.init(format: "%.4f", gasEstimateUSD), String.init(format: "%.4f", gasEstimateAion))
+                let message = String.init(format: "Total transaction cost: %@ USD - %@ AION. Press OK to claim your Banano", String.init(format: "%.4f", gasEstimateUSD), String.init(format: "%.4f", gasEstimateAion))
                 
                 let txDetailsAlertView = self.monsterAlertView(title: "Transaction Details", message: message) { (uiAlertAction) in
                     do {

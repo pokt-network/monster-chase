@@ -23,6 +23,7 @@ public class Transaction: NSManagedObject {
         self.type = type.rawValue
         self.txHash = txHash
         self.notified = false
+        self.retries = 0
     }
     
     // MARK: - CRUD
@@ -31,7 +32,7 @@ public class Transaction: NSManagedObject {
     }
     
     // MARK: - Convenience list retrieval
-    public static func unnotifiedTransactionsPerType(context: NSManagedObjectContext, txType: TransactionType) throws -> [Transaction] {
+    public static func unnotifiedTransactionsPerType(context: NSManagedObjectContext, txType: TransactionType, maxRetries: Int64) throws -> [Transaction] {
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "notified == NO AND type == %@", txType.rawValue)
         return try context.fetch(fetchRequest) as [Transaction]

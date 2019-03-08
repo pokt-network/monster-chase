@@ -142,15 +142,12 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
     
     // Check if the user is near quest banano
     func checkIfNearBanano() {
-//        guard let merkle = ChaseMerkleTree.generateChaseProofSubmission(answer: currentUserLocation!, merkleBody: (chase?.merkleBody)!) else {
-//            let alertView = monsterAlertView(title: "Not in range", message: "Sorry, the monster location isn't nearby")
-//            present(alertView, animated: false, completion: nil)
-//
-//            return
-//        }
-        // Show the Banano :D
-        let merkle = ChaseProofSubmission.init(answer: "", proof: [String]())
-        presentFindChaseViewController(proof: merkle)
+        guard let proofSubmission = ChaseMerkleTree.generateChaseProofSubmission(answer: currentUserLocation!, merkleBody: (chase?.merkleBody)!) else {
+            let alertView = monsterAlertView(title: "Not in range", message: "Sorry, the monster location isn't nearby")
+            present(alertView, animated: false, completion: nil)
+            return
+        }
+        presentFindChaseViewController(proof: proofSubmission)
     }
     
     // Quest quadrant

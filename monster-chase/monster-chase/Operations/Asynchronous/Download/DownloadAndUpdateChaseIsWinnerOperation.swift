@@ -44,8 +44,7 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
                 return
             }
             
-            let rawResult = results?.first as? String
-            guard let isWinnerBool = Bool.init(rawResult ?? "false") else{
+            guard let isWinnerBool = results?.first as? Bool else {
                 self.error = DownloadAndUpdateChaseIsWinnerOperationError.resultParsing
                 self.finish()
                 return
