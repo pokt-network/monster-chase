@@ -20,5 +20,6 @@ extension Transaction {
     @NSManaged public var receipt: NSData?
     @NSManaged public var txHash: String?
     @NSManaged public var type: String?
+    @NSManaged public var retries: Int64
 
 }

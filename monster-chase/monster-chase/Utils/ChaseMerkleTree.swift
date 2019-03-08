@@ -19,10 +19,12 @@ struct MatchingMerkleHash {
 public struct ChaseProofSubmission {
     var proof:[String]
     var answer:String
+    var order:[Bool]
     
-    public init(answer: String, proof:[String]) {
+    public init(answer: String, proof: [String], order: [Bool]) {
         self.answer = answer
         self.proof = proof
+        self.order = order
     }
 }
 
@@ -121,11 +123,14 @@ public class ChaseMerkleTree: MerkleTree {
         var submissions = [ChaseProofSubmission]()
         if nodeMatches.count > 0 {
             for match in nodeMatches {
+                var order:[Bool] = []
                 var proof = [String]()
                 // Create answer
                 let answer = "0x" + match.left
                 // Append right as first sibling in the proof
                 proof.append("0x" + match.right)
+                // First order will always be false because answer is the lesser node
+                order.append(false)
                 
                 // Start going up the tree via this index
                 var index = match.hashIndex
@@ -135,10 +140,15 @@ public class ChaseMerkleTree: MerkleTree {
                     
                     if pairIndex < layer.count {
                         proof.append("0x" + layer[pairIndex])
+                        if (pairIndex > index) {
+                            order.append(false)
+                        } else {
+                            order.append(true)
+                        }
                     }
                     index = (index / 2) | 0
                 }
-                submissions.append(ChaseProofSubmission.init(answer: answer, proof: proof))
+                submissions.append(ChaseProofSubmission.init(answer: answer, proof: proof, order: order))
             }
         }
         

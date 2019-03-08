@@ -43,6 +43,7 @@
     <entity name="Transaction" representedClassName="Transaction" syncable="YES">
         <attribute name="notified" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="receipt" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="retries" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="txHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -50,6 +51,6 @@
         <element name="Chase" positionX="-36" positionY="54" width="128" height="360"/>
         <element name="Monster" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="Player" positionX="-54" positionY="18" width="128" height="120"/>
-        <element name="Transaction" positionX="-18" positionY="162" width="128" height="105"/>
+        <element name="Transaction" positionX="-18" positionY="162" width="128" height="120"/>
     </elements>
 </model>

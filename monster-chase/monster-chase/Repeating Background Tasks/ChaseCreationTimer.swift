@@ -16,14 +16,16 @@ public class ChaseNotificationTimer: RepeatingTimer {
     private var successIdentifier: String
     private var errorIdentifier: String
     private var txType: TransactionType
+    private var maxRetries: Int64
     
-    init(timeInterval: TimeInterval, title: String, successMsg: String, errorMsg: String, successIdentifier: String, errorIdentifier: String, txType: TransactionType) {
+    init(timeInterval: TimeInterval, title: String, successMsg: String, errorMsg: String, successIdentifier: String, errorIdentifier: String, txType: TransactionType, maxRetries: Int64) {
         self.title = title
         self.successMsg = successMsg
         self.errorMsg = errorMsg
         self.successIdentifier = successIdentifier
         self.errorIdentifier = errorIdentifier
         self.txType = txType
+        self.maxRetries = maxRetries
         super.init(timeInterval: timeInterval)
         self.eventHandler = self.notifyPendingQuestTransactions
     }
@@ -31,7 +33,7 @@ public class ChaseNotificationTimer: RepeatingTimer {
     private func notifyPendingQuestTransactions() {
         var transactions:[Transaction]
         do {
-            transactions = try Transaction.unnotifiedTransactionsPerType(context: CoreDataUtils.backgroundPersistentContext, txType: self.txType)
+            transactions = try Transaction.unnotifiedTransactionsPerType(context: CoreDataUtils.backgroundPersistentContext, txType: self.txType, maxRetries: self.maxRetries)
         } catch {
             print("\(error)")
             return
@@ -50,21 +52,24 @@ public class ChaseNotificationTimer: RepeatingTimer {
             txReceiptOperation.completionBlock = {
                 if txReceiptOperation.error != nil {
                     print("Error downloading txreceipt with hash: \(txReceiptOperation.txHash)")
+                    transaction.retries = transaction.retries + 1
+                    if (transaction.retries > self.maxRetries) {
+                        self.notifyTransaction(title: self.title, body: self.errorMsg, identifier: self.errorIdentifier, transaction: transaction)
+                    } else {
+                        do {
+                            try transaction.save()
+                        } catch {
+                            print("\(error)")
+                        }
+                    }
                     return
                 }
                 
                 if let txReceipt = txReceiptOperation.txReceipt {
                     if txReceipt.status == .success {
-                        PushNotificationUtils.sendNotification(title: self.title, body: self.successMsg, identifier: self.successIdentifier)
+                        self.notifyTransaction(title: self.title, body: self.successMsg, identifier: self.successIdentifier, transaction: transaction)
                     } else {
-                        PushNotificationUtils.sendNotification(title: self.title, body: self.errorMsg, identifier: self.errorIdentifier)
-                    }
-                    
-                    do {
-                        transaction.notified = true
-                        try transaction.save()
-                    } catch {
-                        print("\(error)")
+                        self.notifyTransaction(title: self.title, body: self.errorMsg, identifier: self.errorIdentifier, transaction: transaction)
                     }
                 }
             }
@@ -73,6 +78,16 @@ public class ChaseNotificationTimer: RepeatingTimer {
         
         if !operations.isEmpty {
             operationQueue.addOperations(operations, waitUntilFinished: false)
+        }
+    }
+    
+    private func notifyTransaction(title: String, body: String, identifier: String, transaction: Transaction) {
+        PushNotificationUtils.sendNotification(title: title, body: body, identifier: identifier)
+        do {
+            transaction.notified = true
+            try transaction.save()
+        } catch {
+            print("\(error)")
         }
     }
     

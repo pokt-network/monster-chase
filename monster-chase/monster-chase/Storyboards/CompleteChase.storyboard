@@ -226,6 +226,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWy-rH-OJk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCp-Tz-e8H" userLabel="Chase button" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
                                 <rect key="frame" x="62.5" y="607" width="250" height="30"/>
                                 <constraints>
@@ -236,9 +239,6 @@
                                     <action selector="claimButtonPressed:" destination="eIH-Hx-Ac6" eventType="touchUpInside" id="UyM-Uf-2JX"/>
                                 </connections>
                             </button>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWy-rH-OJk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </arscnView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5K2-Sm-fVf" userLabel="Access permission view">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>

@@ -371,13 +371,6 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
         }
         
         if let chase = currentCell.chase {
-            // Check if is the creator playing
-            if isChaseCreator(chase: chase) {
-                let alert = monsterAlertView(title: "Denied", message: "Chase creator can't complete his/her own chase")
-                present(alert, animated: false, completion: nil)
-                return
-            }
-            
             do {
                 let vc = try self.instantiateViewController(identifier: "completeChaseViewControllerID", storyboardName: "CompleteChase") as? CompleteChaseViewController
                 vc?.chase = chase

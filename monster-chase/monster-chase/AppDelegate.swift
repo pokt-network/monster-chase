@@ -169,9 +169,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
     func setupRepeatingTasks() {
         let notificationTitle = "MONSTER CHASE"
         
-        let questCreationTimer = ChaseNotificationTimer.init(timeInterval: 10, title: notificationTitle, successMsg: "Your Chase has been created successfully", errorMsg: "An error ocurred creating your Chase, please try again", successIdentifier: "ChaseCreationSuccess", errorIdentifier: "ChaseCreationError", txType: TransactionType.creation)
+        let questCreationTimer = ChaseNotificationTimer.init(timeInterval: 10, title: notificationTitle, successMsg: "Your Chase has been created successfully", errorMsg: "An error ocurred creating your Chase, please try again", successIdentifier: "ChaseCreationSuccess", errorIdentifier: "ChaseCreationError", txType: TransactionType.creation, maxRetries: 75)
         questCreationTimer.resume()
-        let questClaimTimer = ChaseNotificationTimer.init(timeInterval: 10, title: notificationTitle, successMsg: "Your Monster has been claimed succesfully", errorMsg: "An error ocurred claiming your Monster, please try again", successIdentifier: "ChaseClaimSuccess", errorIdentifier: "ChaseClaimError", txType: TransactionType.claim)
+        let questClaimTimer = ChaseNotificationTimer.init(timeInterval: 10, title: notificationTitle, successMsg: "Your Monster has been claimed succesfully", errorMsg: "An error ocurred claiming your Monster, please try again", successIdentifier: "ChaseClaimSuccess", errorIdentifier: "ChaseClaimError", txType: TransactionType.claim, maxRetries: 75)
         questClaimTimer.resume()
     }
 
