@@ -32,8 +32,9 @@ public struct BiometricsUtils {
     
     // Returns wheter or not a biometric record exists for the current player
     public static func biometricRecordExists(playerAddress: String) -> Bool {
-        let keychainKey = self.keychainKey + playerAddress
-        return KeychainWrapper.standard.allKeys().contains(keychainKey)
+        //let keychainKey = self.keychainKey + playerAddress
+        let recordKey = self.keychainKey + playerAddress
+        return KeychainWrapper.standard.allKeys().contains(recordKey)
     }
     
     // Retrieves existing passphrase from keychain upon succesful biometric auth
@@ -187,7 +188,8 @@ public struct BiometricsUtils {
             throw BiometricsUtilsError.setupError
         }
         //whenUnlockedThisDeviceOnly
-        let success = KeychainWrapper.standard.set(passphrase, forKey: keychainKey + playerAddress, withAccessibility: .whenUnlockedThisDeviceOnly)
+        let recordKey = self.keychainKey + playerAddress
+        let success = KeychainWrapper.standard.set(passphrase, forKey: recordKey, withAccessibility: .whenUnlockedThisDeviceOnly)
         if !success {
             throw BiometricsUtilsError.setupError
         }

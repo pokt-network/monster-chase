@@ -22,6 +22,15 @@ public enum PlayerPersistenceError: Error {
 public class Player: NSManagedObject {
     
     private var godfatherWallet: Wallet?
+    public var godfatherAddress: String? {
+        get {
+            if let godfatherWallet = self.getGodfatherWallet() {
+                return godfatherWallet.address
+            } else {
+                return nil
+            }
+        }
+    }
     
     convenience init(obj: [AnyHashable: Any]?, context: NSManagedObjectContext) throws {
         self.init(context: context)
@@ -65,8 +74,8 @@ public class Player: NSManagedObject {
     
     public static func createPlayer(walletPassphrase: String) throws -> Player {
         // First create the wallet
-        //let wallet = try PocketAion.createWallet(subnetwork: AppConfiguration.subnetwork, data: nil)
-        let wallet = try PocketAion.importWallet(privateKey: "0xc62667d350e1873632e0e55a4417609c19636754d2e6a3df7d71b9d2d5cce2a1ac44d29b49220ce926756c85c21a4673cf064564a3088fcaf3f661a5eac95271", subnetwork: "0", address: "0xa013ccd08d826dac8069007478376dfd6867f59e7e7f55b54445190911a51b6c", data: nil)
+        let wallet = try PocketAion.createWallet(subnetwork: AppConfiguration.subnetwork, data: nil)
+        //let wallet = try PocketAion.importWallet(privateKey: "0xc62667d350e1873632e0e55a4417609c19636754d2e6a3df7d71b9d2d5cce2a1ac44d29b49220ce926756c85c21a4673cf064564a3088fcaf3f661a5eac95271", subnetwork: "0", address: "0xa013ccd08d826dac8069007478376dfd6867f59e7e7f55b54445190911a51b6c", data: nil)
         
         if try wallet.save(passphrase: walletPassphrase) == false {
             throw PlayerPersistenceError.walletCreationError
@@ -79,12 +88,15 @@ public class Player: NSManagedObject {
         return player
     }
     
-    public func getGodfatherWallet() throws -> Wallet {
+    public func getGodfatherWallet() -> Wallet? {
         if let result = self.godfatherWallet {
             return result;
         } else {
-            self.godfatherWallet = try PocketAion.importWallet(privateKey: "0xc62667d350e1873632e0e55a4417609c19636754d2e6a3df7d71b9d2d5cce2a1ac44d29b49220ce926756c85c21a4673cf064564a3088fcaf3f661a5eac95271", subnetwork: "0", address: "0xa013ccd08d826dac8069007478376dfd6867f59e7e7f55b54445190911a51b6c", data: nil)
-            return self.godfatherWallet!
+            guard let godfatherWallet = try? PocketAion.importWallet(privateKey: AppConfiguration.godfatherPK, subnetwork: AppConfiguration.subnetwork, address: AppConfiguration.godfatherAddress, data: nil) else {
+                return nil
+            }
+            self.godfatherWallet = godfatherWallet
+            return self.godfatherWallet
         }
     }
 }

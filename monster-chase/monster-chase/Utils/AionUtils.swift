@@ -52,7 +52,12 @@ public struct AionUtils {
             guard let playerAddress = playerInstance.address else {
                 return result
             }
-            AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress).initDispatchSequence(completionHandler: nil)
+            
+            var godfatherAddress: String? = nil
+            if let godfatherWallet = playerInstance.getGodfatherWallet() {
+                godfatherAddress = godfatherWallet.address
+            }
+            AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress, godfatherAddress: godfatherAddress).initDispatchSequence(completionHandler: nil)
         }
         
         return result

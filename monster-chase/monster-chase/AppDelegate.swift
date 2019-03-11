@@ -130,7 +130,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
             let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
             if let playerAddress = player.address {
                 print("Player Address: \(playerAddress)")
-                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+                var godfatherAdddress: String? = nil
+                if let godfatherWallet = player.getGodfatherWallet() {
+                    godfatherAdddress = godfatherWallet.address
+                    print("Godfather Address: \(godfatherWallet.address)")
+                }
+                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress, godfatherAddress: godfatherAdddress)
                 appInitQueueDispatcher.initDispatchSequence {
                     completionHandler(playerAddress)
                 }

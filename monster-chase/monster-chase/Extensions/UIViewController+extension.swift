@@ -167,9 +167,9 @@ extension UIViewController {
     }
     
     func requestPassphraseAlertView(handler: @escaping passphraseRequestHandler) -> UIAlertController {
-        let alert = UIAlertController(title: "Wallet Passphrase", message: "Please input your Wallet's passphrase", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Account password", message: "Please input your account password", preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "Passphrase"
+            textField.placeholder = "Password"
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in

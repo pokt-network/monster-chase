@@ -129,7 +129,11 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
             let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
             if let playerAddress = player.address {
                 
-                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+                var godfatherAddress: String? = nil
+                if let godfatherWallet = player.getGodfatherWallet() {
+                    godfatherAddress = godfatherWallet.address
+                }
+                let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress, godfatherAddress: godfatherAddress)
                 appInitQueueDispatcher.initDispatchSequence {
                     let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
                     chaseListQueueDispatcher.initDispatchSequence(completionHandler: {

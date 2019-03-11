@@ -37,6 +37,7 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aionUsdPrice" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="balanceAmp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="godfatherBalanceAmp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tavernMonsterAmount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="transactionCount" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -50,7 +51,7 @@
     <elements>
         <element name="Chase" positionX="-36" positionY="54" width="128" height="360"/>
         <element name="Monster" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Player" positionX="-54" positionY="18" width="128" height="120"/>
+        <element name="Player" positionX="-54" positionY="18" width="128" height="135"/>
         <element name="Transaction" positionX="-18" positionY="162" width="128" height="120"/>
     </elements>
 </model>
