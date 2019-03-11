@@ -203,7 +203,11 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
     }
     // MARK: Tools
     func refreshPlayerInfo() {
-        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+        var godfatherAddress: String? = nil
+        if let godfatherWallet = currentPlayer?.getGodfatherWallet() {
+            godfatherAddress = godfatherWallet.address
+        }
+        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", monsterTokenAddress: AppConfiguration.monsterTokenAddress, godfatherAddress: godfatherAddress)
         appInitQueueDispatcher.initDispatchSequence {
             DispatchQueue.main.async {
                 self.view.isUserInteractionEnabled = true

@@ -7,19 +7,26 @@
 //
 
 import Foundation
+import BigInt
 
 public class AppInitQueueDispatcher: QueueDispatcherProtocol {
     
     private let operationQueue: OperationQueue = OperationQueue()
     private let downloadBalanceOperation: DownloadBalanceOperation
+    private let downloadGodfatherBalanceOperation: DownloadBalanceOperation?
     private let transactionCountOperation: DownloadTransactionCountOperation
     private let chaseAmountOperation: DownloadChaseAmountOperation
     private let aionUsdPriceOperation: DownloadAionUsdPriceOperation
     private var completionHandler: QueueDispatcherCompletionHandler?
     
-    public init(playerAddress: String, monsterTokenAddress: String) {
+    public init(playerAddress: String, monsterTokenAddress: String, godfatherAddress: String?) {
         // Init operations
         self.downloadBalanceOperation = DownloadBalanceOperation.init(address: playerAddress)
+        if let godfatherAddress = godfatherAddress {
+            self.downloadGodfatherBalanceOperation = DownloadBalanceOperation.init(address: godfatherAddress)
+        } else {
+            self.downloadGodfatherBalanceOperation = nil
+        }
         self.transactionCountOperation = DownloadTransactionCountOperation.init(address: playerAddress)
         self.chaseAmountOperation = DownloadChaseAmountOperation.init()
         self.aionUsdPriceOperation = DownloadAionUsdPriceOperation.init()
@@ -29,7 +36,11 @@ public class AppInitQueueDispatcher: QueueDispatcherProtocol {
     public func initDispatchSequence(completionHandler: QueueDispatcherCompletionHandler?) {
         print("Initializing AppInitQueueDispatcher sequence")
         self.completionHandler = completionHandler
-        self.operationQueue.addOperations([self.downloadBalanceOperation, self.transactionCountOperation, self.chaseAmountOperation, self.aionUsdPriceOperation], waitUntilFinished: false)
+        var operations = [self.downloadBalanceOperation, self.transactionCountOperation, self.chaseAmountOperation, self.aionUsdPriceOperation]
+        if let godfatherBalanceOperation = downloadGodfatherBalanceOperation {
+            operations.append(godfatherBalanceOperation)
+        }
+        self.operationQueue.addOperations(operations, waitUntilFinished: false)
     }
     
     public func isQueueFinished() -> Bool {
@@ -51,8 +62,13 @@ public class AppInitQueueDispatcher: QueueDispatcherProtocol {
                 completionHandler()
             }
             
+            var godfatherBalanceAmp: BigInt? = nil
+            if let godfatherBalanceOperation = self.downloadGodfatherBalanceOperation {
+                godfatherBalanceAmp = godfatherBalanceOperation.balance
+            }
+            
             // Update the player record
-            self.operationQueue.addOperations([UpdatePlayerOperation.init(balanceAmp: self.downloadBalanceOperation.balance, transactionCount: self.transactionCountOperation.transactionCount, questAmount: self.chaseAmountOperation.chaseAmount, aionUsdPrice: self.aionUsdPriceOperation.usdPrice)], waitUntilFinished: false)
+            self.operationQueue.addOperations([UpdatePlayerOperation.init(balanceAmp: self.downloadBalanceOperation.balance, transactionCount: self.transactionCountOperation.transactionCount, questAmount: self.chaseAmountOperation.chaseAmount, aionUsdPrice: self.aionUsdPriceOperation.usdPrice, godfatherBalanceAmp: godfatherBalanceAmp)], waitUntilFinished: false)
         }
     }
     
@@ -76,7 +92,13 @@ public class AppInitQueueDispatcher: QueueDispatcherProtocol {
             print("Completed aionUsdPriceOperation")
             self.attempToExecuteCompletionHandler()
         }
+        
+        if let downloadGodfatherBalanceOperation = self.downloadGodfatherBalanceOperation {
+            downloadGodfatherBalanceOperation.completionBlock = {
+                print("Completed downloadGodfatherBalanceOperation")
+                self.attempToExecuteCompletionHandler()
+            }
+        }
     }
-    
 }
 

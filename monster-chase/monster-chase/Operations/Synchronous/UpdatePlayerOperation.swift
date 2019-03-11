@@ -16,12 +16,14 @@ public class UpdatePlayerOperation: SynchronousOperation {
     private var transactionCount: BigInt?
     private var questAmount: BigInt?
     private var aionUsdPrice: Double?
+    private var godfatherBalanceAmp: BigInt?
     
-    public init(balanceAmp: BigInt?, transactionCount: BigInt?, questAmount: BigInt?, aionUsdPrice: Double?) {
+    public init(balanceAmp: BigInt?, transactionCount: BigInt?, questAmount: BigInt?, aionUsdPrice: Double?, godfatherBalanceAmp: BigInt?) {
         self.balanceAmp = balanceAmp
         self.transactionCount = transactionCount
         self.questAmount = questAmount
         self.aionUsdPrice = aionUsdPrice
+        self.godfatherBalanceAmp = godfatherBalanceAmp
         super.init()
     }
     
@@ -44,6 +46,10 @@ public class UpdatePlayerOperation: SynchronousOperation {
                 
                 if let aionUsdPrice = self.aionUsdPrice {
                     player.aionUsdPrice = aionUsdPrice
+                }
+                
+                if let godfatherBalanceAmp = self.godfatherBalanceAmp {
+                    player.godfatherBalanceAmp = String.init(godfatherBalanceAmp)
                 }
                 
                 // Save updated player

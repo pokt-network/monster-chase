@@ -30,10 +30,9 @@ public class UploadChaseOperation: AsynchronousOperation {
     public var merkleBody: String
     public var metadata: String
     public var wallet: Wallet
-    public var transactionCount: BigInt
     public var nrg: BigInt
     
-    public init(wallet: Wallet, playerAddress: String, chaseName: String, hint: String, maxWinners: BigInt, merkleRoot: String, merkleBody: String, metadata: String, transactionCount: BigInt, nrg: BigInt) {
+    public init(wallet: Wallet, playerAddress: String, chaseName: String, hint: String, maxWinners: BigInt, merkleRoot: String, merkleBody: String, metadata: String, nrg: BigInt) {
         self.playerAddress = playerAddress
         self.chaseName = chaseName
         self.hint = hint
@@ -42,7 +41,6 @@ public class UploadChaseOperation: AsynchronousOperation {
         self.merkleBody = merkleBody
         self.metadata = metadata
         self.wallet = wallet
-        self.transactionCount = transactionCount
         self.nrg = nrg
         super.init()
     }
@@ -55,21 +53,35 @@ public class UploadChaseOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.submitChase(wallet: self.wallet, transactionCount: self.transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, name: self.chaseName, hint: self.hint, maxWinners: self.maxWinners, metadata: self.metadata, merkleRoot: self.merkleRoot, merkleBody: self.merkleBody) { (txHashArray, error) in
+        try? PocketAion.eth.getTransactionCount(address: self.wallet.address, subnetwork: AppConfiguration.subnetwork, blockTag: BlockTag.init(block: BlockTag.DefaultBlock.LATEST)) { (transactionCount, error) in
             if let error = error {
                 self.error = error
                 self.finish()
                 return
             }
             
-            guard let txHash = txHashArray?.first else {
-                self.error = UploadChaseOperationError.invalidTxHash
+            guard let transactionCount = transactionCount else {
+                self.error = UploadChaseOperationError.invalidHeaderReceipt
                 self.finish()
                 return
             }
             
-            self.txHash = txHash
-            self.finish()
+            monsterToken.submitChase(wallet: self.wallet, transactionCount: transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, name: self.chaseName, hint: self.hint, maxWinners: self.maxWinners, metadata: self.metadata, merkleRoot: self.merkleRoot, merkleBody: self.merkleBody) { (txHashArray, txError) in
+                if let txError = txError {
+                    self.error = txError
+                    self.finish()
+                    return
+                }
+                
+                guard let txHash = txHashArray?.first else {
+                    self.error = UploadChaseOperationError.invalidTxHash
+                    self.finish()
+                    return
+                }
+                
+                self.txHash = txHash
+                self.finish()
+            }
         }
     }
 }

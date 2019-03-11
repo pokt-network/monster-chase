@@ -10,6 +10,7 @@
 		10332D972210E63B006572ED /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10332D962210E63B006572ED /* JSONUtils.swift */; };
 		10332D9C22110B59006572ED /* MonsterToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10332D9B22110B59006572ED /* MonsterToken.swift */; };
 		10332D9E221111E1006572ED /* MonsterToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 10332D9D221111E1006572ED /* MonsterToken.json */; };
+		10D6F9E82236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */; };
 		71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */; };
 		C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */; };
 		C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */; };
@@ -117,6 +118,7 @@
 		10332D962210E63B006572ED /* JSONUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
 		10332D9B22110B59006572ED /* MonsterToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterToken.swift; sourceTree = "<group>"; };
 		10332D9D221111E1006572ED /* MonsterToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MonsterToken.json; sourceTree = "<group>"; };
+		10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBalanceQueueDispatcher.swift; sourceTree = "<group>"; };
 		27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chaseTests/Pods-monster-chaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B090CA75033BFDCB7FE9831 /* Pods-monster-chase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.debug.xcconfig"; sourceTree = "<group>"; };
 		42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monster_chaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -367,9 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				C526E14122086BA50009357B /* UploadChaseOperation.swift */,
-				C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */,
 				C526E14322087E130009357B /* UploadChaseProofOperation.swift */,
-				C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */,
 			);
 			path = Upload;
 			sourceTree = "<group>";
@@ -518,6 +518,7 @@
 				C59BBFEA21FF917500CD684C /* AppInitQueueDispatcher.swift */,
 				C59BBFEC21FF91C100CD684C /* QueueDispatcherProtocol.swift */,
 				C59BC00021FFD17800CD684C /* AllChasesQueueDispatcher.swift */,
+				10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */,
 			);
 			path = "Queue Dispatchers";
 			sourceTree = "<group>";
@@ -545,6 +546,8 @@
 		C59BBFF021FF92ED00CD684C /* Download */ = {
 			isa = PBXGroup;
 			children = (
+				C526E145220881C90009357B /* UploadChaseEstimateOperation.swift */,
+				C526E147220885E50009357B /* UploadChaseProofEstimateOperation.swift */,
 				C59BBFF121FF930800CD684C /* DownloadBalanceOperation.swift */,
 				C59BBFF521FF98E100CD684C /* DownloadTransactionCountOperation.swift */,
 				C59BBFF721FF994000CD684C /* DownloadChaseAmountOperation.swift */,
@@ -889,6 +892,7 @@
 				C5345B0A220B26840058A979 /* MapSearchTableViewCell.swift in Sources */,
 				C53F220F21FB87CD003457F3 /* Transaction+CoreDataClass.swift in Sources */,
 				C59BBFCA21FBB20400CD684C /* PushNotificationUtils.swift in Sources */,
+				10D6F9E82236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift in Sources */,
 				C53F21F821FA1C50003457F3 /* DefaultMonsterButton.swift in Sources */,
 				C59BC00521FFDB1800CD684C /* DownloadChaseOperation.swift in Sources */,
 				C59BBFD721FF56ED00CD684C /* LeaderboardViewController.swift in Sources */,

@@ -104,7 +104,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         defaultUIElementsStyle()
         
         // Set current player balance
-        refreshPlayerBalance()
+        //refreshPlayerBalance()
         
         // Initialize unloaded chase if necessary
         if self.newChase == nil {
@@ -118,7 +118,11 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     
     // MARK: - Tools
     func refreshPlayerInfo() {
-        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+        var godfatherAddress: String? = nil
+        if let godfatherWallet = currentPlayer?.getGodfatherWallet() {
+            godfatherAddress = godfatherWallet.address
+        }
+        let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: currentPlayer?.address ?? "0", monsterTokenAddress: AppConfiguration.monsterTokenAddress, godfatherAddress: godfatherAddress)
         appInitQueueDispatcher.initDispatchSequence {
             DispatchQueue.main.async {
                 self.view.isUserInteractionEnabled = true
@@ -140,36 +144,12 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         operationQueue.addOperations([gasEstimateOperation], waitUntilFinished: false)
     }
     
-    func refreshPlayerBalance() {
-        do {
-            let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
-            guard let playerBalanceStr = player.balanceAmp else {
-                blankBalanceLabels()
-                return
-            }
-            
-            guard let playerBalanceBigInt = BigInt.init(playerBalanceStr, radix: 16) else {
-                blankBalanceLabels()
-                return
-            }
-            
-            let usdValue = AionUtils.convertWeiToUSD(wei: playerBalanceBigInt)
-            let aionValue = AionUtils.convertWeiToAion(wei: playerBalanceBigInt)
-            
-            setCurrentBalanceLabel(usd: usdValue, aion: aionValue)
-        } catch {
-            blankBalanceLabels()
+    func retrievePlayerBalance(handler: @escaping PlayerBalanceQueueDispatcherCompletionHandler) -> PlayerBalanceQueueDispatcher? {
+        if let playerAddress = currentPlayer?.address {
+            return PlayerBalanceQueueDispatcher.init(playerAddress: playerAddress, godfatherAddress: currentPlayer?.godfatherAddress, completionHandler: handler)
         }
-    }
-    
-    func blankBalanceLabels() {
-        balanceValueLabel.text = "0.0 USD - 0.0 AION"
-    }
-    
-    func setCurrentBalanceLabel(usd: Double, aion: Double) {
-        let usdValue = String.init(format: "%.2f USD", usd)
-        let aionValue = String.init(format: "%.2f AION", aion)
-        balanceValueLabel.text = "\(usdValue) - \(aionValue)"
+        
+        return nil
     }
     
     @objc func onNotification(notification:Notification)
@@ -243,7 +223,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         hintTextView.isEditable = bool
     }
     
-    func isNewQuestValid() -> Bool {
+    func isNewChaseValid() -> Bool {
         var isValid = [Bool]()
         
         // Validate quest name
@@ -321,10 +301,9 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         }
     }
     
-    func createNewQuest(gasEstimateWei: BigInt) {
+    func createNewChase(gasEstimateWei: BigInt) {
         // New Quest submission
         // Pepare fields
-        let transactionCount = BigInt.init(currentPlayer?.transactionCount ?? "0") ?? BigInt.init(0)
         guard let maxWinners = BigInt.init(newChase?.maxWinners ?? "0") else {
             return
         }
@@ -351,7 +330,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         }
         
         // Upload quest operation
-        let operation = UploadChaseOperation.init(wallet: wallet, playerAddress: playerAddress, chaseName: chaseName, hint: chaseHint, maxWinners: maxWinners, merkleRoot: merkleRoot, merkleBody: merkleBody, metadata:  metadata, transactionCount: transactionCount, nrg: gasEstimateWei)
+        let operation = UploadChaseOperation.init(wallet: wallet, playerAddress: playerAddress, chaseName: chaseName, hint: chaseHint, maxWinners: maxWinners, merkleRoot: merkleRoot, merkleBody: merkleBody, metadata:  metadata, nrg: gasEstimateWei)
         operation.completionBlock = {
             AppDelegate.shared.refreshCurrentViewController()
             if let txHash = operation.txHash {
@@ -494,15 +473,15 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     
     func noBalanceHandler(message: String) {
         let alertView = monsterAlertView(title: "Failed", message: message)
-        let addBalance = UIAlertAction.init(title: "Add Balance", style: .default) { (UIAlertAction) in
-            do {
-                let vc = try self.instantiateViewController(identifier: "addBalanceViewControllerID", storyboardName: "Profile")
-                self.present(vc, animated: false, completion: nil)
-            }catch let error as NSError {
-                print("Failed to instantiate addBalanceViewControllerID with error: \(error)")
-            }
-        }
-        alertView.addAction(addBalance)
+//        let addBalance = UIAlertAction.init(title: "Cancel", style: .default) { (UIAlertAction) in
+//            do {
+//                let vc = try self.instantiateViewController(identifier: "addBalanceViewControllerID", storyboardName: "Profile")
+//                self.present(vc, animated: false, completion: nil)
+//            }catch let error as NSError {
+//                print("Failed to instantiate addBalanceViewControllerID with error: \(error)")
+//            }
+//        }
+        //alertView.addAction(addBalance)
         present(alertView, animated: false, completion: nil)
     }
     
@@ -539,26 +518,11 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     
     @IBAction func createChaseButtonPressed(_ sender: Any) {
         // Check if the quest inputs are correct.
-        if isNewQuestValid(){
+        if isNewChaseValid(){
             self.retrieveGasEstimate { (gasEstimateWei) in
                 if let gasEstimate = gasEstimateWei {
-                    let gasEstimateAion = AionUtils.convertWeiToAion(wei: gasEstimate)
-                    let gasEstimateUSD = AionUtils.convertAionAmountToUSD(aionAmount: gasEstimateAion)
-                    
-                    // Player balance
-                    let playerAionBalance = AionUtils.convertWeiToAion(wei: BigInt(self.currentPlayer?.balanceAmp ?? "0")!)
-                    let playerUSDBalance = AionUtils.convertAionAmountToUSD(aionAmount: playerAionBalance)
-                    
-                    if gasEstimateUSD > playerUSDBalance {
-                        let message = String.init(format: "Insufficient funds, Total transaction cost: %@ USD - %@ AION. Current player balance: %@ USD - %@ AION", String.init(format: "%.4f", gasEstimateUSD), String.init(format: "%.4f", gasEstimateAion), String.init(format: "%.4f", playerUSDBalance), String.init(format: "%.4f", playerAionBalance))
-                        self.noBalanceHandler(message: message)
-                        
-                        return
-                    }
-                    
-                    let message = String.init(format: "Total transaction cost: %@ USD - %@ AION. Press OK to create your Chase", String.init(format: "%.4f", gasEstimateUSD), String.init(format: "%.4f", gasEstimateAion))
-                    
-                    let txDetailsAlertView = self.monsterAlertView(title: "Transaction Details", message: message) { (uiAlertAction) in
+                    let message = "Are you sure you want to hide this Monster?"
+                    let txDetailsAlertView = self.monsterAlertView(title: "Confirmation", message: message) { (uiAlertAction) in
                         guard let player = self.currentPlayer else {
                             self.present(self.monsterAlertView(title: "Error", message: "Player account not found, please try again"), animated: true, completion: nil)
                             return
@@ -570,8 +534,23 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
                         }
                         
                         self.resolvePlayerWalletAuth(player: player, successHandler: { (wallet) in
-                            self.currentWallet = wallet
-                            self.createNewQuest(gasEstimateWei: gasEstimateWei)
+                            self.currentWallet = nil
+                            guard let playerAddress = player.address else {
+                                self.noBalanceHandler(message: "An error has ocurred, please try again")
+                                return
+                            }
+                            
+                            PlayerBalanceQueueDispatcher.init(playerAddress: playerAddress, godfatherAddress: player.godfatherAddress, completionHandler: { (playerBalance, godfatherBalance) in
+                                if godfatherBalance > gasEstimate {
+                                    self.currentWallet = player.getGodfatherWallet()
+                                } else if playerBalance > gasEstimate && self.currentWallet == nil {
+                                    self.currentWallet = wallet
+                                } else {
+                                    self.noBalanceHandler(message: "An error has ocurred, please try again later")
+                                    return
+                                }
+                                self.createNewChase(gasEstimateWei: gasEstimateWei)
+                            })
                         }, errorHandler: { (error) in
                             self.present(self.monsterAlertView(title: "Error", message: "An error ocurred accessing your account, please try again"), animated: true, completion: nil)
                         })

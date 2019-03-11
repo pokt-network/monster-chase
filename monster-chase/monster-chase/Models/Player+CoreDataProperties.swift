@@ -18,6 +18,7 @@ extension Player {
 
     @NSManaged public var address: String?
     @NSManaged public var balanceAmp: String?
+    @NSManaged public var godfatherBalanceAmp: String?
     @NSManaged public var aionUsdPrice: Double
     @NSManaged public var tavernMonsterAmount: String?
     @NSManaged public var transactionCount: String?
