@@ -144,14 +144,6 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         operationQueue.addOperations([gasEstimateOperation], waitUntilFinished: false)
     }
     
-    func retrievePlayerBalance(handler: @escaping PlayerBalanceQueueDispatcherCompletionHandler) -> PlayerBalanceQueueDispatcher? {
-        if let playerAddress = currentPlayer?.address {
-            return PlayerBalanceQueueDispatcher.init(playerAddress: playerAddress, godfatherAddress: currentPlayer?.godfatherAddress, completionHandler: handler)
-        }
-        
-        return nil
-    }
-    
     @objc func onNotification(notification:Notification)
     {
         if notification.userInfo != nil {
@@ -473,15 +465,6 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     
     func noBalanceHandler(message: String) {
         let alertView = monsterAlertView(title: "Failed", message: message)
-//        let addBalance = UIAlertAction.init(title: "Cancel", style: .default) { (UIAlertAction) in
-//            do {
-//                let vc = try self.instantiateViewController(identifier: "addBalanceViewControllerID", storyboardName: "Profile")
-//                self.present(vc, animated: false, completion: nil)
-//            }catch let error as NSError {
-//                print("Failed to instantiate addBalanceViewControllerID with error: \(error)")
-//            }
-//        }
-        //alertView.addAction(addBalance)
         present(alertView, animated: false, completion: nil)
     }
     

@@ -24,7 +24,7 @@ DEPENDENCIES:
   - CryptoSwift
   - FlexColorPicker
   - HDAugmentedReality (~> 2.4)
-  - PocketAion (~> 0.0.13)
+  - PocketAion (from `~/current_projects/pocket-ios-aion`)
   - "SidebarOverlay (from `git@github.com:pokt-network/SidebarOverlay.git`, branch `develop`)"
   - SwiftHEXColors
 
@@ -36,7 +36,6 @@ SPEC REPOS:
     - FlexColorPicker
     - HDAugmentedReality
     - Pocket
-    - PocketAion
     - PocketSwiftKeychainWrapper
     - RNCryptor
     - SipHash
@@ -44,6 +43,8 @@ SPEC REPOS:
     - SwiftyJSON
 
 EXTERNAL SOURCES:
+  PocketAion:
+    :path: "~/current_projects/pocket-ios-aion"
   SidebarOverlay:
     :branch: develop
     :git: "git@github.com:pokt-network/SidebarOverlay.git"
@@ -60,7 +61,7 @@ SPEC CHECKSUMS:
   FlexColorPicker: 795d037b14af62c0fb353a505662846e92296abe
   HDAugmentedReality: 7a6afcd7792b9b4e5b3cc6069302a19e5ddbfdec
   Pocket: 5e68e3ba188c59a17d239c76e7c0f5e95ecfc258
-  PocketAion: fd08b0379dcd0bf2f41aedb62f41dcc4e8daf06b
+  PocketAion: 5f51ef5dc3fc7a94181a928defeeffa15f1ed5dc
   PocketSwiftKeychainWrapper: 3194cc7e44290d790ec02e19a801c05e34488249
   RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
   SidebarOverlay: a34f9a42b63f7872c531ab7e5b548af12d8ddc7d
@@ -68,6 +69,6 @@ SPEC CHECKSUMS:
   SwiftHEXColors: a4ebe93a70890a9fa124e205dd785cc7552273b4
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 72833e271860b61604ba97b60b530b03cab2d6c9
+PODFILE CHECKSUM: 1f06b54a68ebb41be6647e329afb34ebccab4a58
 
 COCOAPODS: 1.5.3
