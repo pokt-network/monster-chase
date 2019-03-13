@@ -254,6 +254,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
                 claimFailedAlertView()
                 return
             }
+            
             guard let monsterName = currentChase?.name else {
                 claimFailedAlertView()
                 return
@@ -264,7 +265,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
             }
             
             let operationQueue = OperationQueue()
-            let nonceOperation = DownloadTransactionCountOperation.init(address: playerAddress)
+            let nonceOperation = DownloadTransactionCountOperation.init(address: wallet.address)
             nonceOperation.completionBlock = {
                 if let transactionCount = nonceOperation.transactionCount {
                     let claimOperation = UploadChaseProofOperation.init(wallet: wallet, transactionCount: transactionCount, playerAddress: playerAddress, chaseIndex: chaseIndex, proof: proof, answer: answer, leftOrRight: leftOrRight)
@@ -312,39 +313,46 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
     @IBAction func claimButtonPressed(_ sender: Any) {
         self.retrieveGasEstimate { (gasEstimateWei) in
             if let gasEstimate = gasEstimateWei {
-                // Transaction estimate
-                let gasEstimateAion = AionUtils.convertWeiToAion(wei: gasEstimate)
-                let gasEstimateUSD = AionUtils.convertAionAmountToUSD(aionAmount: gasEstimateAion)
-                // Player balance
-                let playerAionBalance = AionUtils.convertWeiToAion(wei: BigInt(self.currentPlayer?.balanceAmp ?? "0")!)
-                let playerUSDBalance = AionUtils.convertAionAmountToUSD(aionAmount: playerAionBalance)
-                
-                if gasEstimateUSD > playerUSDBalance {
-                    let message = String.init(format: "Insufficient funds, Total transaction cost: %@ USD - %@ AION. Current player balance: %@ USD - %@ AION", String.init(format: "%.4f", gasEstimateUSD), String.init(format: "%.4f", gasEstimateAion), String.init(format: "%.4f", playerUSDBalance), String.init(format: "%.4f", playerAionBalance))
-                    self.noBalanceHandler(message: message)
-                    
-                    return
-                }
-                
-                let message = String.init(format: "Total transaction cost: %@ USD - %@ AION. Press OK to claim your Banano", String.init(format: "%.4f", gasEstimateUSD), String.init(format: "%.4f", gasEstimateAion))
-                
-                let txDetailsAlertView = self.monsterAlertView(title: "Transaction Details", message: message) { (uiAlertAction) in
-                    do {
-                        let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
-                        self.resolvePlayerWalletAuth(player: player, successHandler: { (wallet) in
-                            self.claimMonster(wallet: wallet)
-                        }, errorHandler: { (error) in
-                            print("\(error)")
-                            self.present(self.monsterAlertView(title: "Error", message: "An error ocurred retrieving your account information, please try again"), animated: true)
-                        })
-                    } catch {
-                        self.present(self.monsterAlertView(title: "Error", message: "An error ocurred retrieving your account information, please try again"), animated: true)
+                let message = "Are you sure you want to claim this Monster?"
+                let txDetailsAlertView = self.monsterAlertView(title: "Confirmation", message: message) { (uiAlertAction) in
+                    guard let player = self.currentPlayer else {
+                        self.present(self.monsterAlertView(title: "Error", message: "Player account not found, please try again."), animated: true, completion: nil)
                         return
                     }
+                    
+                    self.resolvePlayerWalletAuth(player: player, successHandler: { (wallet) in
+                        var currentWallet: Wallet?
+                        guard let playerAddress = player.address else {
+                            self.noBalanceHandler(message: "An error has ocurred, please try again")
+                            return
+                        }
+                        
+                        PlayerBalanceQueueDispatcher.init(playerAddress: playerAddress, godfatherAddress: player.godfatherAddress, completionHandler: { (playerBalance, godfatherBalance) in
+                            if godfatherBalance > gasEstimate {
+                                currentWallet = player.getGodfatherWallet()
+                            } else if playerBalance > gasEstimate && currentWallet == nil {
+                                currentWallet = wallet
+                            } else {
+                                self.noBalanceHandler(message: "An error has ocurred, please try again later")
+                                return
+                            }
+                            
+                            guard let currentWallet = currentWallet else {
+                                self.noBalanceHandler(message: "An error has ocurred, please try again later")
+                                return
+                            }
+                            
+                            self.claimMonster(wallet: currentWallet)
+                        })
+                    }, errorHandler: { (error) in
+                        self.present(self.monsterAlertView(title: "Error", message: "An error ocurred accessing your account, please try again"), animated: true, completion: nil)
+                    })
                 }
+                txDetailsAlertView.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+                
                 self.present(txDetailsAlertView, animated: false, completion: nil)
             } else {
-                let alertController = self.monsterAlertView(title: "Error", message: "Failed to calculate your transaction details and costs, please try again")
+                let alertController = self.monsterAlertView(title: "Error", message: "An error has ocurred, please try again")
                 self.present(alertController, animated: false, completion: nil)
                 return
             }
@@ -353,15 +361,6 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
     
     func noBalanceHandler(message: String) {
         let alertView = monsterAlertView(title: "Failed", message: message)
-        let addBalance = UIAlertAction.init(title: "Add Balance", style: .default) { (UIAlertAction) in
-            do {
-                let vc = try self.instantiateViewController(identifier: "addBalanceViewControllerID", storyboardName: "Profile")
-                self.present(vc, animated: false, completion: nil)
-            }catch let error as NSError {
-                print("Failed to instantiate addBalanceViewControllerID with error: \(error)")
-            }
-        }
-        alertView.addAction(addBalance)
         present(alertView, animated: false, completion: nil)
     }
     
@@ -374,17 +373,23 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
                 return
             }
             guard let proof = chaseProof?.proof else {
-                let alertController = self.monsterAlertView(title: "Error", message: "Failed to retrieve your account data, please try again")
+                let alertController = self.monsterAlertView(title: "Error", message: "Failed to proof your location, please try again")
                 self.present(alertController, animated: false, completion: nil)
                 return
             }
             guard let answer = chaseProof?.answer else {
-                let alertController = self.monsterAlertView(title: "Error", message: "Failed to retrieve your account data, please try again")
+                let alertController = self.monsterAlertView(title: "Error", message: "Failed to proof your location, please try again")
+                self.present(alertController, animated: false, completion: nil)
+                return
+            }
+            
+            guard let leftOrRight = chaseProof?.order else {
+                let alertController = self.monsterAlertView(title: "Error", message: "Failed to proof your location, please try again")
                 self.present(alertController, animated: false, completion: nil)
                 return
             }
             let operationQueue = OperationQueue.init()
-            let gasEstimateOperation = UploadChaseProofEstimateOperation.init(playerAddress: player.address!, tokenAddress: AppConfiguration.monsterTokenAddress, chaseIndex: BigInt.init(questIndexStr)!, proof: proof, answer: answer, leftOrRight: [])
+            let gasEstimateOperation = UploadChaseProofEstimateOperation.init(playerAddress: player.address!, tokenAddress: AppConfiguration.monsterTokenAddress, chaseIndex: BigInt.init(questIndexStr)!, proof: proof, answer: answer, leftOrRight: leftOrRight)
             gasEstimateOperation.completionBlock = {
                 handler(gasEstimateOperation.estimatedGas)
             }

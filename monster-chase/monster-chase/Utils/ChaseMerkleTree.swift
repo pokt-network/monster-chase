@@ -139,8 +139,10 @@ public class ChaseMerkleTree: MerkleTree {
                     let pairIndex = index % 2 == 0 ? index + 1 : index - 1
                     
                     if pairIndex < layer.count {
-                        proof.append("0x" + layer[pairIndex])
-                        if (pairIndex > index) {
+                        let pairNode = "0x" + layer[pairIndex]
+                        let node = "0x" + layer[index]
+                        proof.append(pairNode)
+                        if (node < pairNode) {
                             order.append(false)
                         } else {
                             order.append(true)
@@ -153,6 +155,6 @@ public class ChaseMerkleTree: MerkleTree {
         }
         
         
-        return submissions.last
+        return submissions.first
     }
 }
