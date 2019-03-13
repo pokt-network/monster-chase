@@ -10,36 +10,37 @@ import Foundation
 import CoreData
 import BigInt
 
+public enum MonsterError: Error {
+    case invalidIndex
+}
+
 @objc(Monster)
 public class Monster: NSManagedObject {
-    convenience init(obj: Chase, context: NSManagedObjectContext) throws {
+    convenience init(chase: Chase, context: NSManagedObjectContext) throws {
         self.init(context: context)
-        self.replaceValues(obj: obj, context: context)
+        try self.replaceValues(chase: chase)
     }
     
     // Updates chase instance with dict
-    public func replaceValues(obj: Chase, context: NSManagedObjectContext) {
+    public func replaceValues(chase: Chase) throws {
         
-        if !obj.name.isEmpty {
-            self.name = obj.name
+        if !chase.name.isEmpty {
+            self.name = chase.name
         }else{
             self.name = ""
         }
         
-        if !obj.hexColor.isEmpty {
-            self.hexColor = obj.hexColor
-        }else{
+        if !chase.hexColor.isEmpty {
+            self.hexColor = chase.hexColor
+        } else {
             self.hexColor = ""
         }
         
-        do {
-            let bananosCount = try getLocalMonsterCount(context: context)
-            self.index = String.init(BigInt.anyToBigInt(anyValue: bananosCount) ?? BigInt.init(0))
-            
-        } catch let error as NSError {
-            print("Failed with error: \(error)")
+        guard let chaseIndex = chase.index else {
+            throw MonsterError.invalidIndex
         }
         
+        self.index = chaseIndex
     }
     
     func save() throws {
@@ -62,14 +63,30 @@ public class Monster: NSManagedObject {
         return try context.fetch(fetchRequest) as [Monster]
     }
     
-    public static func getMonstersByIndex(monsterIndex: String, context: NSManagedObjectContext) -> Monster? {
+    public static func exists(monsterIndex: String, context: NSManagedObjectContext) -> Bool {
+        var result = false
+        let fetchRequest: NSFetchRequest<Monster> = Monster.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "index == %@", monsterIndex)
+        do {
+            let results = try context.fetch(fetchRequest) as [Monster]
+            if results.count > 0 {
+                result = true
+            }
+        } catch {
+            result = false
+        }
+        
+        return result
+    }
+    
+    public static func getMonsterByIndex(monsterIndex: String, context: NSManagedObjectContext) -> Monster? {
         var result: Monster?
         let fetchRequest: NSFetchRequest<Monster> = Monster.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "index == %@", monsterIndex)
         
         do {
             let results = try context.fetch(fetchRequest) as [Monster]
-            if results.count == 1 {
+            if results.count >= 1 {
                 result = results.first
             }
         } catch {
@@ -79,7 +96,7 @@ public class Monster: NSManagedObject {
         return result
     }
     
-    func getLocalMonsterCount(context: NSManagedObjectContext) throws -> Int64{
+    func getLocalMonsterCount(context: NSManagedObjectContext) throws -> Int64 {
         var monsters = [Monster]()
         
         let fetchRequest = NSFetchRequest<Monster>(entityName: "Monster")

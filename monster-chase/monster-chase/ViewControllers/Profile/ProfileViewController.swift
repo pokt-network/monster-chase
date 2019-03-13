@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         } catch let error as NSError {
             print("Failed to retrieve current player with error: \(error)")
         }
-        loadPlayerBananos()
+        loadPlayerMonsters()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +71,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             
             balanceValueLabel.text = "\(aion) AION - \(usd) USD"
         }
+        
+        self.monstersCountLabel.text = "\(self.monsters.count)"
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -113,7 +115,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             showError()
             return
         } else {
-            let alertView = monsterAlertView(title: "Success:", message: "Your Address has been copied to the clipboard.")
+            let alertView = monsterAlertView(title: "Success:", message: "Your account has been copied to the clipboard.")
             UIPasteboard.general.string = walletAddressTextField.text
             present(alertView, animated: false, completion: nil)
         }
@@ -209,7 +211,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         return nil
     }
     
-    func loadPlayerBananos() {
+    func loadPlayerMonsters() {
         // Initial load for the local monsters list
         do {
             self.monsters = try Monster.sortedMonstersByIndex(context: CoreDataUtils.mainPersistentContext)
