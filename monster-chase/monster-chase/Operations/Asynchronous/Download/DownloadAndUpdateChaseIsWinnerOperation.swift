@@ -58,9 +58,20 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
                     return
                 }
 
-                if isWinnerBool {
-                    let monster = try Monster.init(obj: chase, context: context)
-                    try monster.save()
+                if isWinnerBool == true {
+                    guard let chaseIndex = chase.index else {
+                        self.error = DownloadAndUpdateChaseIsWinnerOperationError.resultParsing
+                        self.finish()
+                        return
+                    }
+                    
+                    if !Monster.exists(monsterIndex: chaseIndex, context: context) {
+                        // Create the monster once
+                        let monster = try Monster.init(chase: chase, context: context)
+                        try monster.save()
+                    } else {
+                        print("Monster already exists")
+                    }
                 }
 
                 chase.winner = isWinnerBool
