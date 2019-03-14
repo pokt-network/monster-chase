@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
     var nodeURL: URL {
         get {
             //return URL.init(string: "https://aion.pokt.network")!
-            //return URL.init(string: "http://localhost:3000")!
-            return URL.init(string: "http://192.168.0.155:3000")!
+            return URL.init(string: "http://localhost:3000")!
+            //return URL.init(string: "http://192.168.0.155:3000")!
         }
     }
 
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
         Pocket.shared.setConfiguration(config: self)
         
         // Refresh app data
-        self.updatePlayerAndQuestData(completionHandler: refreshCurrentViewController)
+        self.updatePlayerAndChaseData(completionHandler: refreshCurrentViewController)
         
         // Setup repeating tasks
         self.setupRepeatingTasks()
@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
     
     // MARK: - Background refresh
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        self.updatePlayerAndQuestData {
+        self.updatePlayerAndChaseData {
             completionHandler(.newData)
         }
     }
@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
         chaseListQueueDispatcher.initDispatchSequence(completionHandler: completionHandler)
     }
     
-    func updatePlayerAndQuestData(completionHandler: @escaping () -> Void) {
+    func updatePlayerAndChaseData(completionHandler: @escaping () -> Void) {
         updatePlayer { (playerAddress) in
             self.updateChaseList(playerAddress: playerAddress, completionHandler: completionHandler)
         }
@@ -178,6 +178,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
         questCreationTimer.resume()
         let questClaimTimer = ChaseNotificationTimer.init(timeInterval: 10, title: notificationTitle, successMsg: "Your Monster has been claimed succesfully", errorMsg: "An error ocurred claiming your Monster, please try again", successIdentifier: "ChaseClaimSuccess", errorIdentifier: "ChaseClaimError", txType: TransactionType.claim, maxRetries: 75)
         questClaimTimer.resume()
+    }
+    
+    // MARK: - UserNotificaitonCenter
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
     }
 
 }
