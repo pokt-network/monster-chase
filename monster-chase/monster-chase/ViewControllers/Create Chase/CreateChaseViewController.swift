@@ -597,19 +597,37 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         if self.view.window != nil {
             if textView.textColor == UIColor.lightGray {
                 textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+                updateHintCount(textView: textView)
             }
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        // Update text length indicator
-        let textLength = textView.text.count
-        hintTextCountLabel.text = String.init(format: "%i/%i", textLength, maxHintSize)
-        if textLength > maxHintSize {
-            hintTextCountLabel.textColor = UIColor.red
-        } else {
-            hintTextCountLabel.textColor = AppColors.base.uiColor()
+    func updateHintCount(textView: UITextView) {
+        DispatchQueue.main.async {
+            // Update text length indicator
+            var textLength = textView.text.count
+            guard let textColor = textView.textColor else {
+                return
+            }
+            
+            if textColor == UIColor.lightGray {
+                textLength = 0
+            }
+            self.hintTextCountLabel.text = String.init(format: "%i/%i", textLength, self.maxHintSize)
+            if textLength > self.maxHintSize {
+                self.hintTextCountLabel.textColor = UIColor.red
+            } else {
+                self.hintTextCountLabel.textColor = AppColors.base.uiColor()
+            }
         }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        updateHintCount(textView: textView)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        updateHintCount(textView: textView)
     }
 }
 
