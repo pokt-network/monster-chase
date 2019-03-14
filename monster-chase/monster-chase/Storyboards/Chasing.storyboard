@@ -226,7 +226,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oI3-dl-9lh" userLabel="Previous button">
-                                        <rect key="frame" x="20" y="90" width="30" height="30"/>
+                                        <rect key="frame" x="20" y="100" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="bCh-lT-zn0"/>
                                             <constraint firstAttribute="width" constant="30" id="olF-R2-aXk"/>
@@ -237,7 +237,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTE-sA-RKy" userLabel="Next button">
-                                        <rect key="frame" x="295" y="90" width="30" height="30"/>
+                                        <rect key="frame" x="295" y="100" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="aUe-TJ-G0D"/>
                                             <constraint firstAttribute="height" constant="30" id="st7-HK-2we"/>
@@ -268,25 +268,25 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="336" height="180"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xFB-K2-LSb" userLabel="Monster color image">
-                                                                    <rect key="frame" x="110.5" y="47.5" width="115" height="115"/>
+                                                                    <rect key="frame" x="88" y="35" width="160" height="160"/>
                                                                     <color key="backgroundColor" red="0.19215686269999999" green="0.66666666669999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="115" id="Wzi-Gd-EFO"/>
-                                                                        <constraint firstAttribute="width" constant="115" id="vmz-K2-nfR"/>
+                                                                        <constraint firstAttribute="height" constant="160" id="Wzi-Gd-EFO"/>
+                                                                        <constraint firstAttribute="width" constant="160" id="vmz-K2-nfR"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monster-Stickerx1" translatesAutoresizingMaskIntoConstraints="NO" id="8Fy-bE-BfQ" userLabel="Monster image">
-                                                                    <rect key="frame" x="113" y="50" width="110" height="110"/>
+                                                                    <rect key="frame" x="93" y="40" width="150" height="150"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="110" id="oZ6-Jl-zxB"/>
-                                                                        <constraint firstAttribute="height" constant="110" id="ovK-ad-mGg"/>
+                                                                        <constraint firstAttribute="width" constant="150" id="oZ6-Jl-zxB"/>
+                                                                        <constraint firstAttribute="height" constant="150" id="ovK-ad-mGg"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="8Fy-bE-BfQ" firstAttribute="centerY" secondItem="3al-rU-T71" secondAttribute="centerY" constant="15" id="Cbz-xm-t3n"/>
+                                                                <constraint firstItem="8Fy-bE-BfQ" firstAttribute="centerY" secondItem="3al-rU-T71" secondAttribute="centerY" constant="25" id="Cbz-xm-t3n"/>
                                                                 <constraint firstAttribute="height" constant="180" id="O6z-pK-Vl5"/>
                                                                 <constraint firstItem="8Fy-bE-BfQ" firstAttribute="centerX" secondItem="3al-rU-T71" secondAttribute="centerX" id="cga-Ou-w0q"/>
                                                                 <constraint firstItem="xFB-K2-LSb" firstAttribute="centerY" secondItem="8Fy-bE-BfQ" secondAttribute="centerY" id="pVa-2i-buB"/>
@@ -481,7 +481,7 @@
                                     <constraint firstAttribute="bottom" secondItem="TgT-jH-xCi" secondAttribute="bottom" constant="20" id="PoM-ml-S5y"/>
                                     <constraint firstItem="Zg4-6p-fWR" firstAttribute="leading" secondItem="Crs-sK-80A" secondAttribute="leading" constant="3" id="QHl-FL-hbT"/>
                                     <constraint firstAttribute="trailing" secondItem="TgT-jH-xCi" secondAttribute="trailing" id="WsG-QP-DMO"/>
-                                    <constraint firstItem="oI3-dl-9lh" firstAttribute="centerY" secondItem="Zg4-6p-fWR" secondAttribute="centerY" id="c7o-Im-mwC"/>
+                                    <constraint firstItem="oI3-dl-9lh" firstAttribute="centerY" secondItem="Zg4-6p-fWR" secondAttribute="centerY" constant="10" id="c7o-Im-mwC"/>
                                     <constraint firstItem="Zg4-6p-fWR" firstAttribute="top" secondItem="Crs-sK-80A" secondAttribute="top" constant="5" id="gbh-Aq-Krc"/>
                                     <constraint firstItem="OTE-sA-RKy" firstAttribute="centerY" secondItem="oI3-dl-9lh" secondAttribute="centerY" id="grU-l0-NRr"/>
                                     <constraint firstItem="TgT-jH-xCi" firstAttribute="top" secondItem="Crs-sK-80A" secondAttribute="top" id="jCQ-i5-8dv"/>
