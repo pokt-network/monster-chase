@@ -39,8 +39,8 @@ class LeaderBoardTableViewCell: UITableViewCell {
         // Updat UI with record data
         let suffix = record?.tokenTotal == 1 ? " Monster":" Monsters";
         self.positionLabel.text = "\(String((index ?? 0) + 1))."
-        self.aionAddressLabel.text = record?.wallet
-        self.monsterNumberLabel.text = record?.tokenTotal != nil ? String((record?.tokenTotal!)!) + suffix : ""
+        self.aionAddressLabel.text = record?.address
+        self.monsterNumberLabel.text = record?.tokenTotal != nil ? String((record?.tokenTotal)!) + suffix : ""
     }
     
 }
