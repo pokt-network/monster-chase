@@ -21,6 +21,44 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zqR-JC-liX" userLabel="Top Orange Background View">
                                 <rect key="frame" x="20" y="66" width="335" height="200"/>
                                 <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nr-uX-CLN" userLabel="Position label">
+                                        <rect key="frame" x="201" y="135" width="55" height="15"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
+                                        <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30I-Um-VMt" userLabel="Monster count value label">
+                                        <rect key="frame" x="90" y="166" width="40" height="21"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
+                                        <color key="textColor" red="0.054901960780000002" green="0.6588235294" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monsters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9E-bQ-ElW" userLabel="Monsters Count label">
+                                        <rect key="frame" x="79" y="135" width="62" height="15.5"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
+                                        <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circlex1" translatesAutoresizingMaskIntoConstraints="NO" id="0vh-oW-L17" userLabel="Leaderboard position circle">
+                                        <rect key="frame" x="211" y="156.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="AYk-pe-5Uc"/>
+                                            <constraint firstAttribute="height" constant="40" id="qVa-gV-z8V"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NF-Bf-8qc" userLabel="Leaderboard position value label">
+                                        <rect key="frame" x="211" y="166" width="40" height="21"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
+                                        <color key="textColor" red="0.054901960780000002" green="0.6588235294" blue="0.61960784310000006" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circlex1" translatesAutoresizingMaskIntoConstraints="NO" id="vTw-SA-RnJ" userLabel="Monster count circle">
+                                        <rect key="frame" x="90" y="156.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="6TO-0E-WYl"/>
+                                            <constraint firstAttribute="width" constant="40" id="vMy-d2-drF"/>
+                                        </constraints>
+                                    </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dgf-Av-kbK" userLabel="QR Code background">
                                         <rect key="frame" x="119" y="31.5" width="97" height="97"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,7 +74,7 @@
                                             <constraint firstAttribute="height" constant="60" id="DdG-Sy-hqc"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collect Monsters to get ranked" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qkl-QA-Hnw" userLabel="Collect monsters label">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collect monsters to get ranked!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="qkl-QA-Hnw" userLabel="Collect monsters label">
                                         <rect key="frame" x="35" y="158.5" width="265" height="21"/>
                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -45,15 +83,33 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.61568627450000002" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="2NF-Bf-8qc" firstAttribute="centerY" secondItem="0vh-oW-L17" secondAttribute="centerY" id="1VC-e1-j25"/>
+                                    <constraint firstItem="2NF-Bf-8qc" firstAttribute="top" secondItem="5nr-uX-CLN" secondAttribute="bottom" constant="16" id="1bq-0F-X0b"/>
                                     <constraint firstItem="x6I-b9-tkl" firstAttribute="centerY" secondItem="zqR-JC-liX" secondAttribute="centerY" constant="-20" id="4w9-Xh-WIo"/>
                                     <constraint firstItem="qkl-QA-Hnw" firstAttribute="top" secondItem="Dgf-Av-kbK" secondAttribute="bottom" constant="30" id="5Gp-iy-1Mw"/>
+                                    <constraint firstItem="2NF-Bf-8qc" firstAttribute="centerX" secondItem="0vh-oW-L17" secondAttribute="centerX" id="5KD-Aa-v7x"/>
+                                    <constraint firstItem="vTw-SA-RnJ" firstAttribute="leading" secondItem="zqR-JC-liX" secondAttribute="leading" constant="90" id="AiA-Na-M9S"/>
+                                    <constraint firstItem="2NF-Bf-8qc" firstAttribute="width" secondItem="0vh-oW-L17" secondAttribute="width" id="FKR-hP-bnJ"/>
+                                    <constraint firstItem="y9E-bQ-ElW" firstAttribute="top" secondItem="x6I-b9-tkl" secondAttribute="bottom" constant="25" id="Glp-Ao-vL6"/>
+                                    <constraint firstAttribute="bottom" secondItem="2NF-Bf-8qc" secondAttribute="bottom" constant="13" id="I5f-a6-cvs"/>
+                                    <constraint firstAttribute="bottom" secondItem="30I-Um-VMt" secondAttribute="bottom" constant="13" id="KFv-Rj-Yu6"/>
+                                    <constraint firstItem="30I-Um-VMt" firstAttribute="centerY" secondItem="vTw-SA-RnJ" secondAttribute="centerY" id="OFE-u5-6ul"/>
+                                    <constraint firstItem="vTw-SA-RnJ" firstAttribute="top" secondItem="y9E-bQ-ElW" secondAttribute="bottom" constant="6" id="TsX-uJ-mP3"/>
+                                    <constraint firstItem="30I-Um-VMt" firstAttribute="centerX" secondItem="vTw-SA-RnJ" secondAttribute="centerX" id="X4D-ga-43J"/>
                                     <constraint firstAttribute="height" constant="200" id="XlI-Be-wbx"/>
                                     <constraint firstItem="Dgf-Av-kbK" firstAttribute="centerX" secondItem="x6I-b9-tkl" secondAttribute="centerX" id="a2w-Mz-E14"/>
                                     <constraint firstItem="qkl-QA-Hnw" firstAttribute="centerX" secondItem="Dgf-Av-kbK" secondAttribute="centerX" id="c6b-Ri-K01"/>
+                                    <constraint firstAttribute="trailing" secondItem="0vh-oW-L17" secondAttribute="trailing" constant="84" id="g7s-Jl-aZQ"/>
+                                    <constraint firstItem="30I-Um-VMt" firstAttribute="width" secondItem="vTw-SA-RnJ" secondAttribute="width" id="hzF-jF-Chh"/>
+                                    <constraint firstItem="5nr-uX-CLN" firstAttribute="top" secondItem="x6I-b9-tkl" secondAttribute="bottom" constant="25" id="pVV-0z-T4h"/>
+                                    <constraint firstAttribute="trailing" secondItem="5nr-uX-CLN" secondAttribute="trailing" constant="79" id="plK-a1-pBt"/>
                                     <constraint firstItem="qkl-QA-Hnw" firstAttribute="leading" secondItem="zqR-JC-liX" secondAttribute="leading" constant="35" id="prK-Wq-SHL"/>
                                     <constraint firstAttribute="trailing" secondItem="qkl-QA-Hnw" secondAttribute="trailing" constant="35" id="rjH-0f-J9j"/>
+                                    <constraint firstItem="y9E-bQ-ElW" firstAttribute="leading" secondItem="zqR-JC-liX" secondAttribute="leading" constant="79" id="ujQ-WO-bMf"/>
                                     <constraint firstItem="Dgf-Av-kbK" firstAttribute="centerY" secondItem="x6I-b9-tkl" secondAttribute="centerY" id="wnY-5U-FyP"/>
+                                    <constraint firstItem="0vh-oW-L17" firstAttribute="top" secondItem="y9E-bQ-ElW" secondAttribute="bottom" constant="6" id="xOF-GS-jcc"/>
                                     <constraint firstItem="x6I-b9-tkl" firstAttribute="centerX" secondItem="zqR-JC-liX" secondAttribute="centerX" id="yzQ-02-Or0"/>
+                                    <constraint firstItem="30I-Um-VMt" firstAttribute="top" secondItem="vTw-SA-RnJ" secondAttribute="bottom" constant="-30.5" id="zML-QX-Wm9"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -106,7 +162,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="###  Monsters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="HEd-GF-g3v" userLabel="Monster count label">
-                                                            <rect key="frame" x="106" y="11" width="143.5" height="21"/>
+                                                            <rect key="frame" x="106" y="11" width="144" height="21"/>
                                                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                                             <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -181,7 +237,13 @@
                         <viewLayoutGuide key="safeArea" id="hWV-lE-uQe"/>
                     </view>
                     <connections>
-                        <outlet property="positionValueLabel" destination="qkl-QA-Hnw" id="TCT-PT-8pf"/>
+                        <outlet property="monsterCircle" destination="vTw-SA-RnJ" id="Sao-sV-WI8"/>
+                        <outlet property="monsterCountLabel" destination="y9E-bQ-ElW" id="NNj-P4-jNp"/>
+                        <outlet property="monsterCountValueLabel" destination="30I-Um-VMt" id="Tr1-Ai-SJP"/>
+                        <outlet property="placeholderLabel" destination="qkl-QA-Hnw" id="niB-ET-BFF"/>
+                        <outlet property="positionCircle" destination="0vh-oW-L17" id="8HP-Xh-L6Y"/>
+                        <outlet property="positionLabel" destination="5nr-uX-CLN" id="kYh-TB-RbN"/>
+                        <outlet property="positionValueLabel" destination="2NF-Bf-8qc" id="W9R-Q8-cJZ"/>
                         <outlet property="qrCodeBackgroundImage" destination="Dgf-Av-kbK" id="sTf-S7-Upu"/>
                         <outlet property="qrCodeImage" destination="x6I-b9-tkl" id="7UN-DX-AeT"/>
                         <outlet property="tableView" destination="31Q-6t-5St" id="7zv-kh-eeO"/>
@@ -193,6 +255,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Circlex1" width="390" height="390"/>
         <image name="Coppy-x1" width="156" height="156"/>
         <image name="Menux1" width="156" height="156"/>
         <image name="Monster-Stickerx1" width="600" height="600"/>
