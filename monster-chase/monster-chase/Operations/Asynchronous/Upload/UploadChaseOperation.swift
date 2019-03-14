@@ -66,7 +66,7 @@ public class UploadChaseOperation: AsynchronousOperation {
                 return
             }
             
-            monsterToken.submitChase(wallet: self.wallet, transactionCount: transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, name: self.chaseName, hint: self.hint, maxWinners: self.maxWinners, metadata: self.metadata, merkleRoot: self.merkleRoot, merkleBody: self.merkleBody) { (txHashArray, txError) in
+            monsterToken.submitChase(wallet: self.wallet, transactionCount: transactionCount, nrg: self.nrg, player: self.playerAddress, name: self.chaseName, hint: self.hint, maxWinners: self.maxWinners, metadata: self.metadata, merkleRoot: self.merkleRoot, merkleBody: self.merkleBody) { (txHashArray, txError) in
                 if let txError = txError {
                     self.error = txError
                     self.finish()

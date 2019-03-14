@@ -27,8 +27,9 @@ public class UploadChaseProofOperation: AsynchronousOperation {
     public var leftOrRight: [Bool]
     public var wallet: Wallet
     public var transactionCount: BigInt
+    public var nrg: BigInt
     
-    public init(wallet: Wallet, transactionCount: BigInt, playerAddress: String, chaseIndex: BigInt, proof: [String], answer: String, leftOrRight: [Bool]) {
+    public init(wallet: Wallet, transactionCount: BigInt, playerAddress: String, chaseIndex: BigInt, proof: [String], answer: String, leftOrRight: [Bool], nrg: BigInt) {
         self.wallet = wallet
         self.transactionCount = transactionCount
         self.playerAddress = playerAddress
@@ -36,6 +37,7 @@ public class UploadChaseProofOperation: AsynchronousOperation {
         self.proof = proof
         self.answer = answer
         self.leftOrRight = leftOrRight
+        self.nrg = nrg
         super.init()
     }
     
@@ -46,7 +48,7 @@ public class UploadChaseProofOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.submitProof(wallet: self.wallet, transactionCount: self.transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, chaseIndex: self.chaseIndex, proof: self.proof, answer: self.answer, leftOrRight: self.leftOrRight) { (txHashArray, error) in
+        monsterToken.submitProof(wallet: self.wallet, transactionCount: self.transactionCount, nrg: self.nrg, player: self.playerAddress, chaseIndex: self.chaseIndex, proof: self.proof, answer: self.answer, leftOrRight: self.leftOrRight) { (txHashArray, error) in
             if let error = error {
                 self.error = error
                 self.finish()

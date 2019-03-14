@@ -20,29 +20,20 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var positionValueLabel: UILabel!
     
     var ownersRecords = [LeaderboardRecord]()
-    var ownerPosition: Int?
     var currentPlayer: Player?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        // loadAndSetLeaderboardData()
-        // TODO: ADD POSITION LABEL
-//        positionLabel.text = ""
         
+        // Set the current player
         do {
             currentPlayer = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
         } catch let error as NSError {
             print("Failed to retrieve current player with error: \(error)")
         }
         
-        // Test data
-        let testData = LeaderboardRecord.init(wallet: currentPlayer?.address, tokenTotal: BigInt.init("1234", radix: 16))
-        let testData2 = LeaderboardRecord.init(wallet: "0x0000000101010101010", tokenTotal: BigInt.init("12", radix: 16))
-        
-        self.ownersRecords.append(testData)
-        self.ownersRecords.append(testData2)
-        
+        // Load the data
+        loadAndSetLeaderboardData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,25 +57,32 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func setPositionLabelText() {
-        if (ownerPosition == nil) {
-            //positionLabel.text = "Collect monsters to get ranked!"
+    func setPositionLabelText(ownerPosition: Int64) {
+        if (ownerPosition == 0) {
+            positionValueLabel.text = "Collect monsters to get ranked!"
         } else {
-            //positionLabel.text = "You are in position #\(ownerPosition!)!"
+            positionValueLabel.text = "You are in position #\(ownerPosition)!"
         }
     }
     
     // MARK: UITableViewDelegate
     // MARK: Data
-    func calculateOwnerPosition() {
-        for i in 0..<ownersRecords.count {
-            let record = ownersRecords[i]
-            let playerAddress = currentPlayer?.address
-            if record.wallet == playerAddress {
-                ownerPosition = i + 1
+    func calculateOwnerPosition() -> Int64 {
+        var result: Int64 = 0
+        
+        guard let playerAddress = currentPlayer?.address else {
+            return result
+        }
+        
+        for i in 0..<self.ownersRecords.count {
+            let record = self.ownersRecords[i]
+            if record.address.caseInsensitiveCompare(playerAddress) == .orderedSame {
+                result = Int64.init(i) + 1
                 break
             }
         }
+        
+        return result
     }
     
     func loadAndSetLeaderboardData() {
@@ -106,12 +104,11 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
             }
             dispatchGroup.notify(queue:.main) {
                 self.ownersRecords.sort(by: { (l1, l2) -> Bool in
-                    return l1.tokenTotal! > l2.tokenTotal!
+                    return l1.tokenTotal > l2.tokenTotal
                 })
                 self.refreshTableView()
-                self.calculateOwnerPosition()
-                self.setPositionLabelText()
-                //self.activityIndicator.stopAnimating()
+                let ownerPosition = self.calculateOwnerPosition()
+                self.setPositionLabelText(ownerPosition: ownerPosition)
             }
         })
     }

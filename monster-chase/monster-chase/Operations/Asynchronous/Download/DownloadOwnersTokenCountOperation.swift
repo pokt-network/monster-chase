@@ -41,7 +41,28 @@ public class DownloadOwnersTokenCountOperation: AsynchronousOperation {
                 self.finish()
                 return
             }
+            
             print("\(results)")
+            
+            guard let leaderboardEntry = results else {
+                self.error = DownloadOwnersTokenCountOperationError.totalOwnerTokenParsing
+                self.finish()
+                return
+            }
+            
+            guard let player = leaderboardEntry.first as? String else {
+                self.error = DownloadOwnersTokenCountOperationError.totalOwnerTokenParsing
+                self.finish()
+                return
+            }
+            
+            guard let tokenCount = leaderboardEntry.last as? String else {
+                self.error = DownloadOwnersTokenCountOperationError.totalOwnerTokenParsing
+                self.finish()
+                return
+            }
+            
+            self.leaderboardRecord = LeaderboardRecord.init(address: player, tokenTotal: BigInt.init(tokenCount) ?? BigInt.init(0))
             self.finish()
         })
     }

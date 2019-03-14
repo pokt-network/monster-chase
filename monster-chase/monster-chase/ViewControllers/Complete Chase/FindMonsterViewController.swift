@@ -231,7 +231,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
         present(alertView, animated: false, completion: nil)
     }
     
-    func claimMonster(wallet: Wallet) {
+    func claimMonster(wallet: Wallet, nrg: BigInt) {
         
         do {
             let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
@@ -268,7 +268,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
             let nonceOperation = DownloadTransactionCountOperation.init(address: wallet.address)
             nonceOperation.completionBlock = {
                 if let transactionCount = nonceOperation.transactionCount {
-                    let claimOperation = UploadChaseProofOperation.init(wallet: wallet, transactionCount: transactionCount, playerAddress: playerAddress, chaseIndex: chaseIndex, proof: proof, answer: answer, leftOrRight: leftOrRight)
+                    let claimOperation = UploadChaseProofOperation.init(wallet: wallet, transactionCount: transactionCount, playerAddress: playerAddress, chaseIndex: chaseIndex, proof: proof, answer: answer, leftOrRight: leftOrRight, nrg: nrg)
                     
                     claimOperation.completionBlock = {
                         if let txHash = claimOperation.txHash {
@@ -342,7 +342,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
                                 return
                             }
                             
-                            self.claimMonster(wallet: currentWallet)
+                            self.claimMonster(wallet: currentWallet, nrg: gasEstimate)
                         })
                     }, errorHandler: { (error) in
                         self.present(self.monsterAlertView(title: "Error", message: "An error ocurred accessing your account, please try again"), animated: true, completion: nil)

@@ -10,6 +10,12 @@ import UIKit
 import BigInt
 
 public struct LeaderboardRecord {
-    var wallet:String?
-    var tokenTotal:BigInt?
+    var address: String
+    var tokenTotal: BigInt
+    
+    init(address: String, tokenTotal: BigInt) {
+        self.address = address
+        self.tokenTotal = tokenTotal
+    }
+    
 }

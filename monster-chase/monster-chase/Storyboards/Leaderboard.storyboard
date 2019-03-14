@@ -68,7 +68,7 @@
                                         <rect key="frame" x="5" y="225" width="335" height="341"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaderboardCell" rowHeight="60" id="HEK-Ck-lW0" userLabel="Leaderboard cell" customClass="LeaderBoardTableViewCell" customModule="monster_chase" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LeaderboardCell" rowHeight="60" id="HEK-Ck-lW0" userLabel="Leaderboard cell" customClass="LeaderBoardTableViewCell" customModule="monster_chase" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="335" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HEK-Ck-lW0" id="bld-da-Cgk">
@@ -181,6 +181,7 @@
                         <viewLayoutGuide key="safeArea" id="hWV-lE-uQe"/>
                     </view>
                     <connections>
+                        <outlet property="positionValueLabel" destination="qkl-QA-Hnw" id="TCT-PT-8pf"/>
                         <outlet property="qrCodeBackgroundImage" destination="Dgf-Av-kbK" id="sTf-S7-Upu"/>
                         <outlet property="qrCodeImage" destination="x6I-b9-tkl" id="7UN-DX-AeT"/>
                         <outlet property="tableView" destination="31Q-6t-5St" id="7zv-kh-eeO"/>
