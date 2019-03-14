@@ -11,10 +11,12 @@ import UIKit
 class LeaderBoardTableViewCell: UITableViewCell {
     var record: LeaderboardRecord?
     var index: Int?
+    var viewController: UIViewController?
     
     @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var monsterNumberLabel: UILabel!
     @IBOutlet weak var aionAddressLabel: MonsterLabel!
+    @IBOutlet weak var copyAddressButton: UIButton!
     
     var walletString = ""
     
@@ -29,7 +31,9 @@ class LeaderBoardTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell() {
+    func configureCell(viewController: UIViewController) {
+        
+        self.viewController = viewController
         
         // Styling
         aionAddressLabel.layer.cornerRadius = 7
@@ -41,6 +45,24 @@ class LeaderBoardTableViewCell: UITableViewCell {
         self.positionLabel.text = "\(String((index ?? 0) + 1))."
         self.aionAddressLabel.text = record?.address
         self.monsterNumberLabel.text = record?.tokenTotal != nil ? String((record?.tokenTotal)!) + suffix : ""
+    }
+    
+    @IBAction func copyAddressTapped(sender: AnyObject) {
+        guard let viewController = self.viewController else {
+            return
+        }
+        
+        let showError = {
+            let alertView = viewController.monsterAlertView(title: "Error:", message: "Address field is empty, please try again later")
+            viewController.present(alertView, animated: false, completion: nil)
+        }
+        guard let address = self.aionAddressLabel.text else {
+            showError()
+            return
+        }
+        let alertView = viewController.monsterAlertView(title: "Success:", message: "Address copied to your clipboard: " + address)
+        UIPasteboard.general.string = address
+        viewController.present(alertView, animated: false, completion: nil)
     }
     
 }

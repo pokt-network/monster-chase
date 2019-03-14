@@ -159,7 +159,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let device = UIDevice.modelName
         
-        if device == "iPhone SE" || device == "Simulator iPhone SE" {
+        if device == "iPhone SE" || device == "Simulator iPhone SE" || device == "iPhone 5s" || device == "Simulator iPhone 5s" {
             yourWidth = collectionView.bounds.width/2.0
             yourHeight = yourWidth
         }else {

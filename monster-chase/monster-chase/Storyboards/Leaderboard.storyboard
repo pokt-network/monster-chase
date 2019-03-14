@@ -118,28 +118,37 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V7e-Ma-gGN" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
-                                <rect key="frame" x="15" y="61" width="345" height="586"/>
+                                <rect key="frame" x="15" y="61" width="345" height="1606"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="31Q-6t-5St">
-                                        <rect key="frame" x="5" y="225" width="335" height="341"/>
+                                        <rect key="frame" x="30" y="205" width="295" height="401"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LeaderboardCell" rowHeight="60" id="HEK-Ck-lW0" userLabel="Leaderboard cell" customClass="LeaderBoardTableViewCell" customModule="monster_chase" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="335" height="60"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LeaderboardCell" rowHeight="100" id="HEK-Ck-lW0" userLabel="Leaderboard cell" customClass="LeaderBoardTableViewCell" customModule="monster_chase" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="295" height="100"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HEK-Ck-lW0" id="bld-da-Cgk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="59.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="295" height="99.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monster-Stickerx1" translatesAutoresizingMaskIntoConstraints="NO" id="Hpj-m4-kC0">
-                                                            <rect key="frame" x="41" y="11" width="55" height="55"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="##." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Lsf-ef-VaJ" userLabel="Position value label">
+                                                            <rect key="frame" x="0.0" y="41" width="40" height="18"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="55" id="mrM-kA-bSW"/>
-                                                                <constraint firstAttribute="height" constant="55" id="pFb-m5-wGv"/>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="6uy-vw-WL7"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                            <color key="textColor" red="0.19215686269999999" green="0.66666666669999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monster-Stickerx1" translatesAutoresizingMaskIntoConstraints="NO" id="Hpj-m4-kC0">
+                                                            <rect key="frame" x="48" y="23" width="54" height="54"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="54" id="mrM-kA-bSW"/>
+                                                                <constraint firstAttribute="height" constant="54" id="pFb-m5-wGv"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monster-Stickerx1" translatesAutoresizingMaskIntoConstraints="NO" id="o0k-Xg-z1x" userLabel="Monster color image">
-                                                            <rect key="frame" x="36.5" y="1.5" width="64" height="64"/>
+                                                            <rect key="frame" x="43" y="18" width="64" height="64"/>
                                                             <color key="backgroundColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="64" id="IQb-Vv-G6X"/>
@@ -151,46 +160,61 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AION ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-cx-JZa" userLabel="Aion Address Label" customClass="MonsterLabel" customModule="monster_chase" customModuleProvider="target">
-                                                            <rect key="frame" x="106" y="38" width="199" height="20"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="###  Monsters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="HEd-GF-g3v" userLabel="Monster count label">
+                                                            <rect key="frame" x="115" y="11" width="160" height="21"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="enU-xv-aeZ"/>
-                                                                <constraint firstAttribute="height" constant="20" id="vNm-3Z-jy3"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="goo-OJ-gBX"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
+                                                            <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AION ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-cx-JZa" userLabel="Aion Address Label" customClass="MonsterLabel" customModule="monster_chase" customModuleProvider="target">
+                                                            <rect key="frame" x="115" y="40" width="110" height="36"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="36" id="C3j-y3-kwH"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="gvP-L1-KFH"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="###  Monsters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="HEd-GF-g3v" userLabel="Monster count label">
-                                                            <rect key="frame" x="106" y="11" width="144" height="21"/>
-                                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
-                                                            <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="##." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Lsf-ef-VaJ" userLabel="Position value label">
-                                                            <rect key="frame" x="20" y="29" width="21" height="15"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                            <color key="textColor" red="0.19215686269999999" green="0.66666666669999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zh-eh-ddA">
+                                                            <rect key="frame" x="235" y="38" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="40" id="4ZG-6b-qdd"/>
+                                                                <constraint firstAttribute="width" constant="40" id="xGr-79-nNu"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button" image="Coppy-x1"/>
+                                                            <connections>
+                                                                <action selector="copyAddressTappedWithSender:" destination="HEK-Ck-lW0" eventType="touchUpInside" id="h0v-5G-P7K"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
+                                                    <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstItem="Hpj-m4-kC0" firstAttribute="leading" secondItem="bld-da-Cgk" secondAttribute="leading" constant="41" id="PQT-62-PcJ"/>
-                                                        <constraint firstItem="Hpj-m4-kC0" firstAttribute="top" secondItem="bld-da-Cgk" secondAttribute="top" constant="11" id="Pwx-gi-JSL"/>
-                                                        <constraint firstItem="cLP-cx-JZa" firstAttribute="leading" secondItem="Hpj-m4-kC0" secondAttribute="trailing" constant="10" id="QGI-ws-u3h"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="cLP-cx-JZa" secondAttribute="trailing" constant="15" id="SBG-iY-BDe"/>
-                                                        <constraint firstItem="Lsf-ef-VaJ" firstAttribute="leading" secondItem="bld-da-Cgk" secondAttribute="leadingMargin" constant="5" id="SYE-cg-CKY"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="Lsf-ef-VaJ" secondAttribute="bottom" constant="5" id="cRy-ui-8Ud"/>
-                                                        <constraint firstItem="HEd-GF-g3v" firstAttribute="leading" secondItem="Hpj-m4-kC0" secondAttribute="trailing" constant="10" id="e1A-VL-D3N"/>
-                                                        <constraint firstItem="cLP-cx-JZa" firstAttribute="top" secondItem="HEd-GF-g3v" secondAttribute="bottom" constant="6" id="hyS-Xg-thM"/>
-                                                        <constraint firstItem="o0k-Xg-z1x" firstAttribute="centerX" secondItem="Hpj-m4-kC0" secondAttribute="centerX" id="s1e-VY-rhk"/>
-                                                        <constraint firstItem="o0k-Xg-z1x" firstAttribute="centerY" secondItem="Hpj-m4-kC0" secondAttribute="centerY" constant="-5" id="ttJ-ON-s1S"/>
+                                                        <constraint firstAttribute="trailing" secondItem="HEd-GF-g3v" secondAttribute="trailing" constant="20" id="1WO-td-kef"/>
+                                                        <constraint firstItem="Hpj-m4-kC0" firstAttribute="centerX" secondItem="o0k-Xg-z1x" secondAttribute="centerX" id="3gW-md-rF9"/>
+                                                        <constraint firstItem="cLP-cx-JZa" firstAttribute="leading" secondItem="o0k-Xg-z1x" secondAttribute="trailing" constant="8" id="499-6T-Ss6"/>
+                                                        <constraint firstItem="HEd-GF-g3v" firstAttribute="top" secondItem="bld-da-Cgk" secondAttribute="top" constant="11" id="7U4-L0-HEH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="3zh-eh-ddA" secondAttribute="trailing" constant="20" id="AXT-dq-eGg"/>
+                                                        <constraint firstItem="3zh-eh-ddA" firstAttribute="centerY" secondItem="cLP-cx-JZa" secondAttribute="centerY" id="DCe-51-z80"/>
+                                                        <constraint firstItem="Lsf-ef-VaJ" firstAttribute="leading" secondItem="bld-da-Cgk" secondAttribute="leading" id="JQE-QU-qlL"/>
+                                                        <constraint firstItem="o0k-Xg-z1x" firstAttribute="centerY" secondItem="bld-da-Cgk" secondAttribute="centerY" id="fdI-Ah-rqY"/>
+                                                        <constraint firstItem="cLP-cx-JZa" firstAttribute="top" secondItem="HEd-GF-g3v" secondAttribute="bottom" constant="8" id="fkb-Zc-EnX"/>
+                                                        <constraint firstItem="3zh-eh-ddA" firstAttribute="leading" secondItem="cLP-cx-JZa" secondAttribute="trailing" constant="10" id="hGr-77-Vpe"/>
+                                                        <constraint firstItem="Hpj-m4-kC0" firstAttribute="centerY" secondItem="o0k-Xg-z1x" secondAttribute="centerY" id="htO-4Y-hwo"/>
+                                                        <constraint firstItem="o0k-Xg-z1x" firstAttribute="leading" secondItem="Lsf-ef-VaJ" secondAttribute="trailing" constant="3" id="r2P-zE-EF5"/>
                                                         <constraint firstItem="HEd-GF-g3v" firstAttribute="top" secondItem="bld-da-Cgk" secondAttribute="topMargin" id="vsQ-7s-Nih"/>
+                                                        <constraint firstItem="HEd-GF-g3v" firstAttribute="leading" secondItem="o0k-Xg-z1x" secondAttribute="trailing" constant="8" id="xpz-Ma-LOm"/>
+                                                        <constraint firstItem="Lsf-ef-VaJ" firstAttribute="centerY" secondItem="bld-da-Cgk" secondAttribute="centerY" id="yuA-Cb-D59"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <gestureRecognizers/>
                                                 <connections>
                                                     <outlet property="aionAddressLabel" destination="cLP-cx-JZa" id="hCw-a0-NfB"/>
+                                                    <outlet property="copyAddressButton" destination="3zh-eh-ddA" id="0zZ-wz-imJ"/>
                                                     <outlet property="monsterNumberLabel" destination="HEd-GF-g3v" id="KBo-jF-Dwu"/>
                                                     <outlet property="positionLabel" destination="Lsf-ef-VaJ" id="Xjh-R2-l6V"/>
                                                 </connections>
@@ -204,9 +228,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="31Q-6t-5St" firstAttribute="leading" secondItem="V7e-Ma-gGN" secondAttribute="leading" constant="5" id="EAw-Be-Vwm"/>
-                                    <constraint firstAttribute="bottom" secondItem="31Q-6t-5St" secondAttribute="bottom" constant="20" id="NQn-Xf-e5k"/>
-                                    <constraint firstAttribute="trailing" secondItem="31Q-6t-5St" secondAttribute="trailing" constant="5" id="O4D-i0-Qjc"/>
+                                    <constraint firstItem="31Q-6t-5St" firstAttribute="leading" secondItem="V7e-Ma-gGN" secondAttribute="leading" constant="30" id="EAw-Be-Vwm"/>
+                                    <constraint firstAttribute="trailing" secondItem="31Q-6t-5St" secondAttribute="trailing" constant="20" id="O4D-i0-Qjc"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mot-Qd-kJT" userLabel="Menu button">
@@ -220,18 +243,28 @@
                                     <action selector="menuButtonTapped:" destination="2tk-0U-HyN" eventType="touchUpInside" id="iYl-M9-LCk"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNz-Uv-T5R">
+                                <rect key="frame" x="138.5" y="25" width="98" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="31Q-6t-5St" firstAttribute="top" secondItem="zqR-JC-liX" secondAttribute="bottom" constant="20" id="Abn-mY-AKN"/>
+                            <constraint firstItem="hWV-lE-uQe" firstAttribute="bottom" secondItem="31Q-6t-5St" secondAttribute="bottom" id="9Ev-s5-bnx"/>
+                            <constraint firstItem="31Q-6t-5St" firstAttribute="top" secondItem="zqR-JC-liX" secondAttribute="bottom" id="Abn-mY-AKN"/>
                             <constraint firstItem="zqR-JC-liX" firstAttribute="top" secondItem="mot-Qd-kJT" secondAttribute="bottom" constant="5" id="HmF-ag-x1W"/>
                             <constraint firstItem="zqR-JC-liX" firstAttribute="leading" secondItem="hWV-lE-uQe" secondAttribute="leading" constant="20" id="NQT-OA-r5P"/>
                             <constraint firstItem="mot-Qd-kJT" firstAttribute="leading" secondItem="hWV-lE-uQe" secondAttribute="leading" constant="15" id="NSq-Uq-Zwv"/>
+                            <constraint firstItem="JNz-Uv-T5R" firstAttribute="centerY" secondItem="mot-Qd-kJT" secondAttribute="centerY" id="ZYo-Y0-ZNe"/>
                             <constraint firstItem="mot-Qd-kJT" firstAttribute="top" secondItem="hWV-lE-uQe" secondAttribute="top" constant="5" id="bQK-rO-jtA"/>
-                            <constraint firstItem="hWV-lE-uQe" firstAttribute="bottom" secondItem="V7e-Ma-gGN" secondAttribute="bottom" constant="20" id="eCB-ga-wc3"/>
+                            <constraint firstItem="hWV-lE-uQe" firstAttribute="bottom" secondItem="V7e-Ma-gGN" secondAttribute="bottom" constant="-1000" id="eCB-ga-wc3"/>
                             <constraint firstItem="hWV-lE-uQe" firstAttribute="trailing" secondItem="zqR-JC-liX" secondAttribute="trailing" constant="20" id="fau-Dx-PbP"/>
+                            <constraint firstItem="JNz-Uv-T5R" firstAttribute="centerX" secondItem="hWV-lE-uQe" secondAttribute="centerX" id="hCu-nd-I0n"/>
                             <constraint firstItem="hWV-lE-uQe" firstAttribute="trailing" secondItem="V7e-Ma-gGN" secondAttribute="trailing" constant="15" id="hZ8-kW-LW9"/>
                             <constraint firstItem="V7e-Ma-gGN" firstAttribute="top" secondItem="mot-Qd-kJT" secondAttribute="bottom" id="jLA-MK-7pe"/>
+                            <constraint firstItem="JNz-Uv-T5R" firstAttribute="top" secondItem="hWV-lE-uQe" secondAttribute="top" constant="5" id="vfk-PT-Tns"/>
                             <constraint firstItem="V7e-Ma-gGN" firstAttribute="leading" secondItem="hWV-lE-uQe" secondAttribute="leading" constant="15" id="xcI-yM-xw9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hWV-lE-uQe"/>
