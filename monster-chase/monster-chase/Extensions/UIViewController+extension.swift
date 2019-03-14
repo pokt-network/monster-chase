@@ -170,6 +170,7 @@ extension UIViewController {
         let alert = UIAlertController(title: "Account password", message: "Please input your account password", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Password"
+            textField.isSecureTextEntry = true
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
