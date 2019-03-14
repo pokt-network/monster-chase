@@ -102,10 +102,16 @@ class LandingViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func processNavigation() {
-        if AppConfiguration.displayedOnboarding() {
-            launchChasing()
+        
+        if UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone SE" {
+            let alertView = self.monsterAlertView(title: "Unsupported Devise", message: "This device is currently not supported at the moment, we're very sorry for the inconvenience")
+            self.present(alertView, animated: true, completion: nil)
         } else {
-            launchOnboarding()
+            if AppConfiguration.displayedOnboarding() {
+                launchChasing()
+            } else {
+                launchOnboarding()
+            }
         }
     }
     
