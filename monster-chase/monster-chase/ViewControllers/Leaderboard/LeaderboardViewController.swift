@@ -16,8 +16,15 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var qrCodeBackgroundImage: UIImageView!
     @IBOutlet weak var qrCodeImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var monsterCountLabel: UILabel!
+    @IBOutlet weak var placeholderLabel: UILabel!
+    
+    // Monster and position labels
+    @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var positionValueLabel: UILabel!
+    @IBOutlet weak var positionCircle: UIImageView!
+    @IBOutlet weak var monsterCountLabel: UILabel!
+    @IBOutlet weak var monsterCountValueLabel: UILabel!
+    @IBOutlet weak var monsterCircle: UIImageView!
     
     var ownersRecords = [LeaderboardRecord]()
     var currentPlayer: Player?
@@ -57,14 +64,6 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func setPositionLabelText(ownerPosition: Int64) {
-        if (ownerPosition == 0) {
-            positionValueLabel.text = "Collect monsters to get ranked!"
-        } else {
-            positionValueLabel.text = "You are in position #\(ownerPosition)!"
-        }
-    }
-    
     // MARK: UITableViewDelegate
     // MARK: Data
     func calculateOwnerPosition() -> Int64 {
@@ -88,12 +87,12 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     func loadAndSetLeaderboardData() {
         //activityIndicator.startAnimating()
         fetchOwnerCount(completionBlock: { count in
-            if count == nil {
+            guard let count = count else {
                 return
             }
             self.ownersRecords = [LeaderboardRecord]()
             let dispatchGroup = DispatchGroup()
-            for i in 0..<Int(count!){
+            for i in 0..<Int(count){
                 dispatchGroup.enter()
                 self.fetchOwnerLeaderboardRecordCount(index: i, completionBlock: { (index, leaderboardRecord) in
                     if leaderboardRecord != nil {
@@ -108,9 +107,53 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
                 })
                 self.refreshTableView()
                 let ownerPosition = self.calculateOwnerPosition()
-                self.setPositionLabelText(ownerPosition: ownerPosition)
+                guard let playerOwnerRecord = self.playerOwnerRecord() else {
+                    self.placeholderLabel.isHidden = false
+                    return
+                }
+                if (playerOwnerRecord.tokenTotal == BigInt.init(0)) {
+                    self.placeholderLabel.isHidden = false
+                } else {
+                    self.placeholderLabel.isHidden = true
+                    self.setPositionAndMonsterCount(position: ownerPosition, monsterCount: playerOwnerRecord.tokenTotal)
+                }
             }
         })
+    }
+    
+    func playerOwnerRecord() -> LeaderboardRecord? {
+        var playerRecord: LeaderboardRecord?
+        if self.ownersRecords.isEmpty {
+            return nil
+        }
+        
+        guard let playerAddress = self.currentPlayer?.address else {
+            return nil
+        }
+        
+        for ownerRecord in self.ownersRecords {
+            if ownerRecord.address.caseInsensitiveCompare(playerAddress) == .orderedSame {
+                playerRecord = ownerRecord
+                break
+            }
+        }
+        return playerRecord
+    }
+    
+    func setPositionAndMonsterCount(position: Int64, monsterCount: BigInt) {
+        self.toggleCountLabels()
+        self.monsterCountValueLabel.text = String.init(monsterCount)
+        self.positionValueLabel.text = String.init(position)
+    }
+    
+    func toggleCountLabels() {
+        [self.monsterCircle, self.monsterCountLabel, self.monsterCountValueLabel, self.positionLabel, self.positionCircle, self.positionValueLabel].forEach { (view) in
+            guard let view = view else {
+                return
+            }
+            
+            view.isHidden = !view.isHidden
+        }
     }
     
     func fetchOwnerCount(completionBlock:@escaping (BigInt?) -> Void) {
