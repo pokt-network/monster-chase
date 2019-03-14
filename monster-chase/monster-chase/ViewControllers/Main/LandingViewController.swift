@@ -10,6 +10,8 @@ import UIKit
 
 class LandingViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var footerImage: UIImageView!
+    let unsupportedDevices = ["iPhone SE", "Simulator iPhone SE", "iPhone 5s", "Simulator iPhone 5s"]
+    
     let websiteUrl = URL.init(string: "https://www.pokt.network/")
     
     override func viewDidLoad() {
@@ -103,7 +105,8 @@ class LandingViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func processNavigation() {
         
-        if UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone SE" {
+        //if UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone SE" {
+        if unsupportedDevices.contains(UIDevice.modelName) {
             let alertView = self.monsterAlertView(title: "Unsupported Devise", message: "This device is currently not supported at the moment, we're very sorry for the inconvenience")
             self.present(alertView, animated: true, completion: nil)
         } else {

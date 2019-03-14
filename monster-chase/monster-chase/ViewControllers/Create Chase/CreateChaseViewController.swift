@@ -79,8 +79,9 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         
         // Monster name Text field
         monsterNameTextField.borderStyle = .roundedRect
-        monsterNameTextField.layer.borderColor = UIColor.gray.cgColor
+        monsterNameTextField.layer.borderColor = UIColor.init(hex: 0x4D4B9F, alpha: 1.0)?.cgColor
         monsterNameTextField.layer.cornerRadius = 10
+        monsterNameTextField.layer.borderWidth = 1.0
         
         //
         hintTextView.textContainerInset = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12)
@@ -173,7 +174,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         addLocationButton.layer.borderColor = UIColor.clear.cgColor
         
         monsterNameTextField.layer.borderWidth = 1
-        monsterNameTextField.layer.borderColor = UIColor.clear.cgColor
+        monsterNameTextField.layer.borderColor = UIColor.init(hex: 0x4D4B9F, alpha: 1.0)?.cgColor
         
         howManyMonstersTextField.layer.borderWidth = 1
         howManyMonstersTextField.layer.borderColor = UIColor.clear.cgColor
@@ -223,7 +224,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
             monsterNameTextField.layer.borderColor = UIColor.red.cgColor
             isValid.append(false)
         }else {
-            monsterNameTextField.layer.borderColor = UIColor.clear.cgColor
+            monsterNameTextField.layer.borderColor = UIColor.init(hex: 0x4D4B9F, alpha: 1.0)?.cgColor
             newChase?.name = monsterNameTextField.text ?? ""
         }
         
@@ -342,8 +343,10 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         let operationQueue = OperationQueue.init()
         operationQueue.addOperations([operation], waitUntilFinished: false)
         
-        // UI Elements disabled
-        enableElements(bool: false)
+        DispatchQueue.main.async {
+            // UI Elements disabled
+            self.enableElements(bool: false)
+        }
         
         // Let the user knows and present Quest list
         let alertView = UIAlertController(title: "Success", message: "Chase creation submitted successfully, we will let you know when it's done", preferredStyle: .alert)
