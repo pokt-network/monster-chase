@@ -54,6 +54,8 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
         
         qrCodeImage.image = ProfileViewController.generateQRCode(from: currentPlayer?.address ?? "")
         
+        self.tableView.separatorStyle = .none
+        
         refreshTableView()
     }
     
@@ -92,7 +94,7 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
             }
             self.ownersRecords = [LeaderboardRecord]()
             let dispatchGroup = DispatchGroup()
-            for i in 0..<Int(count){
+            for i in BigInt.init(0)..<BigInt.init(count){
                 dispatchGroup.enter()
                 self.fetchOwnerLeaderboardRecordCount(index: i, completionBlock: { (index, leaderboardRecord) in
                     if leaderboardRecord != nil {
@@ -163,7 +165,6 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
                 print("Error fetching OwnersCount in Leaderboard")
                 completionBlock(nil)
                 return
-                ///TODO: dismiss??
             }
             completionBlock(ownerTotal)
             print("Total owners in leadeboard:\(ownerTotal)")
@@ -171,7 +172,7 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
         downloadOwnersCountOperation.start()
     }
     
-    func fetchOwnerLeaderboardRecordCount(index:Int,completionBlock:@escaping (Int,LeaderboardRecord?) -> Void) {
+    func fetchOwnerLeaderboardRecordCount(index: BigInt,completionBlock:@escaping (BigInt, LeaderboardRecord?) -> Void) {
         let downloadOwnerTokenOperation = DownloadOwnersTokenCountOperation(monsterTokenAddress: AppConfiguration.monsterTokenAddress, ownerIndex: BigInt.init(index))
         downloadOwnerTokenOperation.completionBlock = {
             guard let score = downloadOwnerTokenOperation.leaderboardRecord else {
@@ -189,18 +190,15 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardCell") as! LeaderBoardTableViewCell
         let score = ownersRecords[indexPath.row]
-        
         cell.record = score
         cell.index = indexPath.row
-        
-        cell.configureCell()
-        
+        cell.configureCell(viewController: self)
         return cell;
     }
     
