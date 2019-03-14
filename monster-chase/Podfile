@@ -6,8 +6,8 @@ target 'monster-chase' do
   use_frameworks!
 
   # Pods for monster-chase
-  #pod 'PocketAion', '~> 0.0.14'
-  pod 'PocketAion', :path => '~/current_projects/pocket-ios-aion'
+  pod 'PocketAion', '~> 0.0.14'
+  #pod 'PocketAion', :path => '~/current_projects/pocket-ios-aion'
   pod 'SidebarOverlay', :git => 'git@github.com:pokt-network/SidebarOverlay.git', :branch => 'develop'
   #pod 'FlexColorPicker', :git => 'https://github.com/RastislavMirek/FlexColorPicker', :branch => 'master'
   pod 'FlexColorPicker'
