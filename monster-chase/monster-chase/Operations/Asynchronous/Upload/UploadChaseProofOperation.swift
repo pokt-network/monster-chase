@@ -48,7 +48,7 @@ public class UploadChaseProofOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.submitProof(wallet: self.wallet, transactionCount: self.transactionCount, nrg: self.nrg, player: self.playerAddress, chaseIndex: self.chaseIndex, proof: self.proof, answer: self.answer, leftOrRight: self.leftOrRight) { (txHashArray, error) in
+        monsterToken.submitProof(wallet: self.wallet, transactionCount: self.transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, chaseIndex: self.chaseIndex, proof: self.proof, answer: self.answer, leftOrRight: self.leftOrRight) { (txHashArray, error) in
             if let error = error {
                 self.error = error
                 self.finish()
