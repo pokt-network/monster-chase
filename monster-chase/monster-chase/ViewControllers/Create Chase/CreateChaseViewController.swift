@@ -39,6 +39,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     
     // Constants
     let maxHintSize = 140
+    let maxNameSize = 40
     
     // Notifications
     static let notificationName = Notification.Name("getLocation")
@@ -220,10 +221,10 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         var isValid = [Bool]()
         
         // Validate quest name
-        if (monsterNameTextField.text ?? "").isEmpty {
+        if (monsterNameTextField.text ?? "").isEmpty || ((monsterNameTextField.text ?? "").count > self.maxNameSize) {
             monsterNameTextField.layer.borderColor = UIColor.red.cgColor
             isValid.append(false)
-        }else {
+        } else {
             monsterNameTextField.layer.borderColor = UIColor.init(hex: 0x4D4B9F, alpha: 1.0)?.cgColor
             newChase?.name = monsterNameTextField.text ?? ""
         }
@@ -549,7 +550,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
                     self.present(alertView, animated: false, completion: nil)
                 }
             }
-        }else {
+        } else {
             let alertView = self.monsterAlertView(title: "Invalid", message: "Invalid quest, please complete the fields properly.")
             self.present(alertView, animated: false, completion: nil)
         }
