@@ -375,6 +375,11 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
         }
         
         if let chase = currentCell.chase {
+            if chase.winner == true {
+                let alert = self.monsterAlertView(title: "Monster Alert!", message: "You already claimed this Monster!")
+                self.present(alert, animated: false, completion: nil)
+                return
+            }
             do {
                 let vc = try self.instantiateViewController(identifier: "completeChaseViewControllerID", storyboardName: "CompleteChase") as? CompleteChaseViewController
                 vc?.chase = chase
