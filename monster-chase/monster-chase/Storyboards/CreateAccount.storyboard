@@ -32,7 +32,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Las-Uv-jhT" userLabel="Create button" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
-                                <rect key="frame" x="62.5" y="470.5" width="250" height="40"/>
+                                <rect key="frame" x="62.5" y="460.5" width="250" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="7sk-hQ-YEk"/>
@@ -89,7 +89,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzc-VP-5mh" userLabel="Continue button">
-                                <rect key="frame" x="115" y="456" width="145" height="69"/>
+                                <rect key="frame" x="115" y="446" width="145" height="69"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="0JE-lD-jJ8"/>
@@ -103,6 +103,13 @@
                                     <action selector="continuePressed:" destination="qcG-NT-RUQ" eventType="touchUpInside" id="QTd-Ea-Ydc"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YI0-Nc-B4U" userLabel="Continue button underline">
+                                <rect key="frame" x="145" y="493" width="85" height="5"/>
+                                <color key="backgroundColor" red="0.054901960784313725" green="0.6588235294117647" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="yW6-hb-ZVJ"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will need to create a password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOb-IJ-Kt6">
                                 <rect key="frame" x="67.5" y="90" width="240" height="41.5"/>
                                 <constraints>
@@ -118,19 +125,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner-monster" translatesAutoresizingMaskIntoConstraints="NO" id="meE-HK-845">
+                                <rect key="frame" x="0.0" y="501" width="189" height="166"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="Cpd-2P-oTN"/>
+                                    <constraint firstAttribute="height" constant="166" id="IAY-Jv-t1c"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yG3-z6-nHo" firstAttribute="leading" secondItem="93I-Fe-9hX" secondAttribute="leading" id="033-JO-T8M"/>
                             <constraint firstItem="5Yw-5f-rXf" firstAttribute="trailing" secondItem="y6e-Kq-Y7B" secondAttribute="trailing" constant="10" id="2ab-05-gOZ"/>
+                            <constraint firstItem="YI0-Nc-B4U" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="4up-fu-Y7L"/>
                             <constraint firstItem="8vB-oB-01u" firstAttribute="centerY" secondItem="DdQ-X7-Jpd" secondAttribute="centerY" id="87s-38-GOs"/>
                             <constraint firstItem="Las-Uv-jhT" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="8nh-cI-GVg"/>
+                            <constraint firstItem="meE-HK-845" firstAttribute="leading" secondItem="5Yw-5f-rXf" secondAttribute="leading" id="9uw-Kd-mgc"/>
                             <constraint firstItem="vzD-cs-gra" firstAttribute="leading" secondItem="DdQ-X7-Jpd" secondAttribute="leadingMargin" constant="30" id="BeP-2P-nyV"/>
-                            <constraint firstItem="Las-Uv-jhT" firstAttribute="top" secondItem="kgO-7x-gw5" secondAttribute="bottom" constant="40" id="Bnd-0s-JtN"/>
+                            <constraint firstItem="Las-Uv-jhT" firstAttribute="top" secondItem="kgO-7x-gw5" secondAttribute="bottom" constant="30" id="Bnd-0s-JtN"/>
                             <constraint firstItem="yG3-z6-nHo" firstAttribute="trailing" secondItem="93I-Fe-9hX" secondAttribute="trailing" id="EVe-N2-jFk"/>
                             <constraint firstItem="kgO-7x-gw5" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="JN5-Ze-0zc"/>
                             <constraint firstItem="8vB-oB-01u" firstAttribute="leading" secondItem="e6k-9p-XN8" secondAttribute="trailing" constant="10" id="Jvq-81-EkZ"/>
                             <constraint firstItem="93I-Fe-9hX" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="leading" id="KB9-dl-3Re"/>
+                            <constraint firstItem="YI0-Nc-B4U" firstAttribute="width" secondItem="hzc-VP-5mh" secondAttribute="width" constant="-60" id="MUM-hk-A8p"/>
                             <constraint firstItem="hzc-VP-5mh" firstAttribute="centerX" secondItem="5Yw-5f-rXf" secondAttribute="centerX" id="NMw-B1-p5l"/>
                             <constraint firstItem="8vB-oB-01u" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="trailing" constant="10" id="OOu-Mj-2jp"/>
                             <constraint firstItem="JOb-IJ-Kt6" firstAttribute="top" secondItem="5Yw-5f-rXf" secondAttribute="top" constant="70" id="YNf-mh-6EB"/>
@@ -140,9 +157,12 @@
                             <constraint firstItem="kgO-7x-gw5" firstAttribute="top" secondItem="93I-Fe-9hX" secondAttribute="bottom" constant="30" id="fMu-7W-k3H"/>
                             <constraint firstItem="5Yw-5f-rXf" firstAttribute="bottom" secondItem="y6e-Kq-Y7B" secondAttribute="bottom" id="iXA-k2-s00"/>
                             <constraint firstItem="e6k-9p-XN8" firstAttribute="leading" secondItem="vzD-cs-gra" secondAttribute="leading" id="jWD-hw-lHU"/>
+                            <constraint firstItem="5Yw-5f-rXf" firstAttribute="bottom" secondItem="meE-HK-845" secondAttribute="bottom" id="jfN-AK-LRM"/>
                             <constraint firstItem="vzD-cs-gra" firstAttribute="top" secondItem="e6k-9p-XN8" secondAttribute="bottom" constant="4" id="me6-OQ-bk8"/>
                             <constraint firstItem="y6e-Kq-Y7B" firstAttribute="leading" secondItem="5Yw-5f-rXf" secondAttribute="leading" constant="10" id="mpo-PP-LmN"/>
                             <constraint firstItem="5Yw-5f-rXf" firstAttribute="trailing" secondItem="93I-Fe-9hX" secondAttribute="trailing" constant="50" id="oTf-Ow-pOa"/>
+                            <constraint firstItem="meE-HK-845" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Las-Uv-jhT" secondAttribute="bottom" constant="-9.5" id="qPD-eC-AUF"/>
+                            <constraint firstItem="YI0-Nc-B4U" firstAttribute="centerY" secondItem="Las-Uv-jhT" secondAttribute="centerY" constant="15" id="qct-hV-6nc"/>
                             <constraint firstItem="93I-Fe-9hX" firstAttribute="centerY" secondItem="5Yw-5f-rXf" secondAttribute="centerY" id="rUN-97-2GV"/>
                             <constraint firstItem="Las-Uv-jhT" firstAttribute="centerY" secondItem="hzc-VP-5mh" secondAttribute="centerY" id="sQa-kI-0sA"/>
                             <constraint firstItem="vzD-cs-gra" firstAttribute="bottom" secondItem="8vB-oB-01u" secondAttribute="bottom" id="u07-TC-gEC"/>
@@ -154,6 +174,7 @@
                         <outlet property="addressLabel" destination="e6k-9p-XN8" id="9vs-Gz-Lgm"/>
                         <outlet property="addressLabelUnderline" destination="vzD-cs-gra" id="weR-wq-cQq"/>
                         <outlet property="continueButton" destination="hzc-VP-5mh" id="9u6-H3-bIv"/>
+                        <outlet property="continueUnderline" destination="YI0-Nc-B4U" id="R3X-2K-J9s"/>
                         <outlet property="copyAddressButton" destination="8vB-oB-01u" id="gby-ZY-gEH"/>
                         <outlet property="createButton" destination="Las-Uv-jhT" id="U5y-v6-UMC"/>
                         <outlet property="passphraseTextField" destination="93I-Fe-9hX" id="thR-yj-AOo"/>
@@ -168,5 +189,6 @@
     <resources>
         <image name="Coppy-x1" width="156" height="156"/>
         <image name="PLAY-NOW-BUTTON-X1" width="16" height="16"/>
+        <image name="corner-monster" width="514" height="452"/>
     </resources>
 </document>

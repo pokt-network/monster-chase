@@ -18,6 +18,7 @@ class NewWalletViewController: UIViewController {
     @IBOutlet weak var setupBiometricsButton: UIButton!
     @IBOutlet weak var copyAddressButton: UIButton!
     @IBOutlet weak var addressLabelUnderline: UILabel!
+    @IBOutlet weak var continueUnderline: UIView!
     @IBOutlet weak var forwardIcon: UIImageView!
     
     var currentPlayer: Player?
@@ -31,7 +32,6 @@ class NewWalletViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Styling
-
         
         do {
             try refreshView()
@@ -50,6 +50,7 @@ class NewWalletViewController: UIViewController {
         addressLabel.isHidden = !addressLabel.isHidden
         addressLabelUnderline.isHidden = !addressLabelUnderline.isHidden
         continueButton.isHidden = !continueButton.isHidden
+        continueUnderline.isHidden = !continueUnderline.isHidden
     }
     
     // MARK: - Tools
