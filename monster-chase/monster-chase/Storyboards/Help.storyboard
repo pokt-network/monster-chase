@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="howToPlayViewControllerID" title="Help View Controller" id="Yhj-3Q-lD4" customClass="HowToPlayViewController" customModule="monster_chase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xag-dZ-J11">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axY-DN-YwP" userLabel="Menu button">
-                                <rect key="frame" x="15" y="49" width="36" height="36"/>
+                                <rect key="frame" x="15" y="25" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="4cA-ZS-b8P"/>
                                     <constraint firstAttribute="height" constant="36" id="GwZ-Zq-SD1"/>
@@ -30,28 +30,28 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCi-Zi-nvC">
-                                <rect key="frame" x="161.66666666666666" y="56.666666666666657" width="91" height="21"/>
+                                <rect key="frame" x="142" y="32.5" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="toS-4M-I7G">
-                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDy-Ma-tKS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RD-dY-ybg" userLabel="First container view" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="126" width="374" height="350"/>
+                                                <rect key="frame" x="20" y="126" width="335" height="350"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHASE A MONSTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7l-wp-vNp">
-                                                        <rect key="frame" x="10" y="35" width="354" height="21"/>
+                                                        <rect key="frame" x="10" y="35" width="315" height="21"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                                         <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gT6-Yy-U9j" userLabel="Content label">
-                                                        <rect key="frame" x="30" y="66" width="314" height="219"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gT6-Yy-U9j" userLabel="Content label">
+                                                        <rect key="frame" x="30" y="61" width="275" height="279"/>
                                                         <string key="text">Tap Menu and select the Explore button. To start chasing Monsters you will need to swipe back and forth in order to find a monster near to your area. Follow the hints provided by the Chase creator. When you think you are on the right location, Click on the “Chase” button. Allow the app to have access to your camera and prepare to chase down Monsters! Look around with your camera to find the AR monster graphic right on your screen. Once you encounter a Monster in the wild, hit “Chase” to add it to your collection. A request for transaction confirmation will occur at this point. Finally, you will receive the AION test network NFT token prize directly to your collection under your profile!
 </string>
                                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="12"/>
@@ -61,26 +61,27 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="350" id="86R-4u-cD5"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="86R-4u-cD5"/>
                                                     <constraint firstAttribute="trailing" secondItem="U7l-wp-vNp" secondAttribute="trailing" constant="10" id="9gs-1g-cn2"/>
                                                     <constraint firstItem="U7l-wp-vNp" firstAttribute="leading" secondItem="1RD-dY-ybg" secondAttribute="leading" constant="10" id="Ld4-GW-lcD"/>
                                                     <constraint firstItem="gT6-Yy-U9j" firstAttribute="leading" secondItem="1RD-dY-ybg" secondAttribute="leading" constant="30" id="MEK-J5-fF9"/>
                                                     <constraint firstItem="U7l-wp-vNp" firstAttribute="top" secondItem="1RD-dY-ybg" secondAttribute="top" constant="35" id="WZa-bT-4rq"/>
-                                                    <constraint firstItem="gT6-Yy-U9j" firstAttribute="top" secondItem="U7l-wp-vNp" secondAttribute="bottom" constant="10" id="lPi-dL-n1t"/>
+                                                    <constraint firstItem="gT6-Yy-U9j" firstAttribute="top" secondItem="U7l-wp-vNp" secondAttribute="bottom" constant="5" id="lPi-dL-n1t"/>
                                                     <constraint firstAttribute="trailing" secondItem="gT6-Yy-U9j" secondAttribute="trailing" constant="30" id="oDU-KQ-cJT"/>
+                                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="gT6-Yy-U9j" secondAttribute="bottom" constant="10" id="uhw-az-ibO"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbJ-cJ-719" userLabel="Second container view" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="496" width="374" height="340"/>
+                                                <rect key="frame" x="20" y="496" width="335" height="320"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO HIDE A MONSTER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5G-ZC-lMo">
-                                                        <rect key="frame" x="10" y="35" width="354" height="21"/>
+                                                        <rect key="frame" x="10" y="35" width="315" height="21"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                                         <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2H-9C-Kn6" userLabel="Content label">
-                                                        <rect key="frame" x="30" y="66" width="334" height="244"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2H-9C-Kn6" userLabel="Content label">
+                                                        <rect key="frame" x="30" y="61" width="275" height="249"/>
                                                         <string key="text">Tap Menu and select the Hide button. It’s time to name your Monster! Select the Color of your Monster on the interactive color wheel. Then choose the Location by using the drag and drop GPS coordinates. Next, select the Number of Monsters you’ll be hiding it could be infinite. Don’t forget to leave a clue, but don’t give the location entirely away. You’re all done. Just click “Hide”.  A confirmation of the TX will be asked once you accepted you are ready to let the Chase begin.
 
 NOTE:  You won't be able to Chase your own Monster</string>
@@ -93,25 +94,25 @@ NOTE:  You won't be able to Chase your own Monster</string>
                                                 <constraints>
                                                     <constraint firstItem="N5G-ZC-lMo" firstAttribute="top" secondItem="gbJ-cJ-719" secondAttribute="top" constant="35" id="4bt-qK-Nsu"/>
                                                     <constraint firstItem="N5G-ZC-lMo" firstAttribute="leading" secondItem="gbJ-cJ-719" secondAttribute="leading" constant="10" id="BcH-YU-zsS"/>
-                                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="U2H-9C-Kn6" secondAttribute="bottom" constant="30" id="F2Z-zN-QKz"/>
-                                                    <constraint firstItem="U2H-9C-Kn6" firstAttribute="top" secondItem="N5G-ZC-lMo" secondAttribute="bottom" constant="10" id="SMb-K1-klQ"/>
+                                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="U2H-9C-Kn6" secondAttribute="bottom" constant="10" id="F2Z-zN-QKz"/>
+                                                    <constraint firstItem="U2H-9C-Kn6" firstAttribute="top" secondItem="N5G-ZC-lMo" secondAttribute="bottom" constant="5" id="SMb-K1-klQ"/>
                                                     <constraint firstItem="U2H-9C-Kn6" firstAttribute="leading" secondItem="gbJ-cJ-719" secondAttribute="leading" constant="30" id="a4a-8X-gzo"/>
                                                     <constraint firstAttribute="trailing" secondItem="N5G-ZC-lMo" secondAttribute="trailing" constant="10" id="gon-g8-brc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="U2H-9C-Kn6" secondAttribute="trailing" constant="10" id="mUI-rP-Pkk"/>
-                                                    <constraint firstAttribute="height" constant="340" id="pcj-Fd-43H"/>
+                                                    <constraint firstAttribute="trailing" secondItem="U2H-9C-Kn6" secondAttribute="trailing" constant="30" id="mUI-rP-Pkk"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="320" id="pcj-Fd-43H"/>
                                                 </constraints>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vih-Qv-l5n" userLabel="Third container view" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="861" width="374" height="0.0"/>
+                                                <rect key="frame" x="20" y="841" width="335" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO ADD BALANCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6kV-K6-evu">
-                                                        <rect key="frame" x="10" y="35" width="354" height="21"/>
+                                                        <rect key="frame" x="10" y="35" width="315" height="21"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                                         <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fum-1L-BbV" userLabel="Content label">
-                                                        <rect key="frame" x="30" y="66" width="314" height="126.66666666666669"/>
+                                                        <rect key="frame" x="30" y="66" width="275" height="142.5"/>
                                                         <string key="text">Tap Menu and select the Profile button. Once you create your simple sign in and password, an AION wallet will be generated for you automatically.
 
 Copy the public key address and paste it into the AION faucet to “Pour” test AION tokens into their account, and now you have a balance!</string>
@@ -120,7 +121,7 @@ Copy the public key address and paste it into the AION faucet to “Pour” test
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9w-4d-eHh" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
-                                                        <rect key="frame" x="62" y="-74" width="250" height="40"/>
+                                                        <rect key="frame" x="42.5" y="-74" width="250" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="250" id="32Q-Ys-iii"/>
                                                             <constraint firstAttribute="height" constant="40" id="WEj-SN-8ps"/>
@@ -145,16 +146,16 @@ Copy the public key address and paste it into the AION faucet to “Pour” test
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J3f-OM-384" userLabel="Fourth container view" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="881" width="374" height="160"/>
+                                                <rect key="frame" x="20" y="861" width="335" height="180"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THE LEADERBOARD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNQ-cc-cDM">
-                                                        <rect key="frame" x="10" y="35" width="354" height="21"/>
+                                                        <rect key="frame" x="10" y="35" width="315" height="21"/>
                                                         <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                                         <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXn-CU-tQR" userLabel="Content label">
-                                                        <rect key="frame" x="30" y="66" width="314" height="79"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXn-CU-tQR" userLabel="Content label">
+                                                        <rect key="frame" x="30" y="61" width="275" height="95"/>
                                                         <string key="text">On the Leaderboard, you will find a list from #1 to #50 listing users with the biggest Monster collections. If you don't have a ranking number, make sure you chase and collect more monsters to get ranked.</string>
                                                         <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
                                                         <nil key="textColor"/>
@@ -164,8 +165,8 @@ Copy the public key address and paste it into the AION faucet to “Pour” test
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="bXn-CU-tQR" secondAttribute="trailing" constant="30" id="0Qm-7q-0fa"/>
-                                                    <constraint firstAttribute="height" constant="160" id="86o-Ii-nbm"/>
-                                                    <constraint firstItem="bXn-CU-tQR" firstAttribute="top" secondItem="kNQ-cc-cDM" secondAttribute="bottom" constant="10" id="Zfg-3C-bb2"/>
+                                                    <constraint firstAttribute="height" constant="180" id="86o-Ii-nbm"/>
+                                                    <constraint firstItem="bXn-CU-tQR" firstAttribute="top" secondItem="kNQ-cc-cDM" secondAttribute="bottom" constant="5" id="Zfg-3C-bb2"/>
                                                     <constraint firstItem="bXn-CU-tQR" firstAttribute="leading" secondItem="J3f-OM-384" secondAttribute="leading" constant="30" id="esM-N9-aZB"/>
                                                     <constraint firstAttribute="trailing" secondItem="kNQ-cc-cDM" secondAttribute="trailing" constant="10" id="krc-MX-6si"/>
                                                     <constraint firstItem="kNQ-cc-cDM" firstAttribute="leading" secondItem="J3f-OM-384" secondAttribute="leading" constant="10" id="pEL-iT-gHQ"/>
@@ -173,7 +174,7 @@ Copy the public key address and paste it into the AION faucet to “Pour” test
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJm-RO-ERc">
-                                                <rect key="frame" x="35" y="20" width="344" height="86"/>
+                                                <rect key="frame" x="35" y="20" width="305" height="86"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="86" id="Tvj-tn-92B"/>
                                                 </constraints>
@@ -186,7 +187,6 @@ Copy the public key address and paste it into the AION faucet to “Pour” test
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1300" id="4ao-Jw-FYn"/>
-                                            <constraint firstItem="J3f-OM-384" firstAttribute="width" secondItem="gbJ-cJ-719" secondAttribute="width" id="BhI-a6-8rE"/>
                                             <constraint firstItem="vih-Qv-l5n" firstAttribute="top" secondItem="gbJ-cJ-719" secondAttribute="bottom" constant="25" id="CZR-cD-Xb2"/>
                                             <constraint firstItem="QJm-RO-ERc" firstAttribute="leading" secondItem="sDy-Ma-tKS" secondAttribute="leading" constant="35" id="DYC-ug-66L"/>
                                             <constraint firstItem="J3f-OM-384" firstAttribute="leading" secondItem="sDy-Ma-tKS" secondAttribute="leading" constant="20" id="EIp-kB-x5x"/>
@@ -195,7 +195,6 @@ Copy the public key address and paste it into the AION faucet to “Pour” test
                                             <constraint firstAttribute="trailing" secondItem="QJm-RO-ERc" secondAttribute="trailing" constant="35" id="R9o-7q-drD"/>
                                             <constraint firstItem="1RD-dY-ybg" firstAttribute="top" secondItem="QJm-RO-ERc" secondAttribute="bottom" constant="20" id="SN9-Sf-C31"/>
                                             <constraint firstAttribute="trailing" secondItem="J3f-OM-384" secondAttribute="trailing" constant="20" id="XbR-3G-l0H"/>
-                                            <constraint firstItem="J3f-OM-384" firstAttribute="width" secondItem="sDy-Ma-tKS" secondAttribute="width" constant="-40" id="bAU-sz-TEK"/>
                                             <constraint firstItem="J3f-OM-384" firstAttribute="top" secondItem="vih-Qv-l5n" secondAttribute="bottom" constant="20" id="gG1-Tq-1PW"/>
                                             <constraint firstAttribute="trailing" secondItem="1RD-dY-ybg" secondAttribute="trailing" constant="20" id="gdj-x6-EDB"/>
                                             <constraint firstItem="gbJ-cJ-719" firstAttribute="leading" secondItem="sDy-Ma-tKS" secondAttribute="leading" constant="20" id="i8A-nU-0FP"/>
