@@ -24,6 +24,7 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
     var currentChase: Chase?
     var currentPlayer: Player?
     var chaseProof: ChaseProofSubmission?
+    var completeVC: CompleteChaseViewController?
     
     // Activity Indicator
     var indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
@@ -292,7 +293,9 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
             // Operation Queue
             operationQueue.addOperations([nonceOperation], waitUntilFinished: false)
             let alertView = self.monsterAlertView(title: "Submitted", message: "Proof submitted, your request is being processed in the background") { (UIAlertAction) in
-                
+                if let completeViewController = self.completeVC {
+                    completeViewController.dismissViewController = true
+                }
                 self.backButtonPressed(self)
             }
             
