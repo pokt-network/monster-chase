@@ -184,6 +184,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSd-a0-yBa">
+                                <rect key="frame" x="290" y="279" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="71V-Vu-GzJ"/>
+                                    <constraint firstAttribute="width" constant="55" id="7xg-bl-9Pe"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Locatex1"/>
+                                <connections>
+                                    <action selector="currentLocationPressed:" destination="1Tq-R0-4Ni" eventType="touchUpInside" id="Vcw-qg-02H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -197,9 +208,11 @@
                             <constraint firstItem="4KI-9b-TTh" firstAttribute="bottom" secondItem="h5G-Wd-Km3" secondAttribute="bottom" constant="40" id="ByT-ol-Ikh"/>
                             <constraint firstItem="h5G-Wd-Km3" firstAttribute="centerX" secondItem="4KI-9b-TTh" secondAttribute="centerX" id="Ek6-bT-fwN"/>
                             <constraint firstItem="Wbi-bf-4bq" firstAttribute="leading" secondItem="4KI-9b-TTh" secondAttribute="leading" id="JJ2-7A-74n"/>
+                            <constraint firstItem="4KI-9b-TTh" firstAttribute="trailing" secondItem="HSd-a0-yBa" secondAttribute="trailing" constant="30" id="Jwc-9J-t8d"/>
                             <constraint firstItem="h5G-Wd-Km3" firstAttribute="top" secondItem="vsY-ZQ-seq" secondAttribute="bottom" constant="-20" id="TmU-Cv-SP5"/>
                             <constraint firstItem="v0T-T1-CGp" firstAttribute="centerY" secondItem="bwe-a0-xxQ" secondAttribute="centerY" id="Wmu-Vz-iz6"/>
                             <constraint firstItem="v0T-T1-CGp" firstAttribute="leading" secondItem="bwe-a0-xxQ" secondAttribute="trailing" constant="10" id="fh3-bg-391"/>
+                            <constraint firstItem="vsY-ZQ-seq" firstAttribute="top" secondItem="HSd-a0-yBa" secondAttribute="bottom" constant="8" id="m0t-j5-U6G"/>
                             <constraint firstItem="vsY-ZQ-seq" firstAttribute="leading" secondItem="4KI-9b-TTh" secondAttribute="leading" constant="30" id="qpE-c3-klm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4KI-9b-TTh"/>
@@ -308,6 +321,7 @@
     <resources>
         <image name="Backx1" width="156" height="156"/>
         <image name="Circlex1" width="390" height="390"/>
+        <image name="Locatex1" width="156" height="156"/>
         <image name="Monster-Stickerx1" width="600" height="600"/>
     </resources>
 </document>

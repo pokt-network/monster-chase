@@ -27,7 +27,6 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     @IBOutlet weak var hintTextView: UITextView!
     @IBOutlet weak var infiniteMonstersSwitch: UISwitch!
     @IBOutlet weak var hintTextCountLabel: UILabel!
-    @IBOutlet weak var balanceValueLabel: UILabel!
 
     
     // Variables

@@ -141,7 +141,7 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
     }
     
     // Check if the user is near quest banano
-    func checkIfNearBanano() {
+    func isMonsterNearby() {
         guard let proofSubmission = ChaseMerkleTree.generateChaseProofSubmission(answer: currentUserLocation!, merkleBody: (chase?.merkleBody)!) else {
             let alertView = monsterAlertView(title: "Not in range", message: "Sorry, the monster location isn't nearby")
             present(alertView, animated: false, completion: nil)
@@ -244,8 +244,11 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
             present(alertController, animated: false, completion: nil)
             return
         }
-        // Check if near banano location
-        checkIfNearBanano()
+        isMonsterNearby()
+    }
+    
+    @IBAction func currentLocationPressed(_ sender: Any) {
+        mapView.setUserTrackingMode(MKUserTrackingMode.follow, animated: true)
     }
 }
 
