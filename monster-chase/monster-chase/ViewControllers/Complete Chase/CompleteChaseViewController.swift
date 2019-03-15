@@ -27,6 +27,7 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
     var currentUserLocation: CLLocation?
     var chaseAreaLocation: CLLocation?
     var chase: Chase?
+    var dismissViewController: Bool = false
     
     // MARK: View
     override func viewDidLoad() {
@@ -47,6 +48,11 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if self.dismissViewController == true {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         // Background settings
         monsterBackground.layer.cornerRadius = monsterBackground.frame.size.width / 2
         monsterBackground.clipsToBounds = true
@@ -61,14 +67,6 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        // UI Updates
-//        let deviceName = UIDevice.modelName
-//
-//        if deviceName == "iPhone X" || deviceName == "iPhone XS" || deviceName == "iPhone XS Max" || deviceName == "Simulator iPhone X" || deviceName == "Simulator iPhone XS" || deviceName == "Simulator iPhone XS Max" {
-//            let newSize = CGRect(x: mapView.frame.origin.x, y: mapView.frame.origin.y, width: mapView.frame.width, height: 470)
-//            mapView.frame = newSize
-//        }
     }
     
     override func refreshView() throws {
@@ -133,8 +131,9 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
             vc?.chaseProof = proof
             vc?.currentChase = chase
             vc?.currentUserLocation = currentUserLocation
+            vc?.completeVC = self
             
-            present(vc!, animated: false, completion: nil)
+            present(vc!, animated: true, completion: nil)
         } catch let error as NSError {
             print("Failed to instantiate CompleteChaseViewController with error: \(error)")
         }
