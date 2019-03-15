@@ -36,19 +36,19 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsY-ZQ-seq" customClass="BackgroundView" customModule="monster_chase" customModuleProvider="target">
-                                <rect key="frame" x="15" y="342" width="345" height="265"/>
+                                <rect key="frame" x="30" y="342" width="315" height="265"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Om-YA-OUg" userLabel="Top View">
-                                        <rect key="frame" x="0.0" y="0.0" width="345" height="145"/>
+                                        <rect key="frame" x="20" y="0.0" width="275" height="145"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monster Clue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Y4-0U-nMb" userLabel="Monster Clue label">
-                                                <rect key="frame" x="114" y="30" width="117.5" height="19.5"/>
+                                                <rect key="frame" x="79" y="30" width="117.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="16"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clue label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vy-35-p9r" userLabel="Monster Clue label">
-                                                <rect key="frame" x="35" y="64.5" width="275" height="17.5"/>
+                                                <rect key="frame" x="35" y="64.5" width="205" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -64,10 +64,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kZr-fI-1mE" userLabel="Bottom View">
-                                        <rect key="frame" x="0.0" y="145" width="345" height="100"/>
+                                        <rect key="frame" x="20" y="145" width="275" height="100"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X1w-ff-YNZ" userLabel="Monster color image">
-                                                <rect key="frame" x="29" y="1" width="72" height="72"/>
+                                                <rect key="frame" x="9" y="1" width="72" height="72"/>
                                                 <color key="backgroundColor" red="0.19215686269999999" green="0.66666666669999997" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="72" id="Ul0-cz-aC1"/>
@@ -80,7 +80,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monster-Stickerx1" translatesAutoresizingMaskIntoConstraints="NO" id="bdM-Gi-tGJ" userLabel="Monster image">
-                                                <rect key="frame" x="30" y="2" width="70" height="70"/>
+                                                <rect key="frame" x="10" y="2" width="70" height="70"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="6Ux-wL-rqR"/>
@@ -88,39 +88,39 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circlex1" translatesAutoresizingMaskIntoConstraints="NO" id="R2p-ZM-KjN" userLabel="Monster circle">
-                                                <rect key="frame" x="147.5" y="25" width="50" height="50"/>
+                                                <rect key="frame" x="112.5" y="25" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="2gl-y5-cJ0"/>
                                                     <constraint firstAttribute="height" constant="50" id="FPE-My-uwU"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circlex1" translatesAutoresizingMaskIntoConstraints="NO" id="yHR-Ej-gXx" userLabel="Distance circle">
-                                                <rect key="frame" x="255" y="25" width="50" height="50"/>
+                                                <rect key="frame" x="205" y="25" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="JTf-ns-wQj"/>
                                                     <constraint firstAttribute="width" constant="50" id="bpi-Ke-QOp"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MONSTERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBa-pI-mfz" userLabel="Count label">
-                                                <rect key="frame" x="135" y="1" width="75" height="15"/>
+                                                <rect key="frame" x="100" y="1" width="75" height="15"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISTANCE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnZ-3m-FAw" userLabel="Distance label">
-                                                <rect key="frame" x="245" y="1" width="70" height="15"/>
+                                                <rect key="frame" x="195" y="1" width="70" height="15"/>
                                                 <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="12"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-ew-o8E" userLabel="Monsters count label">
-                                                <rect key="frame" x="152.5" y="41" width="40" height="17.5"/>
+                                                <rect key="frame" x="117.5" y="41" width="40" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0m" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-R9-8sO" userLabel="Distance number label">
-                                                <rect key="frame" x="260" y="41" width="40" height="17.5"/>
+                                                <rect key="frame" x="210" y="41" width="40" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                                 <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -130,11 +130,11 @@
                                         <constraints>
                                             <constraint firstItem="PLb-R9-8sO" firstAttribute="centerX" secondItem="xnZ-3m-FAw" secondAttribute="centerX" id="1LS-rr-d6Y"/>
                                             <constraint firstItem="Kqa-ew-o8E" firstAttribute="centerX" secondItem="WBa-pI-mfz" secondAttribute="centerX" id="2tS-42-HeY"/>
+                                            <constraint firstItem="WBa-pI-mfz" firstAttribute="centerX" secondItem="kZr-fI-1mE" secondAttribute="centerX" id="7CJ-07-bRa"/>
                                             <constraint firstItem="Kqa-ew-o8E" firstAttribute="width" secondItem="R2p-ZM-KjN" secondAttribute="width" multiplier="0.8" id="FZ2-yY-jOe"/>
                                             <constraint firstAttribute="height" constant="100" id="Fd1-9E-pC3"/>
-                                            <constraint firstItem="WBa-pI-mfz" firstAttribute="leading" secondItem="bdM-Gi-tGJ" secondAttribute="trailing" constant="35" id="JEh-IB-iyI"/>
                                             <constraint firstItem="xnZ-3m-FAw" firstAttribute="centerY" secondItem="WBa-pI-mfz" secondAttribute="centerY" id="ObM-t0-cdj"/>
-                                            <constraint firstItem="xnZ-3m-FAw" firstAttribute="leading" secondItem="WBa-pI-mfz" secondAttribute="trailing" constant="35" id="Pbd-Nb-gED"/>
+                                            <constraint firstItem="xnZ-3m-FAw" firstAttribute="leading" secondItem="WBa-pI-mfz" secondAttribute="trailing" constant="20" id="TPw-gz-5zh"/>
                                             <constraint firstItem="yHR-Ej-gXx" firstAttribute="centerY" secondItem="PLb-R9-8sO" secondAttribute="centerY" id="TVI-MG-LWy"/>
                                             <constraint firstItem="X1w-ff-YNZ" firstAttribute="centerY" secondItem="bdM-Gi-tGJ" secondAttribute="centerY" id="Wmm-DP-DBb"/>
                                             <constraint firstItem="Kqa-ew-o8E" firstAttribute="top" secondItem="WBa-pI-mfz" secondAttribute="bottom" constant="25" id="XE7-Vk-UK8"/>
@@ -145,18 +145,18 @@
                                             <constraint firstItem="X1w-ff-YNZ" firstAttribute="centerX" secondItem="bdM-Gi-tGJ" secondAttribute="centerX" id="ibW-kq-z02"/>
                                             <constraint firstItem="R2p-ZM-KjN" firstAttribute="centerY" secondItem="Kqa-ew-o8E" secondAttribute="centerY" id="jor-tK-caz"/>
                                             <constraint firstItem="WBa-pI-mfz" firstAttribute="top" secondItem="X1w-ff-YNZ" secondAttribute="top" id="lpQ-Ab-DVV"/>
+                                            <constraint firstItem="WBa-pI-mfz" firstAttribute="leading" secondItem="bdM-Gi-tGJ" secondAttribute="trailing" constant="20" id="lra-Fv-xhe"/>
                                             <constraint firstItem="yHR-Ej-gXx" firstAttribute="centerX" secondItem="PLb-R9-8sO" secondAttribute="centerX" id="x4n-30-hsv"/>
-                                            <constraint firstItem="WBa-pI-mfz" firstAttribute="centerX" secondItem="kZr-fI-1mE" secondAttribute="centerX" id="x6W-AM-FHx"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="265" id="3Nd-Cw-V4t"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Om-YA-OUg" secondAttribute="trailing" id="6hG-VB-yJv"/>
-                                    <constraint firstAttribute="trailing" secondItem="kZr-fI-1mE" secondAttribute="trailing" id="a3X-yn-gpn"/>
-                                    <constraint firstItem="kZr-fI-1mE" firstAttribute="leading" secondItem="vsY-ZQ-seq" secondAttribute="leading" id="acP-Tc-pd3"/>
-                                    <constraint firstItem="8Om-YA-OUg" firstAttribute="leading" secondItem="vsY-ZQ-seq" secondAttribute="leading" id="jbd-gH-HaS"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Om-YA-OUg" secondAttribute="trailing" constant="20" id="6hG-VB-yJv"/>
+                                    <constraint firstAttribute="trailing" secondItem="kZr-fI-1mE" secondAttribute="trailing" constant="20" id="a3X-yn-gpn"/>
+                                    <constraint firstItem="kZr-fI-1mE" firstAttribute="leading" secondItem="vsY-ZQ-seq" secondAttribute="leading" constant="20" id="acP-Tc-pd3"/>
+                                    <constraint firstItem="8Om-YA-OUg" firstAttribute="leading" secondItem="vsY-ZQ-seq" secondAttribute="leading" constant="20" id="jbd-gH-HaS"/>
                                     <constraint firstItem="8Om-YA-OUg" firstAttribute="top" secondItem="vsY-ZQ-seq" secondAttribute="top" id="kX5-0O-Jx2"/>
                                     <constraint firstItem="kZr-fI-1mE" firstAttribute="top" secondItem="8Om-YA-OUg" secondAttribute="bottom" id="qll-5l-MGx"/>
                                     <constraint firstAttribute="bottom" secondItem="kZr-fI-1mE" secondAttribute="bottom" constant="20" id="zvW-lb-Sah"/>
@@ -191,7 +191,7 @@
                             <constraint firstItem="4KI-9b-TTh" firstAttribute="trailing" secondItem="Wbi-bf-4bq" secondAttribute="trailing" id="1I0-n6-wVQ"/>
                             <constraint firstItem="Wbi-bf-4bq" firstAttribute="top" secondItem="VIX-Tx-j11" secondAttribute="top" id="3Wt-2R-HDf"/>
                             <constraint firstItem="bwe-a0-xxQ" firstAttribute="leading" secondItem="4KI-9b-TTh" secondAttribute="leading" constant="15" id="7OL-Pg-g3z"/>
-                            <constraint firstItem="4KI-9b-TTh" firstAttribute="trailing" secondItem="vsY-ZQ-seq" secondAttribute="trailing" constant="15" id="7Qu-LT-Nga"/>
+                            <constraint firstItem="4KI-9b-TTh" firstAttribute="trailing" secondItem="vsY-ZQ-seq" secondAttribute="trailing" constant="30" id="7Qu-LT-Nga"/>
                             <constraint firstItem="bwe-a0-xxQ" firstAttribute="top" secondItem="4KI-9b-TTh" secondAttribute="top" id="9hy-Ke-K0W"/>
                             <constraint firstAttribute="bottom" secondItem="Wbi-bf-4bq" secondAttribute="bottom" id="A70-za-LoW"/>
                             <constraint firstItem="4KI-9b-TTh" firstAttribute="bottom" secondItem="h5G-Wd-Km3" secondAttribute="bottom" constant="40" id="ByT-ol-Ikh"/>
@@ -200,7 +200,7 @@
                             <constraint firstItem="h5G-Wd-Km3" firstAttribute="top" secondItem="vsY-ZQ-seq" secondAttribute="bottom" constant="-20" id="TmU-Cv-SP5"/>
                             <constraint firstItem="v0T-T1-CGp" firstAttribute="centerY" secondItem="bwe-a0-xxQ" secondAttribute="centerY" id="Wmu-Vz-iz6"/>
                             <constraint firstItem="v0T-T1-CGp" firstAttribute="leading" secondItem="bwe-a0-xxQ" secondAttribute="trailing" constant="10" id="fh3-bg-391"/>
-                            <constraint firstItem="vsY-ZQ-seq" firstAttribute="leading" secondItem="4KI-9b-TTh" secondAttribute="leading" constant="15" id="qpE-c3-klm"/>
+                            <constraint firstItem="vsY-ZQ-seq" firstAttribute="leading" secondItem="4KI-9b-TTh" secondAttribute="leading" constant="30" id="qpE-c3-klm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4KI-9b-TTh"/>
                     </view>
