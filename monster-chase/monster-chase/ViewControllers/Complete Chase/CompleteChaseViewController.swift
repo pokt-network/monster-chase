@@ -153,6 +153,9 @@ class CompleteChaseViewController: UIViewController, CLLocationManagerDelegate, 
     // Quest quadrant
     func setChaseQuadrant() {
         // Chase Quadrant
+        if chaseAreaLocation != nil {
+            return
+        }
         if let corners = chase?.getQuadranHintCorners() {
             let location = LocationUtils.getRegularCentroid(points: corners)
             
