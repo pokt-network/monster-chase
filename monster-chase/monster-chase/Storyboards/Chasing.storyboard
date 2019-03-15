@@ -299,8 +299,8 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zQQ-AS-zUp" userLabel="Top View">
                                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Monster Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpf-iL-MVS" userLabel="Monster name label">
-                                                                            <rect key="frame" x="0.0" y="10" width="320" height="23"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Monster Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dpf-iL-MVS" userLabel="Monster name label">
+                                                                            <rect key="frame" x="20" y="10" width="280" height="23"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="23" id="Je2-Wn-HsH"/>
                                                                             </constraints>
@@ -325,7 +325,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2zr-w2-QMe" userLabel="Clue textView">
-                                                                            <rect key="frame" x="0.0" y="86" width="320" height="76"/>
+                                                                            <rect key="frame" x="20" y="86" width="280" height="76"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="6cj-fH-vJt"/>
@@ -346,10 +346,10 @@
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
-                                                                        <constraint firstItem="2zr-w2-QMe" firstAttribute="leading" secondItem="zQQ-AS-zUp" secondAttribute="leading" id="2rH-EA-42b"/>
+                                                                        <constraint firstItem="2zr-w2-QMe" firstAttribute="leading" secondItem="zQQ-AS-zUp" secondAttribute="leading" constant="20" id="2rH-EA-42b"/>
                                                                         <constraint firstItem="9yq-kF-SMx" firstAttribute="top" secondItem="qAQ-z9-L5V" secondAttribute="bottom" constant="10" id="3bD-yV-pTu"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="Dpf-iL-MVS" secondAttribute="trailing" id="7ae-oM-TQG"/>
-                                                                        <constraint firstItem="Dpf-iL-MVS" firstAttribute="leading" secondItem="zQQ-AS-zUp" secondAttribute="leading" id="8rQ-U4-8yZ"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Dpf-iL-MVS" secondAttribute="trailing" constant="20" id="7ae-oM-TQG"/>
+                                                                        <constraint firstItem="Dpf-iL-MVS" firstAttribute="leading" secondItem="zQQ-AS-zUp" secondAttribute="leading" constant="20" id="8rQ-U4-8yZ"/>
                                                                         <constraint firstItem="Dpf-iL-MVS" firstAttribute="top" secondItem="zQQ-AS-zUp" secondAttribute="top" constant="10" id="BFv-D0-zIQ"/>
                                                                         <constraint firstItem="N2F-PB-r6a" firstAttribute="trailing" secondItem="qAQ-z9-L5V" secondAttribute="trailing" id="G0c-IQ-ssO"/>
                                                                         <constraint firstItem="9yq-kF-SMx" firstAttribute="leading" secondItem="zQQ-AS-zUp" secondAttribute="leading" id="MVu-PX-KXj"/>
@@ -360,7 +360,7 @@
                                                                         <constraint firstAttribute="trailing" secondItem="qAQ-z9-L5V" secondAttribute="trailing" constant="40" id="m8E-fK-Nk3"/>
                                                                         <constraint firstItem="qAQ-z9-L5V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Dpf-iL-MVS" secondAttribute="bottom" constant="15" id="vMd-jD-okt"/>
                                                                         <constraint firstAttribute="trailing" secondItem="9yq-kF-SMx" secondAttribute="trailing" id="vq7-E5-ONa"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="2zr-w2-QMe" secondAttribute="trailing" id="wVR-vH-dxX"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="2zr-w2-QMe" secondAttribute="trailing" constant="20" id="wVR-vH-dxX"/>
                                                                         <constraint firstItem="2zr-w2-QMe" firstAttribute="top" secondItem="9yq-kF-SMx" secondAttribute="bottom" constant="10" id="wY2-BD-aPT"/>
                                                                     </constraints>
                                                                 </view>
