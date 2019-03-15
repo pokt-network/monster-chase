@@ -30,7 +30,8 @@ class BackgroundView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         contentView.layer.borderWidth = 5
         contentView.layer.borderColor = AppColors.base.cgColor()
-        contentView.layer.cornerRadius = contentView.frame.height * 0.05
+        contentView.layer.cornerRadius = 8
+        //contentView.layer.cornerRadius = contentView.frame.height * 0.05
         
         // Remove user interaction
         contentView.isUserInteractionEnabled = false
