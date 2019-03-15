@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
     var nodeURL: URL {
         get {
             //return URL.init(string: "https://aion.pokt.network")!
-            //return URL.init(string: "http://localhost:3000")!
-            return URL.init(string: "http://192.168.0.155:3000")!
+            return URL.init(string: "http://localhost:3000")!
+            //return URL.init(string: "http://192.168.0.155:3000")!
         }
     }
 
