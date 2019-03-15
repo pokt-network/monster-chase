@@ -34,7 +34,10 @@ public struct BiometricsUtils {
     public static func biometricRecordExists(playerAddress: String) -> Bool {
         //let keychainKey = self.keychainKey + playerAddress
         let recordKey = self.keychainKey + playerAddress
-        return KeychainWrapper.standard.allKeys().contains(recordKey)
+        guard let _ = KeychainWrapper.standard.string(forKey: recordKey, withAccessibility: .always) else {
+            return false
+        }
+        return true
     }
     
     // Retrieves existing passphrase from keychain upon succesful biometric auth
@@ -65,13 +68,13 @@ public struct BiometricsUtils {
         }
         
         let keychainKey = self.keychainKey + playerAddress
-        if !KeychainWrapper.standard.allKeys().contains(keychainKey) {
+        if !self.biometricRecordExists(playerAddress: playerAddress) {
             errorHandler(BiometricsUtilsError.credentialsRetrievalError)
             return
         }
         
         BioMetricAuthenticator.authenticateWithBioMetrics(reason: "Biometric Authentication", fallbackTitle: "Biometric Authentication", success: {
-            guard let passphrase = KeychainWrapper.standard.string(forKey: keychainKey, withAccessibility: .whenUnlockedThisDeviceOnly) else {
+            guard let passphrase = KeychainWrapper.standard.string(forKey: keychainKey, withAccessibility: .always) else {
                 errorHandler(BiometricsUtilsError.credentialsRetrievalError)
                 return
             }
@@ -96,7 +99,7 @@ public struct BiometricsUtils {
                 // show passcode authentication
                 BioMetricAuthenticator.authenticateWithPasscode(reason: "Biometrics Auth Locked, please provide Passcode", success: {
                     // Return wallet on success
-                    guard let passphrase = KeychainWrapper.standard.string(forKey: keychainKey, withAccessibility: .whenUnlockedThisDeviceOnly) else {
+                    guard let passphrase = KeychainWrapper.standard.string(forKey: keychainKey, withAccessibility: .always) else {
                         errorHandler(BiometricsUtilsError.credentialsRetrievalError)
                         return
                     }
@@ -187,9 +190,8 @@ public struct BiometricsUtils {
         guard let playerAddress = player.address else {
             throw BiometricsUtilsError.setupError
         }
-        //whenUnlockedThisDeviceOnly
         let recordKey = self.keychainKey + playerAddress
-        let success = KeychainWrapper.standard.set(passphrase, forKey: recordKey, withAccessibility: .whenUnlockedThisDeviceOnly)
+        let success = KeychainWrapper.standard.set(passphrase, forKey: recordKey, withAccessibility: .always)
         if !success {
             throw BiometricsUtilsError.setupError
         }
