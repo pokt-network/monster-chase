@@ -38,7 +38,7 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     var selectedColorHex: String?
     
     // Constants
-    let maxHintSize = 280
+    let maxHintSize = 140
     
     // Notifications
     static let notificationName = Notification.Name("getLocation")
