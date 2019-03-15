@@ -171,7 +171,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.monsters.count == 0 {
-            return 3
+            return 6
         } else {
             return self.monsters.count
         }
