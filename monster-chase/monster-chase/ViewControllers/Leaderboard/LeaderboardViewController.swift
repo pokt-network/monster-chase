@@ -29,6 +29,10 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     var ownersRecords = [LeaderboardRecord]()
     var currentPlayer: Player?
     
+    // Activity Indicator
+    var indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    var grayView: UIView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,6 +50,19 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Indicator
+        // Gray view setup
+        grayView = UIView.init(frame: view.frame)
+        grayView?.backgroundColor = UIColor.init(white: 1.0, alpha: 0.75)
+        grayView?.isHidden = true
+        view.addSubview(grayView!)
+        
+        // Activity indicator setup
+        indicator.center = view.center
+        
+        view.addSubview(indicator)
+        toggleIndicator()
+        
         // Styling
         // QR Code
         qrCodeBackgroundImage.layer.cornerRadius = qrCodeBackgroundImage.frame.height / 2
@@ -60,6 +77,16 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // MARK: UI
+    func toggleIndicator() {
+        if self.indicator.isAnimating {
+            self.indicator.stopAnimating()
+            self.grayView?.isHidden = true
+        } else {
+            self.indicator.startAnimating()
+            self.grayView?.isHidden = false
+        }
+    }
+    
     func refreshTableView() {
         DispatchQueue.main.async() {
             self.tableView.reloadData()
@@ -90,6 +117,9 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
         //activityIndicator.startAnimating()
         fetchOwnerCount(completionBlock: { count in
             guard let count = count else {
+                self.toggleIndicator()
+                let errorAlert = self.monsterAlertView(title: "Error", message: "Error fetching Leaderboard records")
+                self.present(errorAlert, animated: true, completion: nil)
                 return
             }
             self.ownersRecords = [LeaderboardRecord]()
@@ -111,6 +141,7 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
                 let ownerPosition = self.calculateOwnerPosition()
                 guard let playerOwnerRecord = self.playerOwnerRecord() else {
                     self.placeholderLabel.isHidden = false
+                    self.toggleIndicator()
                     return
                 }
                 if (playerOwnerRecord.tokenTotal == BigInt.init(0)) {
@@ -119,6 +150,7 @@ class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableV
                     self.placeholderLabel.isHidden = true
                     self.setPositionAndMonsterCount(position: ownerPosition, monsterCount: playerOwnerRecord.tokenTotal)
                 }
+                self.toggleIndicator()
             }
         })
     }
