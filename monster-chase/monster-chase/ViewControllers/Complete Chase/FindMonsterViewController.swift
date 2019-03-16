@@ -21,11 +21,8 @@ extension float4x4 {
 }
 
 extension UIColor {
-    open class var transparentLightBlue: UIColor {
-        return UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.10)
-    }
     open class var transparentAccentColor: UIColor {
-        return UIColor(red: 14/255, green: 169/255, blue: 168/255, alpha: 0.10)
+        return UIColor(red: 14/255, green: 169/255, blue: 168/255, alpha: 0.0)
     }
 }
 
@@ -114,7 +111,7 @@ class FindMonsterViewController: UIViewController, ARSCNViewDelegate {
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
         sceneView.delegate = self
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        //sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
@@ -138,6 +135,10 @@ class FindMonsterViewController: UIViewController, ARSCNViewDelegate {
         if let currentMonsterNode = self.createMonsterNode(x: planeAnchor.center.x, y: planeAnchor.center.y, z: planeAnchor.center.z) {
             self.monsterNode = currentMonsterNode
             node.addChildNode(self.monsterNode!)
+            self.monsterRendered = true
+            DispatchQueue.main.async {
+                self.claimButton.isHidden = false
+            }
         }
     }
     
