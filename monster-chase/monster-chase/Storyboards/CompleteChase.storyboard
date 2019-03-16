@@ -173,7 +173,7 @@
                                     <constraint firstAttribute="height" constant="40" id="GM8-U8-YJ1"/>
                                     <constraint firstAttribute="width" constant="250" id="doo-Vo-l6o"/>
                                 </constraints>
-                                <state key="normal" title="Chase"/>
+                                <state key="normal" title="Find"/>
                                 <connections>
                                     <action selector="completeButtonPressed:" destination="1Tq-R0-4Ni" eventType="touchUpInside" id="BDt-bL-JvX"/>
                                 </connections>
@@ -241,13 +241,16 @@
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWy-rH-OJk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eIH-Hx-Ac6" id="5Pt-kU-lQN"/>
+                                </connections>
                             </arscnView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCp-Tz-e8H" userLabel="Chase button" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCp-Tz-e8H" userLabel="Chase button" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
                                 <rect key="frame" x="62.5" y="607" width="250" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="elH-3S-krV"/>
                                 </constraints>
-                                <state key="normal" title="Chase"/>
+                                <state key="normal" title="Catch"/>
                                 <connections>
                                     <action selector="claimButtonPressed:" destination="eIH-Hx-Ac6" eventType="touchUpInside" id="UyM-Uf-2JX"/>
                                 </connections>
@@ -311,6 +314,7 @@
                     <connections>
                         <outlet property="claimButton" destination="wCp-Tz-e8H" id="Z6P-V5-CVJ"/>
                         <outlet property="permissionsView" destination="5K2-Sm-fVf" id="s8s-hz-f8v"/>
+                        <outlet property="sceneView" destination="lWy-rH-OJk" id="gx7-qI-1Ef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qJ-hS-yrS" userLabel="First Responder" sceneMemberID="firstResponder"/>

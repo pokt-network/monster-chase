@@ -12,11 +12,11 @@ import BigInt
 public struct AppConfiguration {
     
     // Localhost
-    public static let monsterTokenAddress = "0xa0D7e4eD2CA859E9f2C758A9bEF0ef69C5eD741B6F3F7C6E3F6ed9d9579a3425"
-    public static let subnetwork = "0"
+    public static let monsterTokenAddress = "0xa01F1A6268C9B3636Ac82D907b5F80b9eA7Bb7D3DB85e49858AB612cC4670Cb9"
+    public static let subnetwork = "32"
     public static let nrgPrice = BigInt.init(10000000000)
-    public static let godfatherPK = "0xc62667d350e1873632e0e55a4417609c19636754d2e6a3df7d71b9d2d5cce2a1ac44d29b49220ce926756c85c21a4673cf064564a3088fcaf3f661a5eac95271"
-    public static let godfatherAddress = "0xa013ccd08d826dac8069007478376dfd6867f59e7e7f55b54445190911a51b6c"
+    public static let godfatherPK = "0x2b5d6fd899ccc148b5f85b4ea20961678c04d70055b09dac7857ea430757e6badb4cfe129e670e2fef1b632ed0eab9572954feebbea9cb32134b284763acd34e"
+    public static let godfatherAddress = "0xa05b88ac239f20ba0a4d2f0edac8c44293e9b36fa937fb55bf7a1cd61a60f036"
     private static let displayedOnboardingKey = "displayedOnboarding"
     
     // Mastery
