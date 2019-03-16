@@ -32,7 +32,6 @@
 		C5345B12220CC6FA0058A979 /* CompleteChase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5345B11220CC6FA0058A979 /* CompleteChase.storyboard */; };
 		C5345B15220CC9090058A979 /* CompleteChaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B14220CC9090058A979 /* CompleteChaseViewController.swift */; };
 		C5345B17220CD5E80058A979 /* FindMonsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B16220CD5E80058A979 /* FindMonsterViewController.swift */; };
-		C5345B1A220CD7490058A979 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5345B19220CD7490058A979 /* AnnotationView.swift */; };
 		C53F21F821FA1C50003457F3 /* DefaultMonsterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */; };
 		C53F21FA21FA1C87003457F3 /* DefaultMonsterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */; };
 		C53F21FF21FA40BD003457F3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F21FE21FA40BD003457F3 /* Theme.swift */; };
@@ -143,7 +142,6 @@
 		C5345B11220CC6FA0058A979 /* CompleteChase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CompleteChase.storyboard; sourceTree = "<group>"; };
 		C5345B14220CC9090058A979 /* CompleteChaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteChaseViewController.swift; sourceTree = "<group>"; };
 		C5345B16220CD5E80058A979 /* FindMonsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMonsterViewController.swift; sourceTree = "<group>"; };
-		C5345B19220CD7490058A979 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		C53F21F721FA1C50003457F3 /* DefaultMonsterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMonsterButton.swift; sourceTree = "<group>"; };
 		C53F21F921FA1C87003457F3 /* DefaultMonsterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DefaultMonsterButton.xib; sourceTree = "<group>"; };
 		C53F21FE21FA40BD003457F3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -355,7 +353,6 @@
 		C51461C721F902B300E3B77E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C5345B18220CD6E40058A979 /* AR Annotation Views */,
 				C5345B08220B26730058A979 /* TableViewCells */,
 				C526E14B22089C8B0009357B /* TextFields */,
 				C59BC0082200806600CD684C /* CollectionViewCells */,
@@ -398,14 +395,6 @@
 				C5345B16220CD5E80058A979 /* FindMonsterViewController.swift */,
 			);
 			path = "Complete Chase";
-			sourceTree = "<group>";
-		};
-		C5345B18220CD6E40058A979 /* AR Annotation Views */ = {
-			isa = PBXGroup;
-			children = (
-				C5345B19220CD7490058A979 /* AnnotationView.swift */,
-			);
-			path = "AR Annotation Views";
 			sourceTree = "<group>";
 		};
 		C53F21F421F9FBB3003457F3 /* Main */ = {
@@ -874,7 +863,6 @@
 				C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */,
 				C53F221B21FB8AC9003457F3 /* UIDevice+extension.swift in Sources */,
 				C593D3562201F98A006AD84C /* TransactionReceipt.swift in Sources */,
-				C5345B1A220CD7490058A979 /* AnnotationView.swift in Sources */,
 				C58A0F582205297100643BC7 /* MonsterCollectionViewCell.swift in Sources */,
 				C59BBFDF21FF594500CD684C /* CreateChaseViewController.swift in Sources */,
 				C53F221221FB87CD003457F3 /* Transaction+CoreDataProperties.swift in Sources */,

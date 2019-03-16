@@ -12,13 +12,29 @@ import ARKit
 import MapKit
 import BigInt
 import Pocket
-import HDAugmentedReality
 
-class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewDelegate {
+extension float4x4 {
+    var translation: float3 {
+        let translation = self.columns.3
+        return float3(translation.x, translation.y, translation.z)
+    }
+}
+
+extension UIColor {
+    open class var transparentLightBlue: UIColor {
+        return UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.10)
+    }
+    open class var transparentAccentColor: UIColor {
+        return UIColor(red: 14/255, green: 169/255, blue: 168/255, alpha: 0.10)
+    }
+}
+
+class FindMonsterViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var claimButton: UIButton!
     @IBOutlet weak var permissionsView: UIView!
+    @IBOutlet weak var sceneView: ARSCNView!
     
-    fileprivate var arViewController: ARViewController!
+    //fileprivate var arViewController: ARViewController!
     var chaseLocation: CLLocation?
     var currentUserLocation: CLLocation?
     var currentChase: Chase?
@@ -30,9 +46,12 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
     var indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     var grayView: UIView?
     
+    var monsterRendered: Bool = false
+    var monsterNode: SCNNode?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureLighting()
         // Current Player
         do {
             currentPlayer = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
@@ -40,20 +59,11 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
             self.present(self.monsterAlertView(title: "Error", message: "An error ocurred retrieving your account information, please try again"), animated: true)
             return
         }
-        
-        // AR Setup
-        self.dataSource = self
-        self.presenter.maxVisibleAnnotations = 1
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Gray view setup
-//        grayView = UIView.init(frame: view.frame)
-//        grayView?.backgroundColor = UIColor.init(white: 1.0, alpha: 0.75)
-//        view.addSubview(grayView!)
+        setUpSceneView()
         
         // Activity indicator setup
         indicator.center = view.center
@@ -68,34 +78,108 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sceneView.session.pause()
+    }
+    
+    func configureLighting() {
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.automaticallyUpdatesLighting = true
+    }
+    
     override func refreshView() throws {
         // Check for camera permission
         checkCameraAccess()
     }
     
-    func setupMonsterAR() {
-        // Monster Location is generated based in the user location after is confirmed the user is withing the chase completion range.
-        let coordinates = getMonsterLocation()
-        chaseLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+    // MARK: AR
+    func renderTextureWithColor(topImage: UIImage, hex: String) -> UIImage {
+        let bottomImage = UIImage.drawImage(ofSize: topImage.size, path: UIBezierPath.init(rect: CGRect.init(x: 0.0, y: 0.0, width: topImage.size.height, height: topImage.size.width)), fillColor: UIColor.init(hexString: hex) ?? UIColor.black)!
         
-        let monsterLocation = CLLocation(latitude: chaseLocation?.coordinate.latitude ?? 0.0, longitude: chaseLocation?.coordinate.longitude ?? 0.0)
-        let monsterLocationC = CLLocation(coordinate: monsterLocation.coordinate, altitude: CLLocationDistance.init(currentUserLocation?.altitude ?? 0), horizontalAccuracy: CLLocationAccuracy.init(0), verticalAccuracy: CLLocationAccuracy.init(0), timestamp: Date.init())
+        let newSize = CGSize.init(width: topImage.size.width, height: topImage.size.height)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         
-        let distance = monsterLocationC.distance(from: currentUserLocation!)
+        bottomImage.draw(in: CGRect(origin: CGPoint.zero, size: newSize), blendMode: CGBlendMode.normal, alpha: 1.0)
+        topImage.draw(in: CGRect(origin: CGPoint.zero, size: newSize), blendMode: CGBlendMode.normal, alpha: 1.0)
         
-        if distance <= 50000 {
-            let annotation = ARAnnotation.init(identifier: "monster", title: currentChase?.name ?? "NONE", location: monsterLocationC)
-            
-            // AR options
-            // Max distance between the player and the Banano
-            self.presenter.maxDistance = 50
-            
-            // We add the annotations that for Banano quest is 1 at a time
-            self.setAnnotations([annotation!])
-        }else {
-            let alertController = monsterAlertView(title: "Not in range", message: "\(currentChase?.name ?? "") monster is not within 50 meters of your current location")
-            present(alertController, animated: false, completion: nil)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    func setUpSceneView() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
+        sceneView.session.run(configuration)
+        sceneView.delegate = self
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        let plane = SCNPlane(width: width, height: height)
+        
+        plane.materials.first?.diffuse.contents = UIColor.transparentAccentColor
+        
+        let planeNode = SCNNode(geometry: plane)
+        
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x,y,z)
+        planeNode.eulerAngles.x = -.pi / 2
+        
+        node.addChildNode(planeNode)
+        if let currentMonsterNode = self.createMonsterNode(x: planeAnchor.center.x, y: planeAnchor.center.y, z: planeAnchor.center.z) {
+            self.monsterNode = currentMonsterNode
+            node.addChildNode(self.monsterNode!)
         }
+    }
+    
+    func createMonsterNode(x: Float, y: Float, z: Float) -> SCNNode? {
+        if monsterRendered == true {
+            return nil
+        }
+        
+        guard let monsterScene = SCNScene(named: "monster.scn"),
+            let monsterNode = monsterScene.rootNode.childNode(withName: "Monster_body", recursively: false)
+            else { return nil }
+        
+        let material = SCNMaterial()
+        let materialImage = self.renderTextureWithColor(topImage: UIImage.init(named: "monster-texture.png")!, hex: self.currentChase?.hexColor ?? "#4D4B9F")
+        material.diffuse.contents = materialImage
+        
+        monsterNode.scale = SCNVector3(0.01, 0.01, 0.01)
+        monsterNode.position = SCNVector3(x,y,z)
+        if let currentFrame = sceneView.session.currentFrame {
+            monsterNode.eulerAngles.y = currentFrame.camera.eulerAngles.y
+        } else {
+            monsterNode.eulerAngles.y = -.pi / 3
+        }
+        monsterNode.geometry?.materials = [material]
+        return monsterNode
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as?  ARPlaneAnchor,
+            let planeNode = node.childNodes.first,
+            let plane = planeNode.geometry as? SCNPlane
+            else { return }
+        
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        plane.width = width
+        plane.height = height
+        
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x, y, z)
     }
     
     func checkCameraAccess() {
@@ -106,7 +190,6 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
             switch status {
             case .authorized:
                 permissionsView.isHidden = true
-                setupMonsterAR()
             case .denied:
                 permissionsView.isHidden = false
                 
@@ -170,38 +253,6 @@ class FindMonsterViewController: ARViewController, ARDataSource, AnnotationViewD
         present(alertView, animated: true, completion: nil)
     }
     
-    func locationWithBearing(bearing:Double, distanceMeters:Double, origin:CLLocationCoordinate2D) -> CLLocationCoordinate2D {
-        let distRadians = distanceMeters / (6372797.6) // earth radius in meters
-        
-        let lat1 = origin.latitude * Double.pi / 180
-        let lon1 = origin.longitude * Double.pi / 180
-        
-        let lat2 = asin(sin(lat1) * cos(distRadians) + cos(lat1) * sin(distRadians) * cos(bearing))
-        let lon2 = lon1 + atan2(sin(bearing) * sin(distRadians) * cos(lat1), cos(distRadians) - sin(lat1) * sin(lat2))
-        
-        return CLLocationCoordinate2D(latitude: lat2 * 180 / Double.pi, longitude: lon2 * 180 / Double.pi)
-    }
-    
-    func getMonsterLocation() -> CLLocationCoordinate2D {
-        if currentUserLocation == nil {
-            return CLLocationCoordinate2D.init()
-        }
-        return locationWithBearing(bearing: 0.0, distanceMeters: 30, origin: (currentUserLocation?.coordinate)!)
-    }
-    
-    func didTouch(annotationView: AnnotationView) {
-        print("Touched the monster")
-    }
-    
-    func ar(_ arViewController: ARViewController, viewForAnnotation: ARAnnotation) -> ARAnnotationView {
-        // View for the annotation setup
-        let annotationView = AnnotationView()
-        annotationView.annotation = viewForAnnotation
-        annotationView.delegate = self
-        annotationView.frame = CGRect(x: 0, y: 0, width: 240, height: 240)
-        
-        return annotationView
-    }
     // MARK: Tools
     func refreshPlayerInfo() {
         var godfatherAddress: String? = nil
