@@ -122,7 +122,7 @@
                                                 <constraint firstAttribute="height" constant="142" id="ll1-aa-1FA"/>
                                             </constraints>
                                             <string key="text">Find a hidden monster around your area and get ready to chase it!. You must guess the clue and use your camera to find the AR monster.</string>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
