@@ -47,6 +47,12 @@ public class DownloadChaseOperation: AsynchronousOperation {
                 return
             }
             
+            if chaseHeaderResults.count != 6 {
+                self.error = DownloadChaseOperationError.chaseParsing
+                self.finish()
+                return
+            }
+            
             monsterToken.getChaseDetail(chaseIndex: self.chaseIndex, handler: { (detailResults, detailError) in
                 if let detailError = detailError {
                     self.error = detailError
@@ -55,6 +61,12 @@ public class DownloadChaseOperation: AsynchronousOperation {
                 }
                 
                 guard let chaseDetailResults = detailResults else {
+                    self.error = DownloadChaseOperationError.chaseParsing
+                    self.finish()
+                    return
+                }
+                
+                if chaseDetailResults.count != 3 {
                     self.error = DownloadChaseOperationError.chaseParsing
                     self.finish()
                     return

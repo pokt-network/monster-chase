@@ -51,32 +51,47 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
             }
 
             do {
-                let context = CoreDataUtils.backgroundPersistentContext
-                guard let chase = Chase.getchaseByIndex(chaseIndex: String.init(self.chaseIndex), context: context) else {
+                let chaseContext = CoreDataUtils.createBackgroundPersistentContext()
+                guard let chase = Chase.getchaseByIndex(chaseIndex: String.init(self.chaseIndex), context: chaseContext) else {
                     self.error = DownloadAndUpdateChaseIsWinnerOperationError.updating
                     self.finish()
                     return
                 }
-
-                if isWinnerBool == true {
-                    guard let chaseIndex = chase.index else {
+                
+                // First update the chase
+                chase.winner = isWinnerBool
+                try chase.save()
+                self.finish()
+                
+                // Then update the monster
+                let context = CoreDataUtils.createBackgroundPersistentContext()
+                guard let chaseIndex = chase.index else {
+                    self.error = DownloadAndUpdateChaseIsWinnerOperationError.resultParsing
+                    self.finish()
+                    return
+                }
+                
+                let monsterExists = Monster.exists(monsterIndex: chaseIndex, context: context)
+                
+                if isWinnerBool == true && monsterExists == false {
+                    // Create the monster once
+                    let monster = try Monster.init(chase: chase, context: context)
+                    try monster.save()
+                } else if isWinnerBool == false && monsterExists == true {
+                    do {
+                        guard let monster = Monster.getMonsterByIndex(monsterIndex: chaseIndex, context: context) else {
+                            self.error = DownloadAndUpdateChaseIsWinnerOperationError.resultParsing
+                            self.finish()
+                            return
+                        }
+                        try monster.delete()
+                    } catch {
                         self.error = DownloadAndUpdateChaseIsWinnerOperationError.resultParsing
                         self.finish()
                         return
                     }
                     
-                    if !Monster.exists(monsterIndex: chaseIndex, context: context) {
-                        // Create the monster once
-                        let monster = try Monster.init(chase: chase, context: context)
-                        try monster.save()
-                    } else {
-                        print("Monster already exists")
-                    }
                 }
-
-                chase.winner = isWinnerBool
-                try chase.save()
-                self.finish()
             } catch {
                 self.error = DownloadAndUpdateChaseIsWinnerOperationError.updating
                 self.finish()
