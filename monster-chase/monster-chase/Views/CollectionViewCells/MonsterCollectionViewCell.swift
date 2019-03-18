@@ -47,22 +47,16 @@ class MonsterCollectionViewCell: UICollectionViewCell {
     }
     
     func configureEmptyCellFor(index: Int) {
-//        if let monsterChaseImage = self.chaseStampImage {
-//            monsterChaseImage.image =
-//        }
-        
         if index > 0 {
             if let chaseNameLabel = self.chaseNameLabel {
                 chaseNameLabel.text = ""
             }
-            
             return
         }
         
         if let chaseNameLabel = self.chaseNameLabel {
             chaseNameLabel.text = "NO MONSTERS YET"
         }
-        
     }
     
 }

@@ -82,8 +82,8 @@ public class AllChasesQueueDispatcher: QueueDispatcherProtocol {
             
             if downloadChaseOperation.finishedSuccesfully {
                 if let chaseDict = downloadChaseOperation.chaseDict {
-                    let updateQuestOperation = UpdateChaseOperation.init(chaseDict: chaseDict, chaseIndex: String.init(currentChaseIndex))
-                    updateQuestOperation.completionBlock = {
+                    let updateChaseOperation = UpdateChaseOperation.init(chaseDict: chaseDict, chaseIndex: String.init(currentChaseIndex))
+                    updateChaseOperation.completionBlock = {
                         // Add DownloadAndUpdateChaseIsWinnerOperation operation for this chase
                         if let chaseIndexStr = chaseDict["index"] as? String {
                             if let chaseIndexBigInt = BigInt.init(chaseIndexStr) {
@@ -95,7 +95,7 @@ public class AllChasesQueueDispatcher: QueueDispatcherProtocol {
                         // Attempt to complete the operation handler
                         self.attempToExecuteCompletionHandler()
                     }
-                    self.operationQueue.addOperation(updateQuestOperation)
+                    self.operationQueue.addOperation(updateChaseOperation)
                 }
             }
             self.processNextQuest()
