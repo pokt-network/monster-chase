@@ -246,9 +246,10 @@
                                 </connections>
                             </arscnView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCp-Tz-e8H" userLabel="Chase button" customClass="DefaultMonsterButton" customModule="monster_chase" customModuleProvider="target">
-                                <rect key="frame" x="62.5" y="607" width="250" height="30"/>
+                                <rect key="frame" x="62.5" y="587" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="elH-3S-krV"/>
+                                    <constraint firstAttribute="height" constant="40" id="r0k-RO-tyf"/>
                                 </constraints>
                                 <state key="normal" title="Catch"/>
                                 <connections>
@@ -305,7 +306,7 @@
                             <constraint firstItem="5K2-Sm-fVf" firstAttribute="trailing" secondItem="hkt-nj-nDp" secondAttribute="trailing" id="ZYT-Af-VoU"/>
                             <constraint firstItem="DBT-lw-Rrw" firstAttribute="top" secondItem="hkt-nj-nDp" secondAttribute="top" constant="15" id="d8G-8B-ch5"/>
                             <constraint firstItem="5K2-Sm-fVf" firstAttribute="bottom" secondItem="hkt-nj-nDp" secondAttribute="bottom" id="eEI-we-CAJ"/>
-                            <constraint firstItem="hkt-nj-nDp" firstAttribute="bottom" secondItem="wCp-Tz-e8H" secondAttribute="bottom" constant="30" id="fkU-UL-OTx"/>
+                            <constraint firstItem="hkt-nj-nDp" firstAttribute="bottom" secondItem="wCp-Tz-e8H" secondAttribute="bottom" constant="40" id="fkU-UL-OTx"/>
                             <constraint firstItem="lWy-rH-OJk" firstAttribute="top" secondItem="6a3-cC-sCc" secondAttribute="top" id="n5W-rh-cyQ"/>
                             <constraint firstItem="5K2-Sm-fVf" firstAttribute="top" secondItem="6a3-cC-sCc" secondAttribute="top" id="yAo-Ca-6Cq"/>
                         </constraints>
