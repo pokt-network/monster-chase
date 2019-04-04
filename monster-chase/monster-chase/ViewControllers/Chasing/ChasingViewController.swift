@@ -71,7 +71,6 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
         indicator.center = view.center
         
         view.addSubview(indicator)
-        
         self.collectionView.addSubview(refreshControl)
         
         do {
@@ -91,29 +90,17 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     }
     
     override func refreshView() throws {
-        // Every UI refresh should be done here
-        
-//        if self.chases.isEmpty {
-//            loadQuestList()
-//        }
-        //loadQuestList()
-        
         DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
             self.indicator.stopAnimating()
             self.grayView?.isHidden = true
-            
-            self.refreshControl.endRefreshing()
             self.collectionView.isUserInteractionEnabled = true
             self.collectionView.reloadData()
-            
             if self.chases.count > 0 {
                 let indexPath = IndexPath.init(item: 0, section: 0)
                 self.collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: true)
             }
-            
             self.collectionView.collectionViewLayout.invalidateLayout()
-            
-            //
             if UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone SE" {
                 self.topOrangeViewHeightConstraint.constant = 180
             }
@@ -122,13 +109,13 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     // MARK: Tools
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        self.collectionView.collectionViewLayout.invalidateLayout()
         self.collectionView.isUserInteractionEnabled = false
         
         // Launch Queue Dispatchers
         do {
             let player = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext)
             if let playerAddress = player.address {
-                
                 var godfatherAddress: String? = nil
                 if let godfatherWallet = player.getGodfatherWallet() {
                     godfatherAddress = godfatherWallet.address
@@ -137,7 +124,6 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                 appInitQueueDispatcher.initDispatchSequence {
                     let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
                     chaseListQueueDispatcher.initDispatchSequence(completionHandler: {
-                        
                         do {
                             self.loadQuestList()
                             try self.refreshView()
@@ -146,14 +132,13 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                         }
                     })
                 }
-            }else {
+            } else {
                 refreshControl.endRefreshing()
                 self.collectionView.isUserInteractionEnabled = true
             }
         } catch {
             refreshControl.endRefreshing()
             self.collectionView.isUserInteractionEnabled = true
-            print("\(error)")
         }
         
     }
