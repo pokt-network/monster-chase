@@ -139,8 +139,8 @@ class CreateChaseMapViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.showsCancelButton = false
+        //searchBar.text = ""
+        //searchBar.showsCancelButton = false
         
         // UI Elements should be updated here
         DispatchQueue.main.async {
@@ -172,6 +172,9 @@ class CreateChaseMapViewController: UIViewController, CLLocationManagerDelegate,
         selectedLocation["lon"] = annotation.coordinate.longitude.description
         
         mapView.addAnnotation(annotation)
+        searchBar.endEditing(true)
+        searchBar.text = nil
+        self.updateSearchResults(for: self.searchController)
     }
     
     // MARK: - Gestures
@@ -350,22 +353,27 @@ class CreateChaseMapViewController: UIViewController, CLLocationManagerDelegate,
 extension CreateChaseMapViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = searchController.searchBar.text
-        //request.region = mapView.region
         
-        let search = MKLocalSearch(request: request)
-        search.start { (response, error) in
-            guard let response = response else {
-                print("Search error: \(String(describing: error))")
-                return
+        if let queryText = searchController.searchBar.text, !queryText.isEmpty {
+            let request = MKLocalSearch.Request()
+            request.naturalLanguageQuery = searchController.searchBar.text
+            let search = MKLocalSearch(request: request)
+            search.start { (response, error) in
+                guard let response = response else {
+                    print("Search error: \(String(describing: error))")
+                    return
+                }
+                
+                if response.mapItems.count > 0 {
+                    self.mapItems = response.mapItems
+                    self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: self.tableView.frame.width, height: self.view.frame.height)
+                    self.tableView.reloadData()
+                }
             }
-            
-            if response.mapItems.count > 0 {
-                self.mapItems = response.mapItems
-                self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: self.tableView.frame.width, height: self.view.frame.height)
-                self.tableView.reloadData()
-            }
+        } else {
+            self.mapItems = [MKMapItem]()
+            self.tableView.reloadData()
+            self.tableView.frame = CGRect(x: self.tableView.frame.origin.x, y: self.tableView.frame.origin.y, width: self.tableView.frame.width, height: 55)
         }
     }
 }
