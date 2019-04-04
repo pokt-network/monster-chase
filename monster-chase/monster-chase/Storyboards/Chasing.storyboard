@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -443,28 +443,56 @@
                                             <outlet property="delegate" destination="vD7-b7-vmS" id="zCs-9q-ABx"/>
                                         </connections>
                                     </collectionView>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oI3-dl-9lh" userLabel="Previous button">
-                                        <rect key="frame" x="20" y="100" width="30" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fEw-VH-CzM" userLabel="Previous View">
+                                        <rect key="frame" x="3" y="5" width="45" height="200"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oI3-dl-9lh" userLabel="Previous button">
+                                                <rect key="frame" x="15" y="85" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="Y3a-tE-nm4"/>
+                                                    <constraint firstAttribute="width" constant="30" id="olF-R2-aXk"/>
+                                                </constraints>
+                                                <state key="normal" image="Back-x1"/>
+                                                <connections>
+                                                    <action selector="previousButtonPressed:" destination="vD7-b7-vmS" eventType="touchUpInside" id="gXR-zy-wsl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="bCh-lT-zn0"/>
-                                            <constraint firstAttribute="width" constant="30" id="olF-R2-aXk"/>
+                                            <constraint firstItem="oI3-dl-9lh" firstAttribute="centerY" secondItem="fEw-VH-CzM" secondAttribute="centerY" id="Hxk-bC-Vbg"/>
+                                            <constraint firstAttribute="trailing" secondItem="oI3-dl-9lh" secondAttribute="trailing" id="mej-tm-wEg"/>
+                                            <constraint firstAttribute="width" constant="45" id="vIR-da-Vph"/>
                                         </constraints>
-                                        <state key="normal" image="Back-x1"/>
                                         <connections>
-                                            <action selector="previousButtonPressed:" destination="vD7-b7-vmS" eventType="touchUpInside" id="gXR-zy-wsl"/>
+                                            <outletCollection property="gestureRecognizers" destination="Wdm-oZ-kHO" appends="YES" id="uyi-6Q-HTK"/>
+                                            <outletCollection property="gestureRecognizers" destination="Hl8-kW-VDv" appends="YES" id="Zvk-iY-oJg"/>
                                         </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTE-sA-RKy" userLabel="Next button">
-                                        <rect key="frame" x="295" y="100" width="30" height="30"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVC-4b-X1b" userLabel="Next View">
+                                        <rect key="frame" x="297" y="5" width="45" height="200"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTE-sA-RKy" userLabel="Next button">
+                                                <rect key="frame" x="0.0" y="85" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="OET-Sx-KvE"/>
+                                                    <constraint firstAttribute="width" constant="30" id="aUe-TJ-G0D"/>
+                                                </constraints>
+                                                <state key="normal" image="Nextx1"/>
+                                                <connections>
+                                                    <action selector="nextButtonPressed:" destination="vD7-b7-vmS" eventType="touchUpInside" id="19c-JS-LPA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="aUe-TJ-G0D"/>
-                                            <constraint firstAttribute="height" constant="30" id="st7-HK-2we"/>
+                                            <constraint firstItem="OTE-sA-RKy" firstAttribute="leading" secondItem="CVC-4b-X1b" secondAttribute="leading" id="9oi-9J-hNV"/>
+                                            <constraint firstAttribute="width" constant="45" id="Md0-jQ-COo"/>
+                                            <constraint firstItem="OTE-sA-RKy" firstAttribute="centerY" secondItem="CVC-4b-X1b" secondAttribute="centerY" id="vfV-K0-Ht2"/>
                                         </constraints>
-                                        <state key="normal" image="Nextx1"/>
                                         <connections>
-                                            <action selector="nextButtonPressed:" destination="vD7-b7-vmS" eventType="touchUpInside" id="19c-JS-LPA"/>
+                                            <outletCollection property="gestureRecognizers" destination="70k-a1-Q0o" appends="YES" id="uUu-NY-ddK"/>
+                                            <outletCollection property="gestureRecognizers" destination="pjp-sj-669" appends="YES" id="bD3-5u-qL5"/>
                                         </connections>
-                                    </button>
+                                    </view>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEa-UU-G4w">
                                         <rect key="frame" x="172.5" y="263.5" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -475,18 +503,20 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Zg4-6p-fWR" secondAttribute="trailing" constant="3" id="2Yi-A0-O1h"/>
-                                    <constraint firstItem="oI3-dl-9lh" firstAttribute="leading" secondItem="Crs-sK-80A" secondAttribute="leading" constant="20" id="3SD-zi-boU"/>
                                     <constraint firstItem="oEa-UU-G4w" firstAttribute="centerY" secondItem="Crs-sK-80A" secondAttribute="centerY" id="3St-QM-sjh"/>
-                                    <constraint firstAttribute="trailing" secondItem="OTE-sA-RKy" secondAttribute="trailing" constant="20" id="6bu-A1-hRq"/>
+                                    <constraint firstItem="fEw-VH-CzM" firstAttribute="leading" secondItem="Crs-sK-80A" secondAttribute="leading" constant="3" id="7b6-Jt-KBz"/>
+                                    <constraint firstAttribute="trailing" secondItem="CVC-4b-X1b" secondAttribute="trailing" constant="3" id="HT0-XF-nF8"/>
                                     <constraint firstAttribute="bottom" secondItem="TgT-jH-xCi" secondAttribute="bottom" constant="20" id="PoM-ml-S5y"/>
                                     <constraint firstItem="Zg4-6p-fWR" firstAttribute="leading" secondItem="Crs-sK-80A" secondAttribute="leading" constant="3" id="QHl-FL-hbT"/>
                                     <constraint firstAttribute="trailing" secondItem="TgT-jH-xCi" secondAttribute="trailing" id="WsG-QP-DMO"/>
-                                    <constraint firstItem="oI3-dl-9lh" firstAttribute="centerY" secondItem="Zg4-6p-fWR" secondAttribute="centerY" constant="10" id="c7o-Im-mwC"/>
+                                    <constraint firstItem="CVC-4b-X1b" firstAttribute="top" secondItem="Zg4-6p-fWR" secondAttribute="top" id="ZBl-Ck-Z0X"/>
                                     <constraint firstItem="Zg4-6p-fWR" firstAttribute="top" secondItem="Crs-sK-80A" secondAttribute="top" constant="5" id="gbh-Aq-Krc"/>
-                                    <constraint firstItem="OTE-sA-RKy" firstAttribute="centerY" secondItem="oI3-dl-9lh" secondAttribute="centerY" id="grU-l0-NRr"/>
+                                    <constraint firstItem="fEw-VH-CzM" firstAttribute="height" secondItem="Zg4-6p-fWR" secondAttribute="height" id="hfQ-5r-6oj"/>
                                     <constraint firstItem="TgT-jH-xCi" firstAttribute="top" secondItem="Crs-sK-80A" secondAttribute="top" id="jCQ-i5-8dv"/>
                                     <constraint firstItem="TgT-jH-xCi" firstAttribute="leading" secondItem="Crs-sK-80A" secondAttribute="leading" id="o2a-et-yUg"/>
                                     <constraint firstItem="oEa-UU-G4w" firstAttribute="centerX" secondItem="Crs-sK-80A" secondAttribute="centerX" id="pfz-Wt-BfO"/>
+                                    <constraint firstItem="fEw-VH-CzM" firstAttribute="top" secondItem="Zg4-6p-fWR" secondAttribute="top" id="s0t-e7-rmL"/>
+                                    <constraint firstItem="CVC-4b-X1b" firstAttribute="height" secondItem="Zg4-6p-fWR" secondAttribute="height" id="uR6-rS-8eg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -513,6 +543,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Crs-sK-80A" firstAttribute="leading" secondItem="3pD-kK-jcf" secondAttribute="leading" constant="15" id="026-hS-3Nt"/>
                             <constraint firstItem="SJI-LI-IV8" firstAttribute="centerX" secondItem="Crs-sK-80A" secondAttribute="centerX" id="Hpl-Mt-aob"/>
@@ -538,20 +569,40 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z82-mq-ZH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Wdm-oZ-kHO" userLabel="Previous View Gesture Recognizer">
+                    <connections>
+                        <action selector="previousButtonPressed:" destination="vD7-b7-vmS" id="Mde-AI-pm2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="70k-a1-Q0o" userLabel="Next View Gesture Recognizer">
+                    <connections>
+                        <action selector="nextButtonPressed:" destination="vD7-b7-vmS" id="lye-Vv-U93"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Hl8-kW-VDv" userLabel="Previous Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="previousButtonPressed:" destination="vD7-b7-vmS" id="L49-FA-eb4"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="pjp-sj-669" userLabel="Next Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="nextButtonPressed:" destination="vD7-b7-vmS" id="ld1-q8-qpv"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-18.399999999999999" y="187.55622188905548"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Back-x1" width="156" height="156"/>
-        <image name="Circlex1" width="390" height="390"/>
-        <image name="Explore-1.0-x1" width="156" height="156"/>
-        <image name="Hide-1.0-x1" width="156" height="156"/>
-        <image name="How--1.0-x1" width="156" height="156"/>
-        <image name="Leaders-1.0x1" width="156" height="156"/>
-        <image name="Menux1" width="156" height="156"/>
-        <image name="Monster-Stickerx1" width="600" height="600"/>
-        <image name="Nextx1" width="156" height="156"/>
-        <image name="Profile--1.0-x1" width="156" height="156"/>
+        <image name="Back-x1" width="78" height="78"/>
+        <image name="Circlex1" width="195" height="195"/>
+        <image name="Explore-1.0-x1" width="78" height="78"/>
+        <image name="Hide-1.0-x1" width="78" height="78"/>
+        <image name="How--1.0-x1" width="78" height="78"/>
+        <image name="Leaders-1.0x1" width="78" height="78"/>
+        <image name="Menux1" width="78" height="78"/>
+        <image name="Monster-Stickerx1" width="300" height="300"/>
+        <image name="Nextx1" width="78" height="78"/>
+        <image name="Profile--1.0-x1" width="78" height="78"/>
     </resources>
 </document>
