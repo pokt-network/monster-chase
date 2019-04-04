@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -163,7 +163,7 @@
                                         <color key="textColor" red="0.30196078430000001" green="0.29411764709999999" blue="0.62352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kl7-GA-e42" userLabel="Address value textField" customClass="MonsterTextField" customModule="monster_chase" customModuleProvider="target">
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="kl7-GA-e42" userLabel="Address value textField" customClass="MonsterTextField" customModule="monster_chase" customModuleProvider="target">
                                         <rect key="frame" x="50" y="303" width="264" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -545,14 +545,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Back-x1" width="234" height="234"/>
-        <image name="Backx1" width="234" height="234"/>
-        <image name="Circlex1" width="585" height="585"/>
-        <image name="Coppy-x1" width="234" height="234"/>
-        <image name="Menux1" width="156" height="156"/>
-        <image name="Monster-Stickerx1" width="900" height="900"/>
-        <image name="Nextx1" width="234" height="234"/>
-        <image name="Profile--1.0-x1" width="234" height="234"/>
+        <image name="Back-x1" width="78" height="78"/>
+        <image name="Backx1" width="78" height="78"/>
+        <image name="Circlex1" width="195" height="195"/>
+        <image name="Coppy-x1" width="78" height="78"/>
+        <image name="Menux1" width="78" height="78"/>
+        <image name="Monster-Stickerx1" width="300" height="300"/>
+        <image name="Nextx1" width="78" height="78"/>
+        <image name="Profile--1.0-x1" width="78" height="78"/>
         <image name="aion_faucet" width="96" height="96"/>
     </resources>
 </document>
