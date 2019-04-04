@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -307,15 +307,15 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="XG6-4s-NjF">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="avQ-Hd-uvv" userLabel="TableView">
-                                <rect key="frame" x="0.0" y="56" width="375" height="396"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" bouncesZoom="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="avQ-Hd-uvv" userLabel="TableView">
+                                <rect key="frame" x="0.0" y="56" width="375" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="mapSearchCell" textLabel="Za0-i4-vsE" detailTextLabel="DmQ-t5-WlP" style="IBUITableViewCellStyleSubtitle" id="WRG-wO-uUr" customClass="MapSearchTableViewCell" customModule="monster_chase" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WRG-wO-uUr" id="O1P-ZP-lF2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Za0-i4-vsE">
@@ -391,9 +391,11 @@
                             <constraint firstItem="KxI-bf-V4G" firstAttribute="centerY" secondItem="pI7-F2-5Y0" secondAttribute="centerY" id="0i4-on-dcq"/>
                             <constraint firstItem="pI7-F2-5Y0" firstAttribute="top" secondItem="CrU-Wv-he8" secondAttribute="top" id="0lT-Wi-MMw"/>
                             <constraint firstItem="avQ-Hd-uvv" firstAttribute="top" secondItem="pI7-F2-5Y0" secondAttribute="bottom" id="7rn-LA-x9y"/>
+                            <constraint firstItem="CrU-Wv-he8" firstAttribute="bottom" secondItem="1tb-7D-kBt" secondAttribute="bottom" constant="120" id="Gwq-VU-YIt"/>
                             <constraint firstItem="pI7-F2-5Y0" firstAttribute="leading" secondItem="CrU-Wv-he8" secondAttribute="leading" constant="15" id="RAe-r2-gBA"/>
                             <constraint firstItem="CrU-Wv-he8" firstAttribute="bottom" secondItem="FyT-Dj-DsS" secondAttribute="bottom" constant="40" id="Ral-Pv-LP2"/>
                             <constraint firstItem="KxI-bf-V4G" firstAttribute="centerX" secondItem="CrU-Wv-he8" secondAttribute="centerX" id="RtO-N2-9jH"/>
+                            <constraint firstItem="FyT-Dj-DsS" firstAttribute="top" secondItem="avQ-Hd-uvv" secondAttribute="bottom" constant="8" id="WbV-pI-LBf"/>
                             <constraint firstItem="XG6-4s-NjF" firstAttribute="leading" secondItem="CrU-Wv-he8" secondAttribute="leading" id="Wl3-Qz-1Y3"/>
                             <constraint firstItem="CrU-Wv-he8" firstAttribute="trailing" secondItem="1tb-7D-kBt" secondAttribute="trailing" constant="30" id="Xnz-QG-HCJ"/>
                             <constraint firstItem="FyT-Dj-DsS" firstAttribute="centerX" secondItem="CrU-Wv-he8" secondAttribute="centerX" id="YuT-hy-NWt"/>
@@ -401,8 +403,6 @@
                             <constraint firstItem="XG6-4s-NjF" firstAttribute="top" secondItem="CrU-Wv-he8" secondAttribute="top" constant="-20" id="ccN-Ci-UHY"/>
                             <constraint firstItem="avQ-Hd-uvv" firstAttribute="trailing" secondItem="CrU-Wv-he8" secondAttribute="trailing" id="eGo-vF-AMn"/>
                             <constraint firstItem="CrU-Wv-he8" firstAttribute="trailing" secondItem="XG6-4s-NjF" secondAttribute="trailing" id="jg9-M4-l6r"/>
-                            <constraint firstItem="1tb-7D-kBt" firstAttribute="top" secondItem="avQ-Hd-uvv" secondAttribute="bottom" constant="40" id="lVy-Qe-8Kq"/>
-                            <constraint firstItem="FyT-Dj-DsS" firstAttribute="top" secondItem="1tb-7D-kBt" secondAttribute="bottom" constant="40" id="mkd-vZ-GCo"/>
                             <constraint firstItem="avQ-Hd-uvv" firstAttribute="leading" secondItem="CrU-Wv-he8" secondAttribute="leading" id="vv8-Lw-bWP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CrU-Wv-he8"/>
@@ -527,12 +527,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Add+-x1" width="156" height="156"/>
-        <image name="Backx1" width="156" height="156"/>
-        <image name="Circlex1" width="390" height="390"/>
-        <image name="Locatex1" width="156" height="156"/>
-        <image name="Locationx1" width="156" height="156"/>
-        <image name="Menux1" width="156" height="156"/>
-        <image name="Monster-Stickerx1" width="600" height="600"/>
+        <image name="Add+-x1" width="78" height="78"/>
+        <image name="Backx1" width="78" height="78"/>
+        <image name="Circlex1" width="195" height="195"/>
+        <image name="Locatex1" width="78" height="78"/>
+        <image name="Locationx1" width="78" height="78"/>
+        <image name="Menux1" width="78" height="78"/>
+        <image name="Monster-Stickerx1" width="300" height="300"/>
     </resources>
 </document>
