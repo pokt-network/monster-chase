@@ -631,6 +631,16 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
     
     func textViewDidEndEditing(_ textView: UITextView) {
         updateHintCount(textView: textView)
+        
+        if let font = self.hintTextView.font {
+            self.view.bounds.origin.y = self.view.bounds.origin.y - (font.lineHeight * 8)
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if let font = self.hintTextView.font {
+            self.view.bounds.origin.y = self.view.bounds.origin.y + (font.lineHeight * 8)
+        }
     }
 }
 
