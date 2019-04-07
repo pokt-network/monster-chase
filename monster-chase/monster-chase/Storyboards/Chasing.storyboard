@@ -494,7 +494,7 @@
                                         </connections>
                                     </view>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEa-UU-G4w">
-                                        <rect key="frame" x="172.5" y="263.5" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="22.5" y="263.5" width="300" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -516,6 +516,7 @@
                                     <constraint firstItem="TgT-jH-xCi" firstAttribute="leading" secondItem="Crs-sK-80A" secondAttribute="leading" id="o2a-et-yUg"/>
                                     <constraint firstItem="oEa-UU-G4w" firstAttribute="centerX" secondItem="Crs-sK-80A" secondAttribute="centerX" id="pfz-Wt-BfO"/>
                                     <constraint firstItem="fEw-VH-CzM" firstAttribute="top" secondItem="Zg4-6p-fWR" secondAttribute="top" id="s0t-e7-rmL"/>
+                                    <constraint firstItem="oEa-UU-G4w" firstAttribute="width" secondItem="Crs-sK-80A" secondAttribute="width" constant="-45" id="sxo-eE-sWG"/>
                                     <constraint firstItem="CVC-4b-X1b" firstAttribute="height" secondItem="Zg4-6p-fWR" secondAttribute="height" id="uR6-rS-8eg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
