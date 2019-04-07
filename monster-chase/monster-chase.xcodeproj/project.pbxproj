@@ -10,6 +10,8 @@
 		10332D972210E63B006572ED /* JSONUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10332D962210E63B006572ED /* JSONUtils.swift */; };
 		10332D9C22110B59006572ED /* MonsterToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10332D9B22110B59006572ED /* MonsterToken.swift */; };
 		10332D9E221111E1006572ED /* MonsterToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 10332D9D221111E1006572ED /* MonsterToken.json */; };
+		1047D1C82256AD74001B7F10 /* ImportWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C72256AD74001B7F10 /* ImportWalletViewController.swift */; };
+		1047D1CA2256AE6E001B7F10 /* AuthSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C92256AE6E001B7F10 /* AuthSelectionViewController.swift */; };
 		10D6F9E82236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */; };
 		71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */; };
 		C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */; };
@@ -117,6 +119,8 @@
 		10332D962210E63B006572ED /* JSONUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
 		10332D9B22110B59006572ED /* MonsterToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonsterToken.swift; sourceTree = "<group>"; };
 		10332D9D221111E1006572ED /* MonsterToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MonsterToken.json; sourceTree = "<group>"; };
+		1047D1C72256AD74001B7F10 /* ImportWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewController.swift; sourceTree = "<group>"; };
+		1047D1C92256AE6E001B7F10 /* AuthSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSelectionViewController.swift; sourceTree = "<group>"; };
 		10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBalanceQueueDispatcher.swift; sourceTree = "<group>"; };
 		27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chaseTests/Pods-monster-chaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B090CA75033BFDCB7FE9831 /* Pods-monster-chase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.debug.xcconfig"; sourceTree = "<group>"; };
@@ -489,6 +493,8 @@
 			isa = PBXGroup;
 			children = (
 				C59BBFE421FF59A100CD684C /* NewWalletViewController.swift */,
+				1047D1C72256AD74001B7F10 /* ImportWalletViewController.swift */,
+				1047D1C92256AE6E001B7F10 /* AuthSelectionViewController.swift */,
 			);
 			path = "Create Account";
 			sourceTree = "<group>";
@@ -832,11 +838,13 @@
 				C59BBFD421FF4D5B00CD684C /* MenuViewController.swift in Sources */,
 				C53F221921FB8A9B003457F3 /* UIColor+extension.swift in Sources */,
 				C526E1512209D4150009357B /* ColorPickerViewController.swift in Sources */,
+				1047D1CA2256AE6E001B7F10 /* AuthSelectionViewController.swift in Sources */,
 				C53F221F21FB9290003457F3 /* MerkleTree.swift in Sources */,
 				C59BBFFF21FFCC5E00CD684C /* SynchronousOperation.swift in Sources */,
 				C59BBFF221FF930800CD684C /* DownloadBalanceOperation.swift in Sources */,
 				C59BBFE521FF59A100CD684C /* NewWalletViewController.swift in Sources */,
 				C59BBFF621FF98E100CD684C /* DownloadTransactionCountOperation.swift in Sources */,
+				1047D1C82256AD74001B7F10 /* ImportWalletViewController.swift in Sources */,
 				C59BBFE221FF596A00CD684C /* ProfileViewController.swift in Sources */,
 				C53F221321FB87CD003457F3 /* Monster+CoreDataClass.swift in Sources */,
 				C593D3542201F65F006AD84C /* DownloadTransactionReceiptOperation.swift in Sources */,

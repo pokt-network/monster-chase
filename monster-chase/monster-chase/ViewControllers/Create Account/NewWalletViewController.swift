@@ -9,48 +9,27 @@
 import UIKit
 import PocketAion
 import CoreData
+import PocketAion
 
 class NewWalletViewController: UIViewController {
-    @IBOutlet weak var passphraseTextField: UITextField!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var setupBiometricsButton: UIButton!
-    @IBOutlet weak var copyAddressButton: UIButton!
-    @IBOutlet weak var addressLabelUnderline: UILabel!
-    @IBOutlet weak var continueUnderline: UIView!
-    @IBOutlet weak var forwardIcon: UIImageView!
     
-    var currentPlayer: Player?
+    public var walletPrivateKey: String?
+    var createdPlayer: Player?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Styling
         
         do {
             try refreshView()
         } catch let error as NSError {
             print("Failed to refresh view with error: \(error)")
         }
-    }
-    
-    func toggleAfterCreateControls() {
-        if BiometricsUtils.biometricsAvailable {
-            setupBiometricsButton.isHidden = !setupBiometricsButton.isHidden
-        } else {
-            setupBiometricsButton.isHidden = true
-        }
-        copyAddressButton.isHidden = !copyAddressButton.isHidden
-        addressLabel.isHidden = !addressLabel.isHidden
-        addressLabelUnderline.isHidden = !addressLabelUnderline.isHidden
-        continueButton.isHidden = !continueButton.isHidden
-        continueUnderline.isHidden = !continueUnderline.isHidden
     }
     
     // MARK: - Tools
@@ -61,9 +40,12 @@ class NewWalletViewController: UIViewController {
         view.addGestureRecognizer(tapOutside)
     }
     
-    func startDataDownload(playerAddress: String) {
+    func startDataDownload(player: Player) {
         var godfatherAddress: String? = nil
-        if let godfatherWallet = currentPlayer?.getGodfatherWallet() {
+        guard let playerAddress = player.address else {
+            return
+        }
+        if let godfatherWallet = player.getGodfatherWallet() {
             godfatherAddress = godfatherWallet.address
         }
         let appInitQueueDispatcher = AppInitQueueDispatcher.init(playerAddress: playerAddress, monsterTokenAddress: AppConfiguration.monsterTokenAddress, godfatherAddress: godfatherAddress)
@@ -87,137 +69,73 @@ class NewWalletViewController: UIViewController {
     }
     
     func biometricsSetupSuccessHandler() {
-        self.present(self.monsterAlertView(title: "Success!", message: "You have succesfully setup biometric authentication for your account."), animated: true, completion: nil)
-        toggleBiometricsButton()
+        let alertView = self.monsterAlertView(title: "Success", message: "You have succesfully setup FaceID/TouchID for your account.") { (alertAction) in
+            self.navigateToChasing()
+        }
+        self.present(alertView, animated: true, completion: nil)
     }
-    
+
     func biometricsSetupErrorHandler(error: Error) {
-        self.present(self.monsterAlertView(title: "Error", message: "An error ocurred setting up biometric authentication for your account, please try again."), animated: true, completion: nil)
-        toggleBiometricsButton()
+        let alertView = self.monsterAlertView(title: "Alert", message: "You can setup FaceID/TouchID later from your profile.") { (alertAction) in
+            self.navigateToChasing()
+        }
+        self.present(alertView, animated: true, completion: nil)
     }
     
-    func toggleBiometricsButton() {
-        guard let player = currentPlayer else {
-            return
-        }
-        
-        guard let playerAddress = player.address else {
-            return
-        }
-        
-        // Only re-enable if it wasn't succesful
-        if BiometricsUtils.biometricRecordExists(playerAddress: playerAddress) {
-            self.setupBiometricsButton.isEnabled = false
-            self.setupBiometricsButton.isHidden = true
-        } else {
-            self.setupBiometricsButton.isEnabled = true
-            self.setupBiometricsButton.isHidden = false
+    func navigateToChasing() {
+        do {
+            let vc = try self.instantiateViewController(identifier: "containerViewControllerID", storyboardName: "Chasing") as? ContainerViewController
+            self.navigationController?.pushViewController(vc!, animated: false)
+        } catch {
+            self.present(self.monsterAlertView(title: "Error", message: "An error ocurred, please try again later."), animated: true, completion: nil)
         }
     }
     
     // MARK: - Actions
-    @IBAction func copyAddressBtnPressed(_ sender: Any) {
-        let showError = {
-            let alertView = self.monsterAlertView(title: "Error:", message: "Address field is empty, please try again later")
-            self.present(alertView, animated: false, completion: nil)
-        }
-        guard let isAddressEmpty = addressLabel.text?.isEmpty else {
-            showError()
-            return
-        }
-        if isAddressEmpty {
-            showError()
-            return
-        } else {
-            let alertView = monsterAlertView(title: "Success:", message: "Your Address has been copied to the clipboard.")
-            present(alertView, animated: false, completion: nil)
-            UIPasteboard.general.string = addressLabel.text
-        }
+    @IBAction func dismissViewController(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func createWallet(_ sender: Any) {
-        guard let passphrase = passphraseTextField.text else {
+    @IBAction func createPlayer(_ sender: Any) {
+        if let _ = self.createdPlayer {
+            navigateToChasing()
+            return
+        }
+        
+        guard let password = passwordTextField.text else {
             let alertView = monsterAlertView(title: "Error", message: "Failed to get password, please try again later")
             present(alertView, animated: false, completion: nil)
             return
         }
         
-        if passphrase.isEmpty {
+        if password.isEmpty {
             let alertView = monsterAlertView(title: "Invalid", message: "Password shouldn't be empty")
             present(alertView, animated: false, completion: nil)
             return
         }
         
-        
-        // Disable create button
-        self.createButton.isEnabled = false
-        
         // Create the player
         do {
-            currentPlayer = try Player.createPlayer(walletPassphrase: passphrase)
+            let currentPlayer: Player?
+            
+            // Create or import the player
+            if let importedPrivateKey = self.walletPrivateKey {
+                currentPlayer = try Player.createPlayer(walletPassphrase: password, privateKey: importedPrivateKey)
+            } else {
+                currentPlayer = try Player.createPlayer(walletPassphrase: password)
+            }
+            
             guard let player = currentPlayer else {
                 self.present(self.monsterAlertView(title: "Error", message: "Error creating your account, please try again"), animated: true, completion: nil)
                 return
             }
-            if let playerAddress = player.address {
-                self.addressLabel.text = playerAddress
-                self.present(self.monsterAlertView(title: "Success", message: "Account created succesfully"), animated: true, completion: nil)
-                toggleAfterCreateControls()
-                startDataDownload(playerAddress: playerAddress)
-            } else {
-                self.present(self.monsterAlertView(title: "Error", message: "Error creating your account, please try again"), animated: true, completion: nil)
-            }
+            
+            self.createdPlayer = player
+            startDataDownload(player: player)
+            BiometricsUtils.setupPlayerBiometricRecord(passphrase: password, successHandler: biometricsSetupSuccessHandler, errorHandler: biometricsSetupErrorHandler)
         } catch {
             print("Failed to create wallet with error: \(error)")
             self.present(self.monsterAlertView(title: "Error", message: "Error creating your account, please try again"), animated: true, completion: nil)
         }
-        // End creating player
-        
-        // Only re-enable create button if player wasn't created succesfully
-        if let _ = currentPlayer {
-            self.createButton.isEnabled = false
-            self.createButton.isHidden = true
-            self.passphraseTextField.isHidden = true
-        } else {
-            self.createButton.isEnabled = true
-        }
-    }
-    
-    @IBAction func continuePressed(_ sender: Any) {
-        guard let _ = currentPlayer else {
-            self.present(self.monsterAlertView(title: "Error", message: "Please enter your passphrase and press Create"), animated: true, completion: nil)
-            return
-        }
-        do {
-            let vc = try self.instantiateViewController(identifier: "containerViewControllerID", storyboardName: "Chasing") as? ContainerViewController
-            self.navigationController?.pushViewController(vc!, animated: false)
-        }catch let error as NSError {
-            print("Failed to instantiate ChasingViewController with error: \(error)")
-        }
-    }
-    
-    @IBAction func biometricsSetupPressed(_ sender: Any) {
-        guard let _ = currentPlayer else {
-            self.present(self.monsterAlertView(title: "Error", message: "You need to create an account first"), animated: true, completion: nil)
-            return
-        }
-        
-        guard let passphrase = passphraseTextField.text else {
-            let alertView = monsterAlertView(title: "Error", message: "Failed to get passphrase, please try again later")
-            present(alertView, animated: false, completion: nil)
-            return
-        }
-        
-        if passphrase.isEmpty {
-            let alertView = monsterAlertView(title: "Invalid", message: "Passphrase shouldn't be empty")
-            present(alertView, animated: false, completion: nil)
-            return
-        }
-        
-        // Disable button
-        self.setupBiometricsButton.isEnabled = false
-        
-        // Setup biometrics
-        BiometricsUtils.setupPlayerBiometricRecord(passphrase: passphrase, successHandler: biometricsSetupSuccessHandler, errorHandler: biometricsSetupErrorHandler)
     }
 }
