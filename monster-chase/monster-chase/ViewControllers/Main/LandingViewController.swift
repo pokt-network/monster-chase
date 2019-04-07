@@ -76,11 +76,12 @@ class LandingViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func launchWalletCreation() {
         do {
-            let vc = try self.instantiateViewController(identifier: "AccountCreationViewController", storyboardName: "CreateAccount") as? NewWalletViewController
+            let vc = try self.instantiateViewController(identifier: "authSelectionID", storyboardName: "CreateAccount") as? AuthSelectionViewController
             
             self.navigationController?.pushViewController(vc!, animated: false)
-        }catch let error as NSError {
-            print("Failed to instantiate NewWalletViewController with error: \(error)")
+
+        } catch let error as NSError {
+            print("Failed to instantiate AuthSelectionViewController with error: \(error)")
         }
     }
     

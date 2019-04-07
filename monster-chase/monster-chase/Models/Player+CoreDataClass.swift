@@ -75,15 +75,31 @@ public class Player: NSManagedObject {
     public static func createPlayer(walletPassphrase: String) throws -> Player {
         // First create the wallet
         let wallet = try PocketAion.createWallet(subnetwork: AppConfiguration.subnetwork, data: nil)
-        //let wallet = try PocketAion.importWallet(privateKey: "0xc62667d350e1873632e0e55a4417609c19636754d2e6a3df7d71b9d2d5cce2a1ac44d29b49220ce926756c85c21a4673cf064564a3088fcaf3f661a5eac95271", subnetwork: "0", address: "0xa013ccd08d826dac8069007478376dfd6867f59e7e7f55b54445190911a51b6c", data: nil)
         
         if try wallet.save(passphrase: walletPassphrase) == false {
             throw PlayerPersistenceError.walletCreationError
         }
         
         // Create the player
+        return try Player.createAndSavePlayer(address: wallet.address)
+    }
+    
+    public static func createPlayer(walletPassphrase: String, privateKey: String) throws -> Player {
+        // First create the wallet
+        //let wallet = try PocketAion.createWallet(subnetwork: AppConfiguration.subnetwork, data: nil)
+        let wallet = try PocketAion.importWallet(privateKey: privateKey, subnetwork: AppConfiguration.subnetwork, address: "0xa05b88ac239f20ba0a4d2f0edac8c44293e9b36fa937fb55bf7a1cd61a60f036", data: nil)
+        
+        if try wallet.save(passphrase: walletPassphrase) == false {
+            throw PlayerPersistenceError.walletCreationError
+        }
+        
+        // Create the player
+        return try Player.createAndSavePlayer(address: wallet.address)
+    }
+    
+    private static func createAndSavePlayer(address: String) throws -> Player {
         let context = CoreDataUtils.mainPersistentContext
-        let player = try Player.init(obj: ["address":wallet.address], context: context)
+        let player = try Player.init(obj: ["address": address], context: context)
         try player.save()
         return player
     }
