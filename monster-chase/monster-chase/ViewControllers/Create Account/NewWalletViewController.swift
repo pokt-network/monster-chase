@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import PocketAion
+import PocketSwift
 import CoreData
-import PocketAion
+import PocketSwift
 
 class NewWalletViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!

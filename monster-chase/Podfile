@@ -6,8 +6,10 @@ target 'monster-chase' do
   use_frameworks!
 
   # Pods for monster-chase
-  pod 'PocketAion', '~> 0.0.14'
+  #pod 'PocketSwift', :git => 'git@github.com:pokt-network/pocket-swift.git', :branch => 'master'
+  #pod 'PocketAion', '~> 0.0.14'
   #pod 'PocketAion', :path => '~/current_projects/pocket-ios-aion'
+  pod 'PocketSwift/Aion', :path => '~/current_projects/pocket-swift'
   pod 'SidebarOverlay', :git => 'git@github.com:pokt-network/SidebarOverlay.git', :branch => 'develop'
   #pod 'FlexColorPicker', :git => 'https://github.com/RastislavMirek/FlexColorPicker', :branch => 'master'
   pod 'FlexColorPicker'
@@ -15,6 +17,7 @@ target 'monster-chase' do
   pod 'BiometricAuthentication'
   pod 'HDAugmentedReality', '~> 2.4'
   pod 'CryptoSwift'
+  pod 'SwiftyJSON'
   
   target 'monster-chaseTests' do
     inherit! :search_paths

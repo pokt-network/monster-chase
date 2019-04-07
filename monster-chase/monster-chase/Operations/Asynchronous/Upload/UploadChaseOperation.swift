@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import PocketAion
-import enum Pocket.PocketPluginError
-import struct Pocket.Wallet
+import PocketSwift
+
+//import struct Pocket.Wallet
 import BigInt
 import SwiftyJSON
 
@@ -53,7 +53,13 @@ public class UploadChaseOperation: AsynchronousOperation {
             return
         }
         
-        try? PocketAion.eth.getTransactionCount(address: self.wallet.address, subnetwork: AppConfiguration.subnetwork, blockTag: BlockTag.init(block: BlockTag.DefaultBlock.LATEST)) { (transactionCount, error) in
+        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
+            self.error = UploadChaseOperationError.monsterTokenInitError
+            self.finish()
+            return
+        }
+        
+        aionNetwork.eth.getTransactionCount(address: self.wallet.address, blockTag: nil) { (error, transactionCount) in
             if let error = error {
                 self.error = error
                 self.finish()
@@ -66,14 +72,14 @@ public class UploadChaseOperation: AsynchronousOperation {
                 return
             }
             
-            monsterToken.submitChase(wallet: self.wallet, transactionCount: transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, name: self.chaseName, hint: self.hint, maxWinners: self.maxWinners, metadata: self.metadata, merkleRoot: self.merkleRoot, merkleBody: self.merkleBody) { (txHashArray, txError) in
+            monsterToken.submitChase(wallet: self.wallet, transactionCount: BigUInt.init(transactionCount), nrg: BigUInt.init(2000000), player: self.playerAddress, name: self.chaseName, hint: self.hint, maxWinners: self.maxWinners, metadata: self.metadata, merkleRoot: self.merkleRoot, merkleBody: self.merkleBody) { (txError, txHashOpt) in
                 if let txError = txError {
                     self.error = txError
                     self.finish()
                     return
                 }
                 
-                guard let txHash = txHashArray?.first else {
+                guard let txHash = txHashOpt else {
                     self.error = UploadChaseOperationError.invalidTxHash
                     self.finish()
                     return

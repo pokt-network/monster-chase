@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PocketAion
+import PocketSwift
 import CoreData
 
 class ImportWalletViewController: UIViewController {
@@ -61,15 +61,10 @@ class ImportWalletViewController: UIViewController {
             return
         }
         
-        guard let parsedPrivateKey = HexStringUtil.removeLeadingZeroX(hex: privateKey) else {
-            showInvalidPrivateKeyError()
-            return
-        }
-        
         do {
-            let _ = try PocketAion.importWallet(privateKey: parsedPrivateKey, subnetwork: AppConfiguration.subnetwork, address: "0xa05b88ac239f20ba0a4d2f0edac8c44293e9b36fa937fb55bf7a1cd61a60f036", data: nil)
+            let wallet = try PocketAion.shared?.importWallet(privateKey: privateKey, netID: AppConfiguration.netID)
             let vc = try self.instantiateViewController(identifier: "newWalletID", storyboardName: "CreateAccount") as? NewWalletViewController
-            vc?.walletPrivateKey = parsedPrivateKey
+            vc?.walletPrivateKey = wallet?.privateKey
             self.navigationController?.pushViewController(vc!, animated: false)
         } catch {
             showInvalidPrivateKeyError()

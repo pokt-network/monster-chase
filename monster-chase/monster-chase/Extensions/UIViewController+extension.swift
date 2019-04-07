@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import Pocket
+import PocketSwift
 
 public typealias PlayerWalletAuthSuccessHandler = (Wallet) -> Void
 public typealias PlayerWalletAuthErrorHandler = (Error) -> Void

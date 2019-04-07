@@ -8,20 +8,11 @@
 
 import UIKit
 import CoreData
-import Pocket
 import BigInt
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNotificationCenterDelegate {
-    var nodeURL: URL {
-        get {
-            return URL.init(string: "https://aion.pokt.network")!
-            //return URL.init(string: "http://localhost:3000")!
-            //return URL.init(string: "http://192.168.0.155:3000")!
-        }
-    }
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
     
     static var shared = {
@@ -38,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, Configuration, UNUserNoti
         PushNotificationUtils.requestPermissions(successHandler: nil, errorHandler: nil)
         
         // Pocket configuration
-        Pocket.shared.setConfiguration(config: self)
+        //Pocket.shared.setConfiguration(config: self)
         
         // Refresh app data
         self.updatePlayerAndChaseData(completionHandler: refreshCurrentViewController)

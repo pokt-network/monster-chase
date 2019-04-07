@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import PocketAion
-import Pocket
+import PocketSwift
 import BigInt
 
 public enum DownloadBalanceOperationError: Error {
@@ -27,21 +26,22 @@ public class DownloadBalanceOperation: AsynchronousOperation {
     
     open override func main() {
         
-        do {
-            try PocketAion.eth.getBalance(address: address, subnetwork: AppConfiguration.subnetwork, blockTag: BlockTag.init(block: .LATEST), handler: { (result, error) in
-                if error != nil {
-                    self.error = error
-                    self.finish()
-                    return
-                }
-                
-                self.balance = result
-                self.finish()
-            })
-        } catch {
-            self.error = error
+        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
+            self.error = DownloadBalanceOperationError.responseParsing
             self.finish()
+            return
         }
+        
+        aionNetwork.eth.getBalance(address: address, blockTag: nil, callback: { (error, result) in
+            if error != nil {
+                self.error = error
+                self.finish()
+                return
+            }
+            
+            self.balance = result
+            self.finish()
+        })
         
     }
 }

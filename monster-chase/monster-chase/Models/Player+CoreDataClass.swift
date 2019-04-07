@@ -8,8 +8,7 @@
 
 import Foundation
 import CoreData
-import PocketAion
-import Pocket
+import PocketSwift
 
 public enum PlayerPersistenceError: Error {
     case retrievalError
@@ -73,14 +72,16 @@ public class Player: NSManagedObject {
     public func getWallet(passphrase: String) throws -> Wallet? {
         var result: Wallet?
         if let playerAddress = self.address {
-            result = try Wallet.retrieveWallet(network: "AION", subnetwork: AppConfiguration.subnetwork, address: playerAddress, passphrase: passphrase)
+            result = try Wallet.retrieveWallet(network: AppConfiguration.network, netID: AppConfiguration.netID, address: playerAddress, passphrase: passphrase)
         }
         return result
     }
     
     public static func createPlayer(walletPassphrase: String) throws -> Player {
         // First create the wallet
-        let wallet = try PocketAion.createWallet(subnetwork: AppConfiguration.subnetwork, data: nil)
+        guard let wallet = try PocketAion.shared?.createWallet(netID: AppConfiguration.netID) else {
+            throw PlayerPersistenceError.walletCreationError
+        }
         
         if try wallet.save(passphrase: walletPassphrase) == false {
             throw PlayerPersistenceError.walletCreationError
@@ -92,7 +93,9 @@ public class Player: NSManagedObject {
     
     public static func createPlayer(walletPassphrase: String, privateKey: String) throws -> Player {
         // First create the wallet
-        let wallet = try PocketAion.importWallet(privateKey: privateKey, subnetwork: AppConfiguration.subnetwork, address: "0xa05b88ac239f20ba0a4d2f0edac8c44293e9b36fa937fb55bf7a1cd61a60f036", data: nil)
+        guard let wallet = try PocketAion.shared?.importWallet(privateKey: privateKey, netID: AppConfiguration.netID) else {
+            throw PlayerPersistenceError.walletCreationError
+        }
         
         if try wallet.save(passphrase: walletPassphrase) == false {
             throw PlayerPersistenceError.walletCreationError
@@ -113,7 +116,7 @@ public class Player: NSManagedObject {
         if let result = self.godfatherWallet {
             return result;
         } else {
-            guard let godfatherWallet = try? PocketAion.importWallet(privateKey: AppConfiguration.godfatherPK, subnetwork: AppConfiguration.subnetwork, address: AppConfiguration.godfatherAddress, data: nil) else {
+            guard let godfatherWallet = try? PocketAion.shared?.importWallet(privateKey: AppConfiguration.godfatherPK, netID: AppConfiguration.netID) else {
                 return nil
             }
             self.godfatherWallet = godfatherWallet
