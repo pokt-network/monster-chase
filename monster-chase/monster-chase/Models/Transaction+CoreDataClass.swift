@@ -31,6 +31,12 @@ public class Transaction: NSManagedObject {
         try self.managedObjectContext?.save()
     }
     
+    public static func dropTable(context: NSManagedObjectContext) throws {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Transaction")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        let _ = try context.execute(request)
+    }
+    
     // MARK: - Convenience list retrieval
     public static func unnotifiedTransactionsPerType(context: NSManagedObjectContext, txType: TransactionType, maxRetries: Int64) throws -> [Transaction] {
         let fetchRequest: NSFetchRequest<Transaction> = Transaction.fetchRequest()
