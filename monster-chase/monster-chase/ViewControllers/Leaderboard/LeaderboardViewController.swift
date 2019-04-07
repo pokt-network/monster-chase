@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import BigInt
-import Pocket
 
 class LeaderboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     

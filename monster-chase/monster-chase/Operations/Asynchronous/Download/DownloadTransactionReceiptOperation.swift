@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import PocketAion
-import Pocket
+import PocketSwift
 import BigInt
 
 public enum DownloadTransactionReceiptOperationError: Error {
@@ -26,7 +25,13 @@ public class DownloadTransactionReceiptOperation: AsynchronousOperation {
     }
     
     open override func main() {
-        try? PocketAion.eth.getTransactionReceipt(txHash: txHash, subnetwork: AppConfiguration.subnetwork) { (receipt, error) in
+        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
+            self.error = DownloadTransactionReceiptOperationError.responseParsing
+            self.finish()
+            return
+        }
+        
+        aionNetwork.eth.getTransactionReceipt(txHash: txHash) { (error, receipt) in
             if error != nil {
                 self.error = error
                 self.finish()

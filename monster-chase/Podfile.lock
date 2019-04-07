@@ -2,21 +2,25 @@ PODS:
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - BiometricAuthentication (2.2)
-  - CryptoSwift (0.14.0)
-  - FlexColorPicker (1.1)
+  - CryptoSwift (1.0.0)
+  - FlexColorPicker (1.2.1)
   - HDAugmentedReality (2.4.0)
-  - Pocket (0.0.3):
-    - PocketSwiftKeychainWrapper
-    - RNCryptor (~> 5.0)
-  - PocketAion (0.0.14):
-    - BigInt (~> 3.1)
-    - Pocket (~> 0.0.3)
-    - SwiftyJSON (~> 4.0)
-  - PocketSwiftKeychainWrapper (3.1.0)
+  - PocketSwift/Aion (0.0.1):
+    - BigInt
+    - PocketSwift/Core
+  - PocketSwift/Core (0.0.1):
+    - RNCryptor
+    - RxBlocking (~> 4.0)
+    - RxSwift (~> 4.0)
+    - SwiftKeychainWrapper
   - RNCryptor (5.0.3)
+  - RxBlocking (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
   - SidebarOverlay (4.2.2)
   - SipHash (1.2.2)
   - SwiftHEXColors (1.2.0)
+  - SwiftKeychainWrapper (3.2.0)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
@@ -24,9 +28,10 @@ DEPENDENCIES:
   - CryptoSwift
   - FlexColorPicker
   - HDAugmentedReality (~> 2.4)
-  - PocketAion (~> 0.0.14)
+  - PocketSwift/Aion (from `~/current_projects/pocket-swift`)
   - "SidebarOverlay (from `git@github.com:pokt-network/SidebarOverlay.git`, branch `develop`)"
   - SwiftHEXColors
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -35,15 +40,17 @@ SPEC REPOS:
     - CryptoSwift
     - FlexColorPicker
     - HDAugmentedReality
-    - Pocket
-    - PocketAion
-    - PocketSwiftKeychainWrapper
     - RNCryptor
+    - RxBlocking
+    - RxSwift
     - SipHash
     - SwiftHEXColors
+    - SwiftKeychainWrapper
     - SwiftyJSON
 
 EXTERNAL SOURCES:
+  PocketSwift:
+    :path: "~/current_projects/pocket-swift"
   SidebarOverlay:
     :branch: develop
     :git: "git@github.com:pokt-network/SidebarOverlay.git"
@@ -56,18 +63,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   BiometricAuthentication: 9eeaae9cda890d95bc1fc41e72285e68cb6bc8b0
-  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
-  FlexColorPicker: 795d037b14af62c0fb353a505662846e92296abe
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  FlexColorPicker: 2c6fe41cb33a650d5934fad75ab0e25df4b5af2f
   HDAugmentedReality: 7a6afcd7792b9b4e5b3cc6069302a19e5ddbfdec
-  Pocket: 5e68e3ba188c59a17d239c76e7c0f5e95ecfc258
-  PocketAion: 76a7560acb25eb830cd8d4c5363cc6728cd4ef0d
-  PocketSwiftKeychainWrapper: 3194cc7e44290d790ec02e19a801c05e34488249
+  PocketSwift: 04f4446f205e6187f8540a10b27d6f372f65e947
   RNCryptor: c93d19029dcf7ff160aca0f24d6c9e7b0d82f664
+  RxBlocking: 79413e4d916f44bb3e113c5b2cc059e36fe58910
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SidebarOverlay: a34f9a42b63f7872c531ab7e5b548af12d8ddc7d
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   SwiftHEXColors: a4ebe93a70890a9fa124e205dd785cc7552273b4
+  SwiftKeychainWrapper: 82c4c02cdc36f9a24f7edfcaab3e336401caa1a1
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: bc8cbc6867834411d94414972272a594e2bf5738
+PODFILE CHECKSUM: 8701e302706cd20e1b4eb1f73e87a4eaa64760fc
 
 COCOAPODS: 1.5.3

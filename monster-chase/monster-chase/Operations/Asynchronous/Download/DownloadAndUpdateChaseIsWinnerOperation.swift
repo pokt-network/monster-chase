@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import PocketAion
-import enum Pocket.PocketPluginError
+import PocketSwift
+
 import SwiftyJSON
 import BigInt
 
@@ -37,7 +37,7 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.isWinner(chaseIndex: chaseIndex, address: alledgedWinner, handler: { (results, error) in
+        monsterToken.isWinner(chaseIndex: chaseIndex, address: alledgedWinner, handler: { (error, results) in
             if let error = error {
                 self.error = error
                 self.finish()

@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import PocketAion
+import PocketSwift
 import SwiftyJSON
 import BigInt
-import Pocket
 
 public enum MonsterTokenError: Error {
     case initializationError
@@ -26,77 +25,69 @@ public class MonsterToken {
     }
     
     public init() throws {
-        let pocketAion = PocketAion.init()
+        //let pocketAion = PocketAion.init()
         guard let abiInterface = JSONUtils.getStringFromJSONFile(fileName: "MonsterToken") else {
             throw MonsterTokenError.initializationError
         }
         
-        guard let jsonArray = JSON.init(parseJSON: abiInterface).array else {
+        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
             throw MonsterTokenError.initializationError
         }
         
-        aionContract = try AionContract.init(pocketAion: pocketAion, abiDefinition: jsonArray, contractAddress: AppConfiguration.monsterTokenAddress, subnetwork: AppConfiguration.subnetwork)
+        aionContract = try AionContract.init(aionNetwork: aionNetwork, address: AppConfiguration.monsterTokenAddress, abiDefinition: abiInterface)
     }
     
-    public func getOwnersCount(handler: @escaping PocketAionAnyHandler) {
+    public func getOwnersCount(handler: @escaping AnyArrayCallback) {
         let params: [Any] = []
-        try? aionContract.executeConstantFunction(functionName: "getOwnersCount", fromAdress: nil, functionParams: params, nrg: nil, nrgPrice: nil, value: nil, handler: handler)
+        try? aionContract.executeConstantFunction(functionName: "getOwnersCount", functionParams: params, fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: handler)
     }
     
-    public func getOwnerTokenCountByIndex(ownerIndex: BigInt, handler: @escaping PocketAionAnyHandler) {
+    public func getOwnerTokenCountByIndex(ownerIndex: BigInt, handler: @escaping AnyArrayCallback) {
         let params: [Any] = [ownerIndex]
-        try? aionContract.executeConstantFunction(functionName: "getOwnerTokenCountByIndex", fromAdress: nil, functionParams: params, nrg: nil, nrgPrice: nil, value: nil, handler: handler)
+        try? aionContract.executeConstantFunction(functionName: "getOwnerTokenCountByIndex", functionParams: params, fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: handler)
     }
     
     public func submitChaseCallData(player: String, name: String, hint: String, maxWinners: BigInt, merkleRoot: String, merkleBody: String, metadata: String) -> String? {
         let params: [Any] = [player, name, hint, maxWinners, metadata, merkleRoot, merkleBody]
-        if let result = try? aionContract.getFunctionCallData(functionName: "submitChase", functionParams: params) {
-            return result
-        } else {
-            return nil
-        }
+        return try? aionContract.encodeFunctionCall(functionName: "submitChase", functionParams: params)
     }
     
     public func submitProofCallData(player: String, chaseIndex: BigInt, proof: [String], answer: String, leftOrRight: [Bool]) -> String? {
         let params: [Any] = [player, chaseIndex, proof, answer, leftOrRight]
-        if let result = try? aionContract.getFunctionCallData(functionName: "submitProof", functionParams: params) {
-            return result
-        } else {
-            return nil
-        }
+        return try? aionContract.encodeFunctionCall(functionName: "submitProof", functionParams: params)
     }
     
-    public func submitChase(wallet: Wallet, transactionCount: BigInt, nrg: BigInt, player: String, name: String, hint: String, maxWinners: BigInt, metadata: String, merkleRoot: String, merkleBody: String, handler: @escaping PocketAionStringHandler) {
+    public func submitChase(wallet: Wallet, transactionCount: BigUInt, nrg: BigUInt, player: String, name: String, hint: String, maxWinners: BigInt, metadata: String, merkleRoot: String, merkleBody: String, handler: @escaping StringCallback) {
         let params: [Any] = [player, name, hint, maxWinners, metadata, merkleRoot, merkleBody]
-        try? aionContract.executeFunction(functionName: "submitChase", wallet: wallet, functionParams: params, nonce: transactionCount, nrg: nrg, nrgPrice: AppConfiguration.nrgPrice, value: BigInt.init(0), handler: handler);
+        try? aionContract.executeFunction(functionName: "submitChase", wallet: wallet, functionParams: params, nonce: transactionCount, gas: nrg, gasPrice: AppConfiguration.nrgPrice, value: nil, callback: handler)
     }
     
-    public func submitProof(wallet: Wallet, transactionCount: BigInt, nrg: BigInt, player: String, chaseIndex: BigInt, proof: [String], answer: String, leftOrRight: [Bool], handler: @escaping PocketAionStringHandler) {
+    public func submitProof(wallet: Wallet, transactionCount: BigUInt, nrg: BigUInt, player: String, chaseIndex: BigInt, proof: [String], answer: String, leftOrRight: [Bool], handler: @escaping StringCallback) {
         let params: [Any] = [player, chaseIndex, proof, answer, leftOrRight]
-        try? aionContract.executeFunction(functionName: "submitProof", wallet: wallet, functionParams: params, nonce: transactionCount, nrg: nrg, nrgPrice: AppConfiguration.nrgPrice, value: BigInt.init(0), handler: handler);
+        try? aionContract.executeFunction(functionName: "submitProof", wallet: wallet, functionParams: params, nonce: transactionCount, gas: nrg, gasPrice: AppConfiguration.nrgPrice, value: nil, callback: handler)
     }
     
-    public func getChaseAmount(handler: @escaping PocketAionAnyHandler) {
+    public func getChaseAmount(handler: @escaping AnyArrayCallback) {
         let params: [Any] = []
-        try? aionContract.executeConstantFunction(functionName: "getChaseAmount", fromAdress: nil, functionParams: params, nrg: nil, nrgPrice: nil, value: nil, handler: handler)
+        try? aionContract.executeConstantFunction(functionName: "getChaseAmount", functionParams: params, fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: handler)
     }
     
-    public func isWinner(chaseIndex: BigInt, address: String, handler: @escaping PocketAionAnyHandler) {
+    public func isWinner(chaseIndex: BigInt, address: String, handler: @escaping AnyArrayCallback) {
         let params: [Any] = [chaseIndex, address]
-        try? aionContract.executeConstantFunction(functionName: "isWinner", fromAdress: nil, functionParams: params, nrg: nil, nrgPrice: nil, value: nil, handler: handler)
+        try? aionContract.executeConstantFunction(functionName: "isWinner", functionParams: params, fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: handler)
     }
     
-    public func getChaseHeader(chaseIndex: BigInt, handler: @escaping PocketAionAnyHandler) {
+    public func getChaseHeader(chaseIndex: BigInt, handler: @escaping AnyArrayCallback) {
         try? getChase(functionName: "getChaseHeader", chaseIndex: chaseIndex, handler: handler)
     }
     
-    public func getChaseDetail(chaseIndex: BigInt, handler: @escaping PocketAionAnyHandler) {
+    public func getChaseDetail(chaseIndex: BigInt, handler: @escaping AnyArrayCallback) {
         try? getChase(functionName: "getChaseDetail", chaseIndex: chaseIndex, handler: handler)
     }
     
-    private func getChase(functionName: String, chaseIndex: BigInt, handler: @escaping PocketAionAnyHandler) throws {
+    private func getChase(functionName: String, chaseIndex: BigInt, handler: @escaping AnyArrayCallback) throws {
         let params: [Any] = [chaseIndex]
-        try? aionContract.executeConstantFunction(functionName: functionName, fromAdress: nil, functionParams: params, nrg: nil, nrgPrice: nil, value: nil, handler: handler)
+        try? aionContract.executeConstantFunction(functionName: functionName, functionParams: params, fromAddress: nil, gas: nil, gasPrice: nil, value: nil, blockTag: nil, callback: handler)
     }
 }
 

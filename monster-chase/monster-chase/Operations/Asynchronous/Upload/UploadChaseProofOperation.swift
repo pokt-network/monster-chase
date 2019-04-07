@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import PocketAion
-import enum Pocket.PocketPluginError
-import struct Pocket.Wallet
+import PocketSwift
+
+//import struct Pocket.Wallet
 import BigInt
 import SwiftyJSON
 
@@ -48,14 +48,14 @@ public class UploadChaseProofOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.submitProof(wallet: self.wallet, transactionCount: self.transactionCount, nrg: BigInt.init(2000000), player: self.playerAddress, chaseIndex: self.chaseIndex, proof: self.proof, answer: self.answer, leftOrRight: self.leftOrRight) { (txHashArray, error) in
+        monsterToken.submitProof(wallet: self.wallet, transactionCount: BigUInt.init(self.transactionCount), nrg: BigUInt.init(2000000), player: self.playerAddress, chaseIndex: self.chaseIndex, proof: self.proof, answer: self.answer, leftOrRight: self.leftOrRight) { (error, txHashOpt) in
             if let error = error {
                 self.error = error
                 self.finish()
                 return
             }
             
-            guard let txHash = txHashArray?.first else {
+            guard let txHash = txHashOpt else {
                 self.error = UploadChaseOperationError.invalidTxHash
                 self.finish()
                 return

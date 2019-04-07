@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import PocketAion
-import enum Pocket.PocketPluginError
+import PocketSwift
+//
 import SwiftyJSON
 import BigInt
 
@@ -27,7 +27,7 @@ public class DownloadChaseAmountOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.getChaseAmount { (results, error) in
+        monsterToken.getChaseAmount { (error, results) in
             if let error = error {
                 self.error = error
                 self.finish()

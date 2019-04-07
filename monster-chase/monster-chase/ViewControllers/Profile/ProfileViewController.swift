@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Pocket
 import BigInt
 
 class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

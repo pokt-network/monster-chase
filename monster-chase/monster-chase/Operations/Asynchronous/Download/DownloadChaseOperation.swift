@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import PocketAion
-import enum Pocket.PocketPluginError
+import PocketSwift
+
 import BigInt
 import SwiftyJSON
 
@@ -34,7 +34,7 @@ public class DownloadChaseOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.getChaseHeader(chaseIndex: chaseIndex) { (results, error) in
+        monsterToken.getChaseHeader(chaseIndex: chaseIndex) { (error, results) in
             if let error = error {
                 self.error = error
                 self.finish()
@@ -53,7 +53,7 @@ public class DownloadChaseOperation: AsynchronousOperation {
                 return
             }
             
-            monsterToken.getChaseDetail(chaseIndex: self.chaseIndex, handler: { (detailResults, detailError) in
+            monsterToken.getChaseDetail(chaseIndex: self.chaseIndex, handler: { (detailError, detailResults) in
                 if let detailError = detailError {
                     self.error = detailError
                     self.finish()
@@ -74,7 +74,7 @@ public class DownloadChaseOperation: AsynchronousOperation {
                 
                 // Start building the chase
                 // Index
-                let index = self.chaseIndex.toString()
+                let index = self.chaseIndex.toHexString()
                 // Merkle Body
                 // Header
                 let creator = chaseHeaderResults[0] as? String ?? ""

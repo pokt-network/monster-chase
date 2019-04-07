@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import PocketAion
-import enum Pocket.PocketPluginError
+import PocketSwift
+
 import SwiftyJSON
 import BigInt
 
@@ -50,7 +50,13 @@ public class UploadChaseProofEstimateOperation: AsynchronousOperation {
             return
         }
         
-        try? PocketAion.eth.estimateGas(to: monsterToken.address, fromAddress: self.playerAddress, nrg: nil, nrgPrice: AppConfiguration.nrgPrice, value: BigInt.init(0), data: submitProofCallData, subnetwork: AppConfiguration.subnetwork, blockTag: BlockTag.init(block: BlockTag.DefaultBlock.LATEST)) { (estimate, error) in
+        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
+            self.error = UploadChaseProofEstimateOperationError.monsterTokenInitError
+            self.finish()
+            return
+        }
+        
+        aionNetwork.eth.estimateGas(from: self.playerAddress, to: monsterToken.address, gas: nil, gasPrice: AppConfiguration.nrgPrice, value: nil, data: submitProofCallData, blockTag: nil) { (error, estimate) in
             
             if let error = error {
                 self.error = error

@@ -12,9 +12,9 @@ import UIKit
 import Foundation
 import UIKit
 import FlexColorPicker
-import Pocket
 import MapKit
 import BigInt
+import PocketSwift
 
 class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextViewDelegate {
     // UI Elements

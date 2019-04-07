@@ -9,7 +9,7 @@
 import Foundation
 import SwiftKeychainWrapper
 import BiometricAuthentication
-import Pocket
+import PocketSwift
 
 public typealias BiometricsSetupSuccessHandler = () -> Void
 public typealias BiometricsErrorHandler = (Error) -> Void

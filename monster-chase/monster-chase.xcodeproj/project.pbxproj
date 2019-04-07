@@ -12,6 +12,8 @@
 		10332D9E221111E1006572ED /* MonsterToken.json in Resources */ = {isa = PBXBuildFile; fileRef = 10332D9D221111E1006572ED /* MonsterToken.json */; };
 		1047D1C82256AD74001B7F10 /* ImportWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C72256AD74001B7F10 /* ImportWalletViewController.swift */; };
 		1047D1CA2256AE6E001B7F10 /* AuthSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1047D1C92256AE6E001B7F10 /* AuthSelectionViewController.swift */; };
+		10616BF0225A4F7D00B1DFD0 /* PocketAionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10616BEF225A4F7D00B1DFD0 /* PocketAionUtils.swift */; };
+		10616BF2225A617100B1DFD0 /* HexStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10616BF1225A617100B1DFD0 /* HexStringUtils.swift */; };
 		10D6F9E82236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */; };
 		71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */; };
 		C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */; };
@@ -121,6 +123,8 @@
 		10332D9D221111E1006572ED /* MonsterToken.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MonsterToken.json; sourceTree = "<group>"; };
 		1047D1C72256AD74001B7F10 /* ImportWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewController.swift; sourceTree = "<group>"; };
 		1047D1C92256AE6E001B7F10 /* AuthSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSelectionViewController.swift; sourceTree = "<group>"; };
+		10616BEF225A4F7D00B1DFD0 /* PocketAionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketAionUtils.swift; sourceTree = "<group>"; };
+		10616BF1225A617100B1DFD0 /* HexStringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexStringUtils.swift; sourceTree = "<group>"; };
 		10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBalanceQueueDispatcher.swift; sourceTree = "<group>"; };
 		27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chaseTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chaseTests/Pods-monster-chaseTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B090CA75033BFDCB7FE9831 /* Pods-monster-chase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase.debug.xcconfig"; sourceTree = "<group>"; };
@@ -433,6 +437,8 @@
 				C59BC00B220085FE00CD684C /* AionUtils.swift */,
 				C593D3512201F4D3006AD84C /* RepeatingTimer.swift */,
 				10332D962210E63B006572ED /* JSONUtils.swift */,
+				10616BEF225A4F7D00B1DFD0 /* PocketAionUtils.swift */,
+				10616BF1225A617100B1DFD0 /* HexStringUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -754,13 +760,14 @@
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FlexColorPicker/FlexColorPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/HDAugmentedReality/HDAugmentedReality.framework",
-				"${BUILT_PRODUCTS_DIR}/Pocket/Pocket.framework",
-				"${BUILT_PRODUCTS_DIR}/PocketAion/PocketAion.framework",
-				"${BUILT_PRODUCTS_DIR}/PocketSwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PocketSwift/PocketSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SidebarOverlay/SidebarOverlay.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -770,13 +777,14 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexColorPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDAugmentedReality.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pocket.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketAion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SidebarOverlay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -849,6 +857,7 @@
 				C53F221321FB87CD003457F3 /* Monster+CoreDataClass.swift in Sources */,
 				C593D3542201F65F006AD84C /* DownloadTransactionReceiptOperation.swift in Sources */,
 				C593D3522201F4D3006AD84C /* RepeatingTimer.swift in Sources */,
+				10616BF0225A4F7D00B1DFD0 /* PocketAionUtils.swift in Sources */,
 				C59BC00A2200808300CD684C /* ChaseCollectionViewCell.swift in Sources */,
 				C59BBFFD21FFCA5400CD684C /* UpdatePlayerOperation.swift in Sources */,
 				C5E6566121F8AB94009C1651 /* LandingViewController.swift in Sources */,
@@ -874,6 +883,7 @@
 				C58A0F582205297100643BC7 /* MonsterCollectionViewCell.swift in Sources */,
 				C59BBFDF21FF594500CD684C /* CreateChaseViewController.swift in Sources */,
 				C53F221221FB87CD003457F3 /* Transaction+CoreDataProperties.swift in Sources */,
+				10616BF2225A617100B1DFD0 /* HexStringUtils.swift in Sources */,
 				10332D9C22110B59006572ED /* MonsterToken.swift in Sources */,
 				C526E14422087E130009357B /* UploadChaseProofOperation.swift in Sources */,
 				C5E6566721F8AB94009C1651 /* monster_chase.xcdatamodeld in Sources */,

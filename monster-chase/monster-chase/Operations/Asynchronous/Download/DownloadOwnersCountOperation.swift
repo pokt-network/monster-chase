@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import PocketAion
-import enum Pocket.PocketPluginError
+import PocketSwift
+
 import SwiftyJSON
 import BigInt
 
@@ -35,7 +35,7 @@ public class DownloadOwnersCountOperation: AsynchronousOperation {
             return
         }
         
-        monsterToken.getOwnersCount { (results, error) in
+        monsterToken.getOwnersCount { (error, results) in
             if let error = error {
                 self.error = error
                 self.finish()

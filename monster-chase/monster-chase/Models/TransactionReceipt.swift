@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Pocket
 
 public enum TransactionStatus {
     case success
@@ -16,11 +15,11 @@ public enum TransactionStatus {
 
 public struct TransactionReceipt {
     
-    public var rawReceipt: [String: JSON]
+    public var rawReceipt: [String: Any]
     // Parsed properties of the rawReceipt
     public var status: TransactionStatus {
         get {
-            if let rawStatus = rawReceipt["status"]?.value() as? String {
+            if let rawStatus = rawReceipt["status"] as? String {
                 switch rawStatus {
                 case "0x0":
                     return .failure
@@ -35,7 +34,7 @@ public struct TransactionReceipt {
         }
     }
     
-    public init(rawReceipt: [String: JSON]) {
+    public init(rawReceipt: [String: Any]) {
         self.rawReceipt = rawReceipt
     }
     
