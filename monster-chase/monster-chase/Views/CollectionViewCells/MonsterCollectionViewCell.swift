@@ -44,19 +44,15 @@ class MonsterCollectionViewCell: UICollectionViewCell {
             let monsterColor = UIColor(hexString: monster.hexColor )
             bananoBackgroundView.backgroundColor = monsterColor
         }
+        
+        self.layoutSubviews()
     }
     
     func configureEmptyCellFor(index: Int) {
-        if index > 0 {
-            if let chaseNameLabel = self.chaseNameLabel {
-                chaseNameLabel.text = ""
-            }
-            return
-        }
-        
         if let chaseNameLabel = self.chaseNameLabel {
             chaseNameLabel.text = "NO MONSTERS YET"
         }
+        self.layoutSubviews()
     }
     
 }

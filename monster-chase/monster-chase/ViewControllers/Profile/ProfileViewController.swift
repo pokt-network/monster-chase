@@ -15,7 +15,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     @IBOutlet weak var qrCodeCircle: UIView!
     @IBOutlet weak var walletAddressTextField: UITextField!
-    @IBOutlet weak var balanceValueLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var qrCodeImage: UIImageView!
     @IBOutlet weak var monstersCountLabel: UILabel!
@@ -64,42 +63,54 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Labels setup
         walletAddressTextField.text = currentPlayer?.address
         qrCodeImage.image = ProfileViewController.generateQRCode(from: currentPlayer?.address ?? "")
-        if let weiBalanceStr = currentPlayer?.balanceAmp {
-            let weiBalance = BigInt.init(weiBalanceStr) ?? BigInt.init(0)
-            let aion = String(format: "%.2f", arguments: [AionUtils.convertWeiToAion(wei: weiBalance)])
-            let usd = String(format: "%.2f", arguments: [AionUtils.convertWeiToUSD(wei: weiBalance)])
-            
-            balanceValueLabel.text = "\(aion) AION - \(usd) USD"
-        }
-        
         self.monstersCountLabel.text = "\(self.monsters.count)"
-        
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
     }
     
     // MARK: - IBActions
-    
-    @IBAction func addBalanceButtonPressed(_ sender: Any) {
-        do {
-            guard let vc = try instantiateViewController(identifier: "addBalanceViewControllerID", storyboardName: "Profile") as? AddBalanceViewController else {
+    @IBAction func biometricSetupButtonPressed(_ sender: Any) {
+        guard let player = currentPlayer else {
+            let alertView = self.monsterAlertView(title: "Error", message: "Could not retrieve your account.")
+            self.present(alertView, animated: false, completion: nil)
+            return
+        }
+        
+        guard let playerAddress = player.address else {
+            let alertView = self.monsterAlertView(title: "Error", message: "Could not retrieve your account.")
+            self.present(alertView, animated: false, completion: nil)
+            return
+        }
+        
+        if BiometricsUtils.biometricRecordExists(playerAddress: playerAddress) {
+            let alertView = self.monsterAlertView(title: "Error", message: "You've already setup FaceID/TouchID.")
+            self.present(alertView, animated: false, completion: nil)
+            return
+        }
+        
+        let requestAlertView = self.requestPassphraseAlertView { (password, error) in
+            if let _ = error {
+                let alertView = self.monsterAlertView(title: "Error", message: "Could not retrieve your account, please try again.")
+                self.present(alertView, animated: false, completion: nil)
                 return
             }
             
-            if currentPlayer != nil {
-                vc.player = currentPlayer
-            }
-            if qrCodeImage.image != nil {
-                vc.qrImage = qrCodeImage.image
+            guard let password = password else {
+                let alertView = self.monsterAlertView(title: "Error", message: "Could not retrieve your account, please try again.")
+                self.present(alertView, animated: false, completion: nil)
+                return
             }
             
-            self.present(vc, animated: false, completion: nil)
-            
-        } catch let error as NSError {
-            print("Failed to instantiate Add Balance VC with error :\(error)")
+            BiometricsUtils.setupPlayerBiometricRecord(passphrase: password, successHandler: {
+                let alertView = self.monsterAlertView(title: "Success", message: "FaceID/TouchID successfully setup.")
+                self.present(alertView, animated: false, completion: nil)
+            }, errorHandler: { (error) in
+                let alertView = self.monsterAlertView(title: "Error", message: "An error ocurred, please try again later.")
+                self.present(alertView, animated: false, completion: nil)
+            })
         }
-        
+        self.present(requestAlertView, animated: true, completion: nil)
     }
     
     @IBAction func copyAddressButtonPressed(_ sender: Any) {
@@ -115,7 +126,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
             showError()
             return
         } else {
-            let alertView = monsterAlertView(title: "Success:", message: "Your account has been copied to the clipboard.")
+            let alertView = monsterAlertView(title: "Success:", message: "Your address has been copied to the clipboard.")
             UIPasteboard.general.string = walletAddressTextField.text
             present(alertView, animated: false, completion: nil)
         }
@@ -127,7 +138,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
-    @IBAction func exportPressed(_ sender: Any) {
+    @IBAction func logoutPressed(_ sender: Any) {
         // Resolve wallet auth
         guard let player = currentPlayer else {
             self.present(self.monsterAlertView(title: "Error", message: "Error retrieving your account details, please try again"), animated: true)
@@ -137,8 +148,19 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         self.resolvePlayerWalletAuth(player: player, successHandler: { (wallet) in
             let privateKey = wallet.privateKey
             
-            let alertView = self.monsterAlertView(title: "WARNING", message: "Your private key has been copied to the clipboard, do not share it with anyone!: \(privateKey)", handler: { (UIAlertAction) in
+            let alertView = self.monsterAlertView(title: "Warning", message: "Your private key has been copied to the clipboard, do not share it with anyone! When you press OK you will be logged out.", handler: { (UIAlertAction) in
                 UIPasteboard.general.string = privateKey
+                do {
+                    let _ = try Player.wipePlayerData(context: CoreDataUtils.mainPersistentContext, player: player, wallet: wallet)
+                } catch {
+                    print("\(error)")
+                }
+                do {
+                    let vc = try self.instantiateViewController(identifier: "authSelectionID", storyboardName: "CreateAccount") as? AuthSelectionViewController
+                    self.navigationController?.pushViewController(vc!, animated: false)
+                } catch let error as NSError {
+                    print("Failed to instantiate AuthSelectionViewController with error: \(error)")
+                }
             })
             
             self.present(alertView, animated: false, completion: nil)
@@ -153,20 +175,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        var yourWidth : CGFloat?
-        var yourHeight : CGFloat?
-        
-        let device = UIDevice.modelName
-        
-        if device == "iPhone SE" || device == "Simulator iPhone SE" || device == "iPhone 5s" || device == "Simulator iPhone 5s" {
-            yourWidth = collectionView.bounds.width/2.0
-            yourHeight = yourWidth
-        }else {
-            yourWidth = collectionView.bounds.width/3.0
-            yourHeight = yourWidth
-        }
-        return CGSize(width: yourWidth ?? 375, height: yourHeight ?? 100)
+        return CGSize(width: collectionView.bounds.width/3.0, height: collectionView.bounds.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

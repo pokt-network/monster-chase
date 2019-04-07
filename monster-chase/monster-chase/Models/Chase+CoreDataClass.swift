@@ -12,7 +12,7 @@ import BigInt
 import MapKit
 
 public extension BigInt {
-    public static func anyToBigInt(anyValue: Any) -> BigInt?{
+    static func anyToBigInt(anyValue: Any) -> BigInt?{
         if let strValue = anyValue as? String {
             return BigInt.init(strValue)
         } else if let intValue = anyValue as? Int {
@@ -94,6 +94,12 @@ public class Chase: NSManagedObject {
     func delete() throws {
         self.managedObjectContext?.delete(self)
         try self.save()
+    }
+    
+    public static func dropTable(context: NSManagedObjectContext) throws {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Chase")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        let _ = try context.execute(request)
     }
     
     public static func chasesWonByPlayer(context: NSManagedObjectContext) throws -> [Chase] {

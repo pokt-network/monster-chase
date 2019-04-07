@@ -56,6 +56,12 @@ public class Monster: NSManagedObject {
         try self.save()
     }
     
+    public static func dropTable(context: NSManagedObjectContext) throws {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Monster")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        let _ = try context.execute(request)
+    }
+    
     public static func sortedMonstersByIndex(context: NSManagedObjectContext) throws -> [Monster] {
         let fetchRequest: NSFetchRequest<Monster> = Monster.fetchRequest()
         let sort = NSSortDescriptor.init(key: "index", ascending: false, selector: #selector(NSString.localizedStandardCompare))

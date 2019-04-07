@@ -30,9 +30,13 @@ public struct BiometricsUtils {
     public static let biometricsAvailable = BioMetricAuthenticator.canAuthenticate()
     private static let keychainKey = "MonsterBiometricAuthPassphrase"
     
+    public static func removeBiometricRecord(playerAddress: String) -> Bool {
+        let recordKey = self.keychainKey + playerAddress
+        return KeychainWrapper.standard.remove(key: recordKey)
+    }
+    
     // Returns wheter or not a biometric record exists for the current player
     public static func biometricRecordExists(playerAddress: String) -> Bool {
-        //let keychainKey = self.keychainKey + playerAddress
         let recordKey = self.keychainKey + playerAddress
         guard let _ = KeychainWrapper.standard.string(forKey: recordKey, withAccessibility: .always) else {
             return false

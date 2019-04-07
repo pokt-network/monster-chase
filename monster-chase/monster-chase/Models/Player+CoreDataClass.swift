@@ -47,6 +47,12 @@ public class Player: NSManagedObject {
         try self.managedObjectContext?.save()
     }
     
+    public static func dropTable(context: NSManagedObjectContext) throws {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        let _ = try context.execute(request)
+    }
+    
     // Either returns a new player to save data to, or returns the existing player
     public static func getPlayer(context: NSManagedObjectContext) throws -> Player {
         var result: Player
@@ -86,7 +92,6 @@ public class Player: NSManagedObject {
     
     public static func createPlayer(walletPassphrase: String, privateKey: String) throws -> Player {
         // First create the wallet
-        //let wallet = try PocketAion.createWallet(subnetwork: AppConfiguration.subnetwork, data: nil)
         let wallet = try PocketAion.importWallet(privateKey: privateKey, subnetwork: AppConfiguration.subnetwork, address: "0xa05b88ac239f20ba0a4d2f0edac8c44293e9b36fa937fb55bf7a1cd61a60f036", data: nil)
         
         if try wallet.save(passphrase: walletPassphrase) == false {
@@ -114,5 +119,32 @@ public class Player: NSManagedObject {
             self.godfatherWallet = godfatherWallet
             return self.godfatherWallet
         }
+    }
+    
+    public static func wipePlayerData(context: NSManagedObjectContext, player: Player, wallet: Wallet) throws -> Bool {
+        var result = false
+        
+        guard let playerAddress = player.address else {
+            return result
+        }
+        
+        // First delete biometric record
+        if BiometricsUtils.biometricRecordExists(playerAddress: playerAddress) {
+            let _ = BiometricsUtils.removeBiometricRecord(playerAddress: playerAddress)
+        }
+        
+        // Second delete core data
+        try Chase.dropTable(context: context)
+        try Monster.dropTable(context: context)
+        try Player.dropTable(context: context)
+        try Transaction.dropTable(context: context)
+        
+        // Third delete wallet
+        let _ = try wallet.delete()
+        
+        // Set result to true
+        result = true
+        
+        return result
     }
 }
