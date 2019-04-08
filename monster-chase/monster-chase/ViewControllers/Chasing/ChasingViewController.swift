@@ -124,11 +124,13 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                 appInitQueueDispatcher.initDispatchSequence {
                     let chaseListQueueDispatcher = AllChasesQueueDispatcher.init(monsterTokenAddress: AppConfiguration.monsterTokenAddress, playerAddress: playerAddress)
                     chaseListQueueDispatcher.initDispatchSequence(completionHandler: {
-                        do {
-                            self.loadQuestList()
-                            try self.refreshView()
-                        } catch let error as NSError {
-                            print("Failed to refreshView() with error: \(error)")
+                        DispatchQueue.main.async {
+                            do {
+                                self.loadQuestList()
+                                try self.refreshView()
+                            } catch let error as NSError {
+                                print("Failed to refreshView() with error: \(error)")
+                            }
                         }
                     })
                 }
@@ -261,11 +263,6 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                 return
             }
             self.currentPlayerLocation = location
-//            do {
-//                try self.refreshView()
-//            }catch let error as NSError {
-//                print("Failed to refreshView with error: \(error)")
-//            }
         } else {
             let alertView = self.monsterAlertView(title: "Error", message: "Failed to get current location.")
             self.present(alertView, animated: false, completion: nil)

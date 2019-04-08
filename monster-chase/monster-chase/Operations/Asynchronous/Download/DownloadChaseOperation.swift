@@ -74,7 +74,7 @@ public class DownloadChaseOperation: AsynchronousOperation {
                 
                 // Start building the chase
                 // Index
-                let index = self.chaseIndex.noPrefixHex()
+                let index = String(self.chaseIndex)
                 // Merkle Body
                 // Header
                 let creator = chaseHeaderResults[0] as? String ?? ""
