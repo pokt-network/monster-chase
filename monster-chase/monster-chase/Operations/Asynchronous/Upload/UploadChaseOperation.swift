@@ -53,7 +53,7 @@ public class UploadChaseOperation: AsynchronousOperation {
             return
         }
         
-        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
+        guard let aionNetwork = PocketAion.shared()?.defaultNetwork else {
             self.error = UploadChaseOperationError.monsterTokenInitError
             self.finish()
             return

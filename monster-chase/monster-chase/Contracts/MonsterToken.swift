@@ -30,7 +30,7 @@ public class MonsterToken {
             throw MonsterTokenError.initializationError
         }
         
-        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
+        guard let aionNetwork = PocketAion.shared()?.defaultNetwork else {
             throw MonsterTokenError.initializationError
         }
         
