@@ -79,7 +79,7 @@ public class Player: NSManagedObject {
     
     public static func createPlayer(walletPassphrase: String) throws -> Player {
         // First create the wallet
-        guard let wallet = try PocketAion.shared()?.createWallet(netID: AppConfiguration.netID) else {
+        guard let wallet = try PocketAion.shared?.createWallet(netID: AppConfiguration.netID) else {
             throw PlayerPersistenceError.walletCreationError
         }
         
@@ -93,7 +93,7 @@ public class Player: NSManagedObject {
     
     public static func createPlayer(walletPassphrase: String, privateKey: String) throws -> Player {
         // First create the wallet
-        guard let wallet = try PocketAion.shared()?.importWallet(privateKey: privateKey, netID: AppConfiguration.netID) else {
+        guard let wallet = try PocketAion.shared?.importWallet(privateKey: privateKey, netID: AppConfiguration.netID) else {
             throw PlayerPersistenceError.walletCreationError
         }
         
@@ -116,7 +116,7 @@ public class Player: NSManagedObject {
         if let result = self.godfatherWallet {
             return result;
         } else {
-            guard let godfatherWallet = try? PocketAion.shared()?.importWallet(privateKey: AppConfiguration.godfatherPK, netID: AppConfiguration.netID) else {
+            guard let godfatherWallet = try? PocketAion.shared?.importWallet(privateKey: AppConfiguration.godfatherPK, netID: AppConfiguration.netID) else {
                 return nil
             }
             self.godfatherWallet = godfatherWallet

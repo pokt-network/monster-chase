@@ -11,13 +11,21 @@ import PocketSwift
 
 public extension PocketAion {
     
-    static func shared() -> PocketAion? {
+    static var shared: PocketAion? = {
         do {
-            return try PocketAion.init(devID: AppConfiguration.devID, netIds: [AppConfiguration.netID], defaultNetID: AppConfiguration.netID, maxNodes: 5, requestTimeOut: 999999999)
+            return try PocketAion.init(devID: AppConfiguration.devID, netIds: [AppConfiguration.netID], defaultNetID: AppConfiguration.netID, maxNodes: 10, requestTimeOut: 999999999)
         } catch {
             return nil
         }
-    }
+    }()
+    
+//    static func shared() -> PocketAion? {
+//        do {
+//            return try PocketAion.init(devID: AppConfiguration.devID, netIds: [AppConfiguration.netID], defaultNetID: AppConfiguration.netID, maxNodes: 5, requestTimeOut: 999999999)
+//        } catch {
+//            return nil
+//        }
+//    }
     
 //    static var shared: PocketAion? = {
 //        do {
