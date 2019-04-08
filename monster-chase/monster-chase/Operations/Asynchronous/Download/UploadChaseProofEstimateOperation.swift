@@ -50,7 +50,7 @@ public class UploadChaseProofEstimateOperation: AsynchronousOperation {
             return
         }
         
-        guard let aionNetwork = PocketAion.shared()?.defaultNetwork else {
+        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
             self.error = UploadChaseProofEstimateOperationError.monsterTokenInitError
             self.finish()
             return

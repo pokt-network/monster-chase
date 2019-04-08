@@ -62,7 +62,7 @@ class ImportWalletViewController: UIViewController {
         }
         
         do {
-            let wallet = try PocketAion.shared()?.importWallet(privateKey: privateKey, netID: AppConfiguration.netID)
+            let wallet = try PocketAion.shared?.importWallet(privateKey: privateKey, netID: AppConfiguration.netID)
             let vc = try self.instantiateViewController(identifier: "newWalletID", storyboardName: "CreateAccount") as? NewWalletViewController
             vc?.walletPrivateKey = wallet?.privateKey
             self.navigationController?.pushViewController(vc!, animated: false)

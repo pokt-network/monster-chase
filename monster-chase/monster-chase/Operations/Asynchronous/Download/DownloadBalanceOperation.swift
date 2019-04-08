@@ -26,7 +26,7 @@ public class DownloadBalanceOperation: AsynchronousOperation {
     
     open override func main() {
         
-        guard let aionNetwork = PocketAion.shared()?.defaultNetwork else {
+        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
             self.error = DownloadBalanceOperationError.responseParsing
             self.finish()
             return
