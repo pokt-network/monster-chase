@@ -19,8 +19,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var monstersCountLabel: UILabel!
     @IBOutlet weak var leaderboardPositionLabel: UILabel!
     
+    
     var currentPlayer: Player?
     var monsters: [Monster] = [Monster]()
+    var ownersRecords = [LeaderboardRecord]()
+    
+    // Activity Indicator
+    var indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    var grayView: UIView?
     
     // MARK: - View
     override func viewDidLoad() {
@@ -30,7 +36,135 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         } catch let error as NSError {
             print("Failed to retrieve current player with error: \(error)")
         }
+        
+        // Gray view setup
+        grayView = UIView.init(frame: view.frame)
+        grayView?.backgroundColor = UIColor.init(white: 1.0, alpha: 0.75)
+        grayView?.isHidden = true
+        view.addSubview(grayView!)
+        
+        // Activity indicator setup
+        indicator.center = view.center
+        view.addSubview(indicator)
+        
         loadPlayerMonsters()
+        loadAndSetLeaderboardData()
+    }
+    
+    func playerOwnerRecord() -> LeaderboardRecord? {
+        var playerRecord: LeaderboardRecord?
+        if self.ownersRecords.isEmpty {
+            return nil
+        }
+        
+        guard let playerAddress = self.currentPlayer?.address else {
+            return nil
+        }
+        
+        for ownerRecord in self.ownersRecords {
+            if ownerRecord.address.caseInsensitiveCompare(playerAddress) == .orderedSame {
+                playerRecord = ownerRecord
+                break
+            }
+        }
+        return playerRecord
+    }
+    
+    func toggleIndicator() {
+        if self.indicator.isAnimating {
+            self.indicator.stopAnimating()
+            self.grayView?.isHidden = true
+        } else {
+            self.indicator.startAnimating()
+            self.grayView?.isHidden = false
+        }
+    }
+    
+    func fetchOwnerCount(completionBlock:@escaping (BigInt?) -> Void) {
+        let downloadOwnersCountOperation = DownloadOwnersCountOperation.init(monsterTokenAddress: AppConfiguration.monsterTokenAddress)
+        downloadOwnersCountOperation.completionBlock = {
+            guard let ownerTotal = downloadOwnersCountOperation.total else {
+                print("Error fetching OwnersCount in Leaderboard")
+                completionBlock(nil)
+                return
+            }
+            completionBlock(ownerTotal)
+            print("Total owners in leadeboard:\(ownerTotal)")
+        }
+        downloadOwnersCountOperation.start()
+    }
+    
+    func fetchOwnerLeaderboardRecordCount(index: BigInt,completionBlock:@escaping (BigInt, LeaderboardRecord?) -> Void) {
+        let downloadOwnerTokenOperation = DownloadOwnersTokenCountOperation(monsterTokenAddress: AppConfiguration.monsterTokenAddress, ownerIndex: BigInt.init(index))
+        downloadOwnerTokenOperation.completionBlock = {
+            guard let score = downloadOwnerTokenOperation.leaderboardRecord else {
+                completionBlock(index,nil)
+                return
+            }
+            completionBlock(index,score)
+        }
+        downloadOwnerTokenOperation.start()
+    }
+    
+    func calculateOwnerPosition() -> Int64 {
+        var result: Int64 = 0
+        
+        guard let playerAddress = currentPlayer?.address else {
+            return result
+        }
+        
+        for i in 0..<self.ownersRecords.count {
+            let record = self.ownersRecords[i]
+            if record.address.caseInsensitiveCompare(playerAddress) == .orderedSame {
+                result = Int64.init(i) + 1
+                break
+            }
+        }
+        
+        return result
+    }
+    
+    func loadAndSetLeaderboardData() {
+        toggleIndicator()
+        fetchOwnerCount(completionBlock: { count in
+            guard let count = count else {
+                self.toggleIndicator()
+                let errorAlert = self.monsterAlertView(title: "Error", message: "Error fetching Leaderboard records")
+                self.present(errorAlert, animated: true, completion: nil)
+                return
+            }
+            self.ownersRecords = [LeaderboardRecord]()
+            let dispatchGroup = DispatchGroup()
+            for i in BigInt.init(0)..<BigInt.init(count){
+                dispatchGroup.enter()
+                self.fetchOwnerLeaderboardRecordCount(index: i, completionBlock: { (index, leaderboardRecord) in
+                    if leaderboardRecord != nil {
+                        self.ownersRecords.append(leaderboardRecord!)
+                    }
+                    dispatchGroup.leave()
+                })
+            }
+            dispatchGroup.notify(queue:.main) {
+                self.ownersRecords.sort(by: { (l1, l2) -> Bool in
+                    return l1.tokenTotal > l2.tokenTotal
+                })
+                //self.refreshTableView()
+                let ownerPosition = self.calculateOwnerPosition()
+                guard let playerOwnerRecord = self.playerOwnerRecord() else {
+                    self.toggleIndicator()
+                    return
+                }
+                if (playerOwnerRecord.tokenTotal != BigInt.init(0)) {
+                    self.setPositionAndMonsterCount(position: ownerPosition, monsterCount: playerOwnerRecord.tokenTotal)
+                }
+                self.toggleIndicator()
+            }
+        })
+    }
+    
+    func setPositionAndMonsterCount(position: Int64, monsterCount: BigInt) {
+        self.monstersCountLabel.text = String.init(monsterCount)
+        self.leaderboardPositionLabel.text = String.init(position)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,7 +196,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         // Labels setup
         walletAddressTextField.text = currentPlayer?.address
         qrCodeImage.image = ProfileViewController.generateQRCode(from: currentPlayer?.address ?? "")
-        self.monstersCountLabel.text = "\(self.monsters.count)"
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
