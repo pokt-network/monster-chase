@@ -25,7 +25,7 @@ public class DownloadTransactionCountOperation: AsynchronousOperation {
     }
     
     open override func main() {
-        guard let aionNetwork = PocketAion.shared?.defaultNetwork else {
+        guard let aionNetwork = PocketAion.shared()?.defaultNetwork else {
             self.error = DownloadTransactionCountOperationError.responseParsing
             self.finish()
             return
