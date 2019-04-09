@@ -347,6 +347,7 @@ class CreateChaseMapViewController: UIViewController, CLLocationManagerDelegate,
         if self.selectedLocation.count > 0 {
             NotificationCenter.default.post(name: CreateChaseViewController.notificationName, object: nil, userInfo:self.selectedLocation)
         }
+        self.searchController.isActive = false
         self.dismiss(animated: false, completion: nil)
     }
 }
