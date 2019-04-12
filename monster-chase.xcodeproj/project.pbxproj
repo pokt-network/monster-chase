@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,7 +15,6 @@
 		10616BF0225A4F7D00B1DFD0 /* PocketAionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10616BEF225A4F7D00B1DFD0 /* PocketAionUtils.swift */; };
 		10616BF2225A617100B1DFD0 /* HexStringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10616BF1225A617100B1DFD0 /* HexStringUtils.swift */; };
 		10D6F9E82236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D6F9E72236D49900DEAA4B /* PlayerBalanceQueueDispatcher.swift */; };
-		71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42003B7B3A361FBD2DECC1A3 /* Pods_monster_chaseTests.framework */; };
 		C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904B385E40100C4E3D6D8AD6 /* Pods_monster_chase.framework */; };
 		C526E13B220695E10009357B /* DownloadOwnersCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13A220695E10009357B /* DownloadOwnersCountOperation.swift */; };
 		C526E13D220862960009357B /* DownloadOwnersTokenCountOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526E13C220862960009357B /* DownloadOwnersTokenCountOperation.swift */; };
@@ -104,18 +103,7 @@
 		C5E6566721F8AB94009C1651 /* monster_chase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5E6566521F8AB94009C1651 /* monster_chase.xcdatamodeld */; };
 		C5E6566921F8AB94009C1651 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5E6566821F8AB94009C1651 /* Assets.xcassets */; };
 		C5E6566C21F8AB94009C1651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5E6566A21F8AB94009C1651 /* LaunchScreen.storyboard */; };
-		C5E6567721F8AB94009C1651 /* monster_chaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6567621F8AB94009C1651 /* monster_chaseTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C5E6567321F8AB94009C1651 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C5E6565321F8AB94009C1651 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C5E6565A21F8AB94009C1651;
-			remoteInfo = "monster-chase";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		10332D962210E63B006572ED /* JSONUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtils.swift; sourceTree = "<group>"; };
@@ -220,9 +208,6 @@
 		C5E6566821F8AB94009C1651 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5E6566B21F8AB94009C1651 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5E6566D21F8AB94009C1651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5E6567221F8AB94009C1651 /* monster-chaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "monster-chaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5E6567621F8AB94009C1651 /* monster_chaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = monster_chaseTests.swift; sourceTree = "<group>"; };
-		C5E6567821F8AB94009C1651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E99866B5034742CC985B7EC2 /* Pods-monster-chaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monster-chaseTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monster-chaseTests/Pods-monster-chaseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,14 +217,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C51F332276E1E8E17D6CBAF8 /* Pods_monster_chase.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C5E6566F21F8AB94009C1651 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				71EEF75C920B676D0D44435B /* Pods_monster_chaseTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,7 +561,6 @@
 			isa = PBXGroup;
 			children = (
 				C5E6565D21F8AB94009C1651 /* monster-chase */,
-				C5E6567521F8AB94009C1651 /* monster-chaseTests */,
 				C5E6565C21F8AB94009C1651 /* Products */,
 				1560B023C2A29BBC88266759 /* Pods */,
 				B073939CEB28426886D052AA /* Frameworks */,
@@ -595,7 +571,6 @@
 			isa = PBXGroup;
 			children = (
 				C5E6565B21F8AB94009C1651 /* monster-chase.app */,
-				C5E6567221F8AB94009C1651 /* monster-chaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -621,15 +596,6 @@
 			path = "monster-chase";
 			sourceTree = "<group>";
 		};
-		C5E6567521F8AB94009C1651 /* monster-chaseTests */ = {
-			isa = PBXGroup;
-			children = (
-				C5E6567621F8AB94009C1651 /* monster_chaseTests.swift */,
-				C5E6567821F8AB94009C1651 /* Info.plist */,
-			);
-			path = "monster-chaseTests";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -652,25 +618,6 @@
 			productReference = C5E6565B21F8AB94009C1651 /* monster-chase.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C5E6567121F8AB94009C1651 /* monster-chaseTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C5E6567E21F8AB94009C1651 /* Build configuration list for PBXNativeTarget "monster-chaseTests" */;
-			buildPhases = (
-				1EAFF4491DDD0A7A71A97B08 /* [CP] Check Pods Manifest.lock */,
-				C5E6566E21F8AB94009C1651 /* Sources */,
-				C5E6566F21F8AB94009C1651 /* Frameworks */,
-				C5E6567021F8AB94009C1651 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C5E6567421F8AB94009C1651 /* PBXTargetDependency */,
-			);
-			name = "monster-chaseTests";
-			productName = "monster-chaseTests";
-			productReference = C5E6567221F8AB94009C1651 /* monster-chaseTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -689,10 +636,6 @@
 							};
 						};
 					};
-					C5E6567121F8AB94009C1651 = {
-						CreatedOnToolsVersion = 10.1;
-						TestTargetID = C5E6565A21F8AB94009C1651;
-					};
 				};
 			};
 			buildConfigurationList = C5E6565621F8AB94009C1651 /* Build configuration list for PBXProject "monster-chase" */;
@@ -709,7 +652,6 @@
 			projectRoot = "";
 			targets = (
 				C5E6565A21F8AB94009C1651 /* monster-chase */,
-				C5E6567121F8AB94009C1651 /* monster-chaseTests */,
 			);
 		};
 /* End PBXProject section */
@@ -738,13 +680,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5E6567021F8AB94009C1651 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -753,61 +688,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
-				"${BUILT_PRODUCTS_DIR}/BiometricAuthentication/BiometricAuthentication.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/FlexColorPicker/FlexColorPicker.framework",
-				"${BUILT_PRODUCTS_DIR}/HDAugmentedReality/HDAugmentedReality.framework",
-				"${BUILT_PRODUCTS_DIR}/PocketSwift/PocketSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SidebarOverlay/SidebarOverlay.framework",
-				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftHEXColors/SwiftHEXColors.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-monster-chase/Pods-monster-chase-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BiometricAuthentication.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexColorPicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDAugmentedReality.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PocketSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCryptor.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SidebarOverlay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHEXColors.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-monster-chase/Pods-monster-chase-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-monster-chase/Pods-monster-chase-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1EAFF4491DDD0A7A71A97B08 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-monster-chaseTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-monster-chase/Pods-monster-chase-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		50299496BEECAAA1760996AD /* [CP] Check Pods Manifest.lock */ = {
@@ -917,23 +807,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C5E6566E21F8AB94009C1651 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C5E6567721F8AB94009C1651 /* monster_chaseTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C5E6567421F8AB94009C1651 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C5E6565A21F8AB94009C1651 /* monster-chase */;
-			targetProxy = C5E6567321F8AB94009C1651 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C5E6566221F8AB94009C1651 /* Main.storyboard */ = {
@@ -1079,13 +953,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89229Z2MHH;
 				INFOPLIST_FILE = "monster-chase/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chase";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1098,58 +973,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 89229Z2MHH;
 				INFOPLIST_FILE = "monster-chase/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chase";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		C5E6567F21F8AB94009C1651 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E99866B5034742CC985B7EC2 /* Pods-monster-chaseTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 89229Z2MHH;
-				INFOPLIST_FILE = "monster-chaseTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chaseTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/monster-chase.app/monster-chase";
-			};
-			name = Debug;
-		};
-		C5E6568021F8AB94009C1651 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27535AC55A11FFD631594385 /* Pods-monster-chaseTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 89229Z2MHH;
-				INFOPLIST_FILE = "monster-chaseTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "network.pokt.monster-chaseTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/monster-chase.app/monster-chase";
 			};
 			name = Release;
 		};
@@ -1170,15 +1002,6 @@
 			buildConfigurations = (
 				C5E6567C21F8AB94009C1651 /* Debug */,
 				C5E6567D21F8AB94009C1651 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C5E6567E21F8AB94009C1651 /* Build configuration list for PBXNativeTarget "monster-chaseTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C5E6567F21F8AB94009C1651 /* Debug */,
-				C5E6568021F8AB94009C1651 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
