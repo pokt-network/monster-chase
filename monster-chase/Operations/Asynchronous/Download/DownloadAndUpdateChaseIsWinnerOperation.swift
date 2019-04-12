@@ -22,6 +22,7 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
     
     private var chaseIndex: BigInt
     private var alledgedWinner: String
+    public var isWinner: Bool?
     
     public init(chaseIndex: BigInt, alledgedWinner: String) {
         self.chaseIndex = chaseIndex
@@ -49,6 +50,8 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
                 self.finish()
                 return
             }
+            
+            self.isWinner = isWinnerBool
 
             do {
                 let chaseContext = CoreDataUtils.createBackgroundPersistentContext()
@@ -61,7 +64,6 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
                 // First update the chase
                 chase.winner = isWinnerBool
                 try chase.save()
-                self.finish()
                 
                 // Then update the monster
                 let context = CoreDataUtils.createBackgroundPersistentContext()
@@ -92,6 +94,7 @@ public class DownloadAndUpdateChaseIsWinnerOperation: AsynchronousOperation {
                     }
                     
                 }
+                self.finish()
             } catch {
                 self.error = DownloadAndUpdateChaseIsWinnerOperationError.updating
                 self.finish()
