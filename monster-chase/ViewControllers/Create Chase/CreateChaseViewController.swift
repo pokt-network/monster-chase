@@ -325,7 +325,9 @@ class CreateChaseViewController: UIViewController, ColorPickerDelegate, UITextVi
         // Upload quest operation
         let operation = UploadChaseOperation.init(wallet: wallet, playerAddress: playerAddress, chaseName: chaseName, hint: chaseHint, maxWinners: maxWinners, merkleRoot: merkleRoot, merkleBody: merkleBody, metadata:  metadata, nrg: gasEstimateWei)
         operation.completionBlock = {
-            AppDelegate.shared.refreshCurrentViewController()
+            DispatchQueue.main.async {
+                AppDelegate.shared.refreshCurrentViewController()
+            }
             if let txHash = operation.txHash {
                 let transaction = Transaction.init(txHash: txHash, type: TransactionType.creation, context: CoreDataUtils.backgroundPersistentContext)
                 

@@ -17,12 +17,6 @@ target 'monster-chase' do
   pod 'BiometricAuthentication', '~> 3.0'
   pod 'CryptoSwift', '~> 1.0.0'
   pod 'SwiftyJSON', '~> 4.3.0'
-  
-  target 'monster-chaseTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
 
 post_install do |installer|
