@@ -65,7 +65,7 @@ class ChaseCollectionViewCell: UICollectionViewCell {
                 if roundedDistanceKM > 999 {
                     distanceText = String.init(format: "%.1fK KM", (roundedDistanceKM/1000))
                 } else {
-                    distanceText = String.init(format: "%.1f KM", (roundedDistanceKM/1000))
+                    distanceText = String.init(format: "%.1f KM", (roundedDistanceKM))
                 }
             } else {
                 distanceText = String.init(format: "%.1f M", roundedDistanceMeters)
@@ -94,10 +94,6 @@ class ChaseCollectionViewCell: UICollectionViewCell {
     }
     
     func configureEmptyCellFor(index: Int) {
-        if let monsterChaseImage = self.monsterStampImage {
-            //monsterChaseImage.image = #imageLiteral(resourceName: "NO-BANANO")
-        }
-        
         if index > 0 {
             if let chaseNameLabel = self.monsterNameLabel {
                 chaseNameLabel.text = ""

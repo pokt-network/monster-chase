@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import BigInt
 
 class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
     
@@ -55,7 +56,6 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
         
         // Location Manager
         setupLocationManager()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +69,6 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
         
         // Activity indicator setup
         indicator.center = view.center
-        
         view.addSubview(indicator)
         self.collectionView.addSubview(refreshControl)
         
@@ -108,6 +107,18 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     }
     
     // MARK: Tools
+    func toggleIndicator() {
+        DispatchQueue.main.async {
+            if self.indicator.isAnimating {
+                self.indicator.stopAnimating()
+                self.grayView?.isHidden = true
+            } else {
+                self.indicator.startAnimating()
+                self.grayView?.isHidden = false
+            }
+        }
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.collectionView.collectionViewLayout.invalidateLayout()
         self.collectionView.isUserInteractionEnabled = false
@@ -162,7 +173,11 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
     func loadQuestList() {
         // Initial load for the local quest list
         do {
-            self.chases = try Chase.sortedChasesByIndex(context: CoreDataUtils.mainPersistentContext)
+            if let playerLocation = self.currentPlayerLocation {
+                self.chases = try Chase.sortedChasesByNearest(context: CoreDataUtils.mainPersistentContext, userLocation: playerLocation)
+            } else {
+                self.chases = try Chase.sortedChasesByIndex(context: CoreDataUtils.mainPersistentContext)
+            }
             if self.chases.count == 0 {
                 DispatchQueue.main.async {
                     self.errorMessageLabel.text = "No Chases available, please try again later..."
@@ -177,6 +192,7 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                 }
             }
         } catch {
+            self.chases = [Chase]()
             let alert = self.monsterAlertView(title: "Error", message: "Failed to retrieve chase list with error:")
             self.present(alert, animated: false, completion: nil)
             
@@ -262,7 +278,12 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
             guard let location = locations.last else {
                 return
             }
+            let refreshQuestList = self.currentPlayerLocation == nil
             self.currentPlayerLocation = location
+            
+            if (refreshQuestList == true) {
+                self.loadQuestList()
+            }
         } else {
             let alertView = self.monsterAlertView(title: "Error", message: "Failed to get current location.")
             self.present(alertView, animated: false, completion: nil)
@@ -361,18 +382,55 @@ class ChasingViewController: UIViewController, UICollectionViewDelegateFlowLayou
                 let alert = self.monsterAlertView(title: "Monster Alert!", message: "You already claimed this Monster!")
                 self.present(alert, animated: false, completion: nil)
                 return
-            }
-            do {
-                let vc = try self.instantiateViewController(identifier: "completeChaseViewControllerID", storyboardName: "CompleteChase") as? CompleteChaseViewController
-                vc?.chase = chase
-                vc?.currentUserLocation = currentPlayerLocation
-
-                self.present(vc!, animated: false, completion: nil)
-            }catch let error as NSError {
-                let alert = self.monsterAlertView(title: "Error", message: "Ups, something happened, please try again later.")
-                self.present(alert, animated: false, completion: nil)
-
-                print("Failed to instantiate CompleteChaseViewController with error: \(error)")
+            } else {
+                if let chaseIndexStr = chase.index {
+                    if let chaseIndexBigInt = BigInt.init(chaseIndexStr) {
+                        do {
+                            guard let playerAddress = try Player.getPlayer(context: CoreDataUtils.mainPersistentContext).address else {
+                                return
+                            }
+                            let isWinnerOperation = DownloadAndUpdateChaseIsWinnerOperation.init(chaseIndex: chaseIndexBigInt, alledgedWinner: playerAddress)
+                            isWinnerOperation.completionBlock = {
+                                guard let isWinner = isWinnerOperation.isWinner else {
+                                    return
+                                }
+                                
+                                if isWinner == false {
+                                    DispatchQueue.main.async {
+                                        do {
+                                            let vc = try self.instantiateViewController(identifier: "completeChaseViewControllerID", storyboardName: "CompleteChase") as? CompleteChaseViewController
+                                            vc?.chase = chase
+                                            vc?.currentUserLocation = self.currentPlayerLocation
+                                            self.present(vc!, animated: false, completion: nil)
+                                        }catch let error as NSError {
+                                            let alert = self.monsterAlertView(title: "Error", message: "Ups, something happened, please try again later.")
+                                            self.present(alert, animated: false, completion: nil)
+                                            
+                                            print("Failed to instantiate CompleteChaseViewController with error: \(error)")
+                                        }
+                                    }
+                                } else {
+                                    let alert = self.monsterAlertView(title: "Monster Alert!", message: "You already claimed this Monster!")
+                                    self.present(alert, animated: false, completion: nil)
+                                }
+                                self.toggleIndicator()
+                            }
+                            let operationQueue = OperationQueue.init()
+                            
+                            // Toggle animation
+                            self.toggleIndicator()
+                            
+                            operationQueue.addOperations([isWinnerOperation], waitUntilFinished: false)
+                        } catch {
+                            print("An error happened")
+                        }
+                    } else {
+                        print("Error parsing big int")
+                    }
+                } else {
+                    print("Chase without index")
+                }
+                
             }
         } else {
             let alert = self.monsterAlertView(title: "Error", message: "Failed to retrieve current chase, please try again later.")

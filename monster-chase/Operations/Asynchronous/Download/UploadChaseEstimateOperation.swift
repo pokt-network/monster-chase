@@ -59,7 +59,7 @@ public class UploadChaseEstimateOperation: AsynchronousOperation {
             return
         }
         
-        try? aionNetwork.eth.estimateGas(from: self.playerAddress, to: monsterToken.address, gas: nil, gasPrice: AppConfiguration.nrgPrice, value: nil, data: submitChaseCallData, blockTag: nil) { (error, estimate) in
+        aionNetwork.eth.estimateGas(from: self.playerAddress, to: monsterToken.address, gas: nil, gasPrice: AppConfiguration.nrgPrice, value: nil, data: submitChaseCallData, blockTag: nil) { (error, estimate) in
             
             if let error = error {
                 self.error = error

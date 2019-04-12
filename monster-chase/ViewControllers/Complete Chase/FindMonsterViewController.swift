@@ -331,6 +331,26 @@ class FindMonsterViewController: UIViewController, ARSCNViewDelegate {
                             } catch {
                                 print("\(error)")
                             }
+                            
+                            // Save locally that the monster was claimed, this will be overwritten later if the tx fails
+                            do {
+                                let context = CoreDataUtils.createBackgroundPersistentContext()
+                                if let chase = self.currentChase {
+                                    chase.winner = true
+                                    
+                                    guard let chaseIndex = chase.index else {
+                                        return
+                                    }
+                                    
+                                    if !Monster.exists(monsterIndex: chaseIndex, context: context) {
+                                        // Create the monster once
+                                        let monster = try Monster.init(chase: chase, context: context)
+                                        try monster.save()
+                                    }
+                                }
+                            } catch {
+                                print("\(error)")
+                            }
                         } else {
                             PushNotificationUtils.sendNotification(title: "Monster Claim", body: "An error occurred claiming your Monster: \(monsterName), please try again.", identifier: "MonsterClaimError")
                         }
@@ -382,7 +402,7 @@ class FindMonsterViewController: UIViewController, ARSCNViewDelegate {
                             return
                         }
                         
-                        PlayerBalanceQueueDispatcher.init(playerAddress: playerAddress, godfatherAddress: player.godfatherAddress, completionHandler: { (playerBalance, godfatherBalance) in
+                        let _ = PlayerBalanceQueueDispatcher.init(playerAddress: playerAddress, godfatherAddress: player.godfatherAddress, completionHandler: { (playerBalance, godfatherBalance) in
                             if godfatherBalance > gasEstimate {
                                 currentWallet = player.getGodfatherWallet()
                             } else if playerBalance > gasEstimate && currentWallet == nil {
