@@ -77,32 +77,9 @@ public struct BiometricsUtils {
             return
         }
         
-        BioMetricAuthenticator.authenticateWithBioMetrics(reason: "Biometric Authentication", fallbackTitle: "Biometric Authentication", success: {
-            guard let passphrase = KeychainWrapper.standard.string(forKey: keychainKey, withAccessibility: .always) else {
-                errorHandler(BiometricsUtilsError.credentialsRetrievalError)
-                return
-            }
-            do {
-                guard let wallet = try player.getWallet(passphrase: passphrase) else {
-                    errorHandler(BiometricsUtilsError.credentialsRetrievalError)
-                    return
-                }
-                
-                // Call the success handler with the retrieved wallet
-                successHandler(wallet)
-            } catch {
-                errorHandler(BiometricsUtilsError.credentialsRetrievalError)
-            }
-        }) { (error) in
-            // do nothing on canceled
-            if error == .canceledByUser || error == .canceledBySystem {
-                errorHandler(BiometricsUtilsError.cancelledByUser)
-            } else if error == .biometryNotAvailable || error == .fallback || error == .biometryNotEnrolled {
-                errorHandler(BiometricsUtilsError.biometricsUnavailable)
-            } else if error == .biometryLockedout {
-                // show passcode authentication
-                BioMetricAuthenticator.authenticateWithPasscode(reason: "Biometrics Auth Locked, please provide Passcode", success: {
-                    // Return wallet on success
+        BioMetricAuthenticator.authenticateWithBioMetrics(reason: "Biometric Authentication") { (result) in
+            switch result {
+                case .success( _):
                     guard let passphrase = KeychainWrapper.standard.string(forKey: keychainKey, withAccessibility: .always) else {
                         errorHandler(BiometricsUtilsError.credentialsRetrievalError)
                         return
@@ -118,13 +95,46 @@ public struct BiometricsUtils {
                     } catch {
                         errorHandler(BiometricsUtilsError.credentialsRetrievalError)
                     }
-                }) { (error) in
-                    print(error.message())
-                    errorHandler(BiometricsUtilsError.passcodeAuthError)
-                }
-            } else {
-                errorHandler(BiometricsUtilsError.unknownError)
-                print("\(error)")
+                    break
+                case .failure(let error):
+                    // do nothing on canceled
+                    if error == .canceledByUser || error == .canceledBySystem {
+                        errorHandler(BiometricsUtilsError.cancelledByUser)
+                    } else if error == .biometryNotAvailable || error == .fallback || error == .biometryNotEnrolled {
+                        errorHandler(BiometricsUtilsError.biometricsUnavailable)
+                    } else if error == .biometryLockedout {
+                        // show passcode authentication
+                        BioMetricAuthenticator.authenticateWithPasscode(reason: "Biometrics Auth Locked, please provide Passcode", completion: { (result) in
+                            switch result {
+                                case .success( _):
+                                    // Return wallet on success
+                                    guard let passphrase = KeychainWrapper.standard.string(forKey: keychainKey, withAccessibility: .always) else {
+                                        errorHandler(BiometricsUtilsError.credentialsRetrievalError)
+                                        return
+                                    }
+                                    do {
+                                        guard let wallet = try player.getWallet(passphrase: passphrase) else {
+                                            errorHandler(BiometricsUtilsError.credentialsRetrievalError)
+                                            return
+                                        }
+                                        
+                                        // Call the success handler with the retrieved wallet
+                                        successHandler(wallet)
+                                    } catch {
+                                        errorHandler(BiometricsUtilsError.credentialsRetrievalError)
+                                    }
+                                    break
+                                case .failure(let error):
+                                    print(error.message())
+                                    errorHandler(BiometricsUtilsError.passcodeAuthError)
+                                    break
+                            }
+                        })
+                    } else {
+                        errorHandler(BiometricsUtilsError.unknownError)
+                        print("\(error)")
+                    }
+                     break
             }
         }
     }
@@ -153,25 +163,10 @@ public struct BiometricsUtils {
         }
         
         // Attempt bio auth
-        BioMetricAuthenticator.authenticateWithBioMetrics(reason: "Biometric Authentication Setup", fallbackTitle: "Biometric Authentication", success: {
-            // Save passphrase to keychain with correct accesibility
-            do {
-                try savePassphraseToKeychain(passphrase: passphrase, player: player)
-                successHandler()
-            } catch {
-                print("\(error)")
-                errorHandler(error)
-            }
-        }, failure: { (error) in
-            // do nothing on canceled
-            if error == .canceledByUser || error == .canceledBySystem {
-                errorHandler(BiometricsUtilsError.cancelledByUser)
-            } else if error == .biometryNotAvailable || error == .fallback || error == .biometryNotEnrolled {
-                errorHandler(BiometricsUtilsError.biometricsUnavailable)
-            } else if error == .biometryLockedout {
-                // show passcode authentication
-                BioMetricAuthenticator.authenticateWithPasscode(reason: "Biometrics Auth Locked, please provide Passcode", success: {
-                    // Save passphrase
+        BioMetricAuthenticator.authenticateWithBioMetrics(reason: "Biometric Authentication Setup") { (result) in
+            switch result {
+                case .success( _):
+                    // Save passphrase to keychain with correct accesibility
                     do {
                         try savePassphraseToKeychain(passphrase: passphrase, player: player)
                         successHandler()
@@ -179,15 +174,39 @@ public struct BiometricsUtils {
                         print("\(error)")
                         errorHandler(error)
                     }
-                }) { (error) in
-                    print(error.message())
-                    errorHandler(BiometricsUtilsError.passcodeAuthError)
-                }
-            } else {
-                errorHandler(BiometricsUtilsError.unknownError)
-                print("\(error)")
+                    break
+                case .failure(let error):
+                    // do nothing on canceled
+                    if error == .canceledByUser || error == .canceledBySystem {
+                        errorHandler(BiometricsUtilsError.cancelledByUser)
+                    } else if error == .biometryNotAvailable || error == .fallback || error == .biometryNotEnrolled {
+                        errorHandler(BiometricsUtilsError.biometricsUnavailable)
+                    } else if error == .biometryLockedout {
+                        // show passcode authentication
+                        BioMetricAuthenticator.authenticateWithPasscode(reason: "Biometrics Auth Locked", completion: { (result) in
+                            switch result {
+                                case .success( _):
+                                    do {
+                                        try savePassphraseToKeychain(passphrase: passphrase, player: player)
+                                        successHandler()
+                                    } catch {
+                                        print("\(error)")
+                                        errorHandler(error)
+                                    }
+                                    break
+                                case .failure(let error):
+                                    print(error.message())
+                                    errorHandler(BiometricsUtilsError.passcodeAuthError)
+                                    break
+                            }
+                        })
+                    } else {
+                        errorHandler(BiometricsUtilsError.unknownError)
+                        print("\(error)")
+                    }
+                    break
             }
-        })
+        }
     }
     
     private static func savePassphraseToKeychain(passphrase: String, player: Player) throws {
