@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Monster Chase needs your permission to access your location information</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -23,7 +21,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>7</string>
+	<string>8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -36,6 +34,8 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>This app requires Face ID permission to authenticate using Face recognition.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Monster Chase needs your permission to access your location information</string>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Monster Chase needs your permission to access your location information</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Monster Chase needs your permission to access your location information</string>
